@@ -1,0 +1,10 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.searchbar {
+  @include formulaire-container();
+  
+  &-input {
+    @include formulaire-input();
+  }
+}
