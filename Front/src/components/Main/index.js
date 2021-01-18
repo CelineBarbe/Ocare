@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 // == Import
 import './main.scss';
 
@@ -10,16 +10,17 @@ import Transmission from 'src/components/Transmission';
 import Patients from 'src/components/Patients';
 import Tour from 'src/components/Tour';
 
-
 // == Composant
-const Main = () => {
-  return <main className="main">
-        <Searchbar />
-        <Transmission />
-        <Patients />
-        <Tour />
+const Main = () => (
+  <main className="main">
+    <Searchbar />
+    <Transmission />
+    <Link to="/Patients">
+      <Patients />
+    </Link>
+    <Tour />
   </main>
-};
+);
 
 // == Export
 export default Main;
