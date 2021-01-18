@@ -1,0 +1,7 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.main {
+  width: 100%;
+  flex-grow: 2;
+}

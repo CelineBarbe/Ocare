@@ -1,0 +1,42 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+
+.header {
+  background-color: vars.$color-white;
+  height: 4rem;
+  width: 100%;
+  padding: vars.$gutter  vars.$gutter*2;
+  font-family: 'Nunito', sans-serif;
+
+  &-ul {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+ 
+  &-img-logo {
+    width: 45px;
+  }
+
+  &-img-avatar {
+    width: 45px;
+  }
+
+  &-img-triangle {
+    width: 15px;
+    margin-left: 5px;
+    align-self: baseline;
+  }
+
+  &-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    color: vars.$color-secondary-dark2;
+  }
+
+}
