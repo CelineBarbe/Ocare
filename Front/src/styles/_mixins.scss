@@ -1,0 +1,37 @@
+/* -- mixins -- */
+@use '/src/styles/vars';
+
+
+@mixin formulaire-container() { // Si aucune valeur n'est précisée alors $margin vaut 10px
+  padding: vars.$gutter;
+  margin: vars.$gutter;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+  
+}
+
+
+@mixin formulaire-button() { // Si aucune valeur n'est précisée alors $margin vaut 10px
+  appearance:none;
+  margin-top:20px;
+  padding: 15px;
+  font-size: 18px;
+  border:none;
+  background-color:vars.$color-primary;
+  color:vars.$color-white;
+  font-weight:600;
+  border-radius:5px;
+}
+
+@mixin formulaire-input() {
+  padding: vars.$gutter;
+  margin: vars.$gutter*0.5;
+  border: 0;
+  border-bottom: 1px solid vars.$color-primary-light1;
+  font-size: 18px;
+  color: vars.$color-grey4;
+}
+
+  

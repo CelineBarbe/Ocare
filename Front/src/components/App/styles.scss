@@ -1,9 +1,10 @@
+@use '/src/styles/vars';
+
 .app {
-  width: 500px;
-  margin: 1em auto;
-  text-align: center;
+  width: 375px;
+  height: 667px;
+  margin: 20px auto;
+  background-color:#FFFFFF;
+  padding: vars.$gutter;
 }
 
-.app img {
-  max-width: 150px;
-}

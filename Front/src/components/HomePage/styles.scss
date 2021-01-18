@@ -1,0 +1,29 @@
+@use 'src/styles/vars';
+@import 'src/styles/mixins';
+
+//@include inline-block();
+
+
+.homepage {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-title {
+    color: vars.$color-primary;
+    font-weight: bold;
+    padding: vars.$gutter;
+  }
+
+  &-content {
+    padding:vars.$gutter;
+    text-align: justify;
+  }
+
+  &-button {
+    @include formulaire-button;
+  }
+}

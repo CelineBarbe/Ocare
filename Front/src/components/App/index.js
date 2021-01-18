@@ -5,12 +5,12 @@ import React from 'react';
 import './styles.scss';
 
 // == Import components
-import Header from 'src/components/Header';
+import HomePage from 'src/components/HomePage';
 
 // == Composant
 const App = () => {
   return (<div className="app">
-    <Header />
+    <HomePage />
   </div>)
 };
 

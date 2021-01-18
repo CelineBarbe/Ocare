@@ -1,8 +1,10 @@
 @use 'reset';
 @use 'vars';
+@use 'mixins';
 
 body {
   font-family: sans-serif;
+  background-color: #E5E5E5;
 }
 
 /* 
@@ -16,3 +18,4 @@ body {
     font-family: 'Roboto', sans-serif;
   }
 */
+ 
