@@ -23,6 +23,7 @@
   color:vars.$color-white;
   font-weight:600;
   border-radius:5px;
+  font-family: 'Nunito', sans-serif;
 }
 
 @mixin formulaire-input() {
@@ -32,6 +33,7 @@
   border-bottom: 1px solid vars.$color-primary-light1;
   font-size: 18px;
   color: vars.$color-grey4;
+  font-family: 'Nunito', sans-serif;
 }
 
   

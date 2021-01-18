@@ -2,7 +2,7 @@
 import React from 'react';
 
 // == Import
-import './styles.scss';
+import './header.scss';
 
 // == Composant
 const Header = () => {

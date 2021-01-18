@@ -2,7 +2,7 @@
 import React from 'react';
 
 // == Import
-import './styles.scss';
+import './homePage.scss';
 
 // == Composant
 const HomePage = () => {

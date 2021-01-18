@@ -2,15 +2,15 @@
 import React from 'react';
 
 // == Import
-import './styles.scss';
+import './app.scss';
 
 // == Import components
-import LoginPage from 'src/components/LoginPage';
+import SignupPage from 'src/components/SignupPage';
 
 // == Composant
 const App = () => {
   return (<div className="app">
-    <LoginPage />
+    <SignupPage />
   </div>)
 };
 

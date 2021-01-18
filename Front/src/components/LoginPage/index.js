@@ -2,7 +2,7 @@
 import React from 'react';
 
 // == Import
-import './styles.scss';
+import './loginPage.scss';
 
 // == Composant
 const LoginPage = () => {
