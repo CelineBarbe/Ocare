@@ -2,9 +2,9 @@
 @import 'src/styles/mixins';
 
 .searchbar {
-  @include formulaire-container();
+  @include formulaire-search-container();
   
   &-input {
-    @include formulaire-input();
+    @include formulaire-search-input();
   }
 }

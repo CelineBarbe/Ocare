@@ -6,11 +6,15 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Nunito', sans-serif;
-  padding: vars.$gutter  vars.$gutter*2;
-  margin: vars.$gutter auto;
+  padding: vars.$gutter/2;
+  margin: vars.$gutter*2 auto;
   background-color: vars.$color-grey;
   border-radius: 10px;
   width: 90%;
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
+  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+
+
 
   &-h1 {
     margin:vars.$gutter  vars.$gutter*2;
@@ -25,8 +29,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    
-    padding: vars.$gutter  vars.$gutter*2;
+    padding: vars.$gutter;
     
   }
 
@@ -39,11 +42,11 @@
   }
 
   &-img {
-    width: 70px;
+    width: 50px;
   }
 
   &-date {
-    font-size: 13px;
+    font-size: 12px;
     font-style: italic;
     color: vars.$color-secondary-dark2;
     font-weight: bold;

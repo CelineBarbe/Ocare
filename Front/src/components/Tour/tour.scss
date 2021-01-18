@@ -1,10 +1,53 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
-.searchbar {
-  @include formulaire-container();
-  
-  &-input {
-    @include formulaire-input();
+.tour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  padding: vars.$gutter/2;
+  margin: vars.$gutter*2 auto;
+  background-color: vars.$color-primary;
+  border-radius: 10px;
+  width: 90%;
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
+  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+
+  &-title {
+    margin:vars.$gutter  vars.$gutter*2;
+    color: vars.$color-white;
+    font-weight: bold;
+  }
+
+  &-ul {
+    width: 100%;
+  }
+
+  &-li {
+    display: flex;
+    flex-direction: row;
+    padding: vars.$gutter;
+    margin: vars.$gutter;
+    background-color: vars.$color-grey;
+    border-radius: 10px;
+    font-weight: 400;
+    color: vars.$color-grey4;
+  }
+
+  &-span-date {
+    align-self: flex-start;
+    flex-grow: 1;
+    
+  }
+
+  &-span-name {
+    align-self: center;
+    flex-grow: 1;
+  }
+
+  &-span-tag {
+    align-self: flex-end;
+    flex-grow: 1;
   }
 }
