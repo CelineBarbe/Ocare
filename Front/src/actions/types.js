@@ -1,0 +1,3 @@
+export const AUTH_CHANGE_FIELD = 'AUTH_CHANGE_FIELD';
+export const AUTH_SUBMIT_LOGIN = 'AUTH_SUBMIT_LOGIN';
+export const LOGIN_OK = 'LOGIN_OK';
