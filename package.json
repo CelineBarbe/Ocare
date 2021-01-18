@@ -1,0 +1,8 @@
+{
+  "name": "apo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:O-clock-Lyra-JS/projet-infirmiers-liberaux.git",
+  "author": "Zaphaan <jerome.przybylski@gmail.com>",
+  "license": "MIT"
+}
