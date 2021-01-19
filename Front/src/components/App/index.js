@@ -11,7 +11,7 @@ import Dashboard from 'src/components/Dashboard';
 import HomePage from 'src/components/HomePage';
 import LoginPage from 'src/containers/LoginPage';
 import SignupPage from 'src/containers/SignupPage';
-
+import CabinetPage from 'src/components/CabinetPage';
 // == Composant
 const App = () => (
   <div className="app">
@@ -20,6 +20,7 @@ const App = () => (
       <Route exact path="/Login"><LoginPage /></Route>
       <Route exact path="/Signup"><SignupPage /></Route>
       <Route exact path="/Dashboard"><Dashboard /> </Route>
+      <Route exact path="/cabinet"><CabinetPage /></Route>
     </Switch>
   </div>
 );

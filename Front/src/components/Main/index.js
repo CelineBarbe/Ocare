@@ -1,6 +1,6 @@
 // == Import npm
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 // == Import
 import './main.scss';
 
@@ -15,7 +15,16 @@ import CabinetsPage from 'src/components/CabinetsPage';
 // == Composant
 const Main = () => (
   <main className="main">
-    <CabinetsPage />
+  <Switch>
+    <Route exact path="/Dashboard">
+      <Searchbar />
+      <Transmission />
+      <Patients />
+      <Tour />
+    </Route>
+    <Route exact path="/cabinets"> <CabinetsPage /></Route>
+    <Route exact path="/cabinet"> <CabinetPage /></Route>
+  </Switch>
   </main>
 );
 

@@ -1,6 +1,5 @@
 // == Import npm
 import React from 'react';
-
 // == Import
 import './dashboard.scss';
 
