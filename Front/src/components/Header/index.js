@@ -19,8 +19,11 @@ const Header = () => (
       </li>
 
       <li className="header-title">
-        Cabinet Rubio
-        <img src={triangle} alt="logo" className="header-img-triangle" />
+        <select className="header-title-cabinet">
+          <option>Cabinet Rubio</option>
+          <option>Cabinet Durand</option>
+          <option>Cabinet Przybylski</option>
+        </select>
       </li>
 
       <li className="header-profil">
