@@ -9,16 +9,12 @@ import Searchbar from 'src/components/Searchbar';
 import Transmission from 'src/components/Transmission';
 import Patients from 'src/components/Patients';
 import Tour from 'src/components/Tour';
+import CabinetPage from 'src/components/CabinetPage';
 
 // == Composant
 const Main = () => (
   <main className="main">
-    <Searchbar />
-    <Transmission />
-    <Link to="/Patients">
-      <Patients />
-    </Link>
-    <Tour />
+    <CabinetPage />
   </main>
 );
 

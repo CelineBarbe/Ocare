@@ -1,0 +1,62 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+
+.staff-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  padding: vars.$gutter;
+  margin: vars.$gutter*2 auto;
+  background-color: vars.$color-primary;
+  border-radius: 10px;
+  width: 90%;
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
+  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+
+  &-title {
+    margin:vars.$gutter  vars.$gutter*2;
+    color: vars.$color-white;
+    font-weight: bold;
+  }
+}
+
+.nurse-card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.nurse-card {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+ 
+  &-img {
+    width: 40px;
+    margin:vars.$gutter;
+  }
+
+  &-infos {
+    font-size: 14px;
+    color: vars.$color-grey4;
+    margin:vars.$gutter/8;
+  }
+
+  &-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #e4e1e1;
+    margin-bottom:vars.$gutter;
+  }
+
+
+}
+
