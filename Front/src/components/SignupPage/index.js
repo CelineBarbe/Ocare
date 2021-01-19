@@ -1,18 +1,30 @@
 // == Import npm
-import React from 'react';
-
+import React, {useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 // == Import
 import './signupPage.scss';
 
 // == Composant
 const SignupPage = ({
-  email, password, phone_number, lastname, firstname, siren_code, changeField, handleSignup,
+  email, password, phone_number, lastname, firstname, siren_code, changeField, handleSignup, isSigned
 }) => {
+  //REDIRECTION dashboard
+  const history = useHistory();
+  const routeDashboard = () =>{ 
+    let path = `/login`; 
+    history.push(path);
+  }
+  useEffect(() => { isSigned ? routeDashboard() : null}, [isSigned])
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleSignup();
+  };
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <input
         className="form-input"
         type="text"

@@ -27,7 +27,7 @@ const Header = () => (
       </li>
 
       <li className="header-profil">
-        <Link to="/Profil">
+        <Link to="/profil">
           <img src={avatar} alt="avatar" className="header-img-avatar" />
         </Link>
       </li>

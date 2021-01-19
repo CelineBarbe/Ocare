@@ -19,9 +19,14 @@ const LoginPage = ({
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleLogin();
+  };
  
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <input
         className="form-input"
         type="email"
@@ -38,7 +43,7 @@ const LoginPage = ({
         value={password}
         onChange={handleChange}
       />
-      <button type="button" className="form-button" onClick={handleLogin}>
+      <button type="submit" className="form-button" onClick={handleLogin}>
         Se connecter
       </button>
     </form>
