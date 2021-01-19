@@ -19,9 +19,14 @@ const LoginPage = ({
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    handleLogin();
+  };
  
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <input
         className="form-input"
         type="email"

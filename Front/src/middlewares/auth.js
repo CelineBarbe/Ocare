@@ -19,10 +19,10 @@ const auth = (store) => (next) => (action) => {
     };
     axios(config)
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         if (response.status === 200) {
           const { data } = response.data;
-          console.log(data);
+          //console.log(data);
           store.dispatch(loginOk(data));
         }
       })
@@ -49,10 +49,10 @@ const auth = (store) => (next) => (action) => {
     };
     axios(config)
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         if (response.status === 200) {
           const { data } = response;
-          console.log(data);
+          //console.log(data);
           store.dispatch(signUpOk());
         }
       })
