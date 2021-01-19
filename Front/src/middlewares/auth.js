@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP } from 'src/actions/types';
 import { loginOk, signUpOk} from 'src/actions/auth';
+const URL = "https://ocare.herokuapp.com/"
 
 const auth = (store) => (next) => (action) => {
   //LOGIN
@@ -12,7 +13,7 @@ const auth = (store) => (next) => (action) => {
     console.log('passe par mw auth, password vaut', password);
     const config = {
       method: 'post',
-      url: 'http://localhost:5001/login',
+      url: `${URL}login`,
       data: {
         email,
         password,
