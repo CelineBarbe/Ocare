@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 // == Import npm
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -8,8 +9,8 @@ import './app.scss';
 // == Import components
 import Dashboard from 'src/components/Dashboard';
 import HomePage from 'src/components/HomePage';
-import LoginPage from 'src/components/LoginPage';
-import SignupPage from 'src/components/SignupPage';
+import LoginPage from 'src/containers/LoginPage';
+import SignupPage from 'src/containers/SignupPage';
 
 // == Composant
 const App = () => (

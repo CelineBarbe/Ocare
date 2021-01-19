@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { AUTH_CHANGE_FIELD, LOGIN_OK } from 'src/actions/types';
 
 export const initialState = {
