@@ -15,16 +15,12 @@ import CabinetsPage from 'src/components/CabinetsPage';
 // == Composant
 const Main = () => (
   <main className="main">
-  <Switch>
-    <Route exact path="/Dashboard">
+  
       <Searchbar />
       <Transmission />
       <Patients />
       <Tour />
-    </Route>
-    <Route exact path="/cabinets"> <CabinetsPage /></Route>
-    <Route exact path="/cabinet"> <CabinetPage /></Route>
-  </Switch>
+    
   </main>
 );
 

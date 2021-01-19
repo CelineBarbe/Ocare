@@ -6,15 +6,15 @@ import SignupPage from 'src/components/SignupPage';
 
 const mapStateToProps = ({ auth }) => {
   const {
-    email, password, phoneNumber, lastName, firstName, SIRENCode,
+    email, password, phone_number, lastname, firstname, siren_code,
   } = auth;
   return ({
     email,
     password,
-    phoneNumber,
-    lastName,
-    firstName,
-    SIRENCode,
+    phone_number,
+    lastname,
+    firstname,
+    siren_code,
   });
 };
 
