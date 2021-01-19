@@ -43,7 +43,7 @@ const LoginPage = ({
         value={password}
         onChange={handleChange}
       />
-      <button type="button" className="form-button" onClick={handleLogin}>
+      <button type="submit" className="form-button" onClick={handleLogin}>
         Se connecter
       </button>
     </form>
