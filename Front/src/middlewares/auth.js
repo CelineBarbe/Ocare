@@ -23,9 +23,9 @@ const auth = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          const { data } = response;
+          const { data } = response.data;
           console.log(data);
-          store.dispatch(loginOk());
+          store.dispatch(loginOk(data));
         }
       })
       .catch((err) => {

@@ -15,8 +15,15 @@ export const onSubmitSignup = () => ({
   type: AUTH_SUBMIT_SIGNUP,
 });
 
-export const loginOk = () => ({
+export const loginOk = ({email,password,id,firstname,lastname, phone_number, siren_code}) => ({
   type: LOGIN_OK,
+  email,
+  password,
+  id,
+  firstname,
+  lastname,
+  phone_number,
+  siren_code,
 });
 
 export const signUpOk = () => ({

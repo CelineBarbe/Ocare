@@ -6,11 +6,12 @@ import LoginPage from 'src/components/LoginPage';
 
 const mapStateToProps = ({ auth }) => {
   const {
-    email, password,
+    email, password, isLogged
   } = auth;
   return ({
     email,
     password,
+    isLogged,
   });
 };
 

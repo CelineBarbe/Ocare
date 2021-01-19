@@ -1,16 +1,25 @@
 // == Import npm
-import React from 'react';
-
+import React, {useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 // == Import
 import './loginPage.scss';
 
 // == Composant
 const LoginPage = ({
-  email, password, changeField, handleLogin,
+  email, password, changeField, handleLogin, isLogged
 }) => {
+  //REDIRECTION dashboard
+  const history = useHistory();
+  const routeDashboard = () =>{ 
+    let path = `/Dashboard`; 
+    history.push(path);
+  }
+  useEffect(() => { isLogged ? routeDashboard() : null}, [isLogged])
+
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
   };
+ 
   return (
     <form className="form">
       <input
