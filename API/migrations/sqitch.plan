@@ -2,4 +2,3 @@
 %project=ocare
 
 000-init 2021-01-18T12:23:37Z "Etudiant O'clock",,, <etudiant@teleporteur> # Database init
-020-role 2021-01-18T15:11:58Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add nurse role

@@ -23,8 +23,8 @@ const authDataMapper = {
         }
 
         // save user
-        const result = await client.query(`INSERT INTO nurse(SIREN_code, firstname, lastname, email, password, phone_number) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`,[
-            userInfo.SIREN_code,
+        const result = await client.query(`INSERT INTO nurse(siren_code, firstname, lastname, email, password, phone_number) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`,[
+            userInfo.siren_code,
             userInfo.firstname,
             userInfo.lastname,
             userInfo.email,
