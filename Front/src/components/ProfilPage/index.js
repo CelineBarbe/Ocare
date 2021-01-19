@@ -5,19 +5,20 @@ import React, { Fragment } from 'react';
 import './profil.scss';
 
 //== Import components
-import CabinetCard from 'src/components/CabinetCard';
-import StaffCard from 'src/components/StaffCard';
+import ProfilCard from 'src/containers/ProfilCard';
+import ListCabinets from './ListCabinets';
 import Header from 'src/components/Header';
 import Nav from 'src/components/Nav';
 
 
 // == Composant
-const Profil= () => {
+const ProfilPage= () => {
   return (
     <Fragment>
       <Header />
       <div className="main">
-        
+        <ProfilCard />
+        <ListCabinets />
       </div>
       <Nav />
     </Fragment>
@@ -25,4 +26,4 @@ const Profil= () => {
 };
 
 // == Export
-export default Profil;
+export default ProfilPage;

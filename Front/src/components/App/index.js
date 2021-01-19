@@ -14,6 +14,7 @@ import SignupPage from 'src/containers/SignupPage';
 import CabinetPage from 'src/components/CabinetPage';
 import CabinetsPage from 'src/components/CabinetsPage';
 import PatientsPage from 'src/components/PatientsPage';
+import ProfilPage from 'src/components/ProfilPage';
 // == Composant
 const App = () => (
   <div className="app">
@@ -25,6 +26,7 @@ const App = () => (
       <Route exact path="/cabinet"><CabinetPage /></Route>
       <Route exact path="/cabinets"><CabinetsPage /></Route>
       <Route exact path="/patients"><PatientsPage /></Route>
+      <Route exact path="/profil"><ProfilPage /></Route>
     </Switch>
   </div>
 );

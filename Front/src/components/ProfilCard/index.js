@@ -8,21 +8,20 @@ import './profilCard.scss';
 import pen from 'src/assets/icones/pen.svg';
 
 // == Composant
-const ProfilCard = () => {
+const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, siren_code, avatar }) => {
   return (
-    <div className="cabinet-card">
-    <img src={pen} alt="stylo" className="cabinet-card-edit" />
-      <p className="cabinet-card-title">Cabinet Rubio</p>
-      <span className="cabinet-card-nbpatient">55 Patients</span>
-      <p className="cabinet-card-infos cabinet-card-adresse ">
-        10 Rue de Penthievre
-        75008 Paris
+    <div className="profil-card">
+    <img src={pen} alt="stylo" className="profil-card-edit" />
+      <p className="profil-card-nom">{`${firstname} ${lastname}`}</p>
+      <span className="profil-card-siren_code">{siren_code}</span>
+      <p className="profil-card-infos cabinet-card-adresse ">
+        Url Avatar: {avatar}
       </p>
-      <p className="cabinet-card-infos cabinet-card-phone">
-        Téléphone : 06.48.20.12.93
+      <p className="profil-card-infos">
+        Téléphone : {phone_number}
       </p>
-      <p className="cabinet-card-infos cabinet-card-mail">
-        Mail : jerome@oclock.io
+      <p className="profil-card-infos">
+        Mail : {email}
       </p>
     </div>
   )
