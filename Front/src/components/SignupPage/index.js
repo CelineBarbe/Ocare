@@ -6,7 +6,7 @@ import './signupPage.scss';
 
 // == Composant
 const SignupPage = ({
-  email, password, phoneNumber, lastName, firstName, SIRENCode, changeField, handleSignup,
+  email, password, phone_number, lastname, firstname, siren_code, changeField, handleSignup,
 }) => {
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -16,17 +16,17 @@ const SignupPage = ({
       <input
         className="form-input"
         type="text"
-        name="lastName"
+        name="lastname"
         placeholder="Nom"
-        value={lastName}
+        value={lastname}
         onChange={handleChange}
       />
       <input
         className="form-input"
         type="text"
-        name="firstName"
+        name="firstname"
         placeholder="Prénom"
-        value={firstName}
+        value={firstname}
         onChange={handleChange}
       />
       <input
@@ -48,17 +48,17 @@ const SignupPage = ({
       <input
         className="form-input"
         type="phone"
-        name="phoneNumber"
+        name="phone_number"
         placeholder="Téléphone"
-        value={phoneNumber}
+        value={phone_number}
         onChange={handleChange}
       />
       <input
         className="form-input"
         type="text"
-        name="SIRENCode"
+        name="siren_code"
         placeholder="Code SIREN"
-        value={SIRENCode}
+        value={siren_code}
         onChange={handleChange}
       />
       <button type="button" className="form-button" onClick={handleSignup}>

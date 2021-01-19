@@ -9,8 +9,6 @@ const auth = (store) => (next) => (action) => {
   if (action.type === AUTH_SUBMIT_LOGIN) {
     const Recupstore = store.getState();
     const { email, password } = Recupstore.auth;
-    console.log('passe par mw auth, email vaut', email);
-    console.log('passe par mw auth, password vaut', password);
     const config = {
       method: 'post',
       url: `${URL}login`,
@@ -36,19 +34,17 @@ const auth = (store) => (next) => (action) => {
   //SIGNUP
   if (action.type === AUTH_SUBMIT_SIGNUP) {
     const Recupstore = store.getState();
-    const { email, password, firstName, lastName, phoneNumber, SIRENCode } = Recupstore.auth;
-    console.log('passe par mw auth signup, email vaut', email);
-    console.log('passe par mw auth signup, password vaut', password);
+    const { email, password, firstname, lastname, phone_number, siren_code } = Recupstore.auth;
     const config = {
       method: 'post',
-      url: 'http://localhost:5001/signUP',
+      url: `${URL}signup`,
       data: {
         email,
         password,
-        firstName,
-        lastName,
-        phoneNumber,
-        SIRENCode,
+        firstname,
+        lastname,
+        phone_number,
+        siren_code,
       },
     };
     axios(config)

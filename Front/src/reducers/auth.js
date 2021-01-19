@@ -8,10 +8,10 @@ export const initialState = {
   token: undefined,
   isLogged: false,
   avatar: '',
-  firstName: '',
-  lastName: '',
-  phoneNumber: '',
-  SIRENCode: '',
+  firstname: '',
+  lastname: '',
+  phone_number: '',
+  siren_code: '',
 };
 
 // reducer qui va gérer les recettes
@@ -29,10 +29,10 @@ const reducer = (oldState = initialState, action = {}) => {
         email: action.email,
         password: action.password,
         id: action.id,
-        firstName: action.firstname,
-        lastName: action.lastname,
-        phoneNumber: action.phone_number,
-        SIRENCode: action.siren_code,
+        firstname: action.firstname,
+        lastname: action.lastname,
+        phone_number: action.phone_number,
+        siren_code: action.siren_code,
       };
     default:
       return { ...oldState };
