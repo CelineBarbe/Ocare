@@ -1,5 +1,5 @@
 import {
-  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTH_SUBMIT_SIGNUP,
+  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTH_SUBMIT_SIGNUP, SIGNUP_OK
 } from './types';
 
 export const authChangeField = (value, field) => ({
@@ -17,4 +17,8 @@ export const onSubmitSignup = () => ({
 
 export const loginOk = () => ({
   type: LOGIN_OK,
+});
+
+export const signUpOk = () => ({
+  type: SIGNUP_OK,
 });

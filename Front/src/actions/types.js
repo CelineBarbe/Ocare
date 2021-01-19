@@ -3,6 +3,7 @@ export const AUTH_CHANGE_FIELD = 'AUTH_CHANGE_FIELD';
 export const AUTH_SUBMIT_LOGIN = 'AUTH_SUBMIT_LOGIN';
 export const AUTH_SUBMIT_SIGNUP = 'AUTH_SUBMIT_SIGNUP';
 export const LOGIN_OK = 'LOGIN_OK';
+export const SIGNUP_OK = 'SIGNUP_OK';
 
 // types search
 export const SEARCH_CHANGE_FIELD = 'SEARCH_CHANGE_FIELD';
