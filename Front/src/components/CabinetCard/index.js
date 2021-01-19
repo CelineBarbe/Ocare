@@ -4,10 +4,14 @@ import React from 'react';
 // == Import
 import './cabinetCard.scss';
 
+//== Import images
+import pen from 'src/assets/icones/pen.svg';
+
 // == Composant
 const CabinetCard = () => {
   return (
     <div className="cabinet-card">
+    <img src={pen} alt="stylo" className="cabinet-card-edit" />
       <p className="cabinet-card-title">Cabinet Rubio</p>
       <span className="cabinet-card-nbpatient">55 Patients</span>
       <p className="cabinet-card-infos cabinet-card-adresse ">

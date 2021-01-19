@@ -6,11 +6,13 @@ import './staffCard.scss';
 
 // == Import images
 import avatar from 'src/assets/icones/avatar.svg'
+import plus from 'src/assets/icones/plus2.svg';
 
 // == Composant
 const StaffCard = () => {
   return (
     <div className="staff-card">
+     <img src={plus} alt="stylo" className="staff-card-add" />
      <p className="staff-card-title">
        Notre équipe
      </p>
