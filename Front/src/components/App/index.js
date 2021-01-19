@@ -12,15 +12,17 @@ import HomePage from 'src/components/HomePage';
 import LoginPage from 'src/containers/LoginPage';
 import SignupPage from 'src/containers/SignupPage';
 import CabinetPage from 'src/components/CabinetPage';
+import CabinetsPage from 'src/components/CabinetsPage';
 // == Composant
 const App = () => (
   <div className="app">
     <Switch>
       <Route exact path="/"><HomePage /></Route>
-      <Route exact path="/Login"><LoginPage /></Route>
-      <Route exact path="/Signup"><SignupPage /></Route>
-      <Route exact path="/Dashboard"><Dashboard /> </Route>
+      <Route exact path="/login"><LoginPage /></Route>
+      <Route exact path="/signup"><SignupPage /></Route>
+      <Route exact path="/dashboard"><Dashboard /> </Route>
       <Route exact path="/cabinet"><CabinetPage /></Route>
+      <Route exact path="/cabinets"><CabinetsPage /></Route>
     </Switch>
   </div>
 );

@@ -14,8 +14,8 @@ const HomePage = () => (
       Ils passent beaucoup de temps après leurs tournées pour transmettre des informations à l’équipe, on appelle ça les transmissions. Elles sont souvent faites le soir par téléphone.
       Partant de ce constat nous avons eu l’idée de développer une application qui a pour but d’améliorer la communication du cabinet.
     </p>
-    <Link to="/Login"><button className="homepage-button">Se connecter</button></Link>
-    <Link to="/Signup"><button className="homepage-button">Inscription</button></Link>
+    <Link to="/login"><button className="homepage-button">Se connecter</button></Link>
+    <Link to="/signup"><button className="homepage-button">Inscription</button></Link>
   </div>
 );
 
