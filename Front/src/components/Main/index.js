@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './main.scss';
 
 // == Import components
-import Searchbar from 'src/components/Searchbar';
+import Searchbar from 'src/containers/Searchbar';
 import Transmission from 'src/components/Transmission';
 import Patients from 'src/components/Patients';
 import Tour from 'src/components/Tour';
