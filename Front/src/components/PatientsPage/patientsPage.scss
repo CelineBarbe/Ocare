@@ -1,0 +1,104 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+
+.patients-page-create {
+  padding: vars.$gutter;
+  margin: vars.$gutter;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  color: vars.$color-secondary-dark2;
+
+  &-img {
+    width: 50px;
+  }
+
+  &-title {
+    font-size: 17px;
+    margin-left: 0.5em;
+  }
+}
+
+.patients-page-liste {
+  padding: vars.$gutter/2;
+  margin: vars.$gutter/2;
+  font-family: 'Nunito', sans-serif;
+
+  &-ul {
+    overflow: hidden;
+    height: 1px;
+  }
+
+  &-title1 {
+    padding: 0.5em;
+    border-radius: vars.$gutter;
+    background-color: vars.$color-secondary-dark1;
+    font-weight: bold;
+    font-size: 18px;
+    color: vars.$color-white;
+    transition-duration: 2s ;
+    &:hover + .patients-page-liste-ul {
+      overflow: visible;
+      height: auto;
+    }
+  }
+
+  &-title2 {
+    padding: 0.5em;
+    border-radius: vars.$gutter;
+    background-color: vars.$color-primary;
+    font-weight: bold;
+    font-size: 18px;
+    color: vars.$color-white;
+    transition-duration: 2s ;
+    &:hover + .patients-page-liste-ul {
+      overflow: visible;
+      height: auto;
+    }
+  }
+
+
+  &-li {
+    font-family: 'Nunito', sans-serif;
+    margin: vars.$gutter;
+    padding: vars.$gutter/2;
+    background-color:  #f3f3f3;
+    color: vars.$color-secondary-dark2;
+  }
+}
+
+.patients-page-search {
+  padding: vars.$gutter;
+  margin: vars.$gutter;
+  
+  &-ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
+    box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+    background-color: vars.$color-white;
+    padding: vars.$gutter;
+    min-height: 36px;
+  }
+
+  &-li {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    padding: 0 1px;
+    color: vars.$color-grey4;
+    transition-duration: 0.5ms;
+  }
+
+  &-li:hover {
+    color: vars.$color-primary;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
+
+
+

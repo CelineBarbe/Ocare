@@ -4,5 +4,7 @@
 .main {
   width: 100%;
   flex-grow: 2;
-  min-height: 550px;
+  min-height: 530px;
+  max-height: 530px;
+  overflow: hidden;
 }

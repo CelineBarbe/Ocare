@@ -9,8 +9,6 @@ import Searchbar from 'src/containers/Searchbar';
 import Transmission from 'src/components/Transmission';
 import Patients from 'src/components/Patients';
 import Tour from 'src/components/Tour';
-import CabinetPage from 'src/components/CabinetPage';
-import CabinetsPage from 'src/components/CabinetsPage';
 
 // == Composant
 const Main = () => (
