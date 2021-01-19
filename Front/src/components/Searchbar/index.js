@@ -6,11 +6,25 @@ import './searchbar.scss';
 
 
 // == Composant
-const Searchbar = () => {
-  return <form className="searchbar">
-        <input type="text" className="searchbar-input" placeholder="Recherche..."/>
-  </form>
+const Searchbar = ({changeField, handleSubmit, inputSearchDashboard}) => {
+  const handleChange = (evt) => {
+    changeField(evt.target.value, evt.target.name);
+  };
+  const onSubmitForm = (evt) => {
+    evt.preventDefault();
+    handleSubmit();
+  };
+  return <form className="searchbar" onSubmit={onSubmitForm}>
+          <input type="text" 
+            className="searchbar-input"
+            placeholder="Recherche..."
+            name="inputSearchDashboard"
+            value={inputSearchDashboard}
+            onChange={handleChange}
+          />
+       </form>
 };
 
 // == Export
 export default Searchbar;
+ 

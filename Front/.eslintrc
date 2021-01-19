@@ -25,7 +25,7 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react/jsx-filename-extension": "off",
-    "react/forbid-prop-types": "off",
+    "react/forbid-prop-types": "on",
     "react/no-access-state-in-setstate": "warn",
     "react/jsx-one-expression-per-line": "off",
     "react/destructuring-assignment": "warn",
