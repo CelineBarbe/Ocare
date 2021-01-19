@@ -16,10 +16,7 @@ const authController = {
 
             request.session.userID = user.id;
             
-            response.json({
-                data: user,
-                message: 'client connecté'
-            });
+            response.json({ user });
 
         } catch (error) {
             next(error);
@@ -39,9 +36,7 @@ const authController = {
                 return;
             }
 
-            response.json({
-                data: newUser
-            })
+            response.json({ newUser });
 
         } catch (error) {
             next(error);
