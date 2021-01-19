@@ -1,0 +1,74 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.cabinets {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-top: vars.$gutter;
+  margin-top: vars.$gutter*2;
+  font-family: 'Nunito', sans-serif;
+
+
+  &-add {
+    position: absolute;
+    top: 32px;
+    right: vars.$gutter*5;
+    width: 30px;
+  }
+  
+ &-title {
+    margin:vars.$gutter*2;
+    padding:vars.$gutter*2;
+    color: vars.$color-white;
+    font-weight: bold;
+    background-color: vars.$color-secondary-dark2;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
+    box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+ }
+}
+
+.cabinets-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: vars.$gutter*4 vars.$gutter ;
+  width: 100%; 
+}
+
+.cabinets-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: vars.$gutter*2;
+
+  &-add {
+    margin-top: vars.$gutter;
+    width: 25px;
+  }
+
+  &-img {
+    padding: vars.$gutter;
+  }
+
+  &-infos {
+    color: vars.$color-secondary-dark2;
+    padding: vars.$gutter/3;
+  }
+
+  &-name {
+    font-weight: bold;
+  }
+
+  &-nbpatient {
+    color: vars.$color-primary;
+    font-size: 14px;
+    text-decoration: underline;
+  }
+}
