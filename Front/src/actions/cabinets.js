@@ -2,7 +2,7 @@ import {
   SEED_CABINETS
 } from './types';
 
-export const seedcabinets = (data) => ({
+export const seedCabinets = (data) => ({
   type: SEED_CABINETS,
   payload: data,
 });

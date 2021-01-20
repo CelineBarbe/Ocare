@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, {useEffect} from 'react';
 // == Import
 import './dashboard.scss';
 
@@ -9,7 +9,12 @@ import Nav from 'src/components/Nav';
 import Main from 'src/components/Main';
 
 // == Composant
-const Dashboard = () => {
+const Dashboard = ({ dashboardInit }) => {
+  useEffect(() => {
+    console.log('coucou appelé qu au moment du didMount de dashboard !');
+    dashboardInit();
+}, [])
+ 
   return (
   <div className="dashboard">
     <Header />

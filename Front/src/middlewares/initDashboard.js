@@ -15,7 +15,6 @@ const initDashboard = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          console.log(response);
           store.dispatch(seedCabinets(response.data));
         }
       })
