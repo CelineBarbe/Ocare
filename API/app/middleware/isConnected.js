@@ -1,6 +1,6 @@
 const isConnected = (request, response, next) => {
 
-    if(request.session) {
+    if(request.session.userID) {
         next();
     } else {
         response.json({

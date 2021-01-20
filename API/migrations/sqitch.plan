@@ -4,3 +4,4 @@
 000-init 2021-01-18T12:23:37Z "Etudiant O'clock",,, <etudiant@teleporteur> # Database init
 010-add-cabinet 2021-01-19T15:23:01Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table cabinet
 020-add-cabinet-has-nurse 2021-01-20T06:01:41Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table cabinet_has_nurse
+030-add-avatar-to-nurse 2021-01-20T12:17:10Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add a field avatar in table nurse and rename the field user_id in table cabinet

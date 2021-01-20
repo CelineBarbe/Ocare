@@ -22,7 +22,7 @@ INSERT INTO nurse(siren_code, firstname, lastname, email, password, phone_number
 
 -- Insertions des cabinets
 
-INSERT INTO cabinet(name, address, zip_code, city, phone_number, pin_code, nurse_id) VALUES
+INSERT INTO cabinet(name, address, zip_code, city, phone_number, pin_code, owner_id) VALUES
 ('Cabinet Modjo', '12 impasse des fleurs', '45210', 'Charmille', '0248956325', 'secretcode', 2),
 ('Cabinet Pezzo', '24 rue du val Fleury', '78200', 'Grassoully', '0465235212', 'codepin', 3),
 ('Cabinet Responza', '6 chemin du 16 novembre 1956', '18200', 'Orval', '0231624524', 'pin1234', 3),

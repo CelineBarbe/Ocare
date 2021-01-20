@@ -36,3 +36,40 @@ FROM cabinet c
     JOIN nurse
         ON nurse.id = chs.nurse_id
     WHERE c.id = 1;
+
+SELECT DISTINCT c.id,
+    c.name,
+    c.address,
+    c.zip_code,
+    c.city,
+    c.phone_number,
+    c.owner_id,
+    ARRAY_AGG (nurse.id || ' '
+    || nurse.siren_code || ' '
+    || nurse.firstname || ' '
+    || nurse.lastname || ' '
+    || nurse.email || ' '
+    || nurse.phone_number) AS nurses
+FROM cabinet c
+    JOIN cabinet_has_nurse chs
+        ON c.id = chs.cabinet_id 
+    JOIN nurse
+        ON nurse.id = chs.nurse_id
+    WHERE c.id = 1
+GROUP BY c.id;
+
+SELECT c.id,
+    c.name,
+    c.address,
+    c.zip_code,
+    c.city,
+    c.phone_number,
+    c.owner_id,
+    JSON_AGG(nurse)
+FROM cabinet c
+    JOIN cabinet_has_nurse chs
+        ON c.id = chs.cabinet_id 
+    JOIN nurse
+        ON nurse.id = chs.nurse_id
+    WHERE c.id = 1
+GROUP BY c.id;

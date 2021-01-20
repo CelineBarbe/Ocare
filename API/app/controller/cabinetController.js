@@ -34,6 +34,8 @@ const cabinetController = {
                 return;
             }
 
+            cabinet[0].nbPatient = 50;
+
             response.json({ cabinet });
 
         } catch (error) {
@@ -45,7 +47,15 @@ const cabinetController = {
         try {
             const cabinetInfo = request.body;
 
+            // console.log(cabinetInfo, "-Controller");
+
             const savedCabinet = await cabinetDataMapper.createCabinet(cabinetInfo);
+
+            if (!savedCabinet) {
+                response.locals.notFound = 'La création du cabinet a échoué';
+                next();
+                return;
+            }
 
             response.json({ savedCabinet });
 
