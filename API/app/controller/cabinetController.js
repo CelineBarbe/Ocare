@@ -34,6 +34,7 @@ const cabinetController = {
                 return;
             }
 
+            // nb patient en dur pour l'instant
             cabinet[0].nbPatient = 50;
 
             response.json({ cabinet });

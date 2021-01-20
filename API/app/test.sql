@@ -61,3 +61,59 @@ FROM cabinet c
     WHERE c.id = 1
 GROUP BY c.id;
 
+SELECT c.id,
+    c.name,
+    c.address,
+    c.zip_code,
+    c.city,
+    c.phone_number,
+    c.owner_id,
+    JSON_AGG(nurse) AS nurses
+    FROM cabinet c
+    JOIN cabinet_has_nurse chs
+        ON c.id = chs.cabinet_id
+    JOIN nurse
+        ON nurse.id = chs.nurse_id
+    GROUP BY c.id;
+
+CREATE VIEW nurse_by_cabinet AS
+SELECT cabinet.name,
+        cabinet.id,
+    nurse.id AS nurseID 
+FROM cabinet
+    JOIN cabinet_has_nurse chn
+        ON cabinet.id = chn.cabinet_id
+    JOIN nurse
+        ON nurse.id = chn.nurse_id;
+
+SELECT nurse_by_cabinet.name,
+nurse_by_cabinet.id,
+nurse_by_cabinet.nurseid,
+JSON_AGG(nurse)
+FROM nurse_by_cabinet
+    JOIN nurse
+        ON nurse.id = nurse_by_cabinet.nurseid
+        WHERE nurse_by_cabinet.nurseid = 1
+GROUP BY nurse_by_cabinet.name, nurse_by_cabinet.id, nurse_by_cabinet.nurseid;
+
+SELECT *
+FROM test
+    JOIN cabinet_has_nurse
+        ON cabinet_has_nurse.cabinet_id = test.id
+    WHERE cabinet_has_nurse.nurse_id = 1;
+
+
+SELECT c.id,
+    c.name,
+    c.address,
+    c.zip_code,
+    c.city,
+    c.phone_number,
+    c.owner_id,
+    JSON_AGG(nurse) AS nurses
+    FROM cabinet c
+    JOIN cabinet_has_nurse chs
+        ON c.id = chs.cabinet_id
+    JOIN nurse
+        ON nurse.id = chs.nurse_id
+    GROUP BY c.id;

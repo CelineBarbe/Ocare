@@ -3,31 +3,21 @@ const client = require('./client');
 const cabinetDataMapper = {
     async getAllCabinet(idUser) {
         
-        // const result = await client.query(`
-        // SELECT * FROM cabinet 
-        //     JOIN cabinet_has_nurse chs
-        //         ON cabinet.id = chs.cabinet_id 
-        //     WHERE chs.nurse_id = $1`, [idUser]);
-
+        
         const result = await client.query(`
-        SELECT c.id,
-    c.name,
-    c.address,
-    c.zip_code,
-    c.city,
-    c.phone_number,
-    c.owner_id,
-    JSON_AGG(nurse) FROM cabinet c
-    JOIN cabinet_has_nurse chs
-        ON c.id = chs.cabinet_id
-    JOIN nurse
-        ON nurse.id = chs.nurse_id
-        WHERE nurse.id=1
-    GROUP BY c.id; `);
+            SELECT all_cabinet.* 
+                FROM all_cabinet 
+                JOIN cabinet_has_nurse
+                    ON cabinet_has_nurse.cabinet_id = all_cabinet.id
+                WHERE cabinet_has_nurse.nurse_id = $1`, [idUser]);
 
         if (result.rowCount == 0) {
             return null;
         }
+
+        console.log(result.rows, "Data");
+        // Nb patients en dur pour l'instant.
+        result.rows.map(cab => cab.nbPatients = 15);
 
         return result.rows;
     },
@@ -35,22 +25,22 @@ const cabinetDataMapper = {
     async getCabinetById(id) {
 
     const result = await client.query(`
-    SELECT c.id,
-    c.name,
-    c.address,
-    c.zip_code,
-    c.city,
-    c.phone_number,
-    c.owner_id,
-    JSON_AGG(nurse) AS nurses
-FROM cabinet c
-    JOIN cabinet_has_nurse chs
-        ON c.id = chs.cabinet_id 
-    JOIN nurse
-        ON nurse.id = chs.nurse_id
-    WHERE c.id = $1
-GROUP BY c.id;
-    `, [id]);
+        SELECT c.id,
+                c.name,
+                c.address,
+                c.zip_code,
+                c.city,
+                c.phone_number,
+                c.owner_id,
+                JSON_AGG(nurse) AS nurses
+            FROM cabinet c
+            JOIN cabinet_has_nurse chs
+                ON c.id = chs.cabinet_id 
+            JOIN nurse
+                ON nurse.id = chs.nurse_id
+        WHERE c.id = $1
+        GROUP BY c.id;
+        `, [id]);
 
         if(result.rowCount == 0) {
             return null;
