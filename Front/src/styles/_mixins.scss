@@ -40,7 +40,6 @@
 
 @mixin formulaire-search-container() { // Si aucune valeur n'est précisée alors $margin vaut 10px
   padding: vars.$gutter/2;
-  margin: vars.$gutter/2;
   display: flex;
   flex-direction: column;
   align-items: center;

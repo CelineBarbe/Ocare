@@ -1,5 +1,6 @@
 // == Import npm
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 // == Import
 import './patientsPage.scss';
 
@@ -30,7 +31,7 @@ const PatientsPage = () => {
               <div className="patients-page-liste">
                 <p className="patients-page-liste-title secondary-dark1">A</p>
                 <ul className="patients-page-liste-ul">
-                  <li className="patients-page-liste-li">Armand</li>
+                  <Link to="/patient"><li className="patients-page-liste-li">Armand</li></Link>
                   <li className="patients-page-liste-li">Arnaud</li>
                 </ul>
               </div>
