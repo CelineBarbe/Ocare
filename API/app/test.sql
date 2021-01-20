@@ -9,6 +9,23 @@ WHERE email = 'olivier@raynal.com'
 AND password = 'gyefgecz'
 AND chs.default_cabinet = true;
 
+const result = await client.query(`
+        SELECT nurse.*,
+        chs.cabinet_id AS default_cabinet
+            FROM nurse
+                JOIN cabinet_has_nurse chs
+            ON nurse.id = chs.nurse_id
+            WHERE email = $1 
+            AND password = $2`, [email, password]);
+
+SELECT nurse.*,
+chs.cabinet_id AS default_cabinet
+FROM nurse
+    JOIN cabinet_has_nurse chs
+        ON nurse.id = chs.nurse_id
+    WHERE nurse.id = 1
+AND chs.default_cabinet = true;
+
 -- cabinet.getAllCabinet() => Récupérer tous les cabinets pour un userID, + nb Patients, + staff
 
 SELECT c.id,
