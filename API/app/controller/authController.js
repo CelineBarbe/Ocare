@@ -15,10 +15,8 @@ const authController = {
                 next();
                 return;
             }
-
-            request.session.userID = user.id;
             
-            request.session.userCurrentCabinet = user.default_cabinet;
+            response.locals.userCurrentCabinet = user.default_cabinet;
             
             response.json({ user, userToken: jwt.sign(
                 {

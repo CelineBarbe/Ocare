@@ -5,7 +5,7 @@ const cabinetController = {
     async findAll(request, response, next) {
         try {
 
-            const userID = request.session.userID;
+            const userID = response.locals.userID;
 
             const cabinets = await cabinetDataMapper.getAllCabinet(userID);
 
