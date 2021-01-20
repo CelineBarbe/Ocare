@@ -21,7 +21,8 @@ const auth = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          const { user } = response.data;
+          const { user, userToken } = response.data;
+          localStorage.setItem('auth', userToken);
           console.log(user);
           store.dispatch(loginOk(user));
         }

@@ -12,7 +12,7 @@ import HomePage from 'src/components/HomePage';
 import LoginPage from 'src/containers/LoginPage';
 import SignupPage from 'src/containers/SignupPage';
 import CabinetPage from 'src/components/CabinetPage';
-import CabinetsPage from 'src/components/CabinetsPage';
+import CabinetsPage from 'src/containers/CabinetsPage';
 import PatientsPage from 'src/components/PatientsPage';
 import ProfilPage from 'src/components/ProfilPage';
 import PatientPage from 'src/components/PatientPage';

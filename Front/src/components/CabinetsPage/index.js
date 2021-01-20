@@ -16,7 +16,7 @@ import moins from 'src/assets/icones/moinsvert.svg';
 
 
 // == Composant
-const CabinetsPage = () => {
+const CabinetsPage = ({ listCabinets }) => {
   return (
 
         <Fragment>
@@ -26,38 +26,18 @@ const CabinetsPage = () => {
           <img src={plus} alt="croix" className="cabinets-add" />
         
           <div className="cabinets-container">
-          
-            <div className="cabinets-card">
-              <img src={hospital} alt="cabinet" className="cabinets-card-img" />
-              <p className="cabinets-card-infos cabinets-card-name">Cabinet Rubio</p>
-              <span className="cabinets-card-infos cabinets-card-nbpatient">55 Patients</span>
-              <img src={moins} alt="moins" className="cabinets-card-add" />
-            </div>
-
-            <div className="cabinets-card">
-              
-              <img src={hospital} alt="cabinet" className="cabinets-card-img" />
-              <p className="cabinets-card-infos cabinets-card-name">Cabinet Baillet</p>
-              <span className="cabinets-card-infos cabinets-card-nbpatient">12 Patients</span>
-              <img src={moins} alt="moins" className="cabinets-card-add" />
-            </div>
-
-            <div className="cabinets-card">
-              
-              <img src={hospital} alt="cabinet" className="cabinets-card-img" />
-              <p className="cabinets-card-infos cabinets-card-name">Cabinet Przybylski</p>
-              <span className="cabinets-card-infos cabinets-card-nbpatient">24 Patients</span>
-              <img src={moins} alt="moins" className="cabinets-card-add" />
-            </div>
-
-            <div className="cabinets-card">
-              
-              <img src={hospital} alt="cabinet" className="cabinets-card-img" />
-              <p className="cabinets-card-infos cabinets-card-name">Cabinet Durand</p>
-              <span className="cabinets-card-infos cabinets-card-nbpatient">33 Patients</span>
-              <img src={moins} alt="moins" className="cabinets-card-add" />
-            </div>
+          {listCabinets.map(cabinet => (
+                <div className="cabinets-card" key={cabinet.id}>
+                  <img src={hospital} alt="cabinet" className="cabinets-card-img" />
+                  <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
+                  <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbPatients} patients</span>
+                  <img src={moins} alt="moins" className="cabinets-card-add" />
+                </div>
+          ))}
           </div>
+        
+
+            
 
         </div>
         <Nav />

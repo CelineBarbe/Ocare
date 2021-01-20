@@ -7,7 +7,7 @@ import logo from 'src/assets/images/logo.svg';
 import triangle from 'src/assets/icones/header_triangle.svg';
 
 // == Composant
-const Header = ({avatar}) => (
+const Header = ({avatar, listCabinets}) => (
   <header className="header">
     <ul className="header-ul">
 
@@ -19,9 +19,10 @@ const Header = ({avatar}) => (
 
       <li className="header-title">
         <select className="header-title-cabinet">
-          <option>Cabinet Rubio</option>
-          <option>Cabinet Durand</option>
-          <option>Cabinet Przybylski</option>
+          {listCabinets.map(cabinet => (
+            <option key={cabinet.id}>{cabinet.name}</option>
+          )
+          )}
         </select>
       </li>
 
