@@ -48,8 +48,6 @@ const cabinetController = {
         try {
             const cabinetInfo = request.body;
 
-            // console.log(cabinetInfo, "-Controller");
-
             const savedCabinet = await cabinetDataMapper.createCabinet(cabinetInfo);
 
             if (!savedCabinet) {
@@ -67,9 +65,9 @@ const cabinetController = {
 
     async addNurse(request, response, next) {
         try {
-            const { cabinetID, nurseID, pinCode } = request.body;
+            const { cabinet_id, nurse_id, pin_code } = request.body;
 
-            const savedNurseToCabinet = await cabinetDataMapper.addNurseToCabinet(cabinetID, nurseID, pinCode);
+            const savedNurseToCabinet = await cabinetDataMapper.addNurseToCabinet(cabinet_id, nurse_id, pin_code);
 
             if (!savedNurseToCabinet) {
                 response.locals.notFound = 'Autorisation refusée';

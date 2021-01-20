@@ -86,9 +86,10 @@ const cabinetDataMapper = {
     async addNurseToCabinet(idCab, idNurse, pinCodeCab) {
 
         // check pinCode to save the nurse
-        const enabledCode = await client.query(`SELECT * FROM cabinet WHERE id = $1 AND pin_code = $2 RETURNING *`, [idCab, pinCodeCab]);
+        const enabledCode = await client.query(`SELECT * FROM cabinet WHERE id = $1 AND pin_code = $2`, [idCab, pinCodeCab]);
 
-        if (!enabledCode) {
+
+        if (enabledCode.rowCount == 0) {
             return null;
         }
         
