@@ -15,7 +15,7 @@ const authController = {
             }
 
             request.session.userID = user.id;
-            
+            //make un request.session.currentcabinet
             response.json({ user });
 
         } catch (error) {
