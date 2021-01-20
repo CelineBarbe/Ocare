@@ -3,11 +3,27 @@ const client = require('./client');
 const cabinetDataMapper = {
     async getAllCabinet(idUser) {
         
+        // const result = await client.query(`
+        // SELECT * FROM cabinet 
+        //     JOIN cabinet_has_nurse chs
+        //         ON cabinet.id = chs.cabinet_id 
+        //     WHERE chs.nurse_id = $1`, [idUser]);
+
         const result = await client.query(`
-        SELECT * FROM cabinet 
-            JOIN cabinet_has_nurse chs
-                ON cabinet.id = chs.cabinet_id 
-            WHERE chs.nurse_id = $1`, [idUser]);
+        SELECT c.id,
+    c.name,
+    c.address,
+    c.zip_code,
+    c.city,
+    c.phone_number,
+    c.owner_id,
+    JSON_AGG(nurse) FROM cabinet c
+    JOIN cabinet_has_nurse chs
+        ON c.id = chs.cabinet_id
+    JOIN nurse
+        ON nurse.id = chs.nurse_id
+        WHERE nurse.id=1
+    GROUP BY c.id; `);
 
         if (result.rowCount == 0) {
             return null;
@@ -17,27 +33,6 @@ const cabinetDataMapper = {
     },
 
     async getCabinetById(id) {
-
-    //     const result = await client.query(`
-    //     SELECT c.id,
-    //         c.name,
-    //         c.address,
-    //         c.zip_code,
-    //         c.city,
-    //         c.phone_number,
-    //         c.owner_id,
-    //         nurse.id,
-    //         nurse.siren_code,
-    //         nurse.firstname,
-    //         nurse.lastname,
-    //         nurse.email,
-    //     nurse.phone_number
-    // FROM cabinet c
-    //     JOIN cabinet_has_nurse chs
-    //         ON c.id = chs.cabinet_id 
-    //     JOIN nurse
-    //         ON nurse.id = chs.nurse_id
-    // WHERE c.id = $1`, [id]);
 
     const result = await client.query(`
     SELECT c.id,

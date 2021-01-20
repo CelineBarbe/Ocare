@@ -9,8 +9,7 @@ const authDataMapper = {
                 JOIN cabinet_has_nurse chs
             ON nurse.id = chs.nurse_id
             WHERE email = $1 
-            AND password = $2
-            AND chs.default_cabinet = true;`, [email, password]);
+            AND password = $2`, [email, password]);
 
         if (result.rowCount == 0) {
             return null;
