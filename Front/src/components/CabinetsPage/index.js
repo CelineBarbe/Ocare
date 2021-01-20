@@ -6,7 +6,7 @@ import './cabinetsPage.scss';
 
 //== Import components
 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 
 // == Import images

@@ -13,6 +13,7 @@ export const initialState = {
   lastname: '',
   phone_number: '',
   siren_code: '',
+  default_cabinet: null,
 };
 
 // reducer qui va gérer les recettes
@@ -34,6 +35,8 @@ const reducer = (oldState = initialState, action = {}) => {
         lastname: action.lastname,
         phone_number: action.phone_number,
         siren_code: action.siren_code,
+        avatar: action.avatar,
+        default_cabinet: action.default_cabinet,
       };
     case SIGNUP_OK:
       return {

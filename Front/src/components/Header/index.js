@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 // == Import
 import './header.scss';
 import logo from 'src/assets/images/logo.svg';
-import avatar from 'src/assets/icones/avatar.svg';
 import triangle from 'src/assets/icones/header_triangle.svg';
 
 // == Composant
-const Header = () => (
+const Header = ({avatar}) => (
   <header className="header">
     <ul className="header-ul">
 

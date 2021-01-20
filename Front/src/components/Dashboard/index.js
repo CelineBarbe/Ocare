@@ -4,7 +4,7 @@ import React from 'react';
 import './dashboard.scss';
 
 // == Import 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 import Main from 'src/components/Main';
 

@@ -9,7 +9,7 @@ import plus from 'src/assets/icones/plus2.svg';
 import circle from 'src/assets/icones/rond.svg';
 
 // == Import 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 
 
