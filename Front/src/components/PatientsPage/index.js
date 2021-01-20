@@ -8,7 +8,7 @@ import './patientsPage.scss';
 import plus from 'src/assets/icones/plus2.svg';
 
 // == Import 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 import Searchbar from 'src/components/Searchbar';
 import AlphabeticalSearchbar from 'src/components/AlphabeticalSearchbar';

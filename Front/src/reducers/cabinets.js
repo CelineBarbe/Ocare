@@ -1,4 +1,4 @@
-import { CABINET_CHANGE_FIELD } from 'src/actions/types';
+import { CABINET_CHANGE_FIELD, SEED_CABINETS } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -18,6 +18,11 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         ...action.payload,
+      };
+    case SEED_CABINETS:
+      return {
+        ...oldState,
+        list: action.data,
       };
     default:
       return { ...oldState };

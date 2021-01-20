@@ -7,7 +7,7 @@ import './cabinetPage.scss';
 //== Import components
 import CabinetCard from 'src/components/CabinetCard';
 import StaffCard from 'src/components/StaffCard';
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 
 
