@@ -7,6 +7,7 @@ import './patientPage.scss';
 import info from 'src/assets/icones/info.svg';
 import plus from 'src/assets/icones/plus2.svg';
 import circle from 'src/assets/icones/rond.svg';
+import pen from 'src/assets/icones/pen.svg';
 
 // == Import 
 import Header from 'src/containers/Header';
@@ -36,7 +37,7 @@ const PatientPage = () => {
                 <div className="carnet-sante-entry">
                   <div className="carnet-sante-entry-left">
                     <span className="carnet-sante-entry-left-date">
-                      20/01 - 14:00
+                      20/01
                     </span>
                     <span className="carnet-sante-entry-left-name">
                       Jérôme
@@ -49,13 +50,14 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag secondary-dark1">
                       Bilan sanguin
                     </p>
+                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
                 <div className="carnet-sante-entry">
                   <div className="carnet-sante-entry-left">
                     <span className="carnet-sante-entry-left-date">
-                      19/01 - 12:00
+                      19/01
                     </span>
                     <span className="carnet-sante-entry-left-name">
                       Marlène
@@ -68,13 +70,14 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag primary">
                       Toilette
                     </p>
+                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
                 <div className="carnet-sante-entry">
                   <div className="carnet-sante-entry-left">
                     <span className="carnet-sante-entry-left-date">
-                      18/01 - 06:00
+                      18/01
                     </span>
                     <span className="carnet-sante-entry-left-name">
                       Stéphane
@@ -87,13 +90,14 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag secondary-dark1">
                       Pilulier
                     </p>
+                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
                 <div className="carnet-sante-entry">
                   <div className="carnet-sante-entry-left">
                     <span className="carnet-sante-entry-left-date">
-                      17/01 - 08:00
+                      17/01
                     </span>
                     <span className="carnet-sante-entry-left-name">
                       Céline
@@ -106,8 +110,50 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag primary">
                       Pansement
                     </p>
+                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
+
+                <div className="carnet-sante-entry">
+                  <div className="carnet-sante-entry-left">
+                    <span className="carnet-sante-entry-left-date">
+                      17/01
+                    </span>
+                    <span className="carnet-sante-entry-left-name">
+                      Lindsay
+                    </span>
+                  </div>
+                  <div className="carnet-sante-entry-middle">
+                    <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
+                  </div>
+                  <div className="carnet-sante-entry-right">
+                    <p className="carnet-sante-entry-right-tag secondary-dark1">
+                      Injection
+                    </p>
+                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
+                  </div>
+                </div>
+
+                <div className="carnet-sante-entry">
+                  <div className="carnet-sante-entry-left">
+                    <span className="carnet-sante-entry-left-date">
+                      16/01
+                    </span>
+                    <span className="carnet-sante-entry-left-name">
+                      Nico
+                    </span>
+                  </div>
+                  <div className="carnet-sante-entry-middle">
+                    <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
+                  </div>
+                  <div className="carnet-sante-entry-right">
+                    <p className="carnet-sante-entry-right-tag primary">
+                      Prise de sang
+                    </p>
+                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
+                  </div>
+                </div>
+                
               </div>
             </div>
           </div>

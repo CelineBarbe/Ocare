@@ -67,7 +67,7 @@
   color: vars.$color-secondary-dark2;
 
   &-img {
-    width: 40px;
+    width: 30px;
   }
 
   &-title {
@@ -94,7 +94,7 @@
 }
 
 .carnet-sante-entry {
-  height: 100px;
+  height: 80px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -105,9 +105,19 @@
     justify-content: center;
     align-items: center;
     line-height: 1.5em;
-    width:32%;
+    width:25%;
     font-size: 15px;
     padding-right: vars.$gutter;
+
+    &-date {
+      font-weight: bold;
+      text-decoration: underline;
+      color: vars.$color-secondary-dark2;
+    }
+
+    &-name {
+     color: vars.$color-grey4;
+    }
   }
 
   &-middle {
@@ -126,11 +136,11 @@
 
   &-right {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     line-height: 1.5em;
-    width: 69%;
+    width: 76%;
     padding: vars.$gutter;
 
     &-tag {
@@ -142,6 +152,14 @@
       -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
       box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);   
     }
+
+    &-img {
+      width: 25px;
+    }
   }
+}
+
+.carnet-sante-entry:last-child {
+  margin-bottom: vars.$gutter*2;
 }
 

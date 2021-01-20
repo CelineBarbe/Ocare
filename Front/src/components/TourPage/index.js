@@ -8,10 +8,11 @@ import './tourPage.scss';
 import arrow_left from 'src/assets/icones/arrow_left.svg';
 import arrow_right from 'src/assets/icones/arrow_right.svg';
 import plus from 'src/assets/icones/plus2.svg';
+import calendar from 'src/assets/icones/calendar.svg';
 
 
 // == Import 
-import Header from 'src/components/Header';
+import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 
 
@@ -44,7 +45,7 @@ const TourPage = () => {
                 </div>
                 <div className="tour-page-create-tour">
                   <span className="tour-page-create-tour-title">Créer une tournée</span>
-                  <img className="tour-page-create-tour-img" src={plus} alt="ajouter"/>  
+                  <img className="tour-page-create-tour-img" src={calendar} alt="ajouter"/>  
                 </div>
               </div>
 
