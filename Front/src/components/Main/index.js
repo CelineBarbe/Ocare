@@ -16,7 +16,9 @@ const Main = () => (
   
       <Searchbar />
       <Transmission />
-      <Patients />
+      <Link to='/patients'>
+        <Patients />
+      </Link>
       <Tour />
     
   </main>

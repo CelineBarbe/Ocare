@@ -4,6 +4,7 @@
 .navbar {
   background-color: vars.$color-white;
   border-top: 1px solid vars.$color-grey2;
+  height: 72px;
 
   &-ul {
     display: flex;

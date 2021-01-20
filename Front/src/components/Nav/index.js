@@ -12,7 +12,7 @@ import cabinet from 'src/assets/icones/cabinet.svg';
 const Nav = () => (
   <nav className="navbar">
     <ul className="navbar-ul">
-      <Link to="/">
+      <Link to="/dashboard">
         <li className="navbar-li">
           <img src={home} alt="home" className="navbar-img" />
         </li>

@@ -3,8 +3,10 @@
 
 .main {
   width: 100%;
-  flex-grow: 2;
-  min-height: 530px;
-  max-height: 530px;
+  height: 530px;
   overflow: hidden;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
 }

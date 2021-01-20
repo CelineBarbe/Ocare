@@ -1,0 +1,32 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.alphabetical-searchbar {
+  padding: vars.$gutter;
+  
+  &-ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
+    box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+    background-color: vars.$color-white;
+    padding: vars.$gutter*2;
+    height: 47px;
+  }
+
+  &-li {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    padding: 0 1px;
+    color: vars.$color-grey4;
+    transition-duration: 0.5ms;
+  }
+
+  &-li:hover {
+    color: vars.$color-primary;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
