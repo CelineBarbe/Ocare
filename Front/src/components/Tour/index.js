@@ -9,7 +9,9 @@ import './tour.scss';
 // == Composant
 const Tour= () => {
   return <div className="tour">
-    <p className="tour-title">Ma tournée </p>
+    <Link to='/tour'>
+      <p className="tour-title">Ma tournée </p>
+    </Link>
     <ul className="tour-ul">
       <Link to="/patient">
         <li className="tour-li">

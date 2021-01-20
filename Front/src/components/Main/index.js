@@ -19,7 +19,7 @@ const Main = () => (
       <Link to='/patients'>
         <Patients />
       </Link>
-      <Tour />
+       <Tour />     
     
   </main>
 );
