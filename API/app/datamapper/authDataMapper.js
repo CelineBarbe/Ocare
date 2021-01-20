@@ -2,7 +2,15 @@ const client = require('./client');
 
 const authDataMapper = {
     async getUser(email, password) {
-        const result = await client.query(`SELECT * FROM nurse WHERE email = $1 AND password = $2`, [email, password]);
+        const result = await client.query(`
+        SELECT nurse.*,
+        chs.cabinet_id AS default_cabinet
+            FROM nurse
+                JOIN cabinet_has_nurse chs
+            ON nurse.id = chs.nurse_id
+            WHERE email = $1 
+            AND password = $2
+            AND chs.default_cabinet = true;`, [email, password]);
 
         if (result.rowCount == 0) {
             return null;

@@ -15,6 +15,8 @@ const authController = {
             }
 
             request.session.userID = user.id;
+
+            request.session.userCurrentCabinet = user.default_cabinet;
             
             response.json({ user });
 
