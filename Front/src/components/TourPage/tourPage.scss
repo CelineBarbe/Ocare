@@ -29,6 +29,8 @@
   font-family: 'Nunito', sans-serif;
 }
 
+// Date picker style
+
 .tour-date {
   width: 60%;
   display: flex;
@@ -61,6 +63,8 @@
   }
 }
 
+// Button create new  patient
+
 .tour-page-create {
   padding: vars.$gutter*2 vars.$gutter;
   display: flex;
@@ -80,6 +84,8 @@
   }
 }
 
+// container style list
+
 .planning-container::-webkit-scrollbar {
   display: none;
 }
@@ -95,8 +101,6 @@
   padding-top: vars.$gutter*6;
   overflow-y: scroll ;
   -ms-overflow-style:none;
-
-
 
   &-row {
     display: flex;
@@ -150,7 +154,7 @@
       justify-content: center;
       align-items: center;
       height: 30px;
-      background-color: vars.$color-secondary-dark2;
+      background-color: vars.$color-secondary-dark1;
       color: vars.$color-white;
       &-care {
         text-overflow: ellipsis ;
