@@ -1,5 +1,6 @@
 // == Import npm
-import React, { Fragment } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 // == Import
 import './tourPage.scss';
 
@@ -35,10 +36,16 @@ const TourPage = () => {
                   <img src={arrow_right} className="tour-date-img" alt="fleche" />
                 </div>
               </div>
-
-              <div className="tour-page-create">
-                <span className="tour-page-create-title">Ajouter un patient</span>
-                <img className="tour-page-create-img" src={plus} alt="ajouter"/>  
+              
+              <div className="button-container">
+                <div className="tour-page-create-patient">
+                  <span className="tour-page-create-patient-title">Ajouter un patient</span>
+                  <img className="tour-page-create-patient-img" src={plus} alt="ajouter"/>  
+                </div>
+                <div className="tour-page-create-tour">
+                  <span className="tour-page-create-tour-title">Créer une tournée</span>
+                  <img className="tour-page-create-tour-img" src={plus} alt="ajouter"/>  
+                </div>
               </div>
 
               <div className="planning-container">
@@ -48,7 +55,7 @@ const TourPage = () => {
                     <span className="planning-container-row-left-hour">6h00</span>
                   </div>
                   <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Pichon</span>
+                  <Link to='/patient'><span className="planning-container-row-left-name">Mr Pichon</span></Link>
                   </div> 
                   <div className="planning-container-row-right">
                   <span className="planning-container-row-right-care">Pansement</span>
