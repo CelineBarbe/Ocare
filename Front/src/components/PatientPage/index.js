@@ -50,7 +50,6 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag secondary-dark1">
                       Bilan sanguin
                     </p>
-                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
@@ -70,7 +69,6 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag primary">
                       Toilette
                     </p>
-                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
@@ -90,7 +88,6 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag secondary-dark1">
                       Pilulier
                     </p>
-                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
@@ -110,7 +107,6 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag primary">
                       Pansement
                     </p>
-                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
@@ -130,7 +126,6 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag secondary-dark1">
                       Injection
                     </p>
-                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
 
@@ -150,7 +145,6 @@ const PatientPage = () => {
                     <p className="carnet-sante-entry-right-tag primary">
                       Prise de sang
                     </p>
-                    <img className="carnet-sante-entry-right-img" alt="crayon" src={pen} />
                   </div>
                 </div>
                 
