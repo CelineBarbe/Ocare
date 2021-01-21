@@ -1,0 +1,11 @@
+BEGIN;
+
+CREATE TABLE tour(
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    date TIMESTAMPZ NOT NULL,
+    informations TEXT NOT NULL,
+    nurse_id INT NOT NULL REFERENCES nurse(id),
+    cabinet_id INT NOT NULL REFERENCES cabinet(id)
+);
+
+COMMIT;
