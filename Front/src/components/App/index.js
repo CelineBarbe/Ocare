@@ -17,6 +17,7 @@ import PatientsPage from 'src/components/PatientsPage';
 import ProfilPage from 'src/components/ProfilPage';
 import PatientPage from 'src/components/PatientPage';
 import TourPage from 'src/components/TourPage';
+import TransmissionPage from 'src/components/TransmissionPage';
 
 // == Composant
 const App = () => (
@@ -32,6 +33,7 @@ const App = () => (
       <Route exact path="/profil"><ProfilPage /></Route>
       <Route exact path="/patient"><PatientPage /></Route>
       <Route exact path="/tour"><TourPage /></Route>
+      <Route exact path="/transmission"><TransmissionPage /></Route>
     </Switch>
   </div>
 );
