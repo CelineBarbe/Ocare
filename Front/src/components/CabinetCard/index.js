@@ -8,18 +8,18 @@ import './cabinetCard.scss';
 import pen from 'src/assets/icones/pen.svg';
 
 // == Composant
-const CabinetCard = () => {
+const CabinetCard = ({id, name, address, zip_code, city, phone_number}) => {
   return (
     <div className="cabinet-card">
     <img src={pen} alt="stylo" className="cabinet-card-edit" />
-      <p className="cabinet-card-title">Cabinet Rubio</p>
+      <p className="cabinet-card-title">{name}</p>
       <span className="cabinet-card-nbpatient">55 Patients</span>
       <p className="cabinet-card-infos cabinet-card-adresse ">
-        10 Rue de Penthievre
-        75008 Paris
+        {address}
+        {zip_code} {city}
       </p>
       <p className="cabinet-card-infos cabinet-card-phone">
-        Téléphone : 06.48.20.12.93
+        Téléphone : {phone_number}
       </p>
       <p className="cabinet-card-infos cabinet-card-mail">
         Mail : jerome@oclock.io

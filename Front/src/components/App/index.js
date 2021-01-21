@@ -11,7 +11,7 @@ import Dashboard from 'src/containers/Dashboard';
 import HomePage from 'src/components/HomePage';
 import LoginPage from 'src/containers/LoginPage';
 import SignupPage from 'src/containers/SignupPage';
-import CabinetPage from 'src/components/CabinetPage';
+import CabinetPage from 'src/containers/CabinetPage';
 import CabinetsPage from 'src/containers/CabinetsPage';
 import PatientsPage from 'src/components/PatientsPage';
 import ProfilPage from 'src/components/ProfilPage';
