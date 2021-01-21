@@ -11,11 +11,11 @@ import './transmission.scss';
 // == Composant
 const Transmission = () => (
   <div className="transmission">
-    <Link to="/Transmissions">
+    <Link to="/transmission">
       <h1 className="transmission-h1">Transmissions</h1>
     </Link>
     <ul className="transmission-ul">
-      <Link to="/Transmissions33">
+      <Link to="/transmission33">
         <li className="transmission-li">
           <img className="transmission-img" src={notes} alt="notes" />
           <span className="transmission-date">18/01</span>
