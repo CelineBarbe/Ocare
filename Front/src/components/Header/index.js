@@ -1,6 +1,6 @@
 // == Import npm
 import React, {useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 // == Import
 import './header.scss';
 import logo from 'src/assets/images/logo.svg';
@@ -9,8 +9,19 @@ import triangle from 'src/assets/icones/header_triangle.svg';
 //import {sortCabinets} from 'src/utils/searchAndReturn'
 
 // == Composant
-const Header = ({avatar, listCabinets, default_cabinet, name}) => {
- 
+const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet}) => {
+  
+  //REDIRECTION dashboard
+   const history = useHistory();
+   const routeDashboard = () =>{ 
+     let path = `/Dashboard`; 
+     history.push(path);
+   }
+
+  const handleChange = (event) => {
+   changeCabinet(event.target.value);
+   routeDashboard();
+ }
   
   return(
     <header className="header">
@@ -23,11 +34,10 @@ const Header = ({avatar, listCabinets, default_cabinet, name}) => {
       </li>
 
       <li className="header-title">
-        <select className="header-title-cabinet">
-         <option>{name}</option>
-
-          {listCabinets.filter(cab => cab.id !== default_cabinet).map(cabinet => (
-            <option key={cabinet.id}>{cabinet.name}</option>
+        <select className="header-title-cabinet" onChange={handleChange}>
+         <option value={default_cabinet}>{name}</option>
+          {listCabinets.filter(cab => cab.id !== ~~default_cabinet).map(cabinet => (
+            <option key={cabinet.id} value={cabinet.id}>{cabinet.name}</option>
           )
           )}
         </select>

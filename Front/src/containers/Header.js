@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 
 //import { authChangeField, onSubmitLogin } from 'src/actions/auth';
 import Header from 'src/components/Header';
-
-import {sortCabinets} from 'src/utils/searchAndReturn'
+import {changeCabinet} from 'src/actions/cabinets';
 
 const mapStateToProps = ({ auth, cabinets }) => {
   const {
@@ -24,7 +23,9 @@ const mapStateToProps = ({ auth, cabinets }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-
+  changeCabinet: (idCabinet) => {
+    dispatch(changeCabinet(idCabinet));
+  },
 });
 
 // appel a connect et export

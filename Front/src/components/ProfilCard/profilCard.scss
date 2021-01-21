@@ -32,7 +32,9 @@
     padding: vars.$gutter*0.5;
     background-color: vars.$color-primary;
   }
-
+  &-img {
+    width: 50px;
+  }
   &-siren_code {
     font-size: 14px;
     color: vars.$color-primary;

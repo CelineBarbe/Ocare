@@ -8,22 +8,22 @@ import './listcabinets.scss';
 import plus from 'src/assets/icones/plus2.svg';
 import cabinetIcone from 'src/assets/images/hospital.png';
 // == Composant
-const ListCabinets = () => {
+const ListCabinets = ({list}) => {
   return (
     <div className="listcabinet-card">
      <img src={plus} alt="stylo" className="listcabinet-card-add" />
      <p className="listcabinet-card-title">
        Mes cabinets affiliés
      </p>
-     <div className="nurse-card-container">
-      <div className="nurse-card">
-          <img src={cabinetIcone} alt="nurse" className="nurse-card-img"/>
-          <p className="nurse-card-infos nurse-card-name">
-            Cabinet Rubio
+     <div className="hospital-card-container">
+     {list.map(cabinet => (
+        <div className="hospital-card" key={cabinet.id}>
+          <img src={cabinetIcone} alt="nurse" className="hospital-card-img"/>
+          <p className="hospital-card-infos hospital-card-name">
+            {cabinet.name}
           </p>
       </div>
-
-      
+     ))}
      </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import {
-  SEED_CABINETS, SEED_DEFAULT_CABINET
+  SEED_CABINETS, SEED_DEFAULT_CABINET, CHANGE_CABINET
 } from './types';
 
 export const seedCabinets = (data) => ({
@@ -10,4 +10,9 @@ export const seedCabinets = (data) => ({
 export const seedDefaultCabinet = (data) => ({
   type: SEED_DEFAULT_CABINET,
   data,
+})
+
+export const changeCabinet = (idCab) => ({
+  type: CHANGE_CABINET,
+  idCab,
 })
