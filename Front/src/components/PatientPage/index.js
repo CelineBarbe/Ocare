@@ -29,7 +29,7 @@ const PatientPage = () => {
 
               <div className="patient-add-care">
                 <img className="patient-add-care-img" src={plus} alt="ajouter"/>
-                <span className="patient-add-care-title">Ajouter un soin</span>
+                <span className="patient-add-care-title">Ajouter une entrée</span>
               </div>
 
               <div className="carnet-sante-container">
@@ -47,9 +47,13 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <p className="carnet-sante-entry-right-tag secondary-dark1">
-                      Bilan sanguin
-                    </p>
+                    <div className="carnet-sante-entry-right-title secondary-dark1">
+                      <h3 >Bilan sanguin</h3>
+                    </div>
+
+                    <div className="carnet-sante-entry-right-observation">
+                      <span className="carnet-sante-entry-right-observation-ellipsis"></span>
+                    </div>
                   </div>
                 </div>
 
@@ -65,11 +69,18 @@ const PatientPage = () => {
                   <div className="carnet-sante-entry-middle">
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
+
+
                   <div className="carnet-sante-entry-right">
-                    <p className="carnet-sante-entry-right-tag primary">
-                      Toilette
-                    </p>
+                    <div className="carnet-sante-entry-right-title primary">
+                      <h3 >Toilette</h3>
+                    </div>
+
+                    <div className="carnet-sante-entry-right-observation">
+                      <span className="carnet-sante-entry-right-observation-ellipsis">Pansement qui coule à surveiller Pansement qui coule à surveiller Pansement qui coule à surveiller</span>
+                    </div>
                   </div>
+
                 </div>
 
                 <div className="carnet-sante-entry">
@@ -85,9 +96,13 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <p className="carnet-sante-entry-right-tag secondary-dark1">
-                      Pilulier
-                    </p>
+                    <div className="carnet-sante-entry-right-title secondary-dark1">
+                      <h3 >Injection</h3>
+                    </div>
+
+                    <div className="carnet-sante-entry-right-observation">
+                      <span className="carnet-sante-entry-right-observation-ellipsis">Difficile à piquer</span>
+                    </div>
                   </div>
                 </div>
 
@@ -104,9 +119,13 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <p className="carnet-sante-entry-right-tag primary">
-                      Pansement
-                    </p>
+                    <div className="carnet-sante-entry-right-title primary">
+                      <h3 >Pansement</h3>
+                    </div>
+
+                    <div className="carnet-sante-entry-right-observation">
+                      <span className="carnet-sante-entry-right-observation-ellipsis"></span>
+                    </div>
                   </div>
                 </div>
 
@@ -123,9 +142,13 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <p className="carnet-sante-entry-right-tag secondary-dark1">
-                      Injection
-                    </p>
+                    <div className="carnet-sante-entry-right-title secondary-dark1">
+                      <h3 >Transmission</h3>
+                    </div>
+
+                    <div className="carnet-sante-entry-right-observation">
+                      <span className="carnet-sante-entry-right-observation-ellipsis">Retirer les points</span>
+                    </div>
                   </div>
                 </div>
 
@@ -142,9 +165,13 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <p className="carnet-sante-entry-right-tag primary">
-                      Prise de sang
-                    </p>
+                    <div className="carnet-sante-entry-right-title primary">
+                      <h3 >Toilette</h3>
+                    </div>
+
+                    <div className="carnet-sante-entry-right-observation">
+                      <span className="carnet-sante-entry-right-observation-ellipsis"></span>
+                    </div>
                   </div>
                 </div>
                 
