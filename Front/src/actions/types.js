@@ -15,3 +15,4 @@ export const SEARCH_SUBMIT = 'SEARCH_SUBMIT';
 // types cabinets
 export const CABINET_CHANGE_FIELD = 'CABINET_CHANGE_FIELD';
 export const SEED_CABINETS = 'SEED_CABINETS';
+export const SEED_DEFAULT_CABINET = "SEED_DEFAULT_CABINET";

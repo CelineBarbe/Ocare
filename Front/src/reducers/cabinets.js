@@ -1,13 +1,15 @@
-import { CABINET_CHANGE_FIELD, SEED_CABINETS } from 'src/actions/types';
+import { CABINET_CHANGE_FIELD, SEED_CABINETS, SEED_DEFAULT_CABINET } from 'src/actions/types';
 
 export const initialState = {
   id: null,
   name: '',
-  adress: '',
-  zipCode: null,
+  address: '',
+  zip_code: null,
   city: '',
-  phoneNumber: '',
+  phone_number: '',
   pinCode: '',
+  email:'',
+  nbPatients:0,
   staff:[],
   list: [],
 };
@@ -24,6 +26,18 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         list: action.payload,
+      };
+    case SEED_DEFAULT_CABINET:
+      return {
+        ...oldState,
+        id: action.data.id,
+        name: action.data.name,
+        address: action.data.address,
+        zip_code: action.data.zip_code,
+        city: action.data.city,
+        phone_number: action.data.phone_number,
+        staff: action.data.nurses,
+        nbPatients: action.data.nbPatients,
       };
     default:
       return { ...oldState };

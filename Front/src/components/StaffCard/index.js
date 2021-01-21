@@ -9,52 +9,32 @@ import avatar from 'src/assets/icones/avatar.svg'
 import plus from 'src/assets/icones/plus2.svg';
 
 // == Composant
-const StaffCard = () => {
+const StaffCard = ({staff}) => {
   return (
     <div className="staff-card">
      <img src={plus} alt="stylo" className="staff-card-add" />
      <p className="staff-card-title">
        Notre équipe
      </p>
+
      <div className="nurse-card-container">
-      <div className="nurse-card">
-          <img src={avatar} alt="nurse" className="nurse-card-img"/>
+
+     {staff.map(equipier => (
+      <div className="nurse-card" key={equipier.id}>
+          <img src={equipier.avatar} alt="nurse" className="nurse-card-img"/>
           <p className="nurse-card-infos nurse-card-name">
-            Jérôme baillet
+            {equipier.firstname} {equipier.lastname}
           </p>
           <p className="nurse-card-infos nurse-card-phone">
-            Tél : 03.21.22.23.24
+            Tél : {equipier.phone_number}
           </p>
           <p className="nurse-card-infos nurse-card-mail">
             Mail : jerome@oclock.io
           </p>
       </div>
 
-      <div className="nurse-card">
-          <img src={avatar} alt="nurse" className="nurse-card-img" />
-          <p className="nurse-card-infos nurse-card-name">
-            Marlène Rubio
-          </p>
-          <p className="nurse-card-infos nurse-card-phone">
-            Tél : 03.98.45.76.13
-          </p>
-          <p className="nurse-card-infos nurse-card-mail">
-            Mail : marlene@oclock.io
-          </p>
-      </div>
-
-      <div className="nurse-card">
-          <img src={avatar} alt="nurse" className="nurse-card-img" />
-          <p className="nurse-card-infos nurse-card-name">
-            Marlène Rubio
-          </p>
-          <p className="nurse-card-infos nurse-card-phone">
-            Tél : 03.98.45.76.13
-          </p>
-          <p className="nurse-card-infos nurse-card-mail">
-            Mail : marlene@oclock.io
-          </p>
-      </div>
+     ))}
+      
      </div>
     </div>
   )
