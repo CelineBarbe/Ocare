@@ -14,6 +14,7 @@ router.use(auth);
 // router.get('/logout', authController.logout);
 
 router.use('/cabinet', cabinetRouter);
+// router.use('/nurse', nurseRouter);
 
 router.use(errorController.error404);
 router.use(errorController.error500);

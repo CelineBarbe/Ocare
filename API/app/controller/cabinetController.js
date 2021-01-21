@@ -24,15 +24,22 @@ const cabinetController = {
 
     async findById(request, response, next) {
         try {
+            console.log(response.locals.userCurrentCabinet, "-< default cabinet avant - controller");
             const { id } = request.params;
 
             const cabinet = await cabinetDataMapper.getCabinetById(id);
+
 
             if (!cabinet) {
                 response.locals.notFound = "Cabinet invalide";
                 next();
                 return;
             }
+
+            // Save current_cabinet in locals
+            response.locals.userCurrentCabinet = parseInt(request.params.id, 10);
+
+            console.log(response.locals.userCurrentCabinet, "-< default cabinet après - controller");
 
             // nb patient en dur pour l'instant
             cabinet[0].nbPatient = 50;
