@@ -9,6 +9,17 @@
   background-color: vars.$color-secondary-dark1;
 }
 
+.title-primary {
+  color: vars.$color-primary;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.title-secondary {
+  color: vars.$color-secondary-dark1;
+  font-weight: bold;
+  text-decoration: underline;
+}
 
 .patient-page {
   display: flex;
@@ -137,6 +148,7 @@
   }
 
   &-right {
+    max-height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: c;
@@ -149,27 +161,21 @@
 
     &-title {
       text-align: center;
-      font-size: 17px;
+      font-size: 16px;
       color: vars.$color-white;
-      width: 100%;
-      border-radius: 10px 10px 0 0;
-      padding: vars.$gutter/2;
     }
 
     &-observation {
+      font-size: 14px;
       width: 100%;
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      background-color: vars.$color-grey;
-      border-radius: 0 0 10px 10px;
+      word-break: break-word;
+      overflow: hidden;
 
       &-ellipsis {
-        text-overflow: ellipsis ;
-        white-space: nowrap;
-        overflow: hidden ;
-        margin: vars.$gutter;
+        
+        margin: vars.$gutter/2;
       }
     }
 

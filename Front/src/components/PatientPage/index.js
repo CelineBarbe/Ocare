@@ -47,8 +47,8 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <div className="carnet-sante-entry-right-title secondary-dark1">
-                      <h3 >Bilan sanguin</h3>
+                    <div className="carnet-sante-entry-right-title">
+                      <h3 className="title-secondary">Bilan sanguin</h3>
                     </div>
 
                     <div className="carnet-sante-entry-right-observation">
@@ -72,12 +72,12 @@ const PatientPage = () => {
 
 
                   <div className="carnet-sante-entry-right">
-                    <div className="carnet-sante-entry-right-title primary">
-                      <h3 >Toilette</h3>
+                    <div className="carnet-sante-entry-right-title">
+                      <h3 className="title-primary">Toilette</h3>
                     </div>
 
                     <div className="carnet-sante-entry-right-observation">
-                      <span className="carnet-sante-entry-right-observation-ellipsis">Pansement qui coule à surveiller Pansement qui coule à surveiller Pansement qui coule à surveiller</span>
+                      <span className="carnet-sante-entry-right-observation-ellipsis">Pansement qui coule à surveiller demain et prendre la tension, aujourd'hui 5 de tensions. faire attention</span>
                     </div>
                   </div>
 
@@ -96,8 +96,8 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <div className="carnet-sante-entry-right-title secondary-dark1">
-                      <h3 >Injection</h3>
+                    <div className="carnet-sante-entry-right-title">
+                    <h3 className="title-secondary">Injection</h3>
                     </div>
 
                     <div className="carnet-sante-entry-right-observation">
@@ -119,8 +119,8 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <div className="carnet-sante-entry-right-title primary">
-                      <h3 >Pansement</h3>
+                    <div className="carnet-sante-entry-right-title">
+                    <h3 className="title-primary">Pansement</h3>
                     </div>
 
                     <div className="carnet-sante-entry-right-observation">
@@ -142,8 +142,8 @@ const PatientPage = () => {
                     <img src={circle} alt="circle" className="carnet-sante-entry-middle-img"/>
                   </div>
                   <div className="carnet-sante-entry-right">
-                    <div className="carnet-sante-entry-right-title secondary-dark1">
-                      <h3 >Transmission</h3>
+                    <div className="carnet-sante-entry-right-title">
+                    <h3 className="title-secondary">Transmission</h3>
                     </div>
 
                     <div className="carnet-sante-entry-right-observation">
