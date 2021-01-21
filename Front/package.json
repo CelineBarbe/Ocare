@@ -1,7 +1,8 @@
 {
   "name": "react-modele",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --open",
+    "start":"node src/index.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --open",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
