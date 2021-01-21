@@ -10,6 +10,6 @@ router.get('/', cabinetController.findAll);
 router.get('/:id(\\d+)', cabinetController.findById);
 router.post('/', cabinetController.create);
 router.patch('/:id(\\d+)', cabinetController.update);
-router.delete('/', cabinetController.delete);
+router.delete('/:id(\\d+)', cabinetController.delete);
 
 module.exports = router;

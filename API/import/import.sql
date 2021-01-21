@@ -36,7 +36,6 @@ INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet, allowed) VA
 (1, 4, true, default),
 (1, 6, true, default),
 (1, 8, true, default),
-(1, 8, default, default),
 (1, 14, default, default),
 (1, 16, default, default),
 (2, 1, true, default), -- Olivier Raynal - cab 2

@@ -126,7 +126,10 @@ const cabinetController = {
             const idCab = parseInt(request.params.id, 10);
             const userID = response.locals.userID;
 
-            const deletedCabinet = await cabinetDataMapper.delete(idCab, userID);
+            console.log(idCab, "- id controller");
+            console.log("coucou controller");
+
+            const deletedCabinet = await cabinetDataMapper.deleteCabinetByid(idCab, userID);
 
             if (!deletedCabinet) {
                 response.locals.notFound = "Cabinet invalide";
