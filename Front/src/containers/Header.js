@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 //import { authChangeField, onSubmitLogin } from 'src/actions/auth';
 import Header from 'src/components/Header';
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, cabinets }) => {
   const {
     firstname, lastname, isLogged, avatar
   } = auth;
+  const listCabinets = cabinets.list;
   return ({
     firstname,
     lastname,
     isLogged,
     avatar,
+    listCabinets,
   });
 };
 

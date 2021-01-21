@@ -8,6 +8,7 @@ export const initialState = {
   city: '',
   phoneNumber: '',
   pinCode: '',
+  staff:[],
   list: [],
 };
 
@@ -22,7 +23,7 @@ const reducer = (oldState = initialState, action = {}) => {
     case SEED_CABINETS:
       return {
         ...oldState,
-        list: action.data,
+        list: action.payload,
       };
     default:
       return { ...oldState };

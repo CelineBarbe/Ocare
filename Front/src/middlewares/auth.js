@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP } from 'src/actions/types';
-import { loginOk, signUpOk} from 'src/actions/auth';
+import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
 const URL = "https://ocare.herokuapp.com/"
 
 const auth = (store) => (next) => (action) => {
@@ -21,7 +21,8 @@ const auth = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          const { user } = response.data;
+          const { user, userToken } = response.data;
+          localStorage.setItem('auth', userToken);
           console.log(user);
           store.dispatch(loginOk(user));
         }
@@ -29,6 +30,7 @@ const auth = (store) => (next) => (action) => {
       .catch((err) => {
         console.log(err);
       });
+    
     next(action);
   }
   //SIGNUP
