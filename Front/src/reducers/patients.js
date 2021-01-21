@@ -1,3 +1,4 @@
+import { SEED_PATIENTS } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -11,17 +12,18 @@ export const initialState = {
   phoneNumber:'',
   pathology:'',
   dailyChecking: false,
+  isloading: false,
   list: [],
 };
 
 // reducer qui va gérer les recettes
 const reducer = (oldState = initialState, action = {}) => {
   switch (action.type) {
-    /* case PATIENT_CHANGE_FIELD:
+    case SEED_PATIENTS:
       return {
         ...oldState,
-        ...action.payload,
-      }; */
+        list: action.payload,
+      }; 
     
     default:
       return { ...oldState };
