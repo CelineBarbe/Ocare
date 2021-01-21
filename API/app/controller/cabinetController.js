@@ -86,7 +86,7 @@ const cabinetController = {
         try {
             const infoToUpdate = request.body;
 
-            const updatedNurseToCabinet = await cabinetDataMapper.updatedNurseToCabinet(infoToUpdate);
+            const updatedNurseToCabinet = await cabinetDataMapper.updateNurseToCabinet(infoToUpdate);
 
             if (!updatedNurseToCabinet) {
                 response.locals.notFound = "Droits refusés";
@@ -103,17 +103,19 @@ const cabinetController = {
 
     async update(request, response, next) {
         try {
-            const { idCab } = request.params;
+            const idCab = parseInt(request.params.id, 10);
+            const cabinetInfoToUpdate = request.body;
+            const userID = response.locals.userID;
 
-            const updatedCabinet = await cabinetDataMapper.updateCabinetById(idCab);
+            const updatedCabinet = await cabinetDataMapper.updateCabinetById(idCab, cabinetInfoToUpdate, userID);
 
-            if (!cabinet) {
+            if (!updatedCabinet) {
                 response.locals.notFound = "Cabinet invalide";
                 next();
                 return;
             }
 
-            ressponse.json({ updatedCabinet });
+            response.json({ updatedCabinet });
         } catch (error) {
             next(error);
         }
@@ -121,9 +123,10 @@ const cabinetController = {
 
     async delete(request, response, next) {
         try {
-            const { idCab } = request.params;
+            const idCab = parseInt(request.params.id, 10);
+            const userID = response.locals.userID;
 
-            const deletedCabinet = await cabinetDataMapper.delete(idCab);
+            const deletedCabinet = await cabinetDataMapper.delete(idCab, userID);
 
             if (!deletedCabinet) {
                 response.locals.notFound = "Cabinet invalide";

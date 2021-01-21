@@ -15,9 +15,19 @@ const cabinetDataMapper = {
             return null;
         }
 
-        console.log(result.rows, "Data");
         // Nb patients en dur pour l'instant.
         result.rows.map(cab => cab.nbPatients = 15);
+
+        // Add to cabinet Owner
+        for (let cab of result.rows) {
+
+            cab.email = "";
+            for (let nurse of cab.nurses) {
+                if (nurse.id == cab.owner_id) {
+                    cab.email = nurse.email;
+                }
+            }
+        }
 
         return result.rows;
     },
@@ -53,16 +63,12 @@ const cabinetDataMapper = {
 
         const { name, address, zip_code, city, phone_number, pin_code, owner_id } = infoCab;
 
-        console.log(infoCab);
-
         // is cabinet already exist ?
         const isAlreadyCabinet = await client.query(`SELECT * FROM cabinet WHERE name = $1 AND address = $2 AND zip_code = $3 AND city = $4 AND phone_number = $5`, [ name, address, zip_code, city, phone_number]);
 
         if (isAlreadyCabinet.rowCount != 0) {
             return null;
         }
-
-        console.log(isAlreadyCabinet, "Cabinet déjà présent ?");
 
         // save cabinet
         const result = await client.query(`INSERT INTO cabinet(name, address, zip_code, city, phone_number, pin_code, owner_id) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *`, [
@@ -74,8 +80,6 @@ const cabinetDataMapper = {
             pin_code,
             owner_id
         ]);
-
-        console.log(result, 'Resultat de la création');
 
         // saved nurse to cabinet
         await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id) VALUES($1, $2) RETURNING *`, [result.rows[0].id, result.rows[0].owner_id]);
@@ -98,20 +102,71 @@ const cabinetDataMapper = {
         return result.rows[0];
     },
 
-    async updateNurseToCabinet() {
+    async updateNurseToCabinet(info) {
+
+        console.log(info);
+        // check which default cabinet is true
+        const defaultCab = await client.query(`SELECT * FROM cabinet_has_nurse JOIN nurse ON nurse.id = cabinet_has_nurse.nurse_id WHERE nurse.id = $1 AND default_cabinet = true`, [info.nurse_id]);
+
+        console.log(defaultCab, "defaultCab");
+
+        if (defaultCab.rowCount == 1) {
+            // this cabinet become false
+            await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE nurse_id = $1 AND cabinet_id = $2`, [defaultCab.rows[0].nurse_id, defaultCab.rows[0].cabinet_id]);
+
+            const result = await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE cabinet_id = $1 AND nurse_id = $2`, [info.cabinet_id, info.nurse_id]);
+
+            return result.rowCount;
+
+        } else if (defaultCab.rowCount == 0) {
+
+            const result = await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE cabinet_id = $1 AND nurse_id = $2`, [info.cabinet_id, info.nurse_id]);
+
+            if (result.rowCount == 1) {
+                return result.rowCount;
+            }
+            return null;
+        }
 
     },
 
-    async updateCabinetByid(idCab) {
-        // On vérifie qu'il s'agit bien du cabinet Owner pour lancer la modif
+    async updateCabinetById(idCab, infoCab, userID) {
 
-        // Faire une boucle pour lancer un update pour chaque champ
-        // Tester récupérer l'objet faire une copie et update
-        // checker que c'est bien le propriétaire qui le demande
+        const { name, address, zip_code, city, phone_number, pin_code } = infoCab;
+
+        const cabinet = await client.query(`SELECT * FROM cabinet WHERE cabinet.id = $1 AND cabinet.owner_id = $2`, [idCab, userID]);
+
+        if (cabinet.rowCount == 0) {
+            return null;
+        }
+
+        // update cabinet
+        const updateCab = await client.query(`
+        UPDATE cabinet SET name = $1, address = $2, zip_code = $3, city = $4, phone_number = $5, pin_code = $6 WHERE cabinet.id = $7 RETURNING *`, [
+            name,
+            address,
+            zip_code,
+            city,
+            phone_number,
+            pin_code,
+            idCab
+        ]);
+
+        return updateCab.rowCount;
     },
 
-    async deleteCabinetByid() {
+    async deleteCabinetByid(idCab, userID) {
 
+        const cabinet = await client.query(`SELECT * FROM cabinet WHERE cabinet.id = $1 AND cabinet.owner_id = $2`, [idCab, userID]);
+
+        if (cabinet.rowCount == 0) {
+            return null;
+        }
+
+        // delete cabinet
+        const deleteCab = await client.query(`DELETE FROM cabinet WHERE id = $1`, [idCab]);
+
+        return deleteCab.rowCount;
     },
 };
 

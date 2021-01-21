@@ -23,7 +23,7 @@ const authController = {
                     userId: user.id 
                 },
                 process.env.SECRET,
-                { expiresIn: '24h' }
+                { expiresIn: '100h' }
             ) });
 
         } catch (error) {

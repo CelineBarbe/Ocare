@@ -117,3 +117,5 @@ SELECT c.id,
     JOIN nurse
         ON nurse.id = chs.nurse_id
     GROUP BY c.id;
+
+"card_id" INT NOT NULL REFERENCES "card"("id") ON DELETE CASCADE,
