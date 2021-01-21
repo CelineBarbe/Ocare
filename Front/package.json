@@ -1,7 +1,7 @@
 {
   "name": "react-modele",
   "scripts": {
-    "start":"node src/index.js",
+    "start": "node src/index.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.js --open",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "lint": "eslint src/**/*.js",
@@ -10,7 +10,7 @@
     "test:watch": "cross-env NODE_PATH=./ mocha --watch --require tests/.setup.js tests/**/*.test.js",
     "clean": "rm -rf dist",
     "clean:all": "rm -rf dist node_modules yarn.lock package-lock.json",
-    "heroku-postbuild": "npm run heroku-start",
+    "heroku-postbuild": "webpack --config webpack.config.prod.js",
     "heroku-start": "node src/index.js"
   },
   "devDependencies": {
