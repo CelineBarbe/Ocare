@@ -1,14 +1,19 @@
 // == Import npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 // == Import
 import './header.scss';
 import logo from 'src/assets/images/logo.svg';
 import triangle from 'src/assets/icones/header_triangle.svg';
 
+//import {sortCabinets} from 'src/utils/searchAndReturn'
+
 // == Composant
-const Header = ({avatar, listCabinets}) => (
-  <header className="header">
+const Header = ({avatar, listCabinets, default_cabinet, name}) => {
+ 
+  
+  return(
+    <header className="header">
     <ul className="header-ul">
 
       <li className="header-home">
@@ -19,7 +24,9 @@ const Header = ({avatar, listCabinets}) => (
 
       <li className="header-title">
         <select className="header-title-cabinet">
-          {listCabinets.map(cabinet => (
+         <option>{name}</option>
+
+          {listCabinets.filter(cab => cab.id !== default_cabinet).map(cabinet => (
             <option key={cabinet.id}>{cabinet.name}</option>
           )
           )}
@@ -33,7 +40,8 @@ const Header = ({avatar, listCabinets}) => (
       </li>
     </ul>
   </header>
-);
+  )
+}
 
 // == Export
 export default Header;
