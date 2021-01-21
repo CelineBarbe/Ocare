@@ -9,6 +9,7 @@ import arrow_left from 'src/assets/icones/arrow_left.svg';
 import arrow_right from 'src/assets/icones/arrow_right.svg';
 import plus from 'src/assets/icones/plus2.svg';
 import calendar from 'src/assets/icones/calendar.svg';
+import woman from 'src/assets/images/woman.svg';
 
 
 // == Import 
@@ -21,24 +22,24 @@ import Transmission from 'src/components/Transmission';
 const TransmissionPage = () => {
   return (
     
-      <div className="tour-page-container">
+      <div className="transmission-page-container">
         <Header />
           <div className="main">
-            <div className="tour-page">
+            <div className="transmission-page">
               <Transmission />
-              <div className="planning-container container-transmission">
+              <div className="transmission-container">
 
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h00</span>
+                <div className="transmission-container-row">
+                  <div className="transmission-container-row-left">
+                    <img className="transmission-container-row-left-img" alt="woman" src={woman}/>
                   </div>
-                  <div className="planning-container-row-middle">
-                  <Link to='/patient'><span className="planning-container-row-left-name">Mr Pichon</span></Link>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Pansement</span>
+                  
+                  <div className="transmission-container-row-right">
+                    <h1>Mr Pichon</h1>
+                    <p></p>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
