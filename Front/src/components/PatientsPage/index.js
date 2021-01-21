@@ -1,5 +1,5 @@
 // == Import npm
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // == Import
 import './patientsPage.scss';
@@ -14,7 +14,10 @@ import Searchbar from 'src/components/Searchbar';
 import AlphabeticalSearchbar from 'src/components/AlphabeticalSearchbar';
 
 // == Composant
-const PatientsPage = () => {
+const PatientsPage = ({getPatients, list}) => {
+  useEffect(() => {
+    getPatients();
+}, [])
   return (
     
       <div className="patients-page">
