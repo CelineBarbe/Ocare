@@ -17,8 +17,7 @@ const authController = {
             }
             
             response.locals.userCurrentCabinet = user.default_cabinet;
-
-            console.log(response.locals.userCurrentCabinet, 'locals à l\'aut');
+            request.app.locals.userCurrentCabinet = user.default_cabinet;
             
             response.json({ user, userToken: jwt.sign(
                 {

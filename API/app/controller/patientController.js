@@ -1,9 +1,12 @@
 const patientDataMapper = require('../datamapper/patientDataMapper');
 
 const patientController = {
-    async findAll(_, response, next) {
-        const idCabinet = 4; //currentcabinet
+    async findAll(request, response, next) {
         try {
+
+            const idCabinet = request.app.locals.userCurrentCabinet;
+            // console.log(response.locals.userID, "-< response.locals.USERID");
+
             const patients = await patientDataMapper.getAllPatient(idCabinet);
             if(!patients) {
                 response.locals.notFound = "Aucun patients dans ce cabinet";
@@ -12,6 +15,7 @@ const patientController = {
             }
             response.json(patients);
         } catch (error) {
+            console.log(error.message);
             next(error);
         }
     },
@@ -96,4 +100,4 @@ const patientController = {
     
 };
 
-module.exports = cabinetController;
+module.exports = patientController;

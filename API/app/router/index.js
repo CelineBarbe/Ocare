@@ -3,11 +3,11 @@ const express = require('express');
 const authController = require('../controller/authController');
 const errorController = require('../controller/errorController');
 const cabinetRouter = require('./cabinetRouter');
-const auth = require('../middleware/auth');
+const nurseRouter = require('./nurseRouter');
 const patientRouter = require('./patientRouter');
 const logbookRouter = require('./logbookRouter');
 const medicalActRouter = require ('./medicalActRouter');
-const isConnected = require('../middleware/isConnected');
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -20,13 +20,13 @@ router.use(auth);
 
 //routes cabinets
 router.use('/cabinet', cabinetRouter);
-// router.use('/nurse', nurseRouter);
+router.use('/nurse', nurseRouter);
 
 //routes patients
 router.use('/patient', patientRouter);
 
 //routes logbook
-router.used('/logbook', logbookRouter);
+router.use('/logbook', logbookRouter);
 
 //route medical actes
 router.use('/acte', medicalActRouter);

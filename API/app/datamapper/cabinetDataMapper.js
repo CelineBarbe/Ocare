@@ -32,7 +32,7 @@ const cabinetDataMapper = {
         return result.rows;
     },
 
-    async getCabinetById(id) {
+    async getCabinetById(id, userID, defaultCab) {
 
     const result = await client.query(`
         SELECT c.id,
@@ -55,6 +55,12 @@ const cabinetDataMapper = {
         if(result.rowCount == 0) {
             return null;
         }
+
+    // Remove default_cabinet
+    await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE cabinet_id = $1 AND nurse_id = $2`, [defaultCab, userID]);
+
+    // Save this cabinet like current_cab
+    await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE cabinet_id = $1 AND nurse_id = $2`, [id, userID]);
 
         return result.rows;
     },
