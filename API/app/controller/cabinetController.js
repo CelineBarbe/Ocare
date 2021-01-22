@@ -24,15 +24,23 @@ const cabinetController = {
 
     async findById(request, response, next) {
         try {
+            
+            const userID = response.locals.userID;
+            const defaultCab = request.app.locals.userCurrentCabinet
+
             const { id } = request.params;
 
-            const cabinet = await cabinetDataMapper.getCabinetById(id);
+            const cabinet = await cabinetDataMapper.getCabinetById(id, userID, defaultCab);
 
             if (!cabinet) {
                 response.locals.notFound = "Cabinet invalide";
                 next();
                 return;
             }
+
+            // Save current_cabinet in locals
+            response.locals.userCurrentCabinet = parseInt(request.params.id, 10);
+            request.app.locals.userCurrentCabinet = parseInt(request.params.id, 10);
 
             // nb patient en dur pour l'instant
             cabinet[0].nbPatient = 50;

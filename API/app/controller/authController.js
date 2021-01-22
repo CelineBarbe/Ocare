@@ -17,10 +17,11 @@ const authController = {
             }
             
             response.locals.userCurrentCabinet = user.default_cabinet;
+            request.app.locals.userCurrentCabinet = user.default_cabinet;
             
             response.json({ user, userToken: jwt.sign(
                 {
-                    userId: user.id 
+                    userId: user.id, 
                 },
                 process.env.SECRET,
                 { expiresIn: '100h' }
