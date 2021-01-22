@@ -1,1 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><defs><style>.cls-1,.cls-2{fill:none;}.cls-2{stroke:#ed6f71;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>wave</title><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><path class="cls-1" d="M0,0H52V52H0Z"/><path class="cls-1" d="M0,0H52V52H0Z"/><path class="cls-2" d="M6.5,26H17.33L26,43.33V8.67L34.67,26H45.5"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wave-saw-tool" width="72" height="72" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ED7071" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M3 12h5l4 8v-16l4 8h5" />
+</svg>
