@@ -1,5 +1,5 @@
 import {
-  SEED_CABINETS, SEED_DEFAULT_CABINET, CHANGE_CABINET, CREATE_CABINET, CABINET_CHANGE_FIELD, PRE_CREATE_CABINET, CREATE_CABINET_SUCCEEDED
+  SEED_CABINETS, SEED_DEFAULT_CABINET, CHANGE_CABINET, CREATE_CABINET, CABINET_CHANGE_FIELD, CREATE_CABINET_SUCCEEDED
 } from './types';
 
 export const seedCabinets = (data) => ({
@@ -12,9 +12,10 @@ export const seedDefaultCabinet = (data) => ({
   data,
 })
 
-export const createCabinetSucceeded = (data) => ({
+export const createCabinetSucceeded = (data,email) => ({
   type: CREATE_CABINET_SUCCEEDED,
   data,
+  email,
 })
 
 export const changeCabinet = (idCab) => ({
@@ -31,6 +32,3 @@ export const createCabinet = () => ({
   type: CREATE_CABINET,
 })
 
-export const preCreateCabinet = () => ({
-  type: PRE_CREATE_CABINET,
-})

@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { CREATE_CABINET } from 'src/actions/types';
-import { createCabinetSucceeded } from 'src/actions/cabinets'; 
+import { createCabinetSucceeded, changeCabinet } from 'src/actions/cabinets'; 
 
 const URL = "https://ocare.herokuapp.com/";
 
@@ -10,9 +10,9 @@ const patientsMW = (store) => (next) => (action) => {
   if (action.type === CREATE_CABINET) {
     console.log('passe par CREATE cabinet');
     const {cabinets, auth} = store.getState();
-    const {name, address,zip_code,city, phone_number, pin_code} = cabinets;
+    const {newEntryName, newEntryAddress,newEntryZip_code,newEntryCity, newEntryPhone_number, newEntryPin_code} = cabinets;
     const {id, email} = auth;
-    console.log(name, id, zip_code);
+    console.log(newEntryName, id, newEntryName, newEntryAddress,newEntryZip_code,newEntryCity, newEntryPhone_number, newEntryPin_code);
     const config = {
       method: 'post',
       url: `${URL}cabinet`,
@@ -20,12 +20,12 @@ const patientsMW = (store) => (next) => (action) => {
         Authorization: `Bearer ${tokenStorage}`,
       },
       data: {
-        name,
-        address,
-        zip_code,
-        city,
-        phone_number,
-        pin_code,
+        name : newEntryName,
+        address: newEntryAddress,
+        zip_code: newEntryZip_code,
+        city: newEntryCity,
+        phone_number: newEntryPhone_number,
+        pin_code: newEntryPin_code,
         owner_id: id,
       }
 
@@ -34,7 +34,9 @@ const patientsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          store.dispatch(createCabinetSucceeded(response.data, email));
+          store.dispatch(createCabinetSucceeded(response.data.savedCabinet, email));
+          console.log('response id', response.data.savedCabinet.id);
+          store.dispatch(changeCabinet(response.data.savedCabinet.id));
         }
       })
       .catch((err) => {

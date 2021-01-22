@@ -13,7 +13,7 @@ export const initialState = {
   lastname: '',
   phone_number: '',
   siren_code: '',
-  default_cabinet: null,
+  default_cabinet: undefined,
 };
 
 // reducer qui va gérer les recettes

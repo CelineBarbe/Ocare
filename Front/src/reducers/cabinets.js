@@ -10,6 +10,12 @@ export const initialState = {
   pin_code: '',
   email:'',
   nbPatients:0,
+  newEntryName:'',
+  newEntryAddress:'',
+  newEntryZip_code:'',
+  newEntryCity:'',
+  newEntryPhone_number:'',
+  newEntryPin_code:'',
   isCreated: false,
   staff:[],
   list: [],
@@ -52,16 +58,6 @@ const reducer = (oldState = initialState, action = {}) => {
         phone_number: action.data.phone_number,
         email: action.email,
         isCreated: true,
-      };
-    case PRE_CREATE_CABINET:
-      return {
-        ...oldState,
-        name:'Cabinet ',
-        address:'',
-        zip_code:'',
-        city: '',
-        pin_code:'',
-        phone_number:'',
       };
     default:
       return { ...oldState };

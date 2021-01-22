@@ -8,18 +8,17 @@ import './createcabinet.scss';
 
 // == Composant
 const CreateCabinet = ({
-  name, address, zip_code, city, phone_number, pin_code, isCreated, changeField, handleSubmitCab, handleReset
+  newEntryName, newEntryAddress, newEntryZip_code, newEntryCity, newEntryPhone_number, newEntryPin_code, isCreated, changeField, handleSubmitCab, handleReset
 }) => {
   //REDIRECTION dashboard
   const history = useHistory();
-  const routeDashboard = () =>{ 
-    let path = `/dashboard`; 
+  const dashboard = () =>{ 
+    let path = `/Dashboard`; 
     history.push(path);
   }
-  //reset des champs
-  useEffect(()=> handleReset(), [])
+
   //Redirection ?
-  useEffect(() => { isCreated ? routeDashboard() : null}, [isCreated])
+  useEffect(() => { isCreated ? dashboard() : null}, [isCreated])
   
   //events
   const handleChange = (evt) => {
@@ -39,49 +38,49 @@ const CreateCabinet = ({
       <input
         className="form-input"
         type="text"
-        name="name"
+        name="newEntryName"
         placeholder="Nom"
-        value={name}
+        value={newEntryName}
         onChange={handleChange}
       />
       <input
         className="form-input"
         type="text"
-        name="address"
+        name="newEntryAddress"
         placeholder="Adresse"
-        value={address}
+        value={newEntryAddress}
         onChange={handleChange}
       />
       <input
       className="form-input"
       type="text"
-      name="zip_code"
+      name="newEntryZip_code"
       placeholder="Code Postal"
-      value={zip_code}
+      value={newEntryZip_code}
       onChange={handleChange}
     />
       <input
         className="form-input"
         type="text"
-        name="city"
+        name="newEntryCity"
         placeholder="Ville"
-        value={city}
+        value={newEntryCity}
         onChange={handleChange}
       />
       <input
         className="form-input"
         type="password"
-        name="pin_code"
+        name="newEntryPin_code"
         placeholder="Code Pin du cabinet"
-        value={pin_code}
+        value={newEntryPin_code}
         onChange={handleChange}
       />
       <input
         className="form-input"
         type="phone"
-        name="phone_number"
+        name="newEntryPhone_number"
         placeholder="Téléphone"
-        value={phone_number}
+        value={newEntryPhone_number}
         onChange={handleChange}
       />
       
