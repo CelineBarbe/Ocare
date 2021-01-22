@@ -56,7 +56,7 @@ const PatientPage = ({list}) => {
  
   const modale = (
     <div className="modal-patient">
-      <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
+      <img onClick={closeModalPatient} src={close} className="modal-patient-close" alt="close"/>
       <h2 className="modal-patient-title primary">Adresse</h2>
       <p className="modal-patient-address"> 23 Rue Valvires, 50700 Valognes</p>
       <p className="modal-patient-phone">0648201293</p>
