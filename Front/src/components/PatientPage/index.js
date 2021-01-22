@@ -1,6 +1,7 @@
 // == Import npm
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
+import Modal from 'react-modal';
 // == Import
 import './patientPage.scss';
 
@@ -10,11 +11,14 @@ import plus from 'src/assets/icones/plus2.svg';
 import wave from 'src/assets/icones/wave.svg';
 import pill from 'src/assets/icones/pill.svg';
 import bandage from 'src/assets/icones/bandage.svg';
+import close from 'src/assets/icones/close.svg';
 
 // == Import 
 import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 
+
+Modal.setAppElement('#root')
 
 // == Composant
 const PatientPage = ({list}) => {
@@ -24,13 +28,40 @@ const PatientPage = ({list}) => {
     if(list.length >= 1 ){
       return <>
               <h1 className="patient-title"> {`Mr ${patient.lastname} ${patient.firstname}`} </h1>
-              <img src={info} alt="information" className="patient-infos" />
+              <img onClick={openModalPatient} src={info} alt="information" className="patient-infos" />
             </>
     } else {
       return 'data is loading'
     }
   }
+
+  // Function for modal PATIENT
+  const [patientModal,setOpenPatient] = useState(false);
+  
+  function openModalPatient() {
+    setOpenPatient(true);
+  }
  
+  function closeModalPatient(){
+    setOpenPatient(false);
+  }
+ 
+  const modale = (
+    <div className="modal-patient">
+      <img onClick={closeModalPatient} src={close} className="modal-patient-close" alt="close"/>
+      <h2 className="modal-patient-title primary">Adresse</h2>
+      <p className="modal-patient-address"> 23 Rue Valvires, 50700 Valognes</p>
+      <p className="modal-patient-phone">0648201293</p>
+      <p className="modal-patient-code">Code porte : </p>
+      <span className="modal-patient-edit">editer</span>
+
+      <h3 className="modal-patient-title secondary">Pathologies / antécédents</h3>
+      <p className="modal-patient-content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel purus enim. Donec viverra accumsan laoreet. Nulla sodales ligula in magna luctus, vitae ornare erat vehicula. Nullam dolor libero, suscipit vel facilisis at, tristique vestibulum arcu.</p>
+      <p className="modal-patient-pathologie"> Diabétique </p>
+      <span className="modal-patient-edit">editer</span>
+    </div>
+  )
+  
   return (
     
       <div className="patient-page">
@@ -39,6 +70,7 @@ const PatientPage = ({list}) => {
           {/* LOCAL CONTAINER DISPLAY FLEX COLUMN AND OVERFLOW-Y SCROLL */} 
             <div className="patient">
             {patientInfo()} 
+            {patientModal ? modale : null}
 
               <p className="patient-title-primary"> Carnet de santé </p>
 
@@ -47,8 +79,8 @@ const PatientPage = ({list}) => {
                 <img className="patient-add-care-img" src={plus} alt="ajouter"/>
                 <span className="patient-add-care-title">Ajouter une entrée</span>
               </div>
-
-
+                
+           {/* { isOpenmodal ? modale : null} */} 
             {/* ENTRY CONTAINER OF THE PAGE */} 
               <div className="carnet-sante-container">
 
