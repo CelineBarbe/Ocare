@@ -10,6 +10,6 @@ router.get('/', patientController.findAll);
 router.get('/:id(\\d+)', patientController.findById);
 router.post('/', patientController.create);
 router.patch('/:id(\\d+)', patientController.update);
-router.delete('/', patientController.delete);
+router.delete('/:id(\\d+)', patientController.delete);
 
 module.exports = router;

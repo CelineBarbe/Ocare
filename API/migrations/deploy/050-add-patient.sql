@@ -12,7 +12,7 @@ CREATE TABLE patient(
     zip_code TEXT NOT NULL,
     city TEXT NOT NULL,
     phone_number TEXT NOT NULL,
-    pathology TEXT NOT NULL,
+    pathology TEXT,
     daily_checking BOOLEAN DEFAULT FALSE,
     number_daily_checking INT DEFAULT 1,
     cabinet_id INT NOT NULL REFERENCES cabinet(id) ON DELETE CASCADE,
