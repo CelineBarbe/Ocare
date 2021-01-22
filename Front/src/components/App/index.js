@@ -7,15 +7,15 @@ import { Route, Switch } from 'react-router-dom';
 import './app.scss';
 
 // == Import components
-import Dashboard from 'src/containers/Dashboard';
 import HomePage from 'src/components/HomePage';
+import ProfilPage from 'src/components/ProfilPage';
+import Dashboard from 'src/containers/Dashboard';
 import LoginPage from 'src/containers/LoginPage';
 import SignupPage from 'src/containers/SignupPage';
 import CabinetPage from 'src/containers/CabinetPage';
 import CabinetsPage from 'src/containers/CabinetsPage';
 import PatientsPage from 'src/containers/PatientsPage';
-import ProfilPage from 'src/components/ProfilPage';
-import PatientPage from 'src/components/PatientPage';
+import PatientPage from 'src/containers/PatientPage';
 import TourPage from 'src/components/TourPage';
 import TransmissionPage from 'src/components/TransmissionPage';
 
@@ -31,7 +31,7 @@ const App = () => (
       <Route exact path="/cabinets"><CabinetsPage /></Route>
       <Route exact path="/patients"><PatientsPage /></Route>
       <Route exact path="/profil"><ProfilPage /></Route>
-      <Route exact path="/patient"><PatientPage /></Route>
+      <Route path="/patient/:id"><PatientPage /></Route>
       <Route exact path="/tour"><TourPage /></Route>
       <Route exact path="/transmission"><TransmissionPage /></Route>
     </Switch>

@@ -47,7 +47,7 @@
   padding: vars.$gutter/2;
   margin: vars.$gutter/2;
   font-family: 'Nunito', sans-serif;
-
+  
   &-title {
     padding: 0.5em;
     border-radius: vars.$gutter;
@@ -65,3 +65,10 @@
   }
 }
 
+#titleA,#titleC,#titleE,#titleG,#titleI,#titleL,#titleN,#titleP,#titleR,#titleT,#titleV,#titleX,#titleZ{
+  background-color: vars.$color-secondary-dark2;   
+}
+
+#titleB,#titleD,#titleF,#titleH,#titleJ,#titleM,#titleO,#titleQ,#titleS,#titleU,#titleW,#titleY{
+  background-color: vars.$color-primary;   
+}
