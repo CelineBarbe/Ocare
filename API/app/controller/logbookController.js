@@ -1,18 +1,23 @@
 const logbookDataMapper = require('../datamapper/logbookDataMapper');
 
 const logbookController = {
-    async findAll(_, response, next) {
-        const idCabinet = 4; //currentcabinet
-        //get all logs du cabinet (limit 200)
+    async findAll(request, response, next) {
+
         try {
+
+            const idCabinet = request.app.locals.userCurrentCabinet;
+
             const logs = await logbookDataMapper.getAllLogs(idCabinet);
-            if(!acts) {
+            if(!logs) {
                 response.locals.notFound = "Aucun logs disponibles";
                 next();
                 return;
             }
+            
             response.json(logs);
+
         } catch (error) {
+            console.log(error.message);
             next(error);
         }
     },
@@ -40,7 +45,7 @@ const logbookController = {
             response.json({ savedLog });
             
         } catch (error) {
-            console.log(error.message);
+            
             next(error);
         }
     },

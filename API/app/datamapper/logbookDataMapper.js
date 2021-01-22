@@ -3,8 +3,20 @@ const { DateTime } = require('luxon');
 
 const logbookDataMapper = {
     async getAllLogs(idCabinet) {
-        // à revoir pour prendre en compte plutot la date prévue dans la table d'association
-        const result = await client.query(`SELECT * FROM logbook JOIN patient ON logbook.patient_id=patient.id WHERE patient.cabinet_id = $1 ORDER BY creation_date DESC LIMIT 200`, [idCabinet]);
+        
+        const result = await client.query(`SELECT l.*,
+        p.firstname,
+        p.lastname
+        FROM logbook l
+            JOIN patient p
+                ON p.id = l.patient_id
+            JOIN patient_has_logbook phl
+                ON l.id = phl.logbook_id
+            JOIN cabinet c
+                ON c.id = p.cabinet_id
+        WHERE c.id = $1
+        ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet]);
+
         if (result.rowCount == 0) {
             return null;
         }

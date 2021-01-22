@@ -119,3 +119,18 @@ SELECT c.id,
     GROUP BY c.id;
 
 "card_id" INT NOT NULL REFERENCES "card"("id") ON DELETE CASCADE,
+
+-- All logbook by cabinet
+
+SELECT l.*,
+    p.firstname,
+    p.lastname
+    FROM logbook l
+        JOIN patient p
+            ON p.id = l.patient_id
+        JOIN patient_has_logbook phl
+            ON l.id = phl.logbook_id
+        JOIN cabinet c
+            ON c.id = p.cabinet_id
+    WHERE c.id = 1;
+    

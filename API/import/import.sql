@@ -166,7 +166,7 @@ INSERT INTO patient(firstname, lastname, birthdate, gender, address, zip_code, c
 
 
 -- carnet de suivi
-INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily, done, ending_time, nurse_id, patient_id) VALUES
+INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily, done, ending_date, nurse_id, patient_id) VALUES
 -- cabinet 1 / patients 1 à 17 /nurses 1,2,4,6,8,14 et 16
 ('2021-01-23', '2021-01-24', null, 'Faire une prise de sang et contrôler la tension', false, false, null, 1, 2),
 ('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie/pansement', true, false, '2021-01-27', 1, 3),
@@ -178,8 +178,9 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 ('2021-01-22', '2021-01-23', null, 'Nettoyage cathéter', true, false, '2021-02-16', 4, 12),
 ('2019-06-12', '2019-06-13', '2019-06-13', 'Première prise traitement injectable', false, true, null, 4, 14),
 ('2019-08-30', '2019-09-01', '2019-09-01', 'Prise de sang', false, true, null, 6, 15),
-('2019-10-12', '2019-10-13', '2019-11-23', 'Prise en charge plaie du pied', true, true, '2019-11-23', 6, 19),
+('2019-10-12', '2019-10-13', '2019-11-23', 'Prise en charge plaie du pied', true, true, '2019-11-23', 6, 19);
 
+-- patient_has_logbook
 INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
 (1, 1),
 (3, 2),
@@ -191,7 +192,7 @@ INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
 (12, 8),
 (14, 9),
 (15, 10),
-(19, 11),
+(19, 11);
 
 
 COMMIT;
