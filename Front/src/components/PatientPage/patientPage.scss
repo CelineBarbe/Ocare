@@ -21,11 +21,14 @@
   text-decoration: underline;
 }
 
+// main container style
+
 .patient-page {
   display: flex;
   flex-direction: column;
 }
 
+// under container style
 .patient {
   position: relative;
   display: flex;
@@ -54,6 +57,8 @@
   }
 }
 
+// style patient name 
+
 .patient-title-primary {
   margin:vars.$gutter;
   padding:vars.$gutter*1.2 0;
@@ -67,6 +72,8 @@
   width: 95%;
   text-align: center;
 }
+
+// style button add entry
 
 .patient-add-care {
   width: 100%;
@@ -88,7 +95,7 @@
   }
 }
 
-// Style de la TIME LINE
+// Style of container entry care / transmission
 
 .carnet-sante-container {
   font-family: 'Nunito', sans-serif;
@@ -101,88 +108,13 @@
   flex-direction: column;
 }
 
+// style scrollbar for IE and EDGE
+
 .carnet-sante-container::-webkit-scrollbar {
   display: none;
 }
 
-.carnet-sante-entry {
-  max-height: 90px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  &-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 1.5em;
-    width:25%;
-    font-size: 15px;
-
-    &-date {
-      font-weight: bold;
-      text-decoration: underline;
-      color: vars.$color-secondary-dark2;
-    }
-
-    &-name {
-     color: vars.$color-grey4;
-    }
-  }
-
-  &-middle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 2px;
-    height: 100%;
-    background-color: vars.$color-primary;
-
-    &-img {
-      width: 20px;
-    }
-  }
-
-  &-right {
-    max-height: 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: c;
-    line-height: 1.5em;
-    width: 70%;
-    padding: vars.$gutter;
-    padding-left: vars.$gutter*2;
-   
 
 
-    &-title {
-      text-align: center;
-      font-size: 16px;
-      color: vars.$color-white;
-    }
 
-    &-observation {
-      font-size: 14px;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      word-break: break-word;
-      overflow: hidden;
-
-      &-ellipsis {
-        
-        margin: vars.$gutter/2;
-      }
-    }
-
-  }
-}
-
-.carnet-sante-entry:last-child {
-  margin-bottom: vars.$gutter*2;
-}
 
