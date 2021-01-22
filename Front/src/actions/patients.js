@@ -1,5 +1,5 @@
 import {
-  SEED_PATIENTS, GET_PATIENTS
+  SEED_PATIENTS, GET_PATIENTS, CREATE_PATIENT, PATIENT_CHANGE_FIELD
 } from './types';
 
 export const getPatients = () => ({
@@ -11,3 +11,11 @@ export const seedPatients = (data) => ({
   payload: data,
 });
 
+export const createPatient = () => ({
+  type: CREATE_PATIENT,
+});
+
+export const patientChangeField = (value, field) => ({
+  type: PATIENT_CHANGE_FIELD,
+  payload: { [field]: value },
+});

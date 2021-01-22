@@ -1,18 +1,20 @@
-import { SEED_PATIENTS } from 'src/actions/types';
+import { SEED_PATIENTS, PATIENT_CHANGE_FIELD } from 'src/actions/types';
 
 export const initialState = {
   id: null,
-  firstName: '',
-  lastName: '',
+  firstname: '',
+  lastname: '',
   birthdate: '',
   gender: null,
   address:'',
-  zipcode:null,
+  zip_code:null,
   city:'',
-  phoneNumber:'',
+  phone_number:'',
   pathology:'',
   dailyChecking: false,
+  number_dailychecking:undefined,
   isloading: false,
+  isCreated: false,
   list: [],
 };
 
@@ -24,7 +26,11 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         list: action.payload,
       }; 
-    
+    case PATIENT_CHANGE_FIELD:
+      return {
+        ...oldState,
+        ...action.payload,
+      };
     default:
       return { ...oldState };
   }

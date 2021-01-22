@@ -12,7 +12,6 @@ const patientsMW = (store) => (next) => (action) => {
     const {cabinets, auth} = store.getState();
     const {newEntryName, newEntryAddress,newEntryZip_code,newEntryCity, newEntryPhone_number, newEntryPin_code} = cabinets;
     const {id, email} = auth;
-    console.log(newEntryName, id, newEntryName, newEntryAddress,newEntryZip_code,newEntryCity, newEntryPhone_number, newEntryPin_code);
     const config = {
       method: 'post',
       url: `${URL}cabinet`,
@@ -35,7 +34,6 @@ const patientsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
           store.dispatch(createCabinetSucceeded(response.data.savedCabinet, email));
-          console.log('response id', response.data.savedCabinet.id);
           store.dispatch(changeCabinet(response.data.savedCabinet.id));
         }
       })

@@ -23,3 +23,4 @@ export const CREATE_CABINET_SUCCEEDED = "CREATE_CABINET_SUCCEEDED";
 //types patients
 export const SEED_PATIENTS = "SEED_PATIENTS";
 export const GET_PATIENTS = "GET_PATIENTS";
+export const CREATE_PATIENT = "CREATE_PATIENT";
