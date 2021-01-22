@@ -5,8 +5,8 @@
   background-color: vars.$color-primary;
 }
 
-.secondary-dark1 {
-  background-color: vars.$color-secondary-dark1;
+.secondary {
+  background-color: vars.$color-secondary;
 }
 
 .transmission-page-container {
@@ -54,7 +54,6 @@
       border-radius: 10px 0 0 10px ;
       width: 20%;
       padding: vars.$gutter;
-      background-color: vars.$color-primary;
       color: vars.$color-white;
       display: flex;
       flex-direction: row;
@@ -73,8 +72,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: vars.$color-secondary-dark1;
-      color: vars.$color-white;
+      color: #f7f7f7;
 
       h3 {
         font-weight: bold;
@@ -83,7 +81,8 @@
 
       p {
         font-size: 15px;
-        padding: vars.$gutter/1.5;
+        padding: vars.$gutter;
+        color: rgb(24, 24, 24);
       }
     }
   }
