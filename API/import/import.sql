@@ -1,6 +1,6 @@
 BEGIN;
 
-TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient RESTART IDENTITY;
+TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, patient_has_logbook RESTART IDENTITY;
 
 -- Insertions d'infirmiers
 INSERT INTO nurse(siren_code, firstname, lastname, email, password, phone_number) VALUES
@@ -132,6 +132,21 @@ INSERT INTO patient(firstname, lastname, birthdate, gender, address, zip_code, c
 ('Mercer', 'Mailly', '1978-06-30', 'M', '53 rue des Etangs', '76000', 'Rouen', '0287181178', 'AT : main prise dans une machine', true, 1, 3),
 ('Félicien', 'Dufresne', '1944-01-23', 'M', '96 rue Reine Elisabeth', '48000', 'Mende', '0491470636', '', false, 1, 3),
 ('Emilie', 'Charron', '1988-09-05', 'F', '2 rue de la Paroisse' ,'33260', 'La Tête de Buch', '0586965231', 'Suite de couche', true, 1, 3),
+('Millard', 'Mireault', '1983-08-23', 'M', '55 rue Marie de Medicis', '06400', 'Cannes', '0482818419', '', false, 1, 3),
+('Gauthier', 'Panetier', '1948-05-23', 'M', '84 rue des six frères Ruellan', '57200', 'Sarguemines', '0348709489', '', false, 1, 3),
+('Marsilius', 'Jalbert', '1934-08-14', 'M', '6 avenue des Amandiers', '93000', 'Bobigny', '0125481631', '', false, 1, 3),
+('Véronique', 'Sevier', '1967-05-27', 'F', '27 rue Lenotre', '35700', 'Rennes', '0268922315','En fauteil', true, 1, 3),
+('Maureen', 'Dostie', '1938-09-01', 'F', '29 avenue des Prés', '95160', 'Montmorency', '0110771911', '', false, 1, 3),
+('Marshall', 'Roy', '1962-11-01', 'M', '63 boulevard Albin Durand', '95800', 'Cergy', '0145745526', '', false, 1, 3),
+('Ruth', 'Plante', '1971-04-25', 'F', '14 rue Porte Verte', '81100', 'Castres', '0547310000', '', false, 1, 3),
+('Yseult', 'Avise', '1927-02-16', 'F', '55 rue Adolphe Wurtz', '97231', 'Le Robert', '0574650627', '', false, 1, 3),
+('Amid', 'Bourassa', '1946-11-13', 'M', '49 avenue Millies Lacroix', '38130', 'Echirolles', '0548961265', '', false, 1, 3),
+('Honorée', 'Poissonnier', '1959-08-05', 'F', '85 rue du Lavarin Sud', '14000', 'Caen', '0248675925', 'Accident de voiture, retour au domicile après 4 mois hospitalisé', true, 1, 3),
+('Raina', 'Quirion', '1974-01-02', 'F', '73 avenue des Jacynthes', '41000', 'Blois', '0465862354', '', false, 1, 3),
+('Justin', 'Coupart', '1936-08-08', 'M', '4 rue des Coudriers', '68200', 'Mulhouse', '0578959983', '', false, 1, 3),
+('Cécile', 'Majory', '1947-07-08', 'F', '93 place Maurice-Charretier', '94500', 'Champigny sur Marne', '0185763918', '', false, 1, 3),
+('Xavière', 'Tisserand', '1957-08-05', 'F', '53 boulevard de la Libération', '13011', 'Marseille', '0495355369', '', false, 1, 3),
+
 
 -- Cabinet 4 
 ('Kathy', 'Rodriguez Cedillo', '1951-12-20', 'F', '72 avenue des Bouvines', '89100', 'Sens', '0378802105', '', false, 1, 4),
@@ -148,5 +163,29 @@ INSERT INTO patient(firstname, lastname, birthdate, gender, address, zip_code, c
 ('Arnaud', 'Clément', '1979-11-17', 'F', '34 rue Bonnet', '94400', 'Vitry-Sur-Seine', '0181150181', 'Accident de moto, broches au niveau des deux tibias', true, 1, 4),
 ('Harbin', 'Daigle', '1943-09-06', 'M', '46 rue Beauveau', '13002', 'Marseille', '0431789788', 'Prothèse de genou', false, 1, 4),
 ('Arthur', 'Riquier', '1935-10-21', 'M', '3 rue Porte Orange', '84200', 'Carpentras', '0481175075', 'Névrite diabétique', true, 1, 4);
+
+
+-- carnet de suivi
+INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily, done, ending_time, nurse_id, patient_id) VALUES
+-- cabinet 1 / patients 1 à 17 /nurses 1,2,4,6,8,14 et 16
+('2021-01-23', '2021-01-24', null, 'Faire une prise de sang et contrôler la tension', false, false, null, 1, 2),
+('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie/pansement', true, false, '2021-01-27', 1, 3),
+('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie, vérification points', true, false, '2021-02-12', 2, 5),
+('2020-12-14', '2020-12-15', '2020-12-15', 'Prise de sang à domicile', false, true, null, 2, 6),
+('2020-12-23', '2020-12-24', '2020-12-24', 'Prise de sang à domicile', false, true, null, 1, 6),
+('2020-11-14', '2020-11-15', '2020-12-15', 'Injection traitement', true, true, '2020-12-15', 8, 8),
+('2021-01-22', '2021-01-23', null, 'Vérification des points suite opération genou', true, false, '2021-02-08', 8, 10),
+('2021-01-22', '2021-01-23', null, 'Nettoyage cathéter', true, false, '2021-02-16', 4, 12),
+
+INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
+(1, 1),
+(3, 2),
+(5, 3),
+(6, 4),
+(6, 5),
+(8, 6),
+(10, 7),
+(12, 8)
+
 
 COMMIT;
