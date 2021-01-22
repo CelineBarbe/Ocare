@@ -7,7 +7,7 @@ const authController = {
         try {
             const email = request.body.email;
             const password = request.body.password;
-
+            
             const user = await authDataMapper.getUser(email, password);
 
             if(!user) {
