@@ -11,7 +11,7 @@ CREATE TABLE logbook(
     observations TEXT,
     daily BOOLEAN DEFAULT FALSE, -- tournée par défaut
     done BOOLEAN DEFAULT FALSE, -- le soin daté ultérieurement a été fait
-    ending_time TIMESTAMPTZ DEFAULT NULL,
+    ending_date TIMESTAMPTZ DEFAULT NULL,
     nurse_id INT NOT NULL REFERENCES nurse(id) ON DELETE SET NULL,
     patient_id INT NOT NULL REFERENCES patient(id) ON DELETE CASCADE
 );

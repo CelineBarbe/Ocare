@@ -1,4 +1,5 @@
 const client = require('./client');
+const { DateTime } = require('luxon');
 
 const logbookDataMapper = {
     async getAllLogs(idCabinet) {
@@ -19,23 +20,30 @@ const logbookDataMapper = {
     },
 
     async createLog(logInfo) {
-        const { hour, observations, daily, done, gender, nurse_id, patient_id } = patientInfo;
+
+        let { planned_date, done_date, observations, daily, done, ending_date, nurse_id, patient_id } = logInfo;
         // + info de l'act à ajouter via table d'association
         // save Log
-        const creation_date =  Date.now();
-        //npm install luxon
-        //var { DateTime } = require('luxon');
-        //const creation_date  = DateTime.local();
-        const result = await client.query(`INSERT INTO logbook(creation_date, hour, observations, daily, done, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *`,[
+        let creation_date =  Date.now();
+        creation_date = DateTime.local().setZone("Europe/Paris");
+        
+        const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily, done, ending_date, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,[
             creation_date,
-            hour,
+            planned_date,
+            done_date,
             observations,
             daily,
             done,
+            ending_date,
             nurse_id,
             patient_id,
         ]);
-        return result.rows[0];
+
+        // Saved in Patient_has_logbook
+        await client.query(`INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
+        ($1,$2)`, [patient_id, result.rows[0].id]);
+
+        return result.rowCount;
     },
 
     async updateLogByid(idLog, logInfo) {

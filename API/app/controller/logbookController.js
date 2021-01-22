@@ -34,9 +34,13 @@ const logbookController = {
     async create(request, response, next) {
         try {
             const logInfo = request.body;
-            const savedLog = await logbookDataMapper.createAct(logInfo);
+
+            const savedLog = await logbookDataMapper.createLog(logInfo);
+
             response.json({ savedLog });
+            
         } catch (error) {
+            console.log(error.message);
             next(error);
         }
     },
