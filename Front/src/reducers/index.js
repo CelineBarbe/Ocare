@@ -16,5 +16,4 @@ export default combineReducers({
   patients,
   tournee,
   search,
-
 });

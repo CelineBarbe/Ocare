@@ -1,5 +1,6 @@
 // == Import npm
 import React, { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 // == Import
 import './cabinetsPage.scss';
@@ -23,7 +24,7 @@ const CabinetsPage = ({ listCabinets }) => {
         <Header />
         <div className="main cabinets">
         <h1 className="cabinets-title"> Gestion des cabinets </h1>
-          <img src={plus} alt="croix" className="cabinets-add" />
+          <Link to="/addcabinet"><img src={plus} alt="croix" className="cabinets-add" /></Link>
         
           <div className="cabinets-container">
           {listCabinets.map(cabinet => (

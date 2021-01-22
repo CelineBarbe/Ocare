@@ -6,6 +6,7 @@ import authMiddleware from 'src/middlewares/auth';
 import initDashboard from 'src/middlewares/initDashboard';
 import searchingMiddleware from 'src/middlewares/searching';
 import patientsMiddleware from 'src/middlewares/patientsMW';
+import cabinetsMiddleware from 'src/middlewares/cabinetsMW';
 
 // on crée le store
 const store = createStore(
@@ -15,6 +16,7 @@ const store = createStore(
     applyMiddleware(authMiddleware),
     applyMiddleware(initDashboard),
     applyMiddleware(searchingMiddleware),
+    applyMiddleware(cabinetsMiddleware),
     applyMiddleware(patientsMiddleware),
   ),
 );

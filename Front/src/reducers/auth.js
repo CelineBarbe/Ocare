@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { AUTH_CHANGE_FIELD, LOGIN_OK, SIGNUP_OK, CHANGE_CABINET } from 'src/actions/types';
+import { AUTH_CHANGE_FIELD, LOGIN_OK, SIGNUP_OK, CHANGE_CABINET, CREATE_CABINET_SUCCEEDED } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -48,6 +48,11 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         default_cabinet: action.idCab,
+      }
+    case CREATE_CABINET_SUCCEEDED:
+      return {
+        ...oldState,
+        default_cabinet: action.data.id,
       }
     default:
       return { ...oldState };

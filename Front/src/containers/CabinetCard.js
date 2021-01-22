@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 
-//import { dashboardInit } from 'src/actions/auth';
 import CabinetCard from 'src/components/CabinetCard';
 
 const mapStateToProps = ({ cabinets }) => {

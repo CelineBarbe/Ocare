@@ -1,15 +1,16 @@
-import { CABINET_CHANGE_FIELD, SEED_CABINETS, SEED_DEFAULT_CABINET } from 'src/actions/types';
+import { CABINET_CHANGE_FIELD, SEED_CABINETS, SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET_SUCCEEDED } from 'src/actions/types';
 
 export const initialState = {
   id: null,
   name: '',
   address: '',
-  zip_code: null,
+  zip_code: '',
   city: '',
   phone_number: '',
-  pinCode: '',
+  pin_code: '',
   email:'',
   nbPatients:0,
+  isCreated: false,
   staff:[],
   list: [],
 };
@@ -39,6 +40,28 @@ const reducer = (oldState = initialState, action = {}) => {
         staff: action.data.nurses,
         nbPatients: action.data.nbPatients,
         email: action.data.email,
+      };
+    case CREATE_CABINET_SUCCEEDED:
+      return {
+        ...oldState,
+        id: action.data.id,
+        name: action.data.name,
+        address: action.data.address,
+        zip_code: action.data.zip_code,
+        city: action.data.city,
+        phone_number: action.data.phone_number,
+        email: action.email,
+        isCreated: true,
+      };
+    case PRE_CREATE_CABINET:
+      return {
+        ...oldState,
+        name:'Cabinet ',
+        address:'',
+        zip_code:'',
+        city: '',
+        pin_code:'',
+        phone_number:'',
       };
     default:
       return { ...oldState };
