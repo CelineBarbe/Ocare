@@ -37,18 +37,26 @@ const PatientPage = ({list}) => {
 
   // Function for modal PATIENT
   const [patientModal,setOpenPatient] = useState(false);
+  const [entryModal,setOpenEntry] = useState(false);
   
   function openModalPatient() {
     setOpenPatient(true);
+  }
+
+  function openModalEntry() {
+    setOpenEntry(true);
   }
  
   function closeModalPatient(){
     setOpenPatient(false);
   }
+  function closeModalEntry(){
+    setOpenEntry(false);
+  }
  
   const modale = (
     <div className="modal-patient">
-      <img onClick={closeModalPatient} src={close} className="modal-patient-close" alt="close"/>
+      <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
       <h2 className="modal-patient-title primary">Adresse</h2>
       <p className="modal-patient-address"> 23 Rue Valvires, 50700 Valognes</p>
       <p className="modal-patient-phone">0648201293</p>
@@ -60,6 +68,58 @@ const PatientPage = ({list}) => {
       <p className="modal-patient-pathologie"> Diabétique </p>
       <span className="modal-patient-edit">editer</span>
     </div>
+  )
+
+  const modaleEntry = (
+    <div className="modal-entry">
+      <form className="form">
+      <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
+      <input
+        className="form-input"
+        type="text"
+        name="lastname"
+        placeholder="Nom"
+      />
+      <input
+        className="form-input"
+        type="text"
+        name="firstname"
+        placeholder="Prénom"
+      />
+      <input
+        className="form-input"
+        type="email"
+        name="email"
+        placeholder="Email"
+      />
+      <input
+        className="form-input"
+        type="password"
+        name="password"
+        placeholder="Password"
+      />
+      <input
+        className="form-input"
+        type="phone"
+        name="phone_number"
+        placeholder="Téléphone"
+      />
+      <input
+        className="form-input"
+        type="text"
+        name="siren_code"
+        placeholder="Code SIREN"
+      />
+      <button type="button" className="form-button">
+        Ajouter
+      </button>
+    </form>
+
+
+    </div>
+
+
+
   )
   
   return (
@@ -76,14 +136,14 @@ const PatientPage = ({list}) => {
 
            {/* PART ADD A TREATMENT */} 
               <div className="patient-add-care">
-                <img className="patient-add-care-img" src={plus} alt="ajouter"/>
-                <span className="patient-add-care-title">Ajouter une entrée</span>
+                <img onClick={openModalEntry} className="patient-add-care-img" src={plus} alt="ajouter"/>
+                <span onClick={openModalEntry} className="patient-add-care-title">Ajouter une entrée</span>
               </div>
-                
-           {/* { isOpenmodal ? modale : null} */} 
+
+            
             {/* ENTRY CONTAINER OF THE PAGE */} 
               <div className="carnet-sante-container">
-
+                {entryModal ? modaleEntry : null}
               {/* NEW ENTRY PART OF THE PAGE */}
                 <div className="carnet-sante-entry">
                   <div className="carnet-sante-entry-top">
