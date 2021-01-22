@@ -1,6 +1,6 @@
 BEGIN;
 
-TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient RESTART IDENTITY;
+TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, patient_has_logbook RESTART IDENTITY;
 
 -- Insertions d'infirmiers
 INSERT INTO nurse(siren_code, firstname, lastname, email, password, phone_number) VALUES
@@ -166,7 +166,26 @@ INSERT INTO patient(firstname, lastname, birthdate, gender, address, zip_code, c
 
 
 -- carnet de suivi
+INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily, done, ending_time, nurse_id, patient_id) VALUES
+-- cabinet 1 / patients 1 à 17 /nurses 1,2,4,6,8,14 et 16
+('2021-01-23', '2021-01-24', null, 'Faire une prise de sang et contrôler la tension', false, false, null, 1, 2),
+('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie/pansement', true, false, '2021-01-27', 1, 3),
+('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie, vérification points', true, false, '2021-02-12', 2, 5),
+('2020-12-14', '2020-12-15', '2020-12-15', 'Prise de sang à domicile', false, true, null, 2, 6),
+('2020-12-23', '2020-12-24', '2020-12-24', 'Prise de sang à domicile', false, true, null, 1, 6),
+('2020-11-14', '2020-11-15', '2020-12-15', 'Injection traitement', true, true, '2020-12-15', 8, 8),
+('2021-01-22', '2021-01-23', null, 'Vérification des points suite opération genou', true, false, '2021-02-08', 8, 10),
+('2021-01-22', '2021-01-23', null, 'Nettoyage cathéter', true, false, '2021-02-16', 4, 12),
 
+INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
+(1, 1),
+(3, 2),
+(5, 3),
+(6, 4),
+(6, 5),
+(8, 6),
+(10, 7),
+(12, 8)
 
 
 COMMIT;
