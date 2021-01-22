@@ -7,3 +7,4 @@
 030-add-avatar-to-nurse 2021-01-20T12:17:10Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add a field avatar in table nurse and rename the field user_id in table cabinet
 040-View-getAllCabinet 2021-01-20T19:21:14Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add view getAllCabinet by Nurse
 050-add-patient 2021-01-21T18:48:23Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add patient table
+060-add-logbook 2021-01-22T09:18:43Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add logbook and patient_has_logbook table

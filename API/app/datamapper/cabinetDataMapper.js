@@ -88,7 +88,7 @@ const cabinetDataMapper = {
         ]);
 
         // saved nurse to cabinet
-        await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id) VALUES($1, $2) RETURNING *`, [result.rows[0].id, result.rows[0].owner_id]);
+        await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [result.rows[0].id, result.rows[0].owner_id]);
 
         return result.rows[0];
     },
