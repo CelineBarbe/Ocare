@@ -15,8 +15,8 @@ const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, sir
       <p className="profil-card-nom">{`${firstname} ${lastname}`}</p>
       <span className="profil-card-siren_code">{siren_code}</span>
       <p className="profil-card-infos cabinet-card-adresse ">
-        Url Avatar: {avatar}
-      </p>
+      Avatar: </p><img src={avatar} alt="avatar" className="profil-card-img"></img>
+      
       <p className="profil-card-infos">
         Téléphone : {phone_number}
       </p>

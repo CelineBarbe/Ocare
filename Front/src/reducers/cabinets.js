@@ -38,6 +38,7 @@ const reducer = (oldState = initialState, action = {}) => {
         phone_number: action.data.phone_number,
         staff: action.data.nurses,
         nbPatients: action.data.nbPatients,
+        email: action.data.email,
       };
     default:
       return { ...oldState };

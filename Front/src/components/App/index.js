@@ -13,7 +13,7 @@ import LoginPage from 'src/containers/LoginPage';
 import SignupPage from 'src/containers/SignupPage';
 import CabinetPage from 'src/containers/CabinetPage';
 import CabinetsPage from 'src/containers/CabinetsPage';
-import PatientsPage from 'src/components/PatientsPage';
+import PatientsPage from 'src/containers/PatientsPage';
 import ProfilPage from 'src/components/ProfilPage';
 import PatientPage from 'src/components/PatientPage';
 import TourPage from 'src/components/TourPage';

@@ -1,5 +1,5 @@
 // == Import npm
-import React, { Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 // == Import
 import './patientPage.scss';
 
@@ -16,6 +16,7 @@ import Nav from 'src/components/Nav';
 
 // == Composant
 const PatientPage = () => {
+
   return (
     
       <div className="patient-page">

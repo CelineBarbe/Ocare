@@ -6,7 +6,7 @@ import './profil.scss';
 
 //== Import components
 import ProfilCard from 'src/containers/ProfilCard';
-import ListCabinets from './ListCabinets';
+import ListCabinets from 'src/containers/ListCabinets';
 import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 
