@@ -1,5 +1,6 @@
 // == Import npm
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
+import {useParams} from 'react-router-dom';
 // == Import
 import './patientPage.scss';
 
@@ -15,16 +16,27 @@ import Nav from 'src/components/Nav';
 
 
 // == Composant
-const PatientPage = () => {
-
+const PatientPage = ({list}) => {
+  const { id } = useParams();
+  const patient = list.find(patient => patient.id == id);
+  const patientInfo = () => {
+    if(list.length >= 1 ){
+      return <>
+              <h1 className="patient-title"> {`Mr ${patient.lastname} ${patient.firstname}`} </h1>
+              <img src={info} alt="information" className="patient-infos" />
+            </>
+    } else {
+      return 'data is loading'
+    }
+  }
+ 
   return (
     
       <div className="patient-page">
         <Header />
           <div className="main">
             <div className="patient">
-              <h1 className="patient-title"> Mr Pichon Thomas </h1>
-              <img src={info} alt="information" className="patient-infos" />
+            {patientInfo()} 
 
               <p className="patient-title-primary"> Carnet de santé </p>
 

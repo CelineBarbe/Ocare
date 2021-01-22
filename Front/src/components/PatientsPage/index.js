@@ -22,18 +22,14 @@ const PatientsPage = ({getPatients, list}) => {
     getPatients();
 }, [])
 
-useEffect(() => {
-  if(list.length >= 1) {
-    console.log("sortie de ",returnArrayFirstLetterSorted(list,"B"))
-  }
-}, [list]);
+
 
 const data = (alphabetic.map(letter => (
                 <div className="patients-page-liste" id={letter}>
-                            <p className="patients-page-liste-title secondary-dark1" id={letter}>{letter}</p>
+                            <p className="patients-page-liste-title" id={`title${letter}`}>{letter}</p>
                             <ul className="patients-page-liste-ul">
                               {returnArrayFirstLetterSorted(list,letter).map(patient =>(
-                                <li className="patients-page-liste-li" id={patient.id}>{patient.lastname}</li>
+                                <li className="patients-page-liste-li" id={patient.id} key={patient.id}><Link to={`/patient/${patient.id}`}>{patient.lastname} {patient.firstname}</Link></li>
                               ))}
                             </ul>
                  </div>
