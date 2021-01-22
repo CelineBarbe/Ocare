@@ -64,6 +64,9 @@ const cabinetController = {
                 return;
             }
 
+            // Save current_cabinet in locals
+            request.app.locals.userCurrentCabinet = savedCabinet.id;
+
             response.json({ savedCabinet });
 
         } catch (error) {
