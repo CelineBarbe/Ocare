@@ -5,7 +5,7 @@
   @include formulaire-container();
 
   &-input {
-    @include formulaire-input();
+    @include small-input();
   }
 
   &-button {

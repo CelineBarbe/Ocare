@@ -36,6 +36,16 @@
   font-family: 'Nunito', sans-serif;
 }
 
+@mixin small-input() {
+  padding: vars.$gutter*0.5;
+  margin: vars.$gutter*0.5;
+  border: 0;
+  border-bottom: 1px solid vars.$color-primary-light1;
+  font-size: 14px;
+  color: vars.$color-grey4;
+  font-family: 'Nunito', sans-serif;
+}
+
 // Mixin formulaire recherche 
 
 @mixin formulaire-search-container() { // Si aucune valeur n'est précisée alors $margin vaut 10px

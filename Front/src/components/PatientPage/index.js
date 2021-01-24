@@ -21,9 +21,24 @@ import Nav from 'src/components/Nav';
 Modal.setAppElement('#root')
 
 // == Composant
-const PatientPage = ({list}) => {
+const PatientPage = ({
+  firstname,
+  lastname, 
+  birthdate, 
+  gender, 
+  address, 
+  zip_code, 
+  city,
+  phone_number,
+  pathology,
+  daily_checking,
+  number_dailychecking,
+  getPatient}) => {
   const { id } = useParams();
-  const patient = list.find(patient => patient.id == id);
+  useEffect(() => {getPatient(id)}, [])
+
+  
+ /*  const patient = list.find(patient => patient.id == id);
   const patientInfo = () => {
     if(list.length >= 1 ){
       return <>
@@ -34,7 +49,7 @@ const PatientPage = ({list}) => {
       return 'data is loading'
     }
   }
-
+ */
   // Function for modal PATIENT
   const [patientModal,setOpenPatient] = useState(false);
   const [entryModal,setOpenEntry] = useState(false);
@@ -129,7 +144,7 @@ const PatientPage = ({list}) => {
           <div className="main">
           {/* LOCAL CONTAINER DISPLAY FLEX COLUMN AND OVERFLOW-Y SCROLL */} 
             <div className="patient">
-            {patientInfo()} 
+            {/* {patientInfo()}  */}
             {patientModal ? modale : null}
 
               <p className="patient-title-primary"> Carnet de santé </p>

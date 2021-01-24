@@ -44,7 +44,7 @@ const data = (alphabetic.map(letter => (
             <Searchbar />
             <div className="patients-page-create">
               <img className="patients-page-create-img" src={plus} alt="ajouter"/>
-              <span className="patients-page-create-title">Ajouter un patient</span>
+              <Link to="/createpatient"><span className="patients-page-create-title">Ajouter un patient</span></Link>
             </div>
 
             <div className="patients-page-liste-container">

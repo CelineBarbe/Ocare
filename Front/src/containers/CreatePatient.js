@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
-import { patientChangeField, createPatient } from 'src/actions/patients';
+import { patientChangeField, createPatient, resetPatientField } from 'src/actions/patients';
 import CreatePatient from 'src/components/CreatePatient';
 
 const mapStateToProps = ({ patients }) => {
   const {
-    firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, isCreated
+    firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, isCreated, created_id
   } = patients;
   return ({
     firstname,
@@ -19,7 +19,8 @@ const mapStateToProps = ({ patients }) => {
     pathology,
     daily_checking,
     number_daily_checking,
-    isCreated
+    isCreated,
+    created_id,
   });
 };
 
@@ -30,7 +31,10 @@ const mapDispatchToProps = (dispatch) => ({
   handleSubmitPatient: () => {
     dispatch(createPatient());
   },
+  handleReset: () => {
+    dispatch(resetPatientField());
+  }
 });
 
 // appel a connect et export
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCabinet);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePatient);

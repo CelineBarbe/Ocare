@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { GET_PATIENTS } from 'src/actions/types';
-import { seedPatients } from 'src/actions/patients';
+import { GET_PATIENTS, CREATE_PATIENT, GET_PATIENT } from 'src/actions/types';
+import { seedPatients, createPatientSucceeded, seedPatient } from 'src/actions/patients';
 
 const URL = "https://ocare.herokuapp.com/";
 
@@ -22,6 +22,65 @@ const patientsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
           store.dispatch(seedPatients(response.data));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  };
+  if (action.type === GET_PATIENT) {
+    console.log('passe par get patient');
+    const {id} = action;
+    const config = {
+      method: 'get',
+      url: `${URL}patient/${id}`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          store.dispatch(seedPatient(response.data.patient));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  };
+  if (action.type === CREATE_PATIENT) {
+    const { firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking } = Recupstore.patients;
+    console.log('passe par create patients');
+    console.log(firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, default_cabinet)
+    const config = {
+      method: 'post',
+      url: `${URL}patient/`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+      data: {
+        firstname,
+        lastname,
+        birthdate,
+        gender,
+        address,
+        zip_code,
+        city,
+        phone_number,
+        pathology,
+        daily_checking,
+        number_daily_checking,
+        cabinet_id: default_cabinet,
+      }
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          store.dispatch(createPatientSucceeded(response.data.savedPatient.id));
         }
       })
       .catch((err) => {
