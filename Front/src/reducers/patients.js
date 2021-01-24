@@ -1,4 +1,4 @@
-import { SEED_PATIENTS, PATIENT_CHANGE_FIELD, CREATE_PATIENT_SUCCEEDED, RESET_PATIENT_FIELD, SEED_PATIENT } from 'src/actions/types';
+import { SEED_PATIENTS, PATIENT_CHANGE_FIELD, CREATE_PATIENT_SUCCEEDED, RESET_PATIENT_FIELD, SEED_PATIENT, GET_PATIENT } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -41,11 +41,17 @@ const reducer = (oldState = initialState, action = {}) => {
         pathology:action.data.pathology,
         daily_checking: action.data.daily_checking,
         number_dailychecking:action.data.number_dailychecking,
+        isLoading: false,
       }; 
     case PATIENT_CHANGE_FIELD:
       return {
         ...oldState,
         ...action.payload,
+      };
+    case GET_PATIENT:
+      return {
+        ...oldState,
+        isLoading: true,
       };
     case CREATE_PATIENT_SUCCEEDED:
       return {

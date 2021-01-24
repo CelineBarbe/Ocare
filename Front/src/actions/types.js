@@ -31,3 +31,11 @@ export const GET_PATIENT = "GET_PATIENT";
 export const SEED_PATIENT = "SEED_PATIENT";
 export const UPDATE_PATIENT = "UPDATE_PATIENT";
 export const UPDATE_PATIENT_SUCCEEDED = "UPDATE_PATIENT_SUCCEEDED";
+
+//types logs
+export const GET_LOGS = "GET_LOGS";
+export const SEED_LOGS = "SEED_LOGS";
+export const LOGBOOK_CHANGE_FIELD = "LOGBOOK_CHANGE_FIELD";
+export const CREATE_LOG = "CREATE_LOG";
+export const UPDATED_LOG = "UPDATE_LOG";
+export const CREATE_LOG_SUCCEEDED = "CREATE_LOG_SUCCEEDED";

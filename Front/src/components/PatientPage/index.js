@@ -33,23 +33,34 @@ const PatientPage = ({
   pathology,
   daily_checking,
   number_dailychecking,
-  getPatient}) => {
+  getPatient,
+  isLoading,
+  }) => {
+
   const { id } = useParams();
   useEffect(() => {getPatient(id)}, [])
 
+
+  const age = () => {
+    if(!isLoading) {
+      //TODO LUXON et calcul d'age 
+      return 23;
+    }
+  }
   
- /*  const patient = list.find(patient => patient.id == id);
   const patientInfo = () => {
-    if(list.length >= 1 ){
+    if(!isLoading){
       return <>
-              <h1 className="patient-title"> {`Mr ${patient.lastname} ${patient.firstname}`} </h1>
+              <h1 className="patient-title"> {`Mr ${lastname} ${firstname}`} </h1>
               <img onClick={openModalPatient} src={info} alt="information" className="patient-infos" />
             </>
     } else {
       return 'data is loading'
     }
   }
- */
+ 
+
+
   // Function for modal PATIENT
   const [patientModal,setOpenPatient] = useState(false);
   const [entryModal,setOpenEntry] = useState(false);
@@ -72,15 +83,18 @@ const PatientPage = ({
   const modale = (
     <div className="modal-patient">
       <img onClick={closeModalPatient} src={close} className="modal-patient-close" alt="close"/>
+      <h3 className="modal-patient-title secondary">Etat Civil</h3> 
+      <p className="modal-patient-address"> {gender} de {birthdate} ans. </p>
+
       <h2 className="modal-patient-title primary">Adresse</h2>
-      <p className="modal-patient-address"> 23 Rue Valvires, 50700 Valognes</p>
-      <p className="modal-patient-phone">0648201293</p>
-      <p className="modal-patient-code">Code porte : </p>
+      <p className="modal-patient-address"> {address}, {zip_code} {city}</p>
+      <p className="modal-patient-phone">{phone_number}</p>
       <span className="modal-patient-edit">editer</span>
 
       <h3 className="modal-patient-title secondary">Pathologies / antécédents</h3>
-      <p className="modal-patient-content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel purus enim. Donec viverra accumsan laoreet. Nulla sodales ligula in magna luctus, vitae ornare erat vehicula. Nullam dolor libero, suscipit vel facilisis at, tristique vestibulum arcu.</p>
-      <p className="modal-patient-pathologie"> Diabétique </p>
+      <p className="modal-patient-pathologie"> {pathology} </p>
+      <p className="modal-patient-content">{daily_checking? number_dailychecking>1 ? `Patient Quotidien : ${number_dailychecking} visites par jour.`: "Patient quotidien" : null}</p>
+
       <span className="modal-patient-edit">editer</span>
     </div>
   )
@@ -91,21 +105,24 @@ const PatientPage = ({
       <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
       <input
         className="form-input"
-        type="text"
-        name="lastname"
-        placeholder="Nom"
+        type="date"
+        name="planned_date"
+        placeholder="Date Prévue"
+       
+      />
+      <input
+        className="form-input"
+        type="date"
+        name="ending_date"
+        placeholder="Date de fin"
+        
       />
       <input
         className="form-input"
         type="text"
-        name="firstname"
-        placeholder="Prénom"
-      />
-      <input
-        className="form-input"
-        type="email"
-        name="email"
-        placeholder="Email"
+        name="Observations"
+        placeholder="Observations"
+        
       />
       <input
         className="form-input"
@@ -118,12 +135,6 @@ const PatientPage = ({
         type="phone"
         name="phone_number"
         placeholder="Téléphone"
-      />
-      <input
-        className="form-input"
-        type="text"
-        name="siren_code"
-        placeholder="Code SIREN"
       />
       <button type="button" className="form-button">
         Ajouter
@@ -144,7 +155,7 @@ const PatientPage = ({
           <div className="main">
           {/* LOCAL CONTAINER DISPLAY FLEX COLUMN AND OVERFLOW-Y SCROLL */} 
             <div className="patient">
-            {/* {patientInfo()}  */}
+            { patientInfo()  }
             {patientModal ? modale : null}
 
               <p className="patient-title-primary"> Carnet de santé </p>

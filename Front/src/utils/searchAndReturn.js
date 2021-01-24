@@ -20,3 +20,11 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
   return arrayByLetterSorted;
  }
  
+ export const returnNameById = (array, id) => {
+   const result = array.find(human => human.id == id);
+   return {
+     fistname: result.firstname,
+     lastname: result.lastname,
+     gender: result.gender,
+   }
+ }

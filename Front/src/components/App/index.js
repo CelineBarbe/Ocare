@@ -19,7 +19,7 @@ import PatientPage from 'src/containers/PatientPage';
 import CreateCabinet from 'src/containers/CreateCabinet';
 import CreatePatient from 'src/containers/CreatePatient';
 import TourPage from 'src/components/TourPage';
-import TransmissionPage from 'src/components/TransmissionPage';
+import TransmissionPage from 'src/containers/TransmissionPage';
 
 
 // == Composant
@@ -38,7 +38,7 @@ const App = () => (
       <Route exact path="/profil"><ProfilPage /></Route>
       <Route path="/patient/:id"><PatientPage /></Route>
       <Route exact path="/tour"><TourPage /></Route>
-      <Route exact path="/transmission"><TransmissionPage /></Route>
+      <Route path="/transmission"><TransmissionPage /></Route>
     </Switch>
   </div>
 );

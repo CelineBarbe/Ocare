@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 // == Import
 import './transmissionPage.scss';
@@ -19,8 +19,30 @@ import Nav from 'src/components/Nav';
 import Transmission from 'src/components/Transmission';
 
 
+
+
 // == Composant
-const TransmissionPage = () => {
+const TransmissionPage = ({list, getLogs, isLoading}) => {
+  useEffect(() => {getLogs()}, [])
+
+
+  const row =  list.map(element => ( 
+    <Link to={`/patient/${element.patient_id}`}  key={element.id}>
+        <div className="transmission-container-row">
+       
+          <div className="transmission-container-row-left primary ">
+            <img className="transmission-container-row-left-img" alt="woman" src={man}/>
+          </div>
+            <div className="transmission-container-row-right secondary">
+            <h3>Mme pinpin</h3>
+              <p>{element.observations}</p>
+            </div>
+      </div>
+  </Link>
+      ))
+  
+
+  
   return (
     
       <div className="transmission-page-container">
@@ -29,8 +51,10 @@ const TransmissionPage = () => {
             <div className="transmission-page">
               <Transmission />
               <div className="transmission-container">
+               
+              {isLoading? 'data is laoding' :  row}
 
-                <div className="transmission-container-row">
+                {/* <div className="transmission-container-row">
                   <div className="transmission-container-row-left primary ">
                     <img className="transmission-container-row-left-img" alt="woman" src={woman}/>
                   </div>
@@ -88,7 +112,7 @@ const TransmissionPage = () => {
                     <h3>Mr Alibert</h3>
                     <p>Injection du 23/01 au 27/01</p>
                   </div>
-                </div>
+                </div> */}
 
               </div>
             </div>
