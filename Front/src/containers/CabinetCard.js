@@ -16,10 +16,9 @@ const mapStateToProps = ({ cabinets }) => {
   });
 };
 
-const mapDispatchToProps = () => ({
- //
+const mapDispatchToProps = (dispatch) => ({
 
-});
+})
 
 // appel a connect et export
 export default connect(mapStateToProps, mapDispatchToProps)(CabinetCard);
