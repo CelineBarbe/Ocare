@@ -35,6 +35,7 @@ const EntryModal = ({
   const handleSubmit = (evt) => {
     evt.preventDefault();
     handleLogbook(patientId, id);
+    closeModalEntry();
   };
 
   const onFocus = (event) => {
