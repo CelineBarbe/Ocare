@@ -40,7 +40,7 @@ seedDate()
     </Link>
     <ul className="transmission-ul">
     {arrayDate.length>1 ? arrayDate.map(date => (
-       <Link to={`/transmission/${date.link}`}>
+       <Link to={`/transmission/${date.link}`} key={date.link}>
         <li className="transmission-li">
           <img className="transmission-img" src={notes} alt="notes" />
           <span className="transmission-date">{date.pres}</span>
