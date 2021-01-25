@@ -63,7 +63,7 @@ const patientDataMapper = {
         }
 
         // save patient
-        const result = await client.query(`INSERT INTO patient(firstname, lastname, birthdate, gender, address, additional_adress, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, cabinet_id ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`,[
+        const result = await client.query(`INSERT INTO patient(firstname, lastname, birthdate, gender, address, additional_address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, cabinet_id ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`,[
             firstname,
             lastname,
             birthdate,
