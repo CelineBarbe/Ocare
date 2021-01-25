@@ -1,0 +1,16 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.select {
+  width: 200px;
+  margin: 15px;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  font-weight: bold;
+  color: vars.$color-secondary-dark2;
+  outline: none;
+}

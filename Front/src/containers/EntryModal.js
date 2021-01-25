@@ -4,9 +4,11 @@ import { logbookChangeField, createLog } from 'src/actions/logs';
 
 import EntryModal from 'src/modal/Entry';
 
-const mapStateToProps = ({logBook}, ownProps) => {
+const mapStateToProps = ({logBook, auth}, ownProps) => {
   const { closeModalEntry, patientId } = ownProps;
-  const { planned_date, ending_date, observations, daily, done, tags, isCreated } = logBook
+  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated } = logBook;
+  const { id } = auth;
+  console.log('id');
   return ({
     closeModalEntry,
     planned_date,
@@ -16,7 +18,10 @@ const mapStateToProps = ({logBook}, ownProps) => {
     done,
     tags,
     isCreated,
-    patientId
+    patientId,
+    id,
+    time,
+    done_date,
   })
 }
 
@@ -24,8 +29,8 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (value, field) => {
     dispatch(logbookChangeField(value, field));
   },
-  handleLogbook: (id) => {
-    dispatch(createLog(id));
+  handleLogbook: (patientId, nurseId) => {
+    dispatch(createLog(patientId, nurseId));
   }
 })
 

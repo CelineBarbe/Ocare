@@ -14,7 +14,8 @@ export const logbookChangeField = (value, field) => ({
   payload: { [field]: value },
 });
 
-export const createLog = (patient_id) => ({
+export const createLog = (patient_id, nurse_id) => ({
   type: CREATE_LOG,
   patient_id,
+  nurse_id,
 });

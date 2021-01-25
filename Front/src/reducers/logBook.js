@@ -2,11 +2,13 @@ import {SEED_LOGS, LOGBOOK_CHANGE_FIELD, GET_LOGS, SEED_PATIENT} from 'src/actio
 
 export const initialState = {
   
-  planned_date: '',
-  ending_date:'',
+  planned_date: null,
+  time:null,
+  done_date:null,
   observations: '',
   daily: false,
   done: false,
+  ending_date:null,
   tags:[],
   list: [],
   isLoading: false,
