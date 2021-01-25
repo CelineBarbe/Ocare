@@ -23,7 +23,6 @@ const PatientsPage = ({getPatients, list}) => {
 }, [])
 
 
-
 const data = (alphabetic.map(letter => (
                 <div className="patients-page-liste" id={letter}>
                             <p className="patients-page-liste-title" id={`title${letter}`}>{letter}</p>
