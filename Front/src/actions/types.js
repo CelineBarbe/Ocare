@@ -35,6 +35,7 @@ export const UPDATE_PATIENT_SUCCEEDED = "UPDATE_PATIENT_SUCCEEDED";
 
 //types logs
 export const GET_LOGS = "GET_LOGS";
+export const GET_LOGS_BY_DATE = "GET_LOGS_BY_DATE";
 export const SEED_LOGS = "SEED_LOGS";
 export const LOGBOOK_CHANGE_FIELD = "LOGBOOK_CHANGE_FIELD";
 export const CREATE_LOG = "CREATE_LOG";

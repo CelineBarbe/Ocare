@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import TransmissionPage from 'src/components/TransmissionPage';
-import { getLogs } from 'src/actions/logs';
+import { getLogs, getLogsByDate } from 'src/actions/logs';
 
-const mapStateToProps = ({ logBook }) => {
+const mapStateToProps = ({ logBook }, ownProps) => {
   const { list, isLoading} = logBook;
+  const {byDate} = ownProps
   return ({
     list,
     isLoading,
+    byDate,
   });
 };
 
@@ -15,7 +18,14 @@ const mapDispatchToProps = (dispatch) => ({
   getLogs: () => {
     dispatch(getLogs());
   },
+  getLogsByDate: (date) => {
+    dispatch(getLogsByDate(date));
+  },
 });
 
 // appel a connect et export
-export default connect(mapStateToProps, mapDispatchToProps)(TransmissionPage);
+const container =  connect(mapStateToProps, mapDispatchToProps)(TransmissionPage);
+
+const containerWithRouter = withRouter(container);
+
+export default containerWithRouter;

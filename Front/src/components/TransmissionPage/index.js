@@ -1,6 +1,7 @@
 // == Import npm
 import React, {useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
+var { DateTime } = require('luxon');
 // == Import
 import './transmissionPage.scss';
 
@@ -22,10 +23,30 @@ import Transmission from 'src/components/Transmission';
 
 
 // == Composant
-const TransmissionPage = ({list, getLogs, isLoading}) => {
-  useEffect(() => {getLogs()}, [])
+const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, location}) => {
+  const date = useParams()?.date ?? null;
+  console.log('date', date);
+  //load data cf bydate
+  useEffect(() => {
+    !byDate ? getLogs() : getLogsByDate(date)
+  }, [])
 
+  useEffect(() => {
+    console.log('location change')
+    !byDate ? getLogs() : getLogsByDate(date)
+  }, [location])
 
+  let datePres;
+ (() => {
+    if(!date) {
+      datePres = DateTime.local();
+      
+    } else {
+      datePres = DateTime.fromISO(date)
+    }
+  })();
+
+  console.log('DatePres :', datePres);
   const row =  list.map(element => ( 
    <Link to={`/patient/${element.patient_id}`} key={element.id} className="link">
         <div className="transmission-container-row" >
@@ -51,8 +72,9 @@ const TransmissionPage = ({list, getLogs, isLoading}) => {
             <div className="transmission-page">
               <Transmission />
               <div className="transmission-container">
+                <h1 className="transmission-h1"> Transmission du {datePres.day} {datePres.monthLong}</h1>
                
-              {isLoading? 'data is laoding' :  row}
+              {isLoading? 'data is loading' :  row}
 
                 {/* <div className="transmission-container-row">
                   <div className="transmission-container-row-left primary ">
