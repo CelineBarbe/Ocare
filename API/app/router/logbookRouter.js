@@ -4,8 +4,7 @@ const logbookController = require('../controller/logbookController');
 
 const router = express.Router();
 
-//router.post('/addlog', logbookController.addLog);
-//router.patch('/updatelog', logbookController.updateLog);
+router.post('/date', logbookController.findByDate);
 router.get('/', logbookController.findAll);
 router.get('/:id(\\d+)', logbookController.findById);
 router.post('/', logbookController.create);
