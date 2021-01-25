@@ -9,7 +9,7 @@ export const initialState = {
   phone_number: '',
   pin_code: '',
   email:'',
-  nbPatients:0,
+  nbpatients:0,
   newEntryName:'',
   newEntryAddress:'',
   newEntryZip_code:'',
@@ -44,7 +44,7 @@ const reducer = (oldState = initialState, action = {}) => {
         city: action.data.city,
         phone_number: action.data.phone_number,
         staff: action.data.nurses,
-        nbPatients: action.data.nbPatients,
+        nbpatients: action.data.nbpatients,
         email: action.data.email,
       };
     case CREATE_CABINET_SUCCEEDED:

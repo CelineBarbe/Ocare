@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import CabinetCard from 'src/components/CabinetCard';
 
 const mapStateToProps = ({ cabinets }) => {
-  const {id,name,address,zip_code,city,phone_number, nbPatients, email} = cabinets;
+  const {id,name,address,zip_code,city,phone_number, nbpatients, email} = cabinets;
   return ({
     id,
     name,
@@ -11,7 +11,7 @@ const mapStateToProps = ({ cabinets }) => {
     zip_code,
     city,
     phone_number,
-    nbPatients,
+    nbpatients,
     email,
   });
 };
