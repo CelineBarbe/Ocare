@@ -45,6 +45,37 @@ const logbookDataMapper = {
 
     async getAllLogsByDate(idCabinet, date) {
         
+        // Tomorrow = date + 1
+        const tomorrow = DateTime.fromISO(`${date}`).plus({days: 1}).toISODate();
+
+        const result = await client.query(`SELECT l.*,
+        p.firstname,
+        p.lastname,
+        p.birthdate,
+        p.gender,
+        p.address,
+        p.additional_address,
+        p.zip_code,
+        p.city,
+        p.phone_number,
+        p.pathology,
+        p.daily_checking,
+        p.number_daily_checking,
+        p.cabinet_id
+        FROM logbook l
+            JOIN patient p
+                ON p.id = l.patient_id
+            JOIN cabinet c
+                ON c.id = p.cabinet_id
+        WHERE c.id = $1
+        AND (l.planned_date = $2
+        OR l.planned_date = $3)
+        ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet, date, tomorrow]);
+
+        if (result.rowCount == 0) {
+            return null;
+        }
+        return result.rows;
     },
 
     async getLogById(id) {
@@ -82,31 +113,6 @@ const logbookDataMapper = {
             ending_date,
             nurse_id,
             patient_id
-        ]);
-
-        return result.rowCount;
-    },
-
-    async updateLogByid(idLog, logInfo) {
-        //pas de update de tag dans un premier temps
-        const { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id } = logInfo;
-
-        const findLog = await client.query(`SELECT * FROM logbook WHERE id = $1 AND logbook.patient_id = $2`, [idLog, patient_id]);
-
-        if (findLog.rowCount == 0) {
-            return null;
-        }
-
-        const result = await client.query(`UPDATE logbook SET planned_date = $1, time = $2, done_date = $3, observations = $4, daily = $5, done = $6, ending_date = $7, nurse_id = $8 WHERE id = $9`, [
-            planned_date,
-            time,
-            done_date,
-            observations,
-            daily,
-            done,
-            ending_date,
-            nurse_id,
-            idLog
         ]);
 
         return result.rowCount;

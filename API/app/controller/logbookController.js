@@ -22,12 +22,35 @@ const logbookController = {
         }
     },
 
+    async getByDate(request, response, next) {
+        try {
+
+            const idCabinet = request.app.locals.userCurrentCabinet;
+            const { date } = request.query;
+
+            console.log(date, "date");
+
+            const logsByDate = await logbookDataMapper.getAllLogsByDate(idCabinet, date);
+
+            if(!logsByDate) {
+                response.locals.notFound = "Aucun log pour cette date";
+                next();
+                return;
+            }
+            
+            response.json(logsByDate);
+
+        } catch (error) {
+            console.log(error.message);
+            next(error);
+        }
+    },
+
     async findByDate(request, response, next) {
         try {
 
             const idCabinet = request.app.locals.userCurrentCabinet;
             const { date } = request.body;
-
 
             const logsByDate = await logbookDataMapper.getAllLogsByDate(idCabinet, date);
 
