@@ -43,7 +43,7 @@ const patientsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          store.dispatch(seedPatient(response.data.patient));
+          store.dispatch(seedPatient(response.data.patient[0]));
         }
       })
       .catch((err) => {
