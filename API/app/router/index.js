@@ -29,7 +29,7 @@ router.use('/patient', patientRouter);
 router.use('/logbook', logbookRouter);
 
 //route medical actes
-router.use('/acte', medicalActRouter);
+router.use('/medicalact', medicalActRouter);
 
 //handleError
 router.use(errorController.error404);

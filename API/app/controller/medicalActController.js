@@ -16,10 +16,10 @@ const medicalActController = {
     },
     async findById(request, response, next) {
         try {
-            const { idAct } = request.params;
-            const act = await medicalActDataMapper.getActById(idPatient);
+            const { id } = request.params;
+            const act = await medicalActDataMapper.getActById(id);
             if(!act) {
-                response.locals.notFound = "acte introuvable";
+                response.locals.notFound = "Acte introuvable";
                 next();
                 return;
             }
@@ -34,7 +34,7 @@ const medicalActController = {
             const actInfo = request.body;
             const savedAct = await medicalActDataMapper.createAct(actInfo);
             if(!savedAct) {
-                response.locals.notFound = "Act déjà présent !";
+                response.locals.notFound = "Cet acte existe déjà";
                 next();
                 return;
             }
@@ -46,11 +46,11 @@ const medicalActController = {
 
     async update(request, response, next) {
         try {
-            const { idAct } = request.params;
+            const { id } = request.params;
             const actInfo = request.body;
-            const updatedAct = await medicalActDataMapper.updateActByid(idAct, actInfo);
+            const updatedAct = await medicalActDataMapper.updateActById(id, actInfo);
             if(!updatedAct) {
-                response.locals.notFound = "acte introuvable!";
+                response.locals.notFound = "Acte introuvable!";
                 next();
                 return;
             }
@@ -62,10 +62,10 @@ const medicalActController = {
 
     async delete(request, response, next) {
         try {
-            const { idAct } = request.params;
-            const deletedAct = await medicalActDataMapper.deleteActByid(idAct);
+            const { id } = request.params;
+            const deletedAct = await medicalActDataMapper.deleteActByid(id);
             if(!deletedAct) {
-                response.locals.notFound = "patient introuvable!";
+                response.locals.notFound = "acte introuvable!";
                 next();
                 return;
             }
@@ -75,23 +75,7 @@ const medicalActController = {
             next(error);
         }
     }
-    /* async addPatient(request, response, next) {
-        try {
-            
-        } catch (error) {
-            next(error);
-        }
-    }, */
-
-    /* async updatePatient(request, response, next) {
-        try {
-            
-        } catch (error) {
-            next(error);
-        }
-    }, */
-
-    
+   
 };
 
 module.exports = medicalActController;
