@@ -24,7 +24,7 @@ const PatientsPage = ({getPatients, list}) => {
 
 
 const data = (alphabetic.map(letter => (
-                <div className="patients-page-liste" id={letter}>
+                <div className="patients-page-liste" id={letter} key={letter}>
                             <p className="patients-page-liste-title" id={`title${letter}`}>{letter}</p>
                             <ul className="patients-page-liste-ul">
                               {returnArrayFirstLetterSorted(list,letter).map(patient =>(
