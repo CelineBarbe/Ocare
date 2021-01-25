@@ -35,6 +35,7 @@ const reducer = (oldState = initialState, action = {}) => {
       case SEED_PATIENT:
         return {
           ...oldState,
+          list : action.data.logbook,
         }        
     default:
       return { ...oldState };
