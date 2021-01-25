@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 import Modal from 'react-modal';
@@ -13,11 +13,11 @@ import App from 'src/components/App';
 Modal.setAppElement('#root')
 
 const rootReactElement = (
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <App />
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
 );
 const target = document.getElementById('root');
 render(rootReactElement, target);
