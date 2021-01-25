@@ -6,7 +6,7 @@ import './logBook.scss';
 // == Import images
 import wave from 'src/assets/icones/wave.svg';
 import pill from 'src/assets/icones/pill.svg';
-import bandage from 'src/assets/icones/bandage.svg';d
+import bandage from 'src/assets/icones/bandage.svg';
 
 //== Import modal
 import EntryModal from 'src/modal/Entry';
@@ -18,7 +18,7 @@ const LogBook = ({
 }) => {
 
 const row = list.map(list => (
-                <div className="carnet-sante-entry">
+                <div className="carnet-sante-entry" key={list.id}>
                   <div className="carnet-sante-entry-top">
                     <div className="carnet-sante-entry-top-icone">
                       <img src={pill} className="carnet-sante-entry-top-icone-img" alt="icone"/>
@@ -26,7 +26,7 @@ const row = list.map(list => (
                     <div className="carnet-sante-entry-top-care">
                       <div className="carnet-sante-entry-top-care-top">
                         <h3 className="carnet-sante-entry-top-care-top-title">Pilulier</h3>
-                        <span className="carnet-sante-entry-top-care-top-name">Jérôme</span>
+                        <span className="carnet-sante-entry-top-care-top-name">{list.nurse_firstname}</span>
                       </div>
                       <div className="carnet-sante-entry-top-care-bottom">
                         <span className="carnet-sante-entry-top-care-bottom-date">{list.planned_date}</span>

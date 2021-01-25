@@ -25,7 +25,7 @@ const seedDate = () => {
 
   let dateMinusOnePres = `${dateMinusOne.day} ${dateMinusOne.monthShort}`;
   let dateMinusTwoPres = `${dateMinusTwo.day} ${dateMinusTwo.monthShort}`;
- 
+  //DateTime.local(2014, 7, 13).toSQL({ includeOffset: false }) //=> '2014-07-13 00:00:00.000'
   let dateMinusOneLink  =  dateMinusOne.toLocaleString();
   let dateMinusTwoLink = dateMinusTwo.toLocaleString();  
 
