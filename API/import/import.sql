@@ -170,8 +170,6 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 -- cabinet 1 / patients 1 à 17 /nurses 1,2,4,6,8,14 et 16
 ('2021-01-23', '2021-01-24', null, 'Faire une prise de sang et contrôler la tension', false, false, null, 1, 2),
 ('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie/pansement', true, false, '2021-01-27', 1, 3),
-('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie, vérification points', true, false, '2021-02-12', 2, 5),
-('2020-12-14', '2020-12-15', '2020-12-15', 'Prise de sang à domicile', false, true, null, 2, 6),
 ('2020-12-23', '2020-12-24', '2020-12-24', 'Prise de sang à domicile', false, true, null, 1, 6),
 ('2020-11-14', '2020-11-15', '2020-12-15', 'Injection traitement', true, true, '2020-12-15', 8, 8),
 ('2021-01-22', '2021-01-23', null, 'Vérification des points suite opération genou', true, false, '2021-02-08', 8, 10),
@@ -179,6 +177,30 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 ('2019-06-12', '2019-06-13', '2019-06-13', 'Première prise traitement injectable', false, true, null, 4, 14),
 ('2019-08-30', '2019-09-01', '2019-09-01', 'Prise de sang', false, true, null, 6, 15),
 ('2019-10-12', '2019-10-13', '2019-11-23', 'Prise en charge plaie du pied', true, true, '2019-11-23', 6, 19);
+
+-- Camille Janvier
+('2020-12-14', '2020-12-15', '2020-12-15', 'Prise de sang à domicile', false, true, null, 2, 18),
+
+('2021-01-23', '2021-01-24', null, 'Nettoyage de plaie, vérification points', true, false, '2021-02-12', 2, 19),
+('2021-01-19', '2021-01-20', '2021-01-20', 'Controle de la glycémie, normal', false, true, null, 2, 19),
+('2020-12-04', '2020-12-05', '2020-12-05', 'Controle de la glycémie, 1,13', false, true, null, 2, 19),
+
+('2020-12-14', '2020-12-15', '2020-12-15', 'Prise de sang à domicile', false, true, null, 2, 20),
+('2019-05-08', '2019-05-10', '2019-05-10', 'Prise de sang à domicile', false, true, null, 2, 20),
+
+('2018-03-01', '2018-03-02', '2018-03-06', 'Pansement à refaire sur plaie genou', true, true, '2018-03-06', 2, 21),
+
+('2018-04-21', '2018-04-22', '2018-04-22', 'Lavement, conseils', false, true, null, 2, 22 ),
+('2018-06-07', '2018-06-08', '2018-06-08', 'Problèmes pour aller à la selle, lavement', false, true, null, 2, 22 ),
+('2019-11-02', '2019-11-03', '2019-12-30', 'Crise, prise en charge journalière', true, true, '2019-12-30', 2, 22 ),
+('2020-03-12', '2018-04-22', '2018-04-22', 'Lavement, conseils', false, true, null, 2, 22 ),
+
+('2020-08-21', '2020-08-22', '2020-08-22', 'Nettoyage de cathéter', false, true, null, 2, 23),
+('2020-09-12', '2020-09-13', '2020-09-13', 'Nettoyage de cathéter + pansement', false, true, null, 2, 23),
+('2020-10-27', '2020-10-28', '2020-10-28', 'Prise de sang', false, true, null, 2, 23),
+
+('2020-11-27', '2020-12-28', '2020-12-28', 'Vérification des points, pansement', false, true, null, 2, 24);
+
 
 -- patient_has_logbook
 -- INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
@@ -194,5 +216,75 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 -- (15, 10),
 -- (19, 11);
 
+INSERT INTO medical_act(name, category) VALUES
+-- Prélèvements et injections
+(`Prélèvement par ponction veineuse directe`,`Prélèvements et injections`),
+(`Saignée`,`Prélèvements et injections`),
+(`Prélèvement aseptique cutané ou de sécrétions muqueuses, prélèvement de selles ou d’urine pour examens cytologiques, bactériologiques, mycologiques, virologiques ou parasitologiques`,`Prélèvements et injections`),
+(`Injection intraveineuse directe isolée`,`Prélèvements et injections`),
+(`Injection intraveineuse directe en série`,`Prélèvements et injections`),
+(`Injection intraveineuse directe chez un enfant de moins de cinq ans`,`Prélèvements et injections`),
+(`Injection intramusculaire`,`Prélèvements et injections`),
+(`Supplément pour vaccination antigrippale hors-primo injection dans le cadre de la campagne de vaccination anti-grippale organisée par l’assurance maladie`,`Prélèvements et injections`),
+(`Injection d’un sérum d’origine humaine ou animale selon la méthode de besredka, y compris la surveillance`,`Prélèvements et injections`),
+(`Injection sous-cutanée`,`Prélèvements et injections`),
+(`Supplément pour vaccination antigrippale hors-primo injection dans le cadre de la campagne de vaccination anti-grippale organisée par l’assurance maladie`,`Prélèvements et injections`),
+(`Injection intradermique`,`Prélèvements et injections`),
+(`Injection d’un ou plusieurs allergènes, poursuivant un traitement d’hyposensibilisation spécifique, selon le protocole écrit, y compris la surveillance, la tenue du dossier de soins, la transmission des informations au médecin prescripteur`,`Prélèvements et injections`),
+(`Injection d’un implant souscutané`,`Prélèvements et injections`),
+(`Injection en goutte à goutte par voie rectale`,`Prélèvements et injections`),
+
+-- Pansements courants
+(`Pansement de stomie`,`Pansements courants`),
+(`Pansement de trachéotomie, y compris l’aspiration et l’éventuel changement de canule ou sonde`,`Pansements courants`),
+(`Ablation de fils ou d’agrafes, dix ou moins, y compris le pansement éventuel`,`Pansements courants`),
+(`Ablation de fils ou d’agrafes, plus de dix, y compris le pansement éventuel`,`Pansements courants`),
+(`Autre pansement`,`Pansements courants`),
+
+-- Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse
+(`Pansements de brûlure étendue ou de plaie chimique ou thermique étendue, sur une surface supérieures à 5 % de la surface corporelle`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+(`Pansement d’ulcère étendu ou de greffe cutanée, sur une surface supérieure à 60 cm²`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+(`Pansement d’amputation nécessitant détersion, épluchage et régularisation`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+(`Pansement de fistule digestive`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+(`Pansement pour pertes de substance traumatique ou néoplasique, avec lésions profondes, sous aponévrotiques, musculaires, tendineuses ou osseuses`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+(`Pansement chirurgical nécessitant un méchage ou une irrigation`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+(`Pansement d’escarre profonde et étendue atteignant les muscles ou les tendons`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+(`Pansement chirurgical avec matériel d’ostéosynthèse extériorisé`,`Pansements lourds et complexes nécessitant des conditions d’asepsie rigoureuse`),
+
+-- Pose de sonde et alimentation
+(`Pose de sonde gastrique`,`Pose de sonde et alimentation`),
+(`Alimentation entérale par gavage ou en déclive ou par nutri-pompe, y compris la surveillance, par séance`,`Pose de sonde et alimentation`),
+(`Alimentation entérale par voie jéjunale avec sondage de la stomie, y compris le pansement et la surveillance, par séance`,`Pose de sonde et alimentation`),
+
+-- Soins portant sur l’appareil respiratoire
+(`Séance d’aérosol`,`Soins portant sur l’appareil respiratoire`),
+(`Lavage d’un sinus`,`Soins portant sur l’appareil respiratoire`),
+
+-- Soins portant sur l’appareil génito-urinaire
+(`Injection vaginale`,`Soins portant sur l’appareil génito-urinaire`),
+(`Soins gynécologiques au décours immédiat d’un traitement par curiethérapie`,`Soins portant sur l’appareil génito-urinaire`),
+(`Cathétérisme urétral chez la femme`,`Soins portant sur l’appareil génito-urinaire`),
+(`Cathétérisme urétral chez l’homme`,`Soins portant sur l’appareil génito-urinaire`),
+(`Changement de sonde urinaire à demeure chez la femme`,`Soins portant sur l’appareil génito-urinaire`),
+(`Changement de sonde urinaire à demeure chez l’homme`,`Soins portant sur l’appareil génito-urinaire`),
+(`Education à l’autosondage comprenant le sondage éventuel, avec un maximum de dix séances`,`Soins portant sur l’appareil génito-urinaire`),
+(`Réadaptation de vessie neurologique comprenant le sondage éventuel`,`Soins portant sur l’appareil génito-urinaire`),
+(`Instillation et/ou lavage vésical (sonde en place)`,`Soins portant sur l’appareil génito-urinaire`),
+(`Pose isolée d’un étui pénien, une fois par vingt-quatre heures`,`Soins portant sur l’appareil génito-urinaire`),
+
+--  Soins portant sur l’appareil digestif
+(`Soins de bouche avec application de produits médicamenteux au décours immédiat d’une radiothérapie`,`Soins portant sur l’appareil digestif`),
+(`Lavement évacuateur ou médicamenteux`,`Soins portant sur l’appareil digestif`),
+(`Extraction de fécalome ou extraction manuelle des selles`,`Soins portant sur l’appareil digestif`),
+
+-- Test et soins portant sur l’enveloppe cutanée
+(`Pulvérisation de produit(s) médicamenteux`,`Test et soins portant sur l’enveloppe cutanée`),
+(`Réalisation de test tuberculinique`,`Test et soins portant sur l’enveloppe cutanée`),
+(`Lecture d’un timbre tuberculinique et transmission d’informations au médecin prescripteur`,`Test et soins portant sur l’enveloppe cutanée`),
+
+--Surveillance et observation d’un patient à domicile
+(`Administration et surveillance d’une thérapeutique orale au domicile des patients présentant des troubles psychiatriques avec établissement d’une fiche de surveillance, par passage`,`Surveillance et observation d’un patient à domicile`),
+(`Au-delà du premier mois, par passage`,`Surveillance et observation d’un patient à domicile`),
+(`Surveillance et observation d’un patient lors de la mise en oeuvre d’un traitement ou lors de la modification de celui-ci, sauf pour les patients diabétiques insulino-dépendants, avec établissement d’une fiche de surveillance, avec un maximum de quinze jours, par jour`,`Surveillance et observation d’un patient à domicile`);
 
 COMMIT;
