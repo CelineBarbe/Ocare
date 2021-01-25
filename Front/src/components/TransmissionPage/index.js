@@ -9,8 +9,8 @@ import arrow_left from 'src/assets/icones/arrow_left.svg';
 import arrow_right from 'src/assets/icones/arrow_right.svg';
 import plus from 'src/assets/icones/plus2.svg';
 import calendar from 'src/assets/icones/calendar.svg';
-import woman from 'src/assets/images/woman.svg';
-import man from 'src/assets/images/man.svg';
+import F from 'src/assets/images/woman.svg';
+import M from 'src/assets/images/man.svg';
 
 
 // == Import 
@@ -27,18 +27,18 @@ const TransmissionPage = ({list, getLogs, isLoading}) => {
 
 
   const row =  list.map(element => ( 
-    <Link to={`/patient/${element.patient_id}`}  key={element.id}>
-        <div className="transmission-container-row">
-       
+   <Link to={`/patient/${element.patient_id}`} key={element.id} className="link">
+        <div className="transmission-container-row" >
           <div className="transmission-container-row-left primary ">
-            <img className="transmission-container-row-left-img" alt="woman" src={man}/>
+            <img className="transmission-container-row-left-img" alt="woman" src={element.gender == 'F'? F : M}/>
           </div>
             <div className="transmission-container-row-right secondary">
-            <h3>Mme pinpin</h3>
+            <h3>Mme {element.lastname}</h3>
               <p>{element.observations}</p>
-            </div>
+            </div>  
+            
       </div>
-  </Link>
+</Link>
       ))
   
 

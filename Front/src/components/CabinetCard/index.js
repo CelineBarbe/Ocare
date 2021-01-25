@@ -1,7 +1,8 @@
 // == Import npm
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-// == Import
+ // == Import
 import './cabinetCard.scss';
 
 //== Import images
@@ -9,6 +10,8 @@ import pen from 'src/assets/icones/pen.svg';
 
 // == Composant
 const CabinetCard = ({id, name, address, zip_code, city, phone_number, nbPatients, email}) => {
+
+  
   return (
     <div className="cabinet-card">
     <img src={pen} alt="stylo" className="cabinet-card-edit" />
@@ -24,6 +27,7 @@ const CabinetCard = ({id, name, address, zip_code, city, phone_number, nbPatient
       <p className="cabinet-card-infos cabinet-card-mail">
         Mail : {email}
       </p>
+
     </div>
   )
 };

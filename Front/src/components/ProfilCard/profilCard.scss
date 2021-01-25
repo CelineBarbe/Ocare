@@ -47,4 +47,10 @@
     color: vars.$color-grey4;
     margin:vars.$gutter;
   }
+
+  &-button {
+    border: none;
+    background-color:vars.$color-grey4;
+    color: vars.$color-white;
+  }
 }

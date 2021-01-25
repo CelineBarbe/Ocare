@@ -29,7 +29,10 @@
 .transmission-container::-webkit-scrollbar {
   display: none;
 }
-
+.link {
+  width: 100%;
+  display: block;
+}
 .transmission-container {
   display: flex;
   flex-direction: column;
@@ -41,14 +44,17 @@
   margin-top: vars.$gutter;
   overflow-y: scroll ;
   -ms-overflow-style:none;
+  
 
   &-row {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    
     margin: vars.$gutter/3 0;
     border-radius: 10px;
+    
 
     &-left {
       border-radius: 10px 0 0 10px ;
