@@ -43,6 +43,10 @@ const logbookDataMapper = {
         return result.rows;
     },
 
+    async getAllLogsByDate(idCabinet, date) {
+        
+    },
+
     async getLogById(id) {
         const result = await client.query(`SELECT l.*,
         p.firstname,

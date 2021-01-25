@@ -172,3 +172,12 @@ SELECT n.id,
     n.phone_number,
     n.avatar
     FROM nurse n;
+
+-- Vue Table logbook avec nom prénom du nurse
+CREATE VIEW logbook_with_nurse_infos AS
+SELECT l.*,
+    n.firstname as nurse_firstname,
+    n.lastname as nurse_lastname
+    FROM logbook l
+        JOIN nurse n
+            ON n.id = l.nurse_id;
