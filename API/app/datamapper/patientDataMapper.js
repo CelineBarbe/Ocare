@@ -13,13 +13,42 @@ const patientDataMapper = {
 
     async getPatientById(id) {
 
-        const result = await client.query(`SELECT * FROM patient WHERE id = $1`, [id]);
+        // const result = await client.query(`SELECT * FROM patient WHERE id = $1`, [id]);
+
+        // const result = await client.query(`SELECT * FROM patient JOIN logbook ON patient.id = logbook.patient_id WHERE patient.id = $1`, [id]);
+
+        const result = await client.query(`SELECT p.id,
+        p.firstname,
+        p.lastname,
+        p.birthdate,
+        p.gender,
+        p.address,
+        p.additional_address,
+        p.zip_code,
+        p.city,
+        p.phone_number,
+        p.pathology,
+        p.daily_checking,
+        p.number_daily_checking,
+        p.cabinet_id,
+        JSON_AGG(logbook) as logbook
+        FROM patient p
+            JOIN logbook 
+                ON p.id = logbook.patient_id 
+        WHERE p.id = $1 GROUP BY p.id`, [id]);
+
+        // const result = await client.query(`SELECT patient.*,
+        // JSON_AGG(logbook) as logbook
+        // FROM patient
+        //     JOIN logbook
+        //         ON patient.id = logbook.patient_id
+        // WHERE patient.id = $1 GROUP BY patient.id`, [id]);
 
         if (result.rowCount == 0) {
             return null;
         }
         
-        return result.rows[0];
+        return result.rows;
     },
 
     async createPatient(patientInfo) {
