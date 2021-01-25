@@ -8,3 +8,6 @@
 040-View-getAllCabinet 2021-01-20T19:21:14Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add view getAllCabinet by Nurse
 050-add-patient 2021-01-21T18:48:23Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add patient table
 060-add-logbook 2021-01-22T09:18:43Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add logbook and patient_has_logbook table
+041-View-getAllCabinet-with-patient 2021-01-24T14:37:38Z "Etudiant O'clock",,, <etudiant@teleporteur> # Update View getAllCabinet to add number of patient by cabinet
+051-add-column-to-patient 2021-01-24T20:59:42Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add column additional_address to patient table
+061-add-column-to-logbook 2021-01-24T21:13:07Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add column time to logbook and drop table patient_has_logbook

@@ -15,7 +15,7 @@ const errorController = {
             error: {
                 code: 500,
                 type: "fatal error",
-                details: error
+                details: error.message
             }
         })
     }

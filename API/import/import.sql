@@ -45,10 +45,10 @@ INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet, allowed) VA
 (2, 4, default, default),
 (2, 5, default, default),
 (2, 6, default, default),
-(2, 7, default, default),
+--(2, 7, default, default), -- A supprimer doublon avec la ligne 53
 (2, 10, true, default),
 (2, 12, true, default),
-(3, 3, true, default),
+--(3, 3, true, default), -- A supprimer doublon avec la ligne 52
 (3, 3, default, default),
 (2, 7, true, default),
 (3, 9, default, default),
@@ -181,18 +181,18 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 ('2019-10-12', '2019-10-13', '2019-11-23', 'Prise en charge plaie du pied', true, true, '2019-11-23', 6, 19);
 
 -- patient_has_logbook
-INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
-(1, 1),
-(3, 2),
-(5, 3),
-(6, 4),
-(6, 5),
-(8, 6),
-(10, 7),
-(12, 8),
-(14, 9),
-(15, 10),
-(19, 11);
+-- INSERT INTO patient_has_logbook(patient_id, logbook_id) VALUES
+-- (1, 1),
+-- (3, 2),
+-- (5, 3),
+-- (6, 4),
+-- (6, 5),
+-- (8, 6),
+-- (10, 7),
+-- (12, 8),
+-- (14, 9),
+-- (15, 10),
+-- (19, 11);
 
 
 COMMIT;

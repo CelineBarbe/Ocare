@@ -94,23 +94,7 @@ const patientController = {
             next(error);
         }
     }
-    /* async addPatient(request, response, next) {
-        try {
-            
-        } catch (error) {
-            next(error);
-        }
-    }, */
 
-    /* async updatePatient(request, response, next) {
-        try {
-            
-        } catch (error) {
-            next(error);
-        }
-    }, */
-
-    
 };
 
 module.exports = patientController;

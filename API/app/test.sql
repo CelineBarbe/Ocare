@@ -35,14 +35,41 @@ SELECT c.id,
     c.city,
     c.phone_number,
     c.owner_id,
-    JSON_AGG(nurse) FROM cabinet c
+    JSON_AGG(DISTINCT nurse) as nurses,
+    COUNT(DISTINCT p.id) as nbPatients
+    FROM cabinet c
     JOIN cabinet_has_nurse chs
         ON c.id = chs.cabinet_id
     JOIN nurse
         ON nurse.id = chs.nurse_id
-    WHERE chs.nurse_id = 1
+    JOIN patient p
+        ON p.cabinet_id = c.id 
+    WHERE chs.nurse_id = 2
     GROUP BY c.id;
-    ;
+
+-- TEST CREE UNE FONCTION --- RENVOI
+CREATE FUNCTION all_cabinet(nurse_id INT) RETURNS TABLE("id" INT, "name" TEXT, "address" TEXT, "zip_code" TEXT, "city" TEXT, "phone_number" TEXT, "owner_id" INT, "nurses" JSON, "nbPatient" BIGINT) AS
+$$
+    SELECT c.id,
+    c.name,
+    c.address,
+    c.zip_code,
+    c.city,
+    c.phone_number,
+    c.owner_id,
+    JSON_AGG(DISTINCT nurse) as nurses,
+    COUNT(DISTINCT p.id) as nbPatients
+    FROM cabinet c
+    JOIN cabinet_has_nurse chs
+        ON c.id = chs.cabinet_id
+    JOIN nurse
+        ON nurse.id = chs.nurse_id
+    JOIN patient p
+        ON p.cabinet_id = c.id 
+    WHERE chs.nurse_id = nurse_id
+    GROUP BY c.id;
+$$
+LANGUAGE sql VOLATILE STRICT;
 
 --- Récupérer les détails d'un cabinet et le staff
 SELECT c.id,
@@ -134,3 +161,14 @@ SELECT l.*,
             ON c.id = p.cabinet_id
     WHERE c.id = 1;
     
+
+-- Vue Table nurse sans password
+CREATE VIEW nurse_without_password AS
+SELECT n.id,
+    n.siren_code,
+    n.firstname,
+    n.lastname,
+    n.email,
+    n.phone_number,
+    n.avatar
+    FROM nurse n;

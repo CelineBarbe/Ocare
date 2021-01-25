@@ -2,8 +2,7 @@ const client = require('./client');
 
 const cabinetDataMapper = {
     async getAllCabinet(idUser) {
-        
-        
+                
         const result = await client.query(`
             SELECT all_cabinet.* 
                 FROM all_cabinet 
@@ -14,9 +13,6 @@ const cabinetDataMapper = {
         if (result.rowCount == 0) {
             return null;
         }
-
-        // Nb patients en dur pour l'instant.
-        result.rows.map(cab => cab.nbPatients = 15);
 
         // Add to cabinet Owner
         for (let cab of result.rows) {
@@ -34,23 +30,7 @@ const cabinetDataMapper = {
 
     async getCabinetById(id, userID, defaultCab) {
 
-    const result = await client.query(`
-        SELECT c.id,
-                c.name,
-                c.address,
-                c.zip_code,
-                c.city,
-                c.phone_number,
-                c.owner_id,
-                JSON_AGG(nurse) AS nurses
-            FROM cabinet c
-            JOIN cabinet_has_nurse chs
-                ON c.id = chs.cabinet_id 
-            JOIN nurse
-                ON nurse.id = chs.nurse_id
-        WHERE c.id = $1
-        GROUP BY c.id;
-        `, [id]);
+    const result = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [id])
 
         if(result.rowCount == 0) {
             return null;
@@ -86,6 +66,9 @@ const cabinetDataMapper = {
             pin_code,
             owner_id
         ]);
+
+        // Remove default_cabinet
+        await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE nurse_id = $1`, [owner_id]);
 
         // saved nurse to cabinet
         await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [result.rows[0].id, result.rows[0].owner_id]);

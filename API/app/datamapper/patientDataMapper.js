@@ -24,7 +24,7 @@ const patientDataMapper = {
 
     async createPatient(patientInfo) {
 
-        const { firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, cabinet_id } = patientInfo;
+        const { firstname, lastname, birthdate, gender, address, additional_address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, cabinet_id } = patientInfo;
 
         // is patient already exist ?
         const isAlreadyPatient = await client.query(`SELECT * FROM patient WHERE firstname = $1 AND lastname = $2 AND birthdate = $3 and cabinet_id = $4`, [firstname, lastname, birthdate, cabinet_id]);
@@ -34,12 +34,13 @@ const patientDataMapper = {
         }
 
         // save patient
-        const result = await client.query(`INSERT INTO patient(firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, cabinet_id ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`,[
+        const result = await client.query(`INSERT INTO patient(firstname, lastname, birthdate, gender, address, additional_adress, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, cabinet_id ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING *`,[
             firstname,
             lastname,
             birthdate,
             gender,
             address,
+            additional_address,
             zip_code,
             city,
             phone_number,
@@ -54,7 +55,7 @@ const patientDataMapper = {
 
     async updatePatientByid(idPatient, patientInfo) {
 
-        const { firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking } = patientInfo;
+        const { firstname, lastname, birthdate, gender, address, additional_address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking } = patientInfo;
 
         const findPatient = await client.query(`SELECT * FROM patient WHERE id = $1`, [idPatient]);
 
@@ -62,12 +63,13 @@ const patientDataMapper = {
             return null;
         }
 
-        const result = await client.query(`UPDATE patient SET firstname = $1, lastname = $2, birthdate = $3, gender = $4, address = $5, zip_code = $6, city = $7, phone_number = $8, pathology = $9, daily_checking = $10, number_daily_checking = $11 WHERE id = $12 RETURNING *`, [
+        const result = await client.query(`UPDATE patient SET firstname = $1, lastname = $2, birthdate = $3, gender = $4, address = $5, additional_address = $6, zip_code = $7, city = $8, phone_number = $9, pathology = $10, daily_checking = $11, number_daily_checking = $12 WHERE id = $13 RETURNING *`, [
             firstname,
             lastname,
             birthdate,
             gender,
             address,
+            additional_address,
             zip_code,
             city,
             phone_number,

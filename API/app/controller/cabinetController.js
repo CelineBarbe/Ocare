@@ -18,6 +18,7 @@ const cabinetController = {
             response.json({ cabinets });
 
         } catch (error) {
+            console.log(error.message);
             next(error);
         }
     },
@@ -39,11 +40,7 @@ const cabinetController = {
             }
 
             // Save current_cabinet in locals
-            response.locals.userCurrentCabinet = parseInt(request.params.id, 10);
             request.app.locals.userCurrentCabinet = parseInt(request.params.id, 10);
-
-            // nb patient en dur pour l'instant
-            cabinet[0].nbPatient = 50;
 
             response.json({ cabinet });
 
