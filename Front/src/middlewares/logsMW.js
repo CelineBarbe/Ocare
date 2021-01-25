@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_LOGS, CREATE_LOG} from 'src/actions/types';
+import { GET_LOGS, CREATE_LOG, GET_LOGS_BY_DATE} from 'src/actions/types';
 import { seedLogs } from 'src/actions/logs';
 
 const URL = "https://ocare.herokuapp.com/";
@@ -67,7 +67,31 @@ const logsMW = (store) => (next) => (action) => {
         console.log(err);
       });
     next(action);
-  }; 
+  };
+  if (action.type === GET_LOGS_BY_DATE) {
+    console.log('passe par get logs by date', action.date);
+    const config = {
+      method: 'post',
+      url: `${URL}logbook/date`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+      data: {
+        date: action.date,
+      }
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          store.dispatch(seedLogs(response.data));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  };
   next(action);
 }
 
