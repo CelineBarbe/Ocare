@@ -5,7 +5,7 @@ export const initialState = {
   planned_date: null,
   time:null,
   done_date:null,
-  observations: null,
+  observations: '',
   daily: false,
   done: false,
   ending_date:null,
@@ -26,7 +26,7 @@ const reducer = (oldState = initialState, action = {}) => {
       case SEED_LOGS:
         return {
           ...oldState,
-          list: action.payload,
+          list: [...oldState.list,action.payload],
           isLoading: false,
         };
       case GET_LOGS:

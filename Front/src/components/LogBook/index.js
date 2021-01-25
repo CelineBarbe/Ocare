@@ -30,7 +30,13 @@ const row = list.map(list => (
                         <span className="carnet-sante-entry-top-care-top-name">{list.nurse_firstname}</span>
                       </div>
                       <div className="carnet-sante-entry-top-care-bottom">
-                        <span className="carnet-sante-entry-top-care-bottom-date">{list.planned_date}</span>
+                        <span className="carnet-sante-entry-top-care-bottom-date">
+                        {
+                          !list.planned_date
+                          ? list.creation_date
+                          : list.planned_date
+                        }
+                        </span>
                       </div> 
                     </div>
                   </div>

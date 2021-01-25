@@ -57,10 +57,9 @@ const logsMW = (store) => (next) => (action) => {
     };
     axios(config)
       .then((response) => {
-        console.log(response);
+        console.log("response",response.data.savedLog);
         if (response.status === 200) {
-          store.dispatch(seedLogs(response.data));
-          console.log("New care data:",response.data)
+          store.dispatch(seedLogs(response.data.savedLog));
         }
       })
       .catch((err) => {
