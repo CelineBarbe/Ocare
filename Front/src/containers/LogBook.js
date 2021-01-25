@@ -4,11 +4,12 @@ import LogBook from 'src/components/LogBook';
 
 const mapStateToProps = ({logBook}, ownProps) => {
   const { list } = logBook;
-  const { entryModal, closeModalEntry } = ownProps;
+  const { entryModal, closeModalEntry, patientId } = ownProps;
   return ({
     entryModal,
     closeModalEntry,
-    list
+    list,
+    patientId
   })
 }
 

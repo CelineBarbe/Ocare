@@ -6,15 +6,16 @@ import './logBook.scss';
 // == Import images
 import wave from 'src/assets/icones/wave.svg';
 import pill from 'src/assets/icones/pill.svg';
-import bandage from 'src/assets/icones/bandage.svg';d
+import bandage from 'src/assets/icones/bandage.svg';
 
 //== Import modal
-import EntryModal from 'src/modal/Entry';
+import EntryModal from 'src/containers/EntryModal';
 
 const LogBook = ({
   entryModal, 
   closeModalEntry, 
-  list
+  list,
+  patientId
 }) => {
 
 const row = list.map(list => (
@@ -49,7 +50,7 @@ const row = list.map(list => (
   return ( 
     <div className="carnet-sante-container">
       {
-        entryModal ? <EntryModal closeModalEntry={closeModalEntry} /> : null
+        entryModal ? <EntryModal closeModalEntry={closeModalEntry} patientId={patientId} /> : null
       }
 
       { list.length > 0 ? row : null }

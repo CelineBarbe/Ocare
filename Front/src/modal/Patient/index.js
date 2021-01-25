@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // == Import
 import './patientModal.scss';
 
-const patientModal = ({
+const PatientModal = ({
   gender, 
   birthdate, 
   address, 
@@ -32,4 +32,4 @@ const patientModal = ({
   )
 };
 
-export default patientModal;
+export default PatientModal;

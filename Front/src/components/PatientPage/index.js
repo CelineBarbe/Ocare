@@ -108,6 +108,7 @@ const PatientPage = ({
               <LogBook 
                 entryModal={entryModal} 
                 closeModalEntry={closeModalEntry} 
+                patientId={id}
               />
             </div>
           </div>
