@@ -201,6 +201,7 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 
 ('2020-11-27', '2020-12-28', '2020-12-28', 'Vérification des points, pansement', false, true, null, 2, 24);
 
+
 INSERT INTO medical_act(name, category) VALUES
 -- Prélèvements et injections
 ('Prélèvement par ponction veineuse directe','Prélèvements et injections'),
@@ -213,6 +214,9 @@ INSERT INTO medical_act(name, category) VALUES
 ('Supplément pour vaccination antigrippale hors-primo injection dans le cadre de la campagne de vaccination anti-grippale organisée par l’assurance maladie','Prélèvements et injections'),
 ('Injection d’un sérum d’origine humaine ou animale selon la méthode de besredka, y compris la surveillance','Prélèvements et injections'),
 ('Injection sous-cutanée','Prélèvements et injections'),
+('Injection d’un sérum d’origine humaine ou animale selon la méthode de besredka, y compris la surveillance','Prélèvements et injections'),
+('Injection sous-cutanée','Prélèvements et injections'),
+('Supplément pour vaccination antigrippale hors-primo injection dans le cadre de la campagne de vaccination anti-grippale organisée par l’assurance maladie','Prélèvements et injections'),
 ('Injection intradermique','Prélèvements et injections'),
 ('Injection d’un ou plusieurs allergènes, poursuivant un traitement d’hyposensibilisation spécifique, selon le protocole écrit, y compris la surveillance, la tenue du dossier de soins, la transmission des informations au médecin prescripteur','Prélèvements et injections'),
 ('Injection d’un implant souscutané','Prélèvements et injections'),
