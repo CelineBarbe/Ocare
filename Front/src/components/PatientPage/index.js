@@ -12,7 +12,7 @@ import plus from 'src/assets/icones/plus2.svg';
 // == Import 
 import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
-import LogBook from 'src/components/LogBook';
+import LogBook from 'src/containers/LogBook';
 import PatientModal from 'src/modal/Patient';
 
 // == Composant
@@ -113,7 +113,6 @@ const PatientPage = ({
           </div>
         <Nav />
       </div>
-    
   )
 };
 
