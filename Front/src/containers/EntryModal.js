@@ -8,7 +8,7 @@ const mapStateToProps = ({logBook, auth}, ownProps) => {
   const { closeModalEntry, patientId } = ownProps;
   const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated } = logBook;
   const { id } = auth;
-  console.log('id');
+  
   return ({
     closeModalEntry,
     planned_date,

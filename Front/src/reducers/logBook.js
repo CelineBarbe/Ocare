@@ -5,7 +5,7 @@ export const initialState = {
   planned_date: null,
   time:null,
   done_date:null,
-  observations: '',
+  observations: null,
   daily: false,
   done: false,
   ending_date:null,

@@ -35,7 +35,7 @@ const logsMW = (store) => (next) => (action) => {
     console.log('passe par create Log');
     console.log('planned_date:',planned_date,'ending_date:', ending_date,'observations:', observations, 'daily:',daily,'done:', done, 'default cabinet:',default_cabinet, 'time:',time, 'done date',done_date)
     const { patient_id, nurse_id } = action;
-    console.log('patient id ',patient_id, 'nurse id', nurse_id);
+    console.log('patient_id ',patient_id, 'nurse id', nurse_id);
     const config = {
       method: 'post',
       url: `${URL}logbook/`,
@@ -46,6 +46,8 @@ const logsMW = (store) => (next) => (action) => {
         planned_date,
         ending_date,
         observations,
+        time,
+        done_date,
         daily,
         done,
         cabinet_id: default_cabinet,
@@ -57,7 +59,8 @@ const logsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          console.log('Nouveau soin enregistré');
+          store.dispatch(seedLogs(response.data));
+          console.log("New care data:",response.data)
         }
       })
       .catch((err) => {

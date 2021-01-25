@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 // == Import fichier scss
 import './logBook.scss';
