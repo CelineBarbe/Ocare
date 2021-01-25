@@ -65,8 +65,8 @@ const CreatePatient = ({
       />
       <select id="gender" name="gender" value={gender} onChange={handleChange}
 >
-        <option value="male"> Homme</option>
-        <option value="female">Femme</option>
+        <option value="M"> Homme</option>
+        <option value="F">Femme</option>
       </select>
       <input
         className="form-input"
