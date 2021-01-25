@@ -3,6 +3,8 @@ import React, { Fragment } from 'react';
 // == Import fichier scss
 import './logBook.scss';
 
+import { DateTime } from "luxon";
+
 // == Import images
 import wave from 'src/assets/icones/wave.svg';
 import pill from 'src/assets/icones/pill.svg';
@@ -18,8 +20,15 @@ const LogBook = ({
   patientId
 }) => {
 
-const row = list.map(list => (
+console.log("list",list);
+
+const tri = list.slice().sort((a, b) => DateTime.fromISO(b.creation_date).toISODate() > DateTime.fromISO(a.creation_date).toISODate() ? 1: -1);
+console.log("tri", tri);
+
+const row =  tri.map(list => (
+  
                 <div className="carnet-sante-entry" key={list.id}>
+                  
                   <div className="carnet-sante-entry-top">
                     <div className="carnet-sante-entry-top-icone">
                       <img src={pill} className="carnet-sante-entry-top-icone-img" alt="icone"/>
@@ -33,8 +42,8 @@ const row = list.map(list => (
                         <span className="carnet-sante-entry-top-care-bottom-date">
                         {
                           !list.planned_date
-                          ? list.creation_date
-                          : list.planned_date
+                          ? DateTime.fromISO(list.creation_date).toLocaleString()
+                          : DateTime.fromISO(list.planned_date).toLocaleString()
                         }
                         </span>
                       </div> 
