@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-//import { authChangeField, onSubmitLogin } from 'src/actions/auth';
+import { logOut, authChangeField } from 'src/actions/auth';
 import ProfilCard from 'src/components/ProfilCard';
 
 const mapStateToProps = ({ auth }) => {
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (value, field) => {
     dispatch(authChangeField(value, field));
   },
+  logOut: () => {
+    dispatch(logOut());
+  }
 
 });
 

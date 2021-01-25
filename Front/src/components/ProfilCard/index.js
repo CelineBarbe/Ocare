@@ -8,7 +8,7 @@ import './profilCard.scss';
 import pen from 'src/assets/icones/pen.svg';
 
 // == Composant
-const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, siren_code, avatar }) => {
+const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, siren_code, avatar, logOut }) => {
   return (
     <div className="profil-card">
     <img src={pen} alt="stylo" className="profil-card-edit" />
@@ -23,6 +23,7 @@ const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, sir
       <p className="profil-card-infos">
         Mail : {email}
       </p>
+      <button type="Button" className="profil-card-button" onClick={logOut}> Se Déconnecter </button>
     </div>
   )
 };

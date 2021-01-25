@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP } from 'src/actions/types';
+import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT } from 'src/actions/types';
 import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
 const URL = "https://ocare.herokuapp.com/"
 
@@ -56,6 +56,29 @@ const auth = (store) => (next) => (action) => {
           const { data } = response;
           //console.log(data);
           store.dispatch(signUpOk());
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  }
+  //LOGOUT
+  if (action.type === LOGOUT) {
+    console.log("passe par logout");
+    const Recupstore = store.getState();
+    const config = {
+      method: 'post',
+      url: `${URL}logout`,
+    
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          const { data } = response;
+          //console.log(data);
+          //store.dispatch(signUpOk());
         }
       })
       .catch((err) => {

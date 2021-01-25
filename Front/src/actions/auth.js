@@ -1,5 +1,5 @@
 import {
-  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTH_SUBMIT_SIGNUP, SIGNUP_OK, INIT_DASHBOARD
+  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTH_SUBMIT_SIGNUP, SIGNUP_OK, INIT_DASHBOARD, LOGOUT
 } from './types';
 
 export const authChangeField = (value, field) => ({
@@ -34,4 +34,8 @@ export const signUpOk = () => ({
 
 export const dashboardInit = () => ({
   type: INIT_DASHBOARD,
+})
+
+export const logOut = () => ({
+  type: LOGOUT,
 })
