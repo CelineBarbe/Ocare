@@ -8,15 +8,12 @@ import './patientPage.scss';
 // == Import images
 import info from 'src/assets/icones/info.svg';
 import plus from 'src/assets/icones/plus2.svg';
-import wave from 'src/assets/icones/wave.svg';
-import pill from 'src/assets/icones/pill.svg';
-import bandage from 'src/assets/icones/bandage.svg';
-
 
 // == Import 
 import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 import LogBook from 'src/components/LogBook';
+import PatientModal from 'src/modal/Patient';
 
 // == Composant
 const PatientPage = ({
@@ -57,12 +54,10 @@ const PatientPage = ({
     }
   }
  
-
-
   // Function for modal PATIENT
   const [patientModal,setOpenPatient] = useState(false);
   const [entryModal,setOpenEntry] = useState(false);
-  
+ 
   function openModalPatient() {
     if (patientModal) {
       setOpenPatient(false);
@@ -74,75 +69,10 @@ const PatientPage = ({
   function openModalEntry() {
     setOpenEntry(true);
   }
- 
-  function closeModalPatient(){
-    setOpenPatient(false);
-  }
+
   function closeModalEntry(){
     setOpenEntry(false);
   }
- 
-  const modale = (
-    <div className="modal-patient">
-      <h3 className="modal-patient-title secondary">Etat Civil</h3> 
-      <p className="modal-patient-address"> {gender} de {birthdate} ans. </p>
-
-      <h2 className="modal-patient-title primary">Adresse</h2>
-      <p className="modal-patient-address"> {address}, {zip_code} {city}</p>
-      <p className="modal-patient-phone">{phone_number}</p>
-      <span className="modal-patient-edit">editer</span>
-
-      <h3 className="modal-patient-title secondary">Pathologies / antécédents</h3>
-      <p className="modal-patient-pathologie"> {pathology} </p>
-      <p className="modal-patient-content">{daily_checking? number_dailychecking>1 ? `Patient Quotidien : ${number_dailychecking} visites par jour.`: "Patient quotidien" : null}</p>
-
-      <span className="modal-patient-edit">editer</span>
-    </div>
-  )
-
-  const modaleEntry = (
-    <div className="modal-entry">
-      <form className="form">
-      <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
-      <input
-        className="form-input"
-        type="date"
-        name="planned_date"
-        placeholder="Date Prévue"
-       
-      />
-      <input
-        className="form-input"
-        type="date"
-        name="ending_date"
-        placeholder="Date de fin"
-        
-      />
-      <input
-        className="form-input"
-        type="text"
-        name="Observations"
-        placeholder="Observations"
-        
-      />
-      <input
-        className="form-input"
-        type="password"
-        name="password"
-        placeholder="Password"
-      />
-      <input
-        className="form-input"
-        type="phone"
-        name="phone_number"
-        placeholder="Téléphone"
-      />
-      <button type="button" className="form-button">
-        Ajouter
-      </button>
-    </form>
-    </div>
-  )
   
   return (
     
@@ -152,7 +82,21 @@ const PatientPage = ({
           {/* LOCAL CONTAINER DISPLAY FLEX COLUMN AND OVERFLOW-Y SCROLL */} 
             <div className="patient">
             { patientInfo()  }
-            {patientModal ? modale : null}
+            {patientModal 
+            ? 
+            <PatientModal 
+              gender={gender}
+              birthdate={birthdate}
+              address={address}
+              zip_code={zip_code}
+              city={city}
+              phone_number={phone_number}
+              pathology={pathology}
+              daily_checking={daily_checking}
+              number_dailychecking={number_dailychecking}
+             /> 
+            : null
+            }
 
               <p className="patient-title-primary"> Carnet de santé </p>
 
@@ -161,7 +105,10 @@ const PatientPage = ({
                 <img onClick={openModalEntry} className="patient-add-care-img" src={plus} alt="ajouter"/>
                 <span onClick={openModalEntry} className="patient-add-care-title">Ajouter une entrée</span>
               </div>
-              <LogBook />
+              <LogBook 
+                entryModal={entryModal} 
+                closeModalEntry={closeModalEntry} 
+              />
             </div>
           </div>
         <Nav />

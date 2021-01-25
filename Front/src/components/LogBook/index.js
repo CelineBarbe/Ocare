@@ -4,16 +4,21 @@ import React from 'react';
 import './logBook.scss';
 
 // == Import images
-import info from 'src/assets/icones/info.svg';
-import plus from 'src/assets/icones/plus2.svg';
 import wave from 'src/assets/icones/wave.svg';
 import pill from 'src/assets/icones/pill.svg';
 import bandage from 'src/assets/icones/bandage.svg';
 
-const logBook = () => {
+//== Import modal
+import EntryModal from 'src/modal/Entry';
+
+const logBook = ({entryModal, closeModalEntry}) => {
+
   return ( 
             <div className="carnet-sante-container">
-               {/* {entryModal ? modaleEntry : null}*/}
+              {
+                entryModal ? <EntryModal closeModalEntry={closeModalEntry} /> : null
+              }
+
               {/* NEW ENTRY PART OF THE PAGE */}
                 <div className="carnet-sante-entry">
                   <div className="carnet-sante-entry-top">
