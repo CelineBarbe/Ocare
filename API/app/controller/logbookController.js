@@ -132,7 +132,45 @@ const logbookController = {
         } catch (error) {
             next(error);
         }
-    }
+    },
+
+    async addMedicalAct(request, response, next) {
+        try {
+            const { logbook_id, medical_act_id } = request.body;
+
+            const savedActToLogbook = await logbookDataMapper.addMedicalAct(logbook_id, medical_act_id);
+
+            if (!savedActToLogbook) {
+                response.locals.notFound = 'Erreur Logbook/MedicalAct';
+                next();
+                return;
+            }
+
+            response.json({ savedActToLogbook });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async deleteMedicalAct(request, response, next) {
+        try {
+            const { id } = request.params;
+
+            const deletedActToLogbook = await logbookDataMapper.deleteMedicalAct(id);
+
+            if (!deletedActToLogbook) {
+                response.locals.notFound = 'Erreur delete Logbook/MedicalAct';
+                next();
+                return;
+            }
+
+            response.json({ deletedActToLogbook });
+
+        } catch (error) {
+            next(error);
+        }
+    },
 
 };
 

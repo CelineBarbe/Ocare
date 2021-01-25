@@ -115,7 +115,7 @@ const logbookDataMapper = {
             patient_id
         ]);
 
-        return result.rowCount;
+        return result.rows[0];
     },
 
     async deleteLogByid(idLog) {
@@ -130,6 +130,30 @@ const logbookDataMapper = {
 
         return deleted.rowCount;
 
+    },
+
+    async addMedicalAct(idLog, idAct) {
+        
+        const savedActToLog = await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES($1, $2) RETURNING *`, [idLog, idAct]);
+
+        if (savedActToLog.rowCount == 0) {
+            return null;
+        }
+
+        return savedActToLog.rows[0];
+    },
+
+    async deleteMedicalAct(actToLogID) {
+        
+        const findActToLog = await client.query(`SELECT * FROM logbook_has_medical_act WHERE id = $1`, [actToLogID]);
+
+        if (findActToLog.rowCount == 0) {
+            return null;
+        }
+
+        const deletedActToLog = await client.query(`DELETE FROM logbook_has_medical_act WHERE id = $1`, [actToLogID])
+        
+        return deletedActToLog.rowCount;
     },
 };
 

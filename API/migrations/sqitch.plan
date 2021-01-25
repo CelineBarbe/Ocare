@@ -13,3 +13,4 @@
 061-add-column-to-logbook 2021-01-24T21:13:07Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add column time to logbook and drop table patient_has_logbook
 070-add-medical-act 2021-01-25T09:01:37Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table medical_act
 080-View-logbook-with-nurse 2021-01-25T13:34:12Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add View logbook-with-nurse
+090-logbook_has_medical_act 2021-01-25T17:35:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table logbook_has_medical_act

@@ -1,6 +1,6 @@
 BEGIN;
 
-TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, medical_act RESTART IDENTITY;
+TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, medical_act, logbook_has_medical_act RESTART IDENTITY;
 
 -- Insertions d'infirmiers
 INSERT INTO nurse(siren_code, firstname, lastname, email, password, phone_number) VALUES
@@ -383,9 +383,16 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 ('2020-09-12', '2020-09-13', '2020-09-13', 'Nettoyage de cathéter + pansement', false, true, null, 2, 23),
 ('2020-10-27', '2020-10-28', '2020-10-28', 'Prise de sang', false, true, null, 2, 23),
 
-('2020-11-27', '2020-12-28', '2020-12-28', 'Vérification des points, pansement', false, true, null, 2, 24);
+('2020-11-27', '2020-12-28', '2020-12-28', 'Vérification des points, pansement', false, true, null, 2, 24),
+
+('2021-01-25 17:19:55.058+00', null, null, 'test', false, false, null, 2, 19),
+('2021-01-25 17:21:08.391+00', '2021-01-28 00:00:00+00', null, 'nouveau pansement à partir du 28', true, false, '2021-01-31 00:00:00+00', 2, 19),
+('2021-01-25 17:23:41.892+00', '2021-01-28 00:00:00+00', null, 'attention patient dur à piquer', false, false, '2021-01-31 00:00:00+00', 2, 24),
+('2021-01-25 17:29:12.38+00 ', null, null, 'test fermeture modal après submit formulaire', false, false, null, 2, 24),
+('2021-01-25 17:30:30.053+00', null, null, 'test submit', false, false, null, 2, 24);
 
 
+-- Medical Act
 INSERT INTO medical_act(name, category) VALUES
 -- Prélèvements et injections
 ('Prélèvement par ponction veineuse directe','Prélèvements et injections'),
@@ -455,5 +462,67 @@ INSERT INTO medical_act(name, category) VALUES
 ('Administration et surveillance d’une thérapeutique orale au domicile des patients présentant des troubles psychiatriques avec établissement d’une fiche de surveillance, par passage','Surveillance et observation d’un patient à domicile'),
 ('Au-delà du premier mois, par passage','Surveillance et observation d’un patient à domicile'),
 ('Surveillance et observation d’un patient lors de la mise en oeuvre d’un traitement ou lors de la modification de celui-ci, sauf pour les patients diabétiques insulino-dépendants, avec établissement d’une fiche de surveillance, avec un maximum de quinze jours, par jour','Surveillance et observation d’un patient à domicile');
+
+
+-- Medical Act in Logbook
+INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES
+(1, 50),
+(1, 1),
+(2, 2),
+(2, 20),
+(3, 49),
+(3, 48),
+(4, 3),
+(4, 32),
+(5, 47),
+(5, 4),
+(6, 46),
+(6, 45),
+(7, 5),
+(7, 15),
+(8, 6),
+(8, 32),
+(9, 44),
+(9, 40),
+(10, 43),
+(10, 4),
+(11, 7),
+(11, 37),
+(12, 8),
+(12, 28),
+(13, 42),
+(13, 2),
+(14, 41),
+(14, 51),
+(15, 9),
+(15, 36),
+(16, 10),
+(16, 5),
+(17, 11),
+(17, 8),
+(18, 40),
+(18, 10),
+(19, 39),
+(19, 4),
+(20, 38),
+(20, 29),
+(21, 12),
+(21, 12),
+(22, 13),
+(22, 20),
+(23, 14),
+(23, 34),
+(24, 15),
+(24, 5),
+(25, 37),
+(25, 2),
+(26, 21),
+(26, 11),
+(27, 35),
+(27, 3),
+(28, 27),
+(28, 9),
+(29, 48),
+(29, 45);
 
 COMMIT;
