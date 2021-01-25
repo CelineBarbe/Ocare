@@ -4,9 +4,31 @@ const { DateTime } = require('luxon');
 const logbookDataMapper = {
     async getAllLogs(idCabinet) {
         
+        // const result = await client.query(`SELECT l.*,
+        // p.firstname,
+        // p.lastname
+        // FROM logbook l
+        //     JOIN patient p
+        //         ON p.id = l.patient_id
+        //     JOIN cabinet c
+        //         ON c.id = p.cabinet_id
+        // WHERE c.id = $1
+        // ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet]);
+
         const result = await client.query(`SELECT l.*,
         p.firstname,
-        p.lastname
+        p.lastname,
+        p.birthdate,
+        p.gender,
+        p.address,
+        p.additional_address,
+        p.zip_code,
+        p.city,
+        p.phone_number,
+        p.pathology,
+        p.daily_checking,
+        p.number_daily_checking,
+        p.cabinet_id
         FROM logbook l
             JOIN patient p
                 ON p.id = l.patient_id
