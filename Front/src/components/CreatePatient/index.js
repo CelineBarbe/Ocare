@@ -37,85 +37,87 @@ const CreatePatient = ({
     <>
     <Header />
     <div className="main">
-    <h2 className="title-page">Création de Patient</h2>
-    <form className="form" onSubmit={handleSubmit}>
-      <input
-        className="form-input"
-        type="text"
-        name="firstname"
-        placeholder="Prénom"
-        value={firstname}
-        onChange={handleChange}
-      />
-      <input
-        className="form-input"
-        type="text"
-        name="lastname"
-        placeholder="Nom"
-        value={lastname}
-        onChange={handleChange}
-      />
-       <input
-        className="form-input"
-        type="date"
-        name="birthdate"
-        placeholder="Date de Naissance"
-        value={birthdate}
-        onChange={handleChange}
-      />
-      <select id="gender" name="gender" value={gender} onChange={handleChange}
->
-        <option value="M"> Homme</option>
-        <option value="F">Femme</option>
-      </select>
-      <input
-        className="form-input"
-        type="text"
-        name="address"
-        placeholder="Adresse"
-        value={address}
-        onChange={handleChange}
-      />
-      <input
-      className="form-input"
-      type="text"
-      name="zip_code"
-      placeholder="Code Postal"
-      value={zip_code}
-      onChange={handleChange}
+      <div className="create-patient">
+        <p className="create-patient-title">Créer un patient</p>
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            className="form-input"
+            type="text"
+            name="firstname"
+            placeholder="Prénom"
+            value={firstname}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            type="text"
+            name="lastname"
+            placeholder="Nom"
+            value={lastname}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            type="date"
+            name="birthdate"
+            placeholder="Date de Naissance"
+            value={birthdate}
+            onChange={handleChange}
+          />
+          <select id="gender" name="gender" value={gender} onChange={handleChange}
+    >
+            <option value="M"> Homme</option>
+            <option value="F">Femme</option>
+          </select>
+          <input
+            className="form-input"
+            type="text"
+            name="address"
+            placeholder="Adresse"
+            value={address}
+            onChange={handleChange}
+          />
+          <input
+          className="form-input"
+          type="text"
+          name="zip_code"
+          placeholder="Code Postal"
+          value={zip_code}
+          onChange={handleChange}
+        />
+          <input
+            className="form-input"
+            type="text"
+            name="city"
+            placeholder="Ville"
+            value={city}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            type="phone"
+            name="phone_number"
+            placeholder="Téléphone"
+            value={phone_number}
+            onChange={handleChange}
+          />
+          <input
+            className="form-input"
+            type="text"
+            name="pathology"
+            placeholder="Pathologie"
+            value={pathology}
+            onChange={handleChange}
+          />
+          <input type="checkbox" id="isQuotidien" name="daily_checking" onChange={handleChecked} value={daily_checking}
     />
-      <input
-        className="form-input"
-        type="text"
-        name="city"
-        placeholder="Ville"
-        value={city}
-        onChange={handleChange}
-      />
-      <input
-        className="form-input"
-        type="phone"
-        name="phone_number"
-        placeholder="Téléphone"
-        value={phone_number}
-        onChange={handleChange}
-      />
-      <input
-        className="form-input"
-        type="text"
-        name="pathology"
-        placeholder="Pathologie"
-        value={pathology}
-        onChange={handleChange}
-      />
-      <input type="checkbox" id="isQuotidien" name="daily_checking" onChange={handleChecked} value={daily_checking}
-/>
-      <label htmlFor="isQuotidien">Patient Quotidien</label>
-      {daily_checking ? <input type="number" placeholder="Nombre de visite/jour" name="number_daily_checking" min='0' max='3'/> : null}
-      <button type="button" className="form-button" onClick={handleSubmit}>
-        Créer le Patient !
-      </button>
-    </form>
+          <label htmlFor="isQuotidien">Patient Quotidien</label>
+          {daily_checking ? <input type="number" placeholder="Nombre de visite/jour" name="number_daily_checking" min='0' max='3'/> : null}
+          <button type="button" className="form-button" onClick={handleSubmit}>
+            Créer le Patient !
+          </button>
+        </form>
+      </div>
     </div>
     <Nav />
   </>

@@ -51,7 +51,6 @@ const PatientModal = ({
     <h2 className="modal-patient-title primary">Adresse</h2>
     <p className="modal-patient-address"> {address}, {zip_code} {city}</p>
     <p className="modal-patient-phone">{phone_number}</p>
-    <span className="modal-patient-edit">editer</span>
 
     <h3 className="modal-patient-title secondary">Pathologies / antécédents</h3>
     <p className="modal-patient-pathologie"> {pathology} </p>

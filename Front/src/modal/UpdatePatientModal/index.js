@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 import './updatePatientModal.scss';
 
 import check from 'src/assets/icones/check.svg';
+import close from 'src/assets/icones/close.svg';
 
 const UpdatePatientModal = ({
   closeModalUpdate,
@@ -21,19 +22,7 @@ const UpdatePatientModal = ({
   handleUpdatePatient,
 }) => {
   const { id } = useParams();
-  console.log("Container props state patients :",
-  id,
-  firstname,
-  lastname, 
-  birthdate, 
-  gender, 
-  address, 
-  zip_code, 
-  city, 
-  phone_number, 
-  pathology, 
-  daily_checking,)
-
+  
   //events
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -55,7 +44,8 @@ const UpdatePatientModal = ({
 
   return (
     <div className="modal-patient-update">
-      <h2 className="modal-patient-update-title">Modifier Patient</h2>
+     <img src={close} alt="stylo" className="modal-patient-update-close" onClick={closeModalUpdate}/>
+      <p className="modal-patient-update-title">Modifier Patient</p>
       <form className="form" onSubmit={handleSubmit} >
         <input
           className="form-input"

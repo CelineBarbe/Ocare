@@ -5,6 +5,7 @@ export const AUTH_SUBMIT_SIGNUP = 'AUTH_SUBMIT_SIGNUP';
 export const LOGIN_OK = 'LOGIN_OK';
 export const SIGNUP_OK = 'SIGNUP_OK';
 export const LOGOUT = 'LOGOUT';
+export const UPDATE_PROFIL = 'UPDATE_PROFIL';
 
 //connexion_dashboard
 export const INIT_DASHBOARD = 'INIT_DASHBOARD';

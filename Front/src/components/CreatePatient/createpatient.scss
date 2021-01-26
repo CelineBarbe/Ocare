@@ -13,14 +13,21 @@
   }
 
 }
-.title-page {
-  text-align: center;
-  margin:vars.$gutter*2;
-  padding:vars.$gutter*2;
-  color: vars.$color-white;
-  font-weight: bold;
-    background-color: vars.$color-secondary-dark2;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
-    box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
- }
+
+.create-patient {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  padding: vars.$gutter;
+
+
+  &-title {
+    margin:vars.$gutter  vars.$gutter*2;
+    color: vars.$color-secondary-dark2;
+    font-weight: bold;
+  }
+}
+
