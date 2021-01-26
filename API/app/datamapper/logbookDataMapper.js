@@ -128,16 +128,20 @@ const logbookDataMapper = {
         let { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id } = logInfo;
         // + info de l'act à ajouter via table d'association
         // save Log
+
         let creation_date =  Date.now();
+    
+        // milliseconds to Timestamps
         creation_date = DateTime.local().setZone("Europe/Paris");
+
+        // Timestamps without hours
+        creation_date = DateTime.fromISO(`${creation_date}`).toFormat('yyyy-MM-dd');
 
         // is planned_date = null then now()
         if (planned_date == null) {
-            planned_date = DateTime.fromISO(`${creation_date}`).plus({hours: 1});
+            planned_date = DateTime.fromISO(`${creation_date}`).toFormat('yyyy-MM-dd');
         }
         
-        console.log(planned_date, "planned_date après traitement");
-
         const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, time, done_date, observations, daily, done, ending_date, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,[
             creation_date,
             planned_date,
