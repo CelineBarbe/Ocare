@@ -41,7 +41,7 @@ const closeModal = () => {
 
   return (
     <div className="modal-entry">
-    <form className="form" >
+    <form className="form" onSubmit={handleSubmit}>
     <img  className="modal-patient-close" alt="close" src={close} onClick={closeModal}/>
       <input
         className="form-input"
@@ -50,45 +50,50 @@ const closeModal = () => {
         placeholder="Nom"
         value={name}
         onChange={handleChange}
-        
       />
       <input
         className="form-input"
         type="text"
-        name="newEntryAddress"
+        name="address"
         placeholder="Adresse"
-        
+        value={address}
+        onChange={handleChange}
       />
       <input
       className="form-input"
       type="text"
-      name="newEntryZip_code"
+      name="zip_code"
       placeholder="Code Postal"
+      value={zip_code}
+      onChange={handleChange}
       
     />
       <input
         className="form-input"
         type="text"
-        name="newEntryCity"
+        name="city"
         placeholder="Ville"
-        
+        value={city}
+        onChange={handleChange}
       />
       <input
         className="form-input"
-        type="password"
-        name="newEntryPin_code"
-        placeholder="Code Pin du cabinet"
-        
+        type="email"
+        name="email"
+        placeholder="email de contact"
+        value={email}
+        onChange={handleChange}
       />
       <input
         className="form-input"
         type="phone"
-        name="newEntryPhone_number"
+        name="phone_number"
         placeholder="Téléphone"
-        
+        value={phone_number}
+        onChange={handleChange}
       />
       
-      <button type="button" className="form-button">
+      <button type="button" className="form-button" onClick={handleSubmit}>
         Update le cabinet !
       </button>
     </form>
