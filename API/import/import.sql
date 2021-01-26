@@ -1,6 +1,6 @@
 BEGIN;
 
-TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, medical_act, logbook_has_medical_act RESTART IDENTITY;
+TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, medical_act, logbook_has_medical_act RESTART IDENTITY; -- logbook_has_medical_act
 
 -- Insertions d'infirmiers
 INSERT INTO nurse(siren_code, firstname, lastname, email, password, phone_number) VALUES

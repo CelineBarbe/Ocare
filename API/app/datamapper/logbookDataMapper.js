@@ -15,6 +15,29 @@ const logbookDataMapper = {
         // WHERE c.id = $1
         // ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet]);
 
+        // const result = await client.query(`SELECT l.*,
+        // p.firstname,
+        // p.lastname,
+        // p.birthdate,
+        // p.gender,
+        // p.address,
+        // p.additional_address,
+        // p.zip_code,
+        // p.city,
+        // p.phone_number,
+        // p.pathology,
+        // p.daily_checking,
+        // p.number_daily_checking,
+        // p.cabinet_id
+        // FROM logbook l
+        //     JOIN patient p
+        //         ON p.id = l.patient_id
+        //     JOIN cabinet c
+        //         ON c.id = p.cabinet_id
+        // WHERE c.id = $1
+        // ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet]);
+
+        // Get allLog avec medical Act
         const result = await client.query(`SELECT l.*,
         p.firstname,
         p.lastname,
@@ -28,13 +51,19 @@ const logbookDataMapper = {
         p.pathology,
         p.daily_checking,
         p.number_daily_checking,
-        p.cabinet_id
+        p.cabinet_id,
+        JSON_AGG(medical_act) as medical_act
         FROM logbook l
             JOIN patient p
                 ON p.id = l.patient_id
+            JOIN logbook_has_medical_act lhma
+                ON l.id = lhma.logbook_id
+            JOIN medical_act
+                ON lhma.medical_act_id = medical_act.id
             JOIN cabinet c
                 ON c.id = p.cabinet_id
         WHERE c.id = $1
+        GROUP BY l.id, p.firstname, p.lastname, p.birthdate, p.gender, p.address, p.additional_address, p.zip_code, p.city, p.phone_number, p.pathology, p.daily_checking, p.number_daily_checking, p.cabinet_id
         ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet]);
 
         if (result.rowCount == 0) {
@@ -101,7 +130,14 @@ const logbookDataMapper = {
         // save Log
         let creation_date =  Date.now();
         creation_date = DateTime.local().setZone("Europe/Paris");
+
+        // is planned_date = null then now()
+        if (planned_date == null) {
+            planned_date = DateTime.fromISO(`${creation_date}`).plus({hours: 1});
+        }
         
+        console.log(planned_date, "planned_date après traitement");
+
         const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, time, done_date, observations, daily, done, ending_date, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,[
             creation_date,
             planned_date,

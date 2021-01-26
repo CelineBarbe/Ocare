@@ -6,7 +6,7 @@ BEGIN;
 CREATE TABLE logbook(
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     creation_date TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    planned_date TIMESTAMPTZ DEFAULT NULL CHECK (planned_date > creation_date), -- si le soin a lieu ultérieurement
+    planned_date TIMESTAMPTZ DEFAULT NOW() CHECK (planned_date >= creation_date), -- si le soin a lieu ultérieurement
     done_date TIMESTAMPTZ DEFAULT NULL, -- date à laquelle le soin programmé ultérieurement a été fait
     observations TEXT,
     daily BOOLEAN DEFAULT FALSE, -- tournée par défaut

@@ -33,7 +33,7 @@ const patientDataMapper = {
         p.cabinet_id,
         JSON_AGG(logbook_with_nurse_infos) as logbook
         FROM patient p
-            JOIN logbook_with_nurse_infos
+            LEFT OUTER JOIN logbook_with_nurse_infos
                 ON p.id = logbook_with_nurse_infos.patient_id 
         WHERE p.id = $1 GROUP BY p.id`, [id]);
 

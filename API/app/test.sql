@@ -181,3 +181,7 @@ SELECT l.*,
     FROM logbook l
         JOIN nurse n
             ON n.id = l.nurse_id;
+
+-- Patient avec visite quotidienne
+SELECT p.* FROM patient p
+    WHERE daily_checking = true;
