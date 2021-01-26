@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 
 // == Import
 import './updatecabinet.scss';
@@ -13,10 +13,11 @@ const UpdateCabinetModal = ({
   zip_code,
   city,
   phone_number,
-  email,
+  newEntryMail,
+  pin_code,
   handleModal,
   changeFieldUpdate,
-  handleSubmitUpdate 
+  handleSubmitUpdate,
 }) => {
 
 const handleChange = (event) => {
@@ -36,8 +37,16 @@ const handleSubmit = (evt) => {
 const closeModal = () => {
   handleModal();
 }
+/* useEffect(() => {
+  console.log('coucou de useeffect');
+  newEntryName  = name;
+newEntryAddress = address;
+newEntryZip_code = zip_code;
+newEntryCity = city;
+newEntryPhone_number = phone_number;
+newEntryPin_code = pin_code;
+}, []) */
 
-  
 
   return (
     <div className="modal-entry">
@@ -47,7 +56,7 @@ const closeModal = () => {
         className="form-input"
         type="text"
         name="name"
-        placeholder="Nom"
+        placeholder="nom"
         value={name}
         onChange={handleChange}
       />
@@ -55,7 +64,7 @@ const closeModal = () => {
         className="form-input"
         type="text"
         name="address"
-        placeholder="Adresse"
+        placeholder='address'
         value={address}
         onChange={handleChange}
       />
@@ -63,7 +72,7 @@ const closeModal = () => {
       className="form-input"
       type="text"
       name="zip_code"
-      placeholder="Code Postal"
+      placeholder="zip_code"
       value={zip_code}
       onChange={handleChange}
       
@@ -72,23 +81,31 @@ const closeModal = () => {
         className="form-input"
         type="text"
         name="city"
-        placeholder="Ville"
+        placeholder="city"
         value={city}
         onChange={handleChange}
       />
       <input
         className="form-input"
+        type="password"
+        name="pin_code"
+        placeholder="pin_code"
+        value={pin_code}
+        onChange={handleChange}
+      />
+      {/* <input
+        className="form-input"
         type="email"
         name="email"
         placeholder="email de contact"
-        value={email}
+        value={newEntryMail}
         onChange={handleChange}
-      />
+      /> */}
       <input
         className="form-input"
         type="phone"
         name="phone_number"
-        placeholder="Téléphone"
+        placeholder="phone_number"
         value={phone_number}
         onChange={handleChange}
       />
