@@ -13,7 +13,7 @@ const mapStateToProps = ({cabinets, auth}, ownProps) => {
     closeModalSubCabinet,
     name,
     pin_code,
-    id
+    id,
   })
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useHistory } from 'react-router-dom';
 // == Import
 import './SubCabinetModal.scss';
 
@@ -16,7 +16,23 @@ const SubCabinetModal = ({
   id,
 }) => {
 
-  console.log("Nurse ID", id);
+  /* Hook d'état pour redirect */
+  const [isSubscribe,setSubscribe] = useState(false);
+  const history = useHistory();
+
+  function toggleSubscribe() {
+    if (isSubscribe) {
+      setSubscribe(false);
+    } else {
+      setSubscribe(true);
+      let path = `/Dashboard`; 
+      history.push(path);
+    }
+  }
+
+
+  //Redirection ?
+  useEffect(() => { isSubscribe ? toggleSubscribe() : null}, [isSubscribe])
 
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
