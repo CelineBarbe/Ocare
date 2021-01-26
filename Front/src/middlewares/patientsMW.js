@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_PATIENTS, CREATE_PATIENT, GET_PATIENT } from 'src/actions/types';
+import { GET_PATIENTS, UPDATE_PATIENT, CREATE_PATIENT, GET_PATIENT } from 'src/actions/types';
 import { seedPatients, createPatientSucceeded, seedPatient } from 'src/actions/patients';
 
 const URL = "https://ocare.herokuapp.com/";
@@ -52,6 +52,45 @@ const patientsMW = (store) => (next) => (action) => {
       });
     next(action);
   };
+
+  if (action.type === UPDATE_PATIENT) {
+    const { firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking } = Recupstore.patients;
+    console.log("passe par Update Patient");
+    const {id} = action;
+    const config = {
+      method: 'patch',
+      url: `${URL}patient/${id}`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+      data: {
+        firstname,
+        lastname,
+        birthdate,
+        gender,
+        address,
+        zip_code,
+        city,
+        phone_number,
+        pathology,
+        daily_checking,
+        number_daily_checking,
+        cabinet_id: default_cabinet,
+      }
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         console.log("Update DONE");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  };
+
   if (action.type === CREATE_PATIENT) {
     const { firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking } = Recupstore.patients;
     console.log('passe par create patients');

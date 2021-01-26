@@ -5,7 +5,7 @@ import { DateTime } from "luxon";
 import './patientModal.scss';
 
 //== Import Component
-import UpdatePatientModal from 'src/modal/UpdatePatientModal';
+import UpdatePatientModal from 'src/containers/UpdatePatientModal';
 
 const PatientModal = ({
   gender, 
@@ -61,7 +61,7 @@ const PatientModal = ({
       {updatePatientModal 
         ? 
             <UpdatePatientModal 
-              
+              closeModalUpdate={closeModalUpdate}
              /> 
             : null
       }

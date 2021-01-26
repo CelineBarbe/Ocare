@@ -1,21 +1,35 @@
 import { connect } from 'react-redux';
 
-import { logbookChangeField, createLog } from 'src/actions/logs';
+import { patientChangeField, updatePatient  } from 'src/actions/patients';
 
 import UpdatePatientModal from 'src/modal/UpdatePatientModal';
 
-const mapStateToProps = ({logBook, auth}, ownProps) => {
-  const { closeModalEntry, patientId } = ownProps;
-  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated } = logBook;
-  const { id } = auth;
-  
+const mapStateToProps = ({patients}, ownProps) => {
+
+  const { firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking } = patients;
+  const { closeModalUpdate } = ownProps;
   return ({
-    
+    firstname,
+    lastname, 
+    birthdate, 
+    gender, 
+    address, 
+    zip_code, 
+    city, 
+    phone_number, 
+    pathology, 
+    daily_checking,
+    closeModalUpdate,
   })
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  
+  changeField: (value, field) => {
+    dispatch(patientChangeField(value, field));
+  },
+  handleUpdatePatient: (id) => {
+    dispatch(updatePatient(id));
+  }
 })
 
 // appel a connect et export
