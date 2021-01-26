@@ -28,3 +28,15 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
      gender: result.gender,
    }
  }
+
+ export const returnVoid = (entry) => {
+  if (entry.length <= 1) {
+    //test sur une seule entrée
+     let result = entry[0] ?? [];
+     console.log('result', result);
+     return result
+  } 
+  else {
+    return entry
+  } 
+ }

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 
 // == Import fichier scss
 import './logBook.scss';
@@ -20,12 +20,25 @@ const LogBook = ({
   patientId
 }) => {
 
+useEffect(() => {
+    SortList();
+}, [list]) 
+
 console.log(list);
-  {
-    list.length >= 1 
-  ? list.slice().sort((a, b) => DateTime.fromISO(b.creation_date).toISODate() > DateTime.fromISO(a.creation_date).toISODate() ? 1: -1)
-  : null
-  } 
+
+const SortList = () => {
+  if(list.length >= 1) {
+   let newList =  list.slice().sort((a, b) => DateTime.fromISO(b.creation_date).toISODate() > DateTime.fromISO(a.creation_date).toISODate() ? 1: -1)
+   console.log('newList:', newList)
+   return newList
+  } else {
+    console.log('List.lenght <1');
+    return list
+  }
+}
+
+//TODO un composant défaut lorsqu'il n'y a pas de log présent 
+
    
   return ( 
     <div className="carnet-sante-container">
@@ -33,9 +46,9 @@ console.log(list);
         entryModal ? <EntryModal closeModalEntry={closeModalEntry} patientId={patientId} /> : null
       }
 
-      { list.length > 0 
-        ? list.map(list => (
-              <div className="carnet-sante-entry" key={list.id}>
+      { list.length >= 1 
+        ? list.map((list, index) => (
+              <div className="carnet-sante-entry" key={index}>
                 <div className="carnet-sante-entry-top">
                   <div className="carnet-sante-entry-top-icone">
                     <img src={pill} className="carnet-sante-entry-top-icone-img" alt="icone"/>

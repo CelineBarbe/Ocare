@@ -1,4 +1,4 @@
-import { CABINET_CHANGE_FIELD, SEED_CABINETS, SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET_SUCCEEDED } from 'src/actions/types';
+import { CABINET_CHANGE_FIELD, SEED_CABINETS, SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -46,6 +46,16 @@ const reducer = (oldState = initialState, action = {}) => {
         staff: action.data.nurses,
         nbpatients: action.data.nbpatients,
         email: action.data.email,
+      };
+    case CABINET_CHANGE_FIELD_UPDATE:
+      return {
+        ...oldState,
+        name: action.payload.name,
+        address: action.payload.address,
+        zip_code: action.payload.zip_code,
+        city: action.payload.city,
+        phone_number: action.payload.phone_number,
+        email: action.payload.email,
       };
     case CREATE_CABINET_SUCCEEDED:
       return {
