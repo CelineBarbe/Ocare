@@ -9,7 +9,7 @@ import plus from 'src/assets/icones/plus2.svg';
 import cabinetIcone from 'src/assets/images/hospital.png';
 
 //== Import Component 
-import SubCabinetModal from 'src/modal/SubCabinetModal';
+import SubCabinetModal from 'src/containers/SubCabinetModal';
 
 
 // == Composant
@@ -31,11 +31,11 @@ const ListCabinets = ({list, changeCabinet}) => {
 const [subCabinetModal,setOpenSubCabinetModal] = useState(false);
 
 /* Fonction d'ouverture fermeture updatemodal */
-function openModalUpdate() {
+function openModalSubCabinet() {
   setOpenSubCabinetModal(true);
 }
 
-function closeModalUpdate(){
+function closeModalSubCabinet(){
   setOpenSubCabinetModal(false);
 }
 
@@ -43,11 +43,11 @@ function closeModalUpdate(){
     <div className="listcabinet-card">
     { 
       subCabinetModal
-      ? <SubCabinetModal closeModalUpdate={closeModalUpdate} />
+      ? <SubCabinetModal closeModalSubCabinet={closeModalSubCabinet} />
       : null
     }
     
-     <img src={plus} alt="stylo" className="listcabinet-card-add" onClick={openModalUpdate} />
+     <img src={plus} alt="stylo" className="listcabinet-card-add" onClick={openModalSubCabinet} />
      <p className="listcabinet-card-title">
        Mes cabinets affiliés
      </p>

@@ -1,11 +1,11 @@
 
 import axios from 'axios';
-import { CREATE_CABINET, UPDATE_CABINET } from 'src/actions/types';
-import { createCabinetSucceeded, changeCabinet } from 'src/actions/cabinets'; 
+import { CREATE_CABINET, UPDATE_CABINET, SUB_CABINET } from 'src/actions/types';
+import { createCabinetSucceeded, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
 
 const URL = "https://ocare.herokuapp.com/";
 
-const patientsMW = (store) => (next) => (action) => {
+const cabinetsMW = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');
   if (action.type === CREATE_CABINET) {
     console.log('passe par CREATE cabinet');
@@ -42,6 +42,40 @@ const patientsMW = (store) => (next) => (action) => {
       }); 
     next(action);
   };
+
+  if (action.type === SUB_CABINET) {
+    const Recupstore = store.getState();
+    const { name, pin_code  } = Recupstore.cabinets;
+    const {id} = action;
+    console.log("passe dans SUB CABINET");
+  
+    console.log("name:", name, "pin code:", pin_code, "ID",id);
+    const config = {
+      method: 'post',
+      url: `${URL}cabinet/addnurse`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+      data: {
+        name,
+        nurse_id:id,
+        pin_code: pin_code
+      }
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         console.log("ABONNEMENT DONE");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  };
+
+
   if (action.type === UPDATE_CABINET) {
     console.log('passe par CREATE cabinet');
     const {cabinets, auth} = store.getState();
@@ -80,4 +114,4 @@ const patientsMW = (store) => (next) => (action) => {
   next(action);
 }
 
-export default patientsMW;
+export default cabinetsMW;

@@ -1,5 +1,5 @@
 import {
-  SEED_CABINETS, SEED_DEFAULT_CABINET, CHANGE_CABINET, CREATE_CABINET, CABINET_CHANGE_FIELD, CREATE_CABINET_SUCCEEDED, UPDATE_CABINET, CABINET_CHANGE_FIELD_UPDATE
+  SEED_CABINETS, SEED_DEFAULT_CABINET, SUB_CABINET, CHANGE_CABINET, CREATE_CABINET, CABINET_CHANGE_FIELD, CREATE_CABINET_SUCCEEDED, UPDATE_CABINET, CABINET_CHANGE_FIELD_UPDATE
 } from './types';
 
 export const seedCabinets = (data) => ({
@@ -40,3 +40,8 @@ export const cabChangeFieldUpdate = (value, field) => ({
   type: CABINET_CHANGE_FIELD_UPDATE,
   payload: { [field]: value },
 });
+
+export const subCabinet = (id) => ({
+  type: SUB_CABINET,
+  id
+})
