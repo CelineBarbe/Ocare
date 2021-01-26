@@ -33,7 +33,7 @@ console.log(list);
         entryModal ? <EntryModal closeModalEntry={closeModalEntry} patientId={patientId} /> : null
       }
 
-      { list.length > 0 
+      { list.length >= 1 
         ? list.map(list => (
               <div className="carnet-sante-entry" key={list.id}>
                 <div className="carnet-sante-entry-top">

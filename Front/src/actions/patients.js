@@ -1,5 +1,5 @@
 import {
-  SEED_PATIENTS, GET_PATIENTS, CREATE_PATIENT, PATIENT_CHANGE_FIELD, CREATE_PATIENT_SUCCEEDED, RESET_PATIENT_FIELD, GET_PATIENT, SEED_PATIENT,
+  SEED_PATIENTS, UPDATE_PATIENT, GET_PATIENTS, CREATE_PATIENT, PATIENT_CHANGE_FIELD, CREATE_PATIENT_SUCCEEDED, RESET_PATIENT_FIELD, GET_PATIENT, SEED_PATIENT,
 } from './types';
 
 export const getPatients = () => ({
@@ -38,4 +38,11 @@ export const patientChangeField = (value, field) => ({
 export const createPatientSucceeded = (id) => ({
   type: CREATE_PATIENT_SUCCEEDED,
   created_id: id,
-})
+});
+
+export const updatePatient = (id) => ({
+  type: UPDATE_PATIENT,
+  id
+});
+
+
