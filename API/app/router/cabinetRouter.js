@@ -4,8 +4,8 @@ const cabinetController = require('../controller/cabinetController');
 
 const router = express.Router();
 
-router.post('/addNurse', cabinetController.addNurse);
-router.patch('/updateNurse', cabinetController.updateNurse);
+router.post('/addnurse', cabinetController.addNurse);
+router.patch('/updatenurse', cabinetController.updateNurse);
 router.get('/', cabinetController.findAll);
 router.get('/:id(\\d+)', cabinetController.findById);
 router.post('/', cabinetController.create);

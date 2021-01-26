@@ -76,17 +76,17 @@ const cabinetDataMapper = {
         return result.rows[0];
     },
 
-    async addNurseToCabinet(idCab, idNurse, pinCodeCab) {
+    async addNurseToCabinet(name, idNurse, pinCodeCab) {
 
         // check pinCode to save the nurse
-        const enabledCode = await client.query(`SELECT * FROM cabinet WHERE id = $1 AND pin_code = $2`, [idCab, pinCodeCab]);
+        const enabledCode = await client.query(`SELECT * FROM cabinet WHERE name ILIKE $1 AND pin_code = $2`, [name, pinCodeCab]);
 
 
         if (enabledCode.rowCount == 0) {
             return null;
         }
         
-        const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id) VALUES($1, $2) RETURNING *`, [idCab, idNurse]);
+        const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id) VALUES($1, $2) RETURNING *`, [enabledCode.rows[0].id, idNurse]);
 
         return result.rows[0];
     },
