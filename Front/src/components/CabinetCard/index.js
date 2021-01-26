@@ -11,9 +11,8 @@ import pen from 'src/assets/icones/pen.svg';
 import UpdateCabinetModal from 'src/modal/UpdateCabinetModal'
 
 
-
 // == Composant
-const CabinetCard = ({id, name, address, zip_code, city, phone_number, nbpatients, email}) => {
+const CabinetCard = ({id, name, address, zip_code, city, phone_number, nbpatients, email, handleSubmitUpdate, changeFieldUpdate}) => {
   
   const [entryModal,setEntryModal] = useState(false);
 
@@ -28,7 +27,21 @@ const CabinetCard = ({id, name, address, zip_code, city, phone_number, nbpatient
   return (
     <div className="cabinet-card">
     <img src={pen} alt="stylo" className="cabinet-card-edit" onClick={handleModal}/>
-    {entryModal ? <UpdateCabinetModal/>: null}
+    {entryModal ? 
+    <UpdateCabinetModal
+      id={id}
+      name={name}
+      address={address}
+      zip_code={zip_code}
+      city={city}
+      phone_number={phone_number}
+      email={email}
+      handleSubmitUpdate={handleSubmitUpdate}
+      handleModal={handleModal}
+      changeFieldUpdate={changeFieldUpdate}
+    />
+    
+    : null}
       <p className="cabinet-card-title">{name}</p>
       <span className="cabinet-card-nbpatient">{nbpatients} patients</span>
       <p className="cabinet-card-infos cabinet-card-adresse ">

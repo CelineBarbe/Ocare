@@ -1,4 +1,4 @@
-import { GET_LOGS, SEED_LOGS, LOGBOOK_CHANGE_FIELD, CREATE_LOG, GET_LOGS_BY_DATE } from 'src/actions/types';
+import { GET_LOGS, SEED_LOGS, LOGBOOK_CHANGE_FIELD, CREATE_LOG, GET_LOGS_BY_DATE, SEED_LOGS_BY_DATE } from 'src/actions/types';
 
 export const getLogs = () => ({
   type: GET_LOGS,
@@ -11,6 +11,11 @@ export const getLogsByDate = (date) => ({
 
 export const seedLogs = (data) => ({
   type: SEED_LOGS,
+  payload: data,
+});
+
+export const seedLogsByDate = (data) => ({
+  type: SEED_LOGS_BY_DATE,
   payload: data,
 });
 

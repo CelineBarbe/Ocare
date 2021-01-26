@@ -24,27 +24,28 @@ import Transmission from 'src/components/Transmission';
 
 // == Composant
 const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, location}) => {
-  const date = useParams()?.date ?? null;
+  const date = useParams()?.date ?? DateTime.local().toISODate();
   console.log('date', date);
+  console.log('dateTim', );
   //load data cf bydate
   useEffect(() => {
-    !byDate ? getLogs() : getLogsByDate(date)
+    getLogsByDate(date)
   }, [])
 
   useEffect(() => {
     console.log('location change')
-    !byDate ? getLogs() : getLogsByDate(date)
+    getLogsByDate(date)
   }, [location])
 
-  let datePres;
- (() => {
+  let datePres = DateTime.fromISO(date);
+/*  (() => {
     if(!date) {
       datePres = DateTime.local();
       
     } else {
       datePres = DateTime.fromISO(date)
     }
-  })();
+  })(); */
 
   console.log('DatePres :', datePres);
   const row =  list.map(element => ( 
