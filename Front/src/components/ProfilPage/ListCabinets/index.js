@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 // == Import
 import './listcabinets.scss';
@@ -7,6 +7,11 @@ import './listcabinets.scss';
 // == Import images
 import plus from 'src/assets/icones/plus2.svg';
 import cabinetIcone from 'src/assets/images/hospital.png';
+
+//== Import Component 
+import SubCabinetModal from 'src/modal/SubCabinetModal';
+
+
 // == Composant
 const ListCabinets = ({list, changeCabinet}) => {
   
@@ -21,12 +26,33 @@ const ListCabinets = ({list, changeCabinet}) => {
     changeCabinet(id);
     routeDashboard();
   }
+
+/* Hook gestion modal */
+const [subCabinetModal,setOpenSubCabinetModal] = useState(false);
+
+/* Fonction d'ouverture fermeture updatemodal */
+function openModalUpdate() {
+  setOpenSubCabinetModal(true);
+}
+
+function closeModalUpdate(){
+  setOpenSubCabinetModal(false);
+}
+
   return (
     <div className="listcabinet-card">
-     <img src={plus} alt="stylo" className="listcabinet-card-add" />
+    { 
+      subCabinetModal
+      ? <SubCabinetModal closeModalUpdate={closeModalUpdate} />
+      : null
+    }
+    
+     <img src={plus} alt="stylo" className="listcabinet-card-add" onClick={openModalUpdate} />
      <p className="listcabinet-card-title">
        Mes cabinets affiliés
      </p>
+    
+           
      <div className="hospital-card-container">
      {list.map(cabinet => (
         <div className="hospital-card" key={cabinet.id} onClick={(e) => handleClick(e, cabinet.id)}>
