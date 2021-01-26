@@ -1,8 +1,11 @@
 // == Import npm
-import React from 'react';
+import React, {useState} from 'react';
 
 // == Import
 import './staffCard.scss';
+
+//== Import component 
+import AddStaffModal from 'src/modal/AddStaffModal';
 
 // == Import images
 import avatar from 'src/assets/icones/avatar.svg'
@@ -10,9 +13,25 @@ import plus from 'src/assets/icones/plus2.svg';
 
 // == Composant
 const StaffCard = ({staff}) => {
+  /*hook pour modal */
+  const [addStaff,setAddStaff] = useState(false);
+  /* Fonction d'ouverture fermeture AddStaff */
+  function openModalAddStaff() {
+    setAddStaff(true);
+  }
+
+  function closeModalAddStaff(){
+    setAddStaff(false);
+  }
+
   return (
     <div className="staff-card">
-     <img src={plus} alt="stylo" className="staff-card-add" />
+    { 
+      addStaff
+      ? <AddStaffModal closeModalAddStaff={closeModalAddStaff} />
+      : null
+    }
+     <img src={plus} alt="stylo" className="staff-card-add" onClick={openModalAddStaff} />
      <p className="staff-card-title">
        Notre équipe
      </p>
