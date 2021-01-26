@@ -30,13 +30,12 @@ const nurseDataMapper = {
 
         // update cabinet
         const updateNurse = await client.query(`
-        UPDATE nurse SET siren_code = $1, firstname = $2, lastname = $3, email = $4, phone_number = $5, avatar = $6 WHERE nurse.id = $7`, [
+        UPDATE nurse SET siren_code = $1, firstname = $2, lastname = $3, email = $4, phone_number = $5 WHERE nurse.id = $6`, [
             siren_code,
             firstname,
             lastname,
             email,
             phone_number,
-            avatar,
             id
         ]);
         console.log('Coucou');
