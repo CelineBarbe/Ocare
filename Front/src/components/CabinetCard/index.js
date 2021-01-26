@@ -12,7 +12,9 @@ import UpdateCabinetModal from 'src/modal/UpdateCabinetModal'
 
 
 // == Composant
-const CabinetCard = ({id, name, address, zip_code, city, phone_number, nbpatients, email, handleSubmitUpdate, changeFieldUpdate}) => {
+const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_number, nbpatients, 
+  newEntryMail,changeFieldUpdate,handleSubmitUpdate
+}) => {
   
   const [entryModal,setEntryModal] = useState(false);
 
@@ -35,10 +37,12 @@ const CabinetCard = ({id, name, address, zip_code, city, phone_number, nbpatient
       zip_code={zip_code}
       city={city}
       phone_number={phone_number}
-      email={email}
+      newEntryMail={newEntryMail}
+      pin_code={pin_code}
       handleSubmitUpdate={handleSubmitUpdate}
       handleModal={handleModal}
       changeFieldUpdate={changeFieldUpdate}
+      
     />
     
     : null}

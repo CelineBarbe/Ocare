@@ -1,5 +1,6 @@
 import {
-  SEED_CABINETS, SEED_DEFAULT_CABINET, CHANGE_CABINET, CREATE_CABINET, CABINET_CHANGE_FIELD, CREATE_CABINET_SUCCEEDED, UPDATE_CABINET, CABINET_CHANGE_FIELD_UPDATE
+  SEED_CABINETS, SEED_DEFAULT_CABINET, CHANGE_CABINET, CREATE_CABINET, CABINET_CHANGE_FIELD,
+  CREATE_CABINET_SUCCEEDED, UPDATE_CABINET, CABINET_CHANGE_FIELD_UPDATE, UPDATED_CABINET
 } from './types';
 
 export const seedCabinets = (data) => ({
@@ -30,6 +31,11 @@ export const cabChangeField = (value, field) => ({
 
 export const createCabinet = () => ({
   type: CREATE_CABINET,
+})
+
+export const cabinetUpdated = (data) => ({
+  type: UPDATED_CABINET,
+  data,
 })
 
 export const updateCabinet = () => ({

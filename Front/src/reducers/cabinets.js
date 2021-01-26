@@ -16,6 +16,7 @@ export const initialState = {
   newEntryCity:'',
   newEntryPhone_number:'',
   newEntryPin_code:'',
+  newEntryMail:'',
   isCreated: false,
   staff:[],
   list: [],
