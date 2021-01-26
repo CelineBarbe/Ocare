@@ -8,7 +8,7 @@ const cabinetDataMapper = {
                 FROM all_cabinet 
                 JOIN cabinet_has_nurse
                     ON cabinet_has_nurse.cabinet_id = all_cabinet.id
-                WHERE cabinet_has_nurse.nurse_id = $1`, [idUser]);
+                WHERE cabinet_has_nurse.nurse_id = $1 AND cabinet_has_nurse.allowed = true`, [idUser]);
 
         if (result.rowCount == 0) {
             return null;
@@ -86,7 +86,15 @@ const cabinetDataMapper = {
             return null;
         }
         
-        const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id) VALUES($1, $2) RETURNING *`, [enabledCode.rows[0].id, idNurse]);
+        // Vérifie si il a déjà des cabinet pour les passer à false
+        const hasDefaultCabinet = await client.query(`SELECT * FROM cabinet_has_nurse WHERE cabinet_has_nurse.nurse_id = $1`, [idNurse]);
+
+        if (hasDefaultCabinet.rowCount != 0) {
+            // Remove default_cabinet
+            await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE nurse_id = $1`, [idNurse]);
+        }
+
+        const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [enabledCode.rows[0].id, idNurse]);
 
         return result.rows[0];
     },
@@ -117,6 +125,17 @@ const cabinetDataMapper = {
             return null;
         }
 
+    },
+
+    async unsbscribe(idCab, idNurse) {
+        
+        const result = await client.query(`UPDATE cabinet_has_nurse chn SET allowed = false, default_cabinet = false WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
+
+        if (result.rowCount == 0) {
+            return null;
+        }
+
+        return result.rowCount;
     },
 
     async updateCabinetById(idCab, infoCab, userID) {

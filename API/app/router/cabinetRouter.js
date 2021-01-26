@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post('/addnurse', cabinetController.addNurse);
 router.patch('/updatenurse', cabinetController.updateNurse);
+router.patch('/unsubscribe', cabinetController.unsubscribeNurse);
 router.get('/', cabinetController.findAll);
 router.get('/:id(\\d+)', cabinetController.findById);
 router.post('/', cabinetController.create);

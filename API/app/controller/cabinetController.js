@@ -82,6 +82,9 @@ const cabinetController = {
                 next();
                 return;
             }
+            
+            // Save current_cabinet in locals
+            request.app.locals.userCurrentCabinet = savedNurseToCabinet.cabinet_id;
 
             response.json({ savedNurseToCabinet });
 
@@ -103,6 +106,26 @@ const cabinetController = {
             }
 
             response.json({ updatedNurseToCabinet });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async unsubscribeNurse(request, response, next) {
+        try {
+            
+            const { cabinet_id, nurse_id } = request.body;
+
+            const unsubscription = await cabinetDataMapper.unsbscribe(cabinet_id, nurse_id);
+
+            if (!unsubscription) {
+                response.locals.notFound = 'Une erreur est survenue lors du désabonnement';
+                next();
+                return;
+            }
+
+            response.json({ message: "Désabonnement Ok !" });
 
         } catch (error) {
             next(error);
