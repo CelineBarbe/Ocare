@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { GET_LOGS, CREATE_LOG, GET_LOGS_BY_DATE} from 'src/actions/types';
-import { seedLogs } from 'src/actions/logs';
+import { seedLogs, seedLogsByDate } from 'src/actions/logs';
 
 const URL = "https://ocare.herokuapp.com/";
 
@@ -83,7 +83,7 @@ const logsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          store.dispatch(seedLogs(response.data));
+          store.dispatch(seedLogsByDate(response.data));
         }
       })
       .catch((err) => {

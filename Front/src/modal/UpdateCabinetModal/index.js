@@ -7,35 +7,49 @@ import './updatecabinet.scss';
 import close from 'src/assets/icones/close.svg';
 
 const UpdateCabinetModal = ({
- /*  closeModalEntry,
-  changeField,
-  handleSubmit */
+  id,
+  name,
+  address,
+  zip_code,
+  city,
+  phone_number,
+  email,
+  handleModal,
+  changeFieldUpdate,
+  handleSubmitUpdate 
 }) => {
 
-/* const handleChange = (event) => {
-    changeField(event.target.value, event.target.name);
+const handleChange = (event) => {
+  changeFieldUpdate(event.target.value, event.target.name);
   }
 
-  const handleChecked = (event) => {
-    changeField(event.target.checked, event.target.name);
+const handleChecked = (event) => {
+    changefield(event.target.checked, event.target.name);
   }
 
-  const handleSubmit = (evt) => {
+const handleSubmit = (evt) => {
     evt.preventDefault();
-    closeModalEntry();
+    handleSubmitUpdate();
+    handleModal();
   };
-  */
+
+const closeModal = () => {
+  handleModal();
+}
+
   
 
   return (
     <div className="modal-entry">
     <form className="form" >
-    <img  className="modal-patient-close" alt="close" src={close}/>
+    <img  className="modal-patient-close" alt="close" src={close} onClick={closeModal}/>
       <input
         className="form-input"
         type="text"
-        name="newEntryName"
+        name="name"
         placeholder="Nom"
+        value={name}
+        onChange={handleChange}
         
       />
       <input

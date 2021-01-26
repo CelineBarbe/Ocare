@@ -1,4 +1,4 @@
-import {SEED_LOGS, LOGBOOK_CHANGE_FIELD, GET_LOGS, SEED_PATIENT} from 'src/actions/types';
+import {SEED_LOGS, LOGBOOK_CHANGE_FIELD, GET_LOGS, SEED_PATIENT, SEED_LOGS_BY_DATE} from 'src/actions/types';
 
 export const initialState = {
   
@@ -26,7 +26,13 @@ const reducer = (oldState = initialState, action = {}) => {
       case SEED_LOGS:
         return {
           ...oldState,
-          list: [...oldState.list,action.payload],
+          list: [...oldState.list,...action.payload],
+          isLoading: false,
+        };
+      case SEED_LOGS_BY_DATE:
+        return {
+          ...oldState,
+          list: action.payload,
           isLoading: false,
         };
       case GET_LOGS:
