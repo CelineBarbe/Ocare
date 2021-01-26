@@ -17,8 +17,10 @@ const CabinetPage = () => {
     <Fragment>
       <Header />
       <div className="main">
+        <div className="cabinetPage-container">
         <CabinetCard />
         <StaffCard />
+        </div>
       </div>
       <Nav />
     </Fragment>

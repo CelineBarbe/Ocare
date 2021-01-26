@@ -5,14 +5,19 @@ import React, {useState} from 'react';
 import './staffCard.scss';
 
 //== Import component 
-import AddStaffModal from 'src/modal/AddStaffModal';
+import AddStaffModal from 'src/containers/AddStaffModal';
 
 // == Import images
 import avatar from 'src/assets/icones/avatar.svg'
 import plus from 'src/assets/icones/plus2.svg';
+import moins from 'src/assets/icones/moinsvert.svg';
 
 // == Composant
-const StaffCard = ({staff}) => {
+const StaffCard = ({
+  staff,
+  handleunSubNurse
+}) => {
+  
   /*hook pour modal */
   const [addStaff,setAddStaff] = useState(false);
   /* Fonction d'ouverture fermeture AddStaff */
@@ -23,6 +28,10 @@ const StaffCard = ({staff}) => {
   function closeModalAddStaff(){
     setAddStaff(false);
   }
+
+  const getEquipierId = (params) => {
+    handleunSubNurse(params);
+  } 
 
   return (
     <div className="staff-card">
@@ -50,6 +59,7 @@ const StaffCard = ({staff}) => {
           <p className="nurse-card-infos nurse-card-mail">
             Mail : jerome@oclock.io
           </p>
+          <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getEquipierId(equipier.id)} />
       </div>
 
      ))}

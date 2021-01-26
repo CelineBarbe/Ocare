@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL } from 'src/actions/types';
+import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE } from 'src/actions/types';
 import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
 const URL = "https://ocare.herokuapp.com/"
 
 const auth = (store) => (next) => (action) => {
+  const tokenStorage = localStorage.getItem('auth');
   //LOGIN
   if (action.type === AUTH_SUBMIT_LOGIN) {
     const Recupstore = store.getState();
@@ -73,13 +74,15 @@ const auth = (store) => (next) => (action) => {
     const config = {
       method: 'patch',
       url: `${URL}nurse/${id}`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
       data: {
-        email,
+        siren_code,
         firstname,
         lastname,
+        email,
         phone_number,
-        siren_code,
-        avatar:'en dur'
       },
     };
     axios(config)
@@ -87,6 +90,40 @@ const auth = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("UPDATE PROFIL DONE");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  }
+
+  //UNSUB_NURSE 
+
+  if (action.type === UNSUB_NURSE) {
+    const Recupstore = store.getState();
+    const { id } = Recupstore.cabinets;
+    const { nurseId } = action;
+    console.log("passe dans UNSUB_NURSE");
+    console.log("nurse id:",nurseId);
+    console.log("cabinet Id:",id);
+  
+    const config = {
+      method: 'patch',
+      url: `${URL}nurse/unsubscribe`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+      data: {
+        cabinet_id:id,
+        nurse_id:nurseId,
+      }
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         console.log("Utilisateur désinscrit du cabinet");
         }
       })
       .catch((err) => {

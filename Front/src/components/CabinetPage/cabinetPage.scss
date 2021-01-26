@@ -1,4 +1,25 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
+.cabinetPage-container {
+  font-family: Nunito,sans-serif;
+  height: 450px;
+  width: 100%;
+  padding: .5rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+}
+
+.cabinetPage-container::-webkit-scrollbar {
+  display: none;
+}
+
 
