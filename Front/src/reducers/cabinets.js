@@ -9,6 +9,7 @@ export const initialState = {
   phone_number: '',
   pin_code: '',
   email:'',
+  subcribeId:null,
   nbpatients:0,
   newEntryName:'',
   newEntryAddress:'',

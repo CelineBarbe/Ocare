@@ -1,12 +1,16 @@
 
 import axios from 'axios';
-import { CREATE_CABINET, UPDATE_CABINET, SUB_CABINET } from 'src/actions/types';
+import { CREATE_CABINET, UPDATE_CABINET, SUB_CABINET, UNSUB_CABINET  } from 'src/actions/types';
 import { createCabinetSucceeded, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
 
 const URL = "https://ocare.herokuapp.com/";
 
 const cabinetsMW = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');
+
+   /*******************************/
+   /* ACTION CREATE CABINET */
+  /*******************************/
   if (action.type === CREATE_CABINET) {
     console.log('passe par CREATE cabinet');
     const {cabinets, auth} = store.getState();
@@ -43,10 +47,14 @@ const cabinetsMW = (store) => (next) => (action) => {
     next(action);
   };
 
+    /*******************************/
+    /* ACTION SUBSCRIBE CABINET */
+    /*******************************/
+
   if (action.type === SUB_CABINET) {
     const Recupstore = store.getState();
     const { name, pin_code  } = Recupstore.cabinets;
-    const {id} = action;
+    const {id } = action;
     console.log("passe dans SUB CABINET");
   
     console.log("name:", name, "pin code:", pin_code, "ID",id);
@@ -75,6 +83,45 @@ const cabinetsMW = (store) => (next) => (action) => {
     next(action);
   };
 
+  /*******************************/
+  /* ACTION UNSUBSCRIBE CABINET */
+  /*******************************/
+
+  if (action.type === UNSUB_CABINET) {
+    const Recupstore = store.getState();
+    const { id } = Recupstore.auth;
+    const { cabinetId } = action;
+    console.log("passe dans UNSUB CABINET");
+    console.log("cabinet ID:",cabinetId);
+    console.log("nurse id:",id);
+  
+    const config = {
+      method: 'patch',
+      url: `${URL}cabinet/unsubscribe`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+      data: {
+        cabinet_id:cabinetId,
+        nurse_id:id,
+      }
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         console.log("Utilisateur désinscrit du cabinet");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  };
+
+   /*******************************/
+   /* ACTION UPDATE CABINET */
+  /*******************************/
 
   if (action.type === UPDATE_CABINET) {
     console.log('passe par UPDATE cabinet');

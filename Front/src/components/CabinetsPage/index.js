@@ -1,5 +1,5 @@
 // == Import npm
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // == Import
@@ -17,7 +17,12 @@ import moins from 'src/assets/icones/moinsvert.svg';
 
 
 // == Composant
-const CabinetsPage = ({ listCabinets }) => {
+const CabinetsPage = ({ listCabinets, handleunSubCabinet }) => {
+
+const getCabinetId = (params) => {
+  handleunSubCabinet(params);
+} 
+
   return (
 
         <Fragment>
@@ -32,14 +37,11 @@ const CabinetsPage = ({ listCabinets }) => {
                   <img src={hospital} alt="cabinet" className="cabinets-card-img" />
                   <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
                   <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbPatients} patients</span>
-                  <img src={moins} alt="moins" className="cabinets-card-add" />
+
+                  <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getCabinetId(cabinet.id)} />
                 </div>
           ))}
           </div>
-        
-
-            
-
         </div>
         <Nav />
         </Fragment>
