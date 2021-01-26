@@ -1,5 +1,5 @@
 // == Import npm
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {useParams} from 'react-router-dom';
 
 // == Import
@@ -32,17 +32,11 @@ const PatientPage = ({
   isLoading,
   }) => {
 
+
   const { id } = useParams();
   useEffect(() => {getPatient(id)}, [])
 
-
-  const age = () => {
-    if(!isLoading) {
-      //TODO LUXON et calcul d'age 
-      return 23;
-    }
-  }
-  
+ 
   const patientInfo = () => {
     if(!isLoading){
       return <>

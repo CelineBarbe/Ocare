@@ -1,0 +1,42 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.modal-patient-update {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: vars.$gutter;
+  margin: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  -webkit-box-shadow: 0px 1px 6px -4px #000000; 
+  box-shadow: 0px 1px 6px -4px #000000;
+  border-radius: 5px;
+  animation: fadein 1s;
+  z-index: 500;
+  overflow-y: scroll;
+
+  &-img {
+    width: 30px;
+    margin-top: 10px;
+  }
+}
+
+.modal-patient-update::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* KEYFRAMES ANIMATION */
+
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}

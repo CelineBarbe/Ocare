@@ -28,7 +28,7 @@ const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet}) =>
     <ul className="header-ul">
 
       <li className="header-home">
-        <Link to="/">
+        <Link to="/dashboard">
           <img src={logo} alt="logo" className="header-img-logo" />
         </Link>
       </li>

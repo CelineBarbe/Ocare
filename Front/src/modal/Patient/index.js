@@ -4,6 +4,9 @@ import { DateTime } from "luxon";
 // == Import
 import './patientModal.scss';
 
+//== Import Component
+import UpdatePatientModal from 'src/modal/UpdatePatientModal';
+
 const PatientModal = ({
   gender, 
   birthdate, 
@@ -15,6 +18,17 @@ const PatientModal = ({
   daily_checking, 
   number_dailychecking
 }) => {
+
+  /* Hook gestion modal */
+  const [updatePatientModal,setOpenUpdatePatientModal] = useState(false);
+  /* Fonction d'ouverture fermeture updatemodal */
+  function openModalUpdate() {
+    setOpenUpdatePatientModal(true);
+  }
+
+  function closeModalUpdate(){
+    setOpenUpdatePatientModal(false);
+  }
 
   /* Create today date with the DATE object */
   const date = new Date(Date.now());
@@ -43,7 +57,14 @@ const PatientModal = ({
     <p className="modal-patient-pathologie"> {pathology} </p>
     <p className="modal-patient-content">{daily_checking? number_dailychecking>1 ? `Patient Quotidien : ${number_dailychecking} visites par jour.`: "Patient quotidien" : null}</p>
 
-    <span className="modal-patient-edit">editer</span>
+    <span onClick={openModalUpdate} className="modal-patient-edit">editer</span>
+      {updatePatientModal 
+        ? 
+            <UpdatePatientModal 
+              
+             /> 
+            : null
+      }
   </div>
   )
 };
