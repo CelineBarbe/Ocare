@@ -15,18 +15,11 @@ const mapStateToProps = ({ cabinets }) => {
     phone_number,
     nbpatients,
     email,
-    newEntryMail,
-   
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  handleSubmitUpdate: () => {
-    dispatch(updateCabinet());
-  },
-  changeFieldUpdate:(field,value) => {
-    dispatch(cabChangeFieldUpdate(field,value))
-  }
+
 })
 
 // appel a connect et export

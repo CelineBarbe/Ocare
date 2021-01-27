@@ -52,12 +52,7 @@ const reducer = (oldState = initialState, action = {}) => {
     case CABINET_CHANGE_FIELD_UPDATE:
       return {
         ...oldState,
-        name: action.payload.name,
-        address: action.payload.address,
-        zip_code: action.payload.zip_code,
-        city: action.payload.city,
-        phone_number: action.payload.phone_number,
-        email: action.payload.email,
+        ...action.payload,
       };
     case SUB_CABINET:
       return {

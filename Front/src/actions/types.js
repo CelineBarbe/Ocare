@@ -7,6 +7,7 @@ export const SIGNUP_OK = 'SIGNUP_OK';
 export const LOGOUT = 'LOGOUT';
 export const UPDATE_PROFIL = 'UPDATE_PROFIL';
 export const UNSUB_NURSE = 'UNSUB_NURSE';
+export const AUTO_LOGIN = 'AUTO_LOGIN';
 
 //connexion_dashboard
 export const INIT_DASHBOARD = 'INIT_DASHBOARD';
@@ -23,7 +24,6 @@ export const CHANGE_CABINET = "CHANGE_CABINET";
 export const CREATE_CABINET = "CREATE_CABINET";
 export const CREATE_CABINET_SUCCEEDED = "CREATE_CABINET_SUCCEEDED";
 export const UPDATE_CABINET = "UPDATE_CABINET";
-export const UPDATED_CABINET = "UPDATED_CABINET";
 export const CABINET_CHANGE_FIELD_UPDATE = "CABINET_CHANGE_FIELD_UPDATE";
 export const SUB_CABINET = "SUB_CABINET";
 export const UNSUB_CABINET = "UNSUB_CABINET";

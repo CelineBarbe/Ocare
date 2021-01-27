@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { AUTH_CHANGE_FIELD, LOGIN_OK, SIGNUP_OK, CHANGE_CABINET, CREATE_CABINET_SUCCEEDED } from 'src/actions/types';
+import { AUTH_CHANGE_FIELD, LOGIN_OK, SIGNUP_OK, CHANGE_CABINET, CREATE_CABINET_SUCCEEDED, LOGOUT } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -42,6 +42,12 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         isSigned: true,
+        password:'',
+      }
+    case LOGOUT:
+      return {
+        ...oldState,
+        isLogged: false,
         password:'',
       }
     case CHANGE_CABINET:

@@ -1,5 +1,6 @@
 import {
-  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTH_SUBMIT_SIGNUP, SIGNUP_OK, INIT_DASHBOARD, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE
+  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTO_LOGIN,
+  AUTH_SUBMIT_SIGNUP, SIGNUP_OK, INIT_DASHBOARD, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE
 } from './types';
 
 export const authChangeField = (value, field) => ({
@@ -48,4 +49,8 @@ export const updateProfil = (id) => ({
 export const unSubNurse = (nurseId) => ({
   type: UNSUB_NURSE,
   nurseId
+})
+
+export const autoLogin = () => ({
+  type: AUTO_LOGIN,
 })
