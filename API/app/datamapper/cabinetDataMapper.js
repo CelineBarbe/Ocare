@@ -127,9 +127,11 @@ const cabinetDataMapper = {
 
     },
 
-    async unsbscribe(idCab, idNurse) {
+    async unsubscribe(idCab, idNurse) {
         
-        const result = await client.query(`UPDATE cabinet_has_nurse chn SET allowed = false, default_cabinet = false WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
+        // const result = await client.query(`UPDATE cabinet_has_nurse chn SET allowed = false, default_cabinet = false WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
+
+        const result = await client.query(`DELETE FROM cabinet_has_nurse chn WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
 
         if (result.rowCount == 0) {
             return null;

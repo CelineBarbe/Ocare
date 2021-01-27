@@ -117,7 +117,7 @@ const cabinetController = {
             
             const { cabinet_id, nurse_id } = request.body;
 
-            const unsubscription = await cabinetDataMapper.unsbscribe(cabinet_id, nurse_id);
+            const unsubscription = await cabinetDataMapper.unsubscribe(cabinet_id, nurse_id);
 
             if (!unsubscription) {
                 response.locals.notFound = 'Une erreur est survenue lors du désabonnement';
