@@ -8,7 +8,7 @@ import './main.scss';
 import Searchbar from 'src/containers/Searchbar';
 import Transmission from 'src/components/Transmission';
 import Patients from 'src/components/Patients';
-import Tour from 'src/components/Tour';
+import Tour from 'src/containers/Tour';
 
 // == Composant
 const Main = () => (
