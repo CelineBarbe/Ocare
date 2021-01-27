@@ -7,6 +7,7 @@ const nurseRouter = require('./nurseRouter');
 const patientRouter = require('./patientRouter');
 const logbookRouter = require('./logbookRouter');
 const medicalActRouter = require ('./medicalActRouter');
+const tourRouter = require ('./tourRouter');
 const auth = require('../middleware/auth');
 
 const router = express.Router();
@@ -30,6 +31,9 @@ router.use('/logbook', logbookRouter);
 
 //route medical actes
 router.use('/medicalact', medicalActRouter);
+
+//route tour
+router.use('/tour', tourRouter);
 
 //handleError
 router.use(errorController.error404);

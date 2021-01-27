@@ -1,6 +1,6 @@
 BEGIN;
 
-TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, medical_act, logbook_has_medical_act RESTART IDENTITY;
+TRUNCATE TABLE nurse, cabinet, cabinet_has_nurse, patient, logbook, medical_act, logbook_has_medical_act, tour, tour_has_patient RESTART IDENTITY;
 
 -- Insertions d'infirmiers
 INSERT INTO nurse(siren_code, firstname, lastname, email, password, phone_number) VALUES
@@ -385,15 +385,16 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 
 ('2020-11-27', '2020-12-28', '2020-12-28', 'Vérification des points, pansement', false, true, null, 2, 24),
 
-('2021-01-25 17:19:55.058+00', null, null, 'test', false, false, null, 2, 19),
-('2021-01-25 17:21:08.391+00', '2021-01-28 00:00:00+00', null, 'nouveau pansement à partir du 28', true, false, '2021-01-31 00:00:00+00', 2, 19),
-('2021-01-25 17:23:41.892+00', '2021-01-28 00:00:00+00', null, 'attention patient dur à piquer', false, false, '2021-01-31 00:00:00+00', 2, 24),
-('2021-01-25 17:29:12.38+00 ', null, null, 'test fermeture modal après submit formulaire', false, false, null, 2, 24),
-('2021-01-25 17:30:30.053+00', null, null, 'test submit', false, false, null, 2, 24);
+('2021-01-25', null, null, 'test', false, false, null, 2, 19),
+('2021-01-25', '2021-01-28', null, 'nouveau pansement à partir du 28', true, false, '2021-01-31', 2, 19),
+('2021-01-25', '2021-01-28', null, 'attention patient dur à piquer', false, false, '2021-01-31', 2, 24),
+('2021-01-25', null, null, 'test fermeture modal après submit formulaire', false, false, null, 2, 24),
+('2021-01-25', null, null, 'test submit', false, false, null, 2, 24);
 
 
 -- Medical Act
 INSERT INTO medical_act(name, category) VALUES
+('soins infirmier', 'category'),
 ('Prise de sang', 'category'),
 ('Pilulier', 'category'),
 ('Nursing', 'category'),
@@ -435,5 +436,17 @@ INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES
 (27, 3),
 (28, 9),
 (29, 4);
+
+-- Tour
+INSERT INTO tour(date, information, nurse_id, cabinet_id) VALUES
+('2021-01-27', 'test création de tournée', 2, 1);
+
+-- Tour has patient
+INSERT INTO tour_has_patient(tour_id, patient_id) VALUES
+(1,2),
+(1,3),
+(1,6),
+(1,8),
+(1,10);
 
 COMMIT;

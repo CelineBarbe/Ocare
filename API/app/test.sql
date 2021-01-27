@@ -182,6 +182,123 @@ SELECT l.*,
         JOIN nurse n
             ON n.id = l.nurse_id;
 
--- Patient avec visite quotidienne
+-- Patient avec visite quotidienne à true sur un cabinet avec ses logbook - TRES COMPLET
 SELECT p.* FROM patient p
     WHERE daily_checking = true;
+
+SELECT p.firstname,
+    lastname,
+    p.id AS patientID,
+    l.*,
+    m.*
+    FROM patient p
+        JOIN logbook l
+            ON p.id = l.patient_id
+        JOIN logbook_has_medical_act lhma
+            ON l.id = lhma.logbook_id
+        JOIN medical_act m
+            ON m.id = lhma.medical_act_id
+    WHERE p.cabinet_id = 1 AND p.daily_checking = true;
+
+-- Idem avec moins d'infos => Visite quotidienne true et planned_date = date
+SELECT p.* FROM patient p
+    WHERE daily_checking = true;
+
+SELECT p.firstname,
+    p.lastname,
+    p.id AS patientID,
+    l.id AS logbookID,
+    l.observations,
+    m.id AS actID,
+    m.name AS actNAME
+    FROM patient p
+        JOIN logbook l
+            ON p.id = l.patient_id
+        JOIN logbook_has_medical_act lhma
+            ON l.id = lhma.logbook_id
+        JOIN medical_act m
+            ON m.id = lhma.medical_act_id
+    WHERE p.cabinet_id = 1 
+        AND (p.daily_checking = true
+        OR l.planned_date = '2021-01-28');
+
+--ANCIEN TOURNEE
+-- // Faire un appel pour avoir tous les patients qui ont daily_checking = true (avec leur logbook
+--         const patients = await client.query(`SELECT p.firstname,
+--         lastname,
+--         p.id AS patientID,
+--         l.id AS logbookID,
+--         l.observations,
+--         m.id AS actID,
+--         m.name AS actNAME
+--         FROM patient p
+--             JOIN logbook l
+--                 ON p.id = l.patient_id
+--             JOIN logbook_has_medical_act lhma
+--                 ON l.id = lhma.logbook_id
+--             JOIN medical_act m
+--                 ON m.id = lhma.medical_act_id
+--         WHERE p.cabinet_id = $1 
+--             AND (p.daily_checking = true
+--             OR l.planned_date = $2);`, [cabinet_id, date]);
+
+--         // console.log(patients, "patients"); patient.rows
+        
+--         // Créé la tournée en liant tourID et patientID pour chaque ligne
+        
+--         for (let patient of patients.rows) {
+--             await client.query(`INSERT INTO tour_has_patient(tour_id, patient_id) VALUES ($1,$2)`, [tourID, patient.patientid]);
+--         }
+
+--         const result = await client.query(`SELECT thp.*,
+--         p.firstname,
+--         p.lastname,
+--         l.id AS logbook_id,
+--         m.id AS medical_act_id,
+--         m.name AS actNAME
+--         FROM tour_has_patient thp
+--             JOIN patient p
+--                 ON p.id = thp.patient_id
+--             JOIN logbook l
+--                 ON p.id = l.patient_id
+--             JOIN logbook_has_medical_act lhma
+--                 ON l.id = lhma.logbook_id
+--             JOIN medical_act m
+--                 ON m.id = lhma.medical_act_id
+--         WHERE thp.tour_id = $1`, [tourID]);
+
+--         console.log(result.rows);
+
+--         return result.rows;
+
+-- Logbook à la date
+SELECT p.lastname,
+        p.id AS patient_id,
+        l.id AS logbook_id,
+        l.observations,
+        m.id AS actID,
+        m.name AS actNAME
+        FROM patient p
+            JOIN logbook l
+                ON p.id = l.patient_id
+            JOIN logbook_has_medical_act lhma
+                ON l.id = lhma.logbook_id
+            JOIN medical_act m
+                ON m.id = lhma.medical_act_id
+        WHERE p.cabinet_id = 1
+        AND l.planned_date = '2021-01-28';
+
+FROM logbook 
+WHERE planned_date = '2021-01-28';
+
+-- patient réccurent sans logbook à la date
+SELECT DISTINCT p.firstname,
+        lastname,
+        p.id AS patient_id
+        FROM patient p
+            JOIN logbook l
+                ON p.id = l.patient_id
+        WHERE p.cabinet_id = 1 
+            AND p.daily_checking = true
+            AND l.planned_date <> '2021-01-28'
+GROUP BY p.id;
