@@ -101,9 +101,6 @@ const logbookDataMapper = {
         OR l.planned_date = $3)
         ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet, date, tomorrow]);
 
-        if (result.rowCount == 0) {
-            return null;
-        }
         return result.rows;
     },
 
