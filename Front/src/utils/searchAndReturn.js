@@ -40,3 +40,23 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
     return entry
   } 
  }
+
+
+
+export const returnArrayHandleChange = (array, input) => {
+  if(input.length == 1 ){
+    const arrayByLetter = array.filter(element => element.lastname.charAt(0) === input[0].toUpperCase())
+  console.log(arrayByLetter);
+  return arrayByLetter;
+  } else if (input.length == 2){
+    const arrayByLetter = array.filter(element => element.lastname.charAt(0) === input[0].toUpperCase() && element.lastname.charAt(1) === input[1])
+    console.log(arrayByLetter);
+    return arrayByLetter
+  } else if (input.length == 3){
+    const arrayByLetter = array.filter(element => element.lastname.charAt(0) === input[0].toUpperCase() && element.lastname.charAt(1) === input[1] && element.lastname.charAt(2) === input[2])
+    console.log(arrayByLetter);
+    return arrayByLetter
+  }else {
+    return []
+  }
+ }

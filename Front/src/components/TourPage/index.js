@@ -17,7 +17,7 @@ import calendar from 'src/assets/icones/calendar.svg';
 // == Import 
 import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
-import AddPatientModal from 'src/modal/AddPatientModal';
+import AddPatientModal from 'src/containers/AddPatientModal';
 import CreateTourModal from 'src/containers/CreateTourModal';
 
 import {data} from 'src/utils/data';
