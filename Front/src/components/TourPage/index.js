@@ -24,13 +24,28 @@ import {data} from 'src/utils/data';
 
 
 // == Composant
-const TourPage = ({list, date, date_tour, changeDate}) => {
-
+const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour}) => {
   //LOADING DATE TODAY
+  //date vaut path ou now
+  const datePlace = useParams()?.date ?? DateTime.local().toISODate();
+  let [cards,setCards] = useState(list);
+  
   useEffect(() => {
-    changeDate(DateTime.local().toISO())
-}, [])
+    //par défaut charge la date du jour sinon la date de l'url
+    changeDate(datePlace);
+    getTour();
+  }, [location])
 
+  useEffect(() => {
+    setCards(list);
+    console.log('useEffect, list', list,'card:',cards);
+  }, [list])
+
+  useEffect(() => {
+    updateTour(cards);
+  }, [cards])
+
+  
 
 /*Hook for MODAL add patient and create tour */
 const [addPatientModal,setAddPatientModal] = useState(false);
@@ -52,12 +67,17 @@ function closeModalCreateTour(){
   setCreateTourModal(false);
 }
 
-let [cards,setCards] = useState(data);
-  
+const arraySortStarting = (array) => {
+  array.sort((a,b)=> {
+    a.order_tour - b.order_tour;
+  })
+}
+
   const arraySortOrder = (array) => {
     const arrayReturn = array.map((item,index) => {
       let newItem = {...item};
-      newItem.order=(index+1);
+      //order tout court!
+      newItem.order_tour=(index+1);
       return newItem;
     })
     return arrayReturn;
@@ -90,7 +110,7 @@ let [cards,setCards] = useState(data);
       }
       
         {items.map((item, index) => (
-          <Card key={`item-${item.id}`} index={index} nom={item.nom} tag={item.tag} id={item.id} order={item.order} />
+          <Card key={`item-${item.id}`} index={index} nom={item.lastname} tag={item.medical_act_name} id={item.id} order={item.order_tour} />
         ))}
       </div>
     );             

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import TourPage from 'src/components/TourPage';
-import { changeDate } from 'src/actions/tour';
+import { changeDate, getTour, updateTour } from 'src/actions/tour';
 
 const mapStateToProps = ({ tournee }, ownProps) => {
   const { date, tour_date, list} = tournee;
@@ -18,6 +18,12 @@ const mapDispatchToProps = (dispatch) => ({
    changeDate: (date) => {
     dispatch(changeDate(date));
   },
+  getTour: () => {
+    dispatch(getTour());
+  },
+  updateTour: (newList) => {
+    dispatch(updateTour(newList))
+  }
 });
 
 // appel a connect et export

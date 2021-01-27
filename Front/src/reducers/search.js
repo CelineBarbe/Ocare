@@ -2,6 +2,7 @@ import { SEARCH_CHANGE_FIELD } from 'src/actions/types';
 
 export const initialState = {
   inputSearchDashboard: '',
+  inputSearchPatient:'',
 };
 
 // reducer qui va gérer les recettes

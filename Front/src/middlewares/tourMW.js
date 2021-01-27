@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { CREATE_TOUR } from 'src/actions/types';
+
+import { CREATE_TOUR, GET_TOUR, UPDATE_TOUR } from 'src/actions/types';
 import { seedTour } from 'src/actions/tour';
 
 
@@ -10,11 +11,16 @@ const tourMW = (store) => (next) => (action) => {
   const Recupstore = store.getState();
   const { default_cabinet } = Recupstore.auth;
 
+  /*******************************/
+   /* ACTION CREATE TOUR */
+  /*******************************/
+
   if (action.type === CREATE_TOUR) {
     const { tour_date } = Recupstore.tournee;
     const { id } = Recupstore.auth;
     console.log('passe par CREATE TOUR');
     console.log('date de la tournée:', tour_date ,"default cabinet", default_cabinet, "id user",id);
+
     const config = {
       method: 'post',
       url: `${URL}tour/`,
@@ -41,6 +47,61 @@ const tourMW = (store) => (next) => (action) => {
       });
     next(action);
   };
+
+  /*******************************/
+   /* ACTION GET TOUR */
+  /*******************************/
+
+  if (action.type === GET_TOUR) {
+    const { date } = Recupstore.tournee;
+    console.log('passe par GET TOUR');
+    console.log('date de la tournée:', date);
+    const config = {
+      method: 'get',
+      url: `${URL}tour/${date}`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         store.dispatch(seedTour(response.data.tour));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  };
+
+  /*******************************/
+   /* ACTION UPDATE TOUR */
+  /*******************************/
+  if (action.type === UPDATE_TOUR) {
+    const { date } = Recupstore.tournee;
+    console.log('passe par UPDATE TOUR');
+    console.log('date de la tournée:', date);
+    const config = {
+      method: 'post',
+      url: `${URL}tour/${date}`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+    };
+    /* axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         store.dispatch(seedTour(response.data.tour));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      }); */
+    next(action);
+  }; 
   next(action);
 }
 

@@ -1,4 +1,4 @@
-import { TOUR_CHANGE_FIELD, CHANGE_DATE,SEED_TOUR } from 'src/actions/types';
+import { TOUR_CHANGE_FIELD, CHANGE_DATE,SEED_TOUR, UPDATE_TOUR } from 'src/actions/types';
 var { DateTime } = require('luxon');
 
 export const initialState = {
@@ -31,6 +31,11 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         list: action.payload,
         isLoading: false,
+      };
+    case UPDATE_TOUR:
+      return {
+        ...oldState,
+        list: action.newList,
       };
 
     default:

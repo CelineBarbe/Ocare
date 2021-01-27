@@ -1,4 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
+import {useHistory} from 'react-router-dom';
 
 // == Import
 import './createTourModal.scss';
@@ -15,6 +16,13 @@ const CreateTourModal = ({
 
 }) => {
 
+  //REDIRECTION à la date
+  const history = useHistory();
+  const routeTourByDate = () =>{ 
+    let path = `/tour/${tour_date}`; 
+    history.push(path);
+  }
+       
   console.log("tour_date", tour_date);
 
   const handleChange = (evt) => {
@@ -26,6 +34,7 @@ const CreateTourModal = ({
     console.log("je suis dans handlesumbit");
     console.log("tour_date dans handlesubmit", tour_date);
     handleTour();
+    routeTourByDate();
     closeModalCreateTour();
   };
 
