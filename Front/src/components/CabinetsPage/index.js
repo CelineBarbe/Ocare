@@ -36,7 +36,7 @@ const getCabinetId = (params) => {
                 <div className="cabinets-card" key={cabinet.id}>
                   <img src={hospital} alt="cabinet" className="cabinets-card-img" />
                   <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
-                  <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbPatients} patients</span>
+                  <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
 
                   <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getCabinetId(cabinet.id)} />
                 </div>

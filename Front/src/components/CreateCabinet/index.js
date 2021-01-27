@@ -6,6 +6,10 @@ import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 import './createcabinet.scss';
 
+
+//== Import images 
+import close from 'src/assets/icones/close.svg';
+
 // == Composant
 const CreateCabinet = ({
   newEntryName, newEntryAddress, newEntryZip_code, newEntryCity, newEntryPhone_number, newEntryPin_code, isCreated, changeField, handleSubmitCab, handleReset
@@ -29,12 +33,18 @@ const CreateCabinet = ({
     evt.preventDefault();
     handleSubmitCab();
   };
+
+  const closeForm = () => {
+    let path = `/cabinet`;
+    history.push(path);
+  }
   return (
     <>
     <Header />
     <div className="main">
     <h2 className="title-page">création de cabinet</h2>
     <form className="form" onSubmit={handleSubmit}>
+    <img  className="modal-patient-close" alt="close" src={close} onClick={closeForm}/>
       <input
         className="form-input"
         type="text"

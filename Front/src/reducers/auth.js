@@ -58,7 +58,7 @@ const reducer = (oldState = initialState, action = {}) => {
     case CREATE_CABINET_SUCCEEDED:
       return {
         ...oldState,
-        default_cabinet: action.data.id,
+        default_cabinet: action.data.savedCabinet.id,
       }
     default:
       return { ...oldState };
