@@ -135,7 +135,8 @@ const tourDataMapper = {
             JOIN tour t
                 ON t.id = thp.tour_id
         WHERE t.date = $1
-            AND p.cabinet_id = $2`, [date, idCabinet]);
+            AND p.cabinet_id = $2
+            AND l.planned_date = $1`, [date, idCabinet]);
 
         return result.rows;
 

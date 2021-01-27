@@ -362,5 +362,6 @@ SELECT thp.*,
             JOIN tour t
                 ON t.id = thp.tour_id
         WHERE t.date = '2021-01-28'
-            AND p.cabinet_id = 1;
+            AND p.cabinet_id = 2
+            AND l.planned_date = '2021-01-28';
 
