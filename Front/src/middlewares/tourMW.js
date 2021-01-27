@@ -11,8 +11,9 @@ const tourMW = (store) => (next) => (action) => {
 
   if (action.type === CREATE_TOUR) {
     const { tour_date } = Recupstore.tournee;
+    const { id } = Recupstore.auth;
     console.log('passe par CREATE TOUR');
-    console.log('date de la tournée:', tour_date ,"default cabinet", default_cabinet);
+    console.log('date de la tournée:', tour_date ,"default cabinet", default_cabinet, "id user",id);
     const config = {
       method: 'post',
       url: `${URL}tour/`,
@@ -20,7 +21,10 @@ const tourMW = (store) => (next) => (action) => {
         Authorization: `Bearer ${tokenStorage}`,
       },
       data: {
-        tour_date
+        date: tour_date,
+        information: null,
+        nurse_id: id,
+        cabinet_id: default_cabinet
       }
     };
     axios(config)
@@ -28,6 +32,7 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log('tournée créé');
+         console.log('response', response);
         }
       })
       .catch((err) => {

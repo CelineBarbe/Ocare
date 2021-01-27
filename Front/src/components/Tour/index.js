@@ -10,8 +10,12 @@ const Tour= ({
   list
 }) => {
 
- 
-
+ /*composant défaut lorsqu'il n'y a pas de tournée de prévue */
+const DefaultComponant = () => {
+  return (
+    <h1 className="default-title">Aucune tournée pour aujourd'hui</h1>
+  )
+}
 
 
   return ( 
@@ -20,8 +24,9 @@ const Tour= ({
       <p className="tour-title">Ma tournée </p>
     </Link>
     <ul className="tour-ul">
-    {
-      data.map(patient =>
+    { 
+    data.length>1 
+    ? data.map(patient =>
         <Link to={`/patient/${patient.id}`}>
         <li className="tour-li" key={patient.id}>
           <span className="tour-span-name">{patient.nom}</span>
@@ -29,6 +34,7 @@ const Tour= ({
         </li>
       </Link>
       )
+    : <DefaultComponant/>   
     }
      {/* <Link to="/patient">
         <li className="tour-li">
