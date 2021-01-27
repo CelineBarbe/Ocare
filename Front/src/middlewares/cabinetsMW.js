@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET  } from 'src/actions/types';
+import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET, UPDATE_CABINET  } from 'src/actions/types';
 import { createCabinetSucceeded, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
 
 const URL = "https://ocare.herokuapp.com/";
