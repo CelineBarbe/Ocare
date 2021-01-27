@@ -12,7 +12,7 @@ const tourMW = (store) => (next) => (action) => {
   if (action.type === CREATE_TOUR) {
     const { tour_date } = Recupstore.tournee;
     console.log('passe par CREATE TOUR');
-    console.log('date de la tournée:', tour_date - "default cabinet", default_cabinet);
+    console.log('date de la tournée:', tour_date ,"default cabinet", default_cabinet);
     const config = {
       method: 'post',
       url: `${URL}tour/`,
