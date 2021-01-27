@@ -45,11 +45,11 @@ const tourController = {
             console.log(tourInfo, "tour info controller");
             const createTour = await tourDataMapper.create(tourInfo);
 
-        //     if(!createTour) {
-        //         response.locals.notFound = "patient déjà présent !";
-        //         next();
-        //         return;
-        //     }
+            if(!createTour) {
+                response.locals.notFound = " Une erreur est survenue lors de la création de la tournée";
+                next();
+                return;
+            }
 
             response.json({ createTour });
 

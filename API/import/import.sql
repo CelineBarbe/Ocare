@@ -442,11 +442,11 @@ INSERT INTO tour(date, information, nurse_id, cabinet_id) VALUES
 ('2021-01-27', 'test création de tournée', 2, 1);
 
 -- Tour has patient
-INSERT INTO tour_has_patient(tour_id, patient_id) VALUES
-(1,2),
-(1,3),
-(1,6),
-(1,8),
-(1,10);
+INSERT INTO tour_has_patient(tour_id, patient_id, order_tour) VALUES
+(1, 2, 1),
+(1, 3, 2),
+(1, 6, 3),
+(1, 8, 4),
+(1, 10, 5);
 
 COMMIT;
