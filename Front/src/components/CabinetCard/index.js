@@ -8,12 +8,12 @@ import './cabinetCard.scss';
 //== Import images
 import pen from 'src/assets/icones/pen.svg';
 
-import UpdateCabinetModal from 'src/modal/UpdateCabinetModal'
+import UpdateCabinetModal from 'src/containers/UpdateCabinetModal';
 
 
 // == Composant
 const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_number, nbpatients, 
-  newEntryMail,changeFieldUpdate,handleSubmitUpdate
+  
 }) => {
   
   const [entryModal,setEntryModal] = useState(false);
@@ -30,20 +30,7 @@ const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_
     <div className="cabinet-card">
     <img src={pen} alt="stylo" className="cabinet-card-edit" onClick={handleModal}/>
     {entryModal ? 
-    <UpdateCabinetModal
-      id={id}
-      name={name}
-      address={address}
-      zip_code={zip_code}
-      city={city}
-      phone_number={phone_number}
-      newEntryMail={newEntryMail}
-      pin_code={pin_code}
-      handleSubmitUpdate={handleSubmitUpdate}
-      handleModal={handleModal}
-      changeFieldUpdate={changeFieldUpdate}
-      
-    />
+    <UpdateCabinetModal handleModal={handleModal} />
     
     : null}
       <p className="cabinet-card-title">{name}</p>

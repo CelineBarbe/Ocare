@@ -32,10 +32,6 @@ export const createCabinet = () => ({
   type: CREATE_CABINET,
 })
 
-export const cabinetUpdated = (data) => ({
-  type: UPDATED_CABINET,
-  data,
-})
 
 export const updateCabinet = () => ({
   type: UPDATE_CABINET,
