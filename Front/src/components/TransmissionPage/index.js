@@ -46,25 +46,14 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
       datePres = DateTime.fromISO(date)
     }
   })(); */
-
-  console.log('DatePres :', datePres);
-  const row =  list.map(element => ( 
-   <Link to={`/patient/${element.patient_id}`} key={element.id} className="link">
-        <div className="transmission-container-row" >
-          <div className="transmission-container-row-left primary ">
-            <img className="transmission-container-row-left-img" alt="woman" src={element.gender == 'F'? F : M}/>
-          </div>
-            <div className="transmission-container-row-right secondary">
-            <h3>Mme {element.lastname}</h3>
-              <p>{element.observations}</p>
-            </div>  
-            
-      </div>
-</Link>
-      ))
   
+  /*composant défaut lorsqu'il n'y a pas de log présent */
+  const DefaultComponant = () => {
+  return (
+    <h1 className="default-title">Aucune transmission pour aujourd'hui</h1>
+  )
+  }
 
-  
   return (
     
       <div className="transmission-page-container">
@@ -75,7 +64,24 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
               <div className="transmission-container">
                 <h1 className="transmission-h1"> Transmission du {datePres.day} {datePres.monthLong}</h1>
                
-              {isLoading? 'data is loading' :  row}
+              {isLoading
+              ? 'data is loading' 
+              : list.length>1 ? list.map(element => ( 
+                <Link to={`/patient/${element.patient_id}`} key={element.id} className="link">
+                      <div className="transmission-container-row" >
+                        <div className="transmission-container-row-left primary ">
+                          <img className="transmission-container-row-left-img" alt="woman" src={element.gender == 'F'? F : M}/>
+                        </div>
+                          <div className="transmission-container-row-right secondary">
+                          <h3>Mme {element.lastname}</h3>
+                            <p>{element.observations}</p>
+                          </div>  
+                          
+                    </div>
+                </Link>
+                    ))
+              : <DefaultComponant/>
+              }
 
                 {/* <div className="transmission-container-row">
                   <div className="transmission-container-row-left primary ">
