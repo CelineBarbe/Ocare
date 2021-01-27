@@ -1,5 +1,5 @@
 import {
-  TOUR_CHANGE_FIELD,CREATE_TOUR,CHANGE_DATE
+  TOUR_CHANGE_FIELD,CREATE_TOUR,CHANGE_DATE, SEED_TOUR
 } from './types';
 
 
@@ -16,3 +16,8 @@ export const changeDate = (date) => ({
   type: CHANGE_DATE,
   date,
 }) 
+
+export const seedTour = (data) => ({
+  type: SEED_TOUR,
+  payload: data,
+});

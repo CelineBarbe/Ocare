@@ -1,4 +1,4 @@
-import { TOUR_CHANGE_FIELD, CHANGE_DATE } from 'src/actions/types';
+import { TOUR_CHANGE_FIELD, CHANGE_DATE,SEED_TOUR } from 'src/actions/types';
 var { DateTime } = require('luxon');
 
 export const initialState = {
@@ -8,6 +8,8 @@ export const initialState = {
   tour_date: null,
   //tournee: [],
   list: [],
+  //loader
+  isLoading: false,
 };
 
 // reducer qui va gérer les recettes
@@ -24,6 +26,13 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         date: action.date,
       };
+    case SEED_TOUR:
+      return {
+        ...oldState,
+        list: [...oldState.list,action.payload],
+        isLoading: false,
+      };
+
     default:
       return { ...oldState };
   }

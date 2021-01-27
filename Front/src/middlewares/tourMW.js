@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { CREATE_TOUR } from 'src/actions/types';
+import { seedTour } from 'src/actions/tour';
 
 
 const URL = "https://ocare.herokuapp.com/";
@@ -32,7 +33,7 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log('tournée créé');
-         console.log('response', response);
+         store.dispatch(seedTour(response.data.createTour));
         }
       })
       .catch((err) => {
