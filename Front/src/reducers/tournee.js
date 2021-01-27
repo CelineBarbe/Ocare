@@ -2,7 +2,9 @@ import { TOUR_CHANGE_FIELD, CHANGE_DATE } from 'src/actions/types';
 var { DateTime } = require('luxon');
 
 export const initialState = {
+  //currentdate_tourPage
   date: undefined,
+  //date_tour
   tour_date: null,
   //tournee: [],
   list: [],
