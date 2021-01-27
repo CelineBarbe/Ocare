@@ -33,6 +33,14 @@ const seedDate = () => {
   console.log(arrayDate);
 }
 seedDate()
+
+/*composant défaut lorsqu'il n'y a pas de transmission à afficher */
+const DefaultComponant = () => {
+  return (
+    <h1 className="default-title">Aucune transmission pour aujourd'hui</h1>
+  )
+}
+
   return (
     <div className="transmission">
     <Link to="/transmission">
@@ -50,7 +58,7 @@ seedDate()
         </li>
       </Link>
 
-    )): 'charge!'}
+    )): <DefaultComponant/>}
      
      {/*  <li className="transmission-li">
         <img className="transmission-img" src={notes} alt="notes" />

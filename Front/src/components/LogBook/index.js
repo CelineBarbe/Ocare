@@ -36,8 +36,11 @@ const SortList = () => {
   }
 }
 /*composant défaut lorsqu'il n'y a pas de log présent */
- 
-
+const DefaultComponant = () => {
+  return (
+    <h1 className="default-title">Aucune information, ajouter une entrée</h1>
+  )
+}
 
   return ( 
     <div className="carnet-sante-container">
