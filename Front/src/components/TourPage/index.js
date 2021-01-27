@@ -16,12 +16,35 @@ import calendar from 'src/assets/icones/calendar.svg';
 // == Import 
 import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
+import AddPatientModal from 'src/modal/AddPatientModal';
+import CreateTourModal from 'src/containers/CreateTourModal';
 
 import {data} from 'src/utils/data';
 
 
 // == Composant
 const TourPage = () => {
+
+/*Hook for MODAL add patient and create tour */
+const [addPatientModal,setAddPatientModal] = useState(false);
+const [createTourModal,setCreateTourModal] = useState(false);
+/* open and close ADD PATIENT modal function */
+function openModalAddPatient() {
+  setAddPatientModal(true);
+}
+function closeModalAddPatient(){
+  setAddPatientModal(false);
+}
+
+/* open and close CREATE TOUR modal function */
+function openModalCreateTour() {
+  setCreateTourModal(true);
+}
+
+function closeModalCreateTour(){
+  setCreateTourModal(false);
+}
+
   let [cards,setCards] = useState(data);
   
   const arraySortOrder = (array) => {
@@ -48,6 +71,17 @@ const TourPage = () => {
   const SortableList = SortableContainer(({items}) => {
     return (
       <div className="planning-container">
+      {
+        addPatientModal   
+        ? <AddPatientModal closeModalAddPatient={closeModalAddPatient}/>
+        : null
+      }
+      {
+        createTourModal
+        ? <CreateTourModal closeModalCreateTour={closeModalCreateTour}/>
+        : null
+      }
+      
         {items.map((item, index) => (
           <Card key={`item-${item.id}`} index={index} nom={item.nom} tag={item.tag} id={item.id} order={item.order} />
         ))}
@@ -83,165 +117,14 @@ const TourPage = () => {
               <div className="button-container">
                 <div className="tour-page-create-patient">
                   <span className="tour-page-create-patient-title">Ajouter un patient</span>
-                  <img className="tour-page-create-patient-img" src={plus} alt="ajouter"/>  
+                  <img className="tour-page-create-patient-img" src={plus} alt="ajouter" onClick={openModalAddPatient}/>  
                 </div>
                 <div className="tour-page-create-tour">
                   <span className="tour-page-create-tour-title">Créer une tournée</span>
-                  <img className="tour-page-create-tour-img" src={calendar} alt="ajouter"/>  
+                  <img className="tour-page-create-tour-img" src={calendar} alt="ajouter" onClick={openModalCreateTour}/>  
                 </div>
               </div>
               <SortableList items={cards} onSortEnd={onSortEnd} />
-   {/*           <div className="planning-container">
-
-
-
-                 <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h00</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                  <Link to='/patient'><span className="planning-container-row-left-name">Mr Pichon</span></Link>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Pansement</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h15</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Robert</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Prise de sang</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h30</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Alibert</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Toilette</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h45</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mme Michelle</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Injection</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">7h00</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mme Tourner</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Pose de sonde intraveineuse</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">7h15</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr truc</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Toilette</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h00</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Pichon</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Pansement</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h15</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Robert</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Prise de sang</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h00</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Pichon</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Pansement</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h15</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Robert</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Prise de sang</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h00</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Pichon</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Pansement</span>
-                  </div>
-                </div>
-
-                <div className="planning-container-row">
-                  <div className="planning-container-row-left">
-                    <span className="planning-container-row-left-hour">6h15</span>
-                  </div>
-                  <div className="planning-container-row-middle">
-                    <span className="planning-container-row-left-name">Mr Robert</span>
-                  </div> 
-                  <div className="planning-container-row-right">
-                  <span className="planning-container-row-right-care">Prise de sang</span>
-                  </div>
-                </div>
-
-                
-
-              </div> */}
             </div>
           </div>
         <Nav />

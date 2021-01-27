@@ -8,6 +8,7 @@ import searchingMiddleware from 'src/middlewares/searching';
 import patientsMiddleware from 'src/middlewares/patientsMW';
 import cabinetsMiddleware from 'src/middlewares/cabinetsMW';
 import logBookMiddleware from 'src/middlewares/logsMW';
+import tourMiddleware from 'src/middlewares/tourMW';
 
 // on crée le store
 const store = createStore(
@@ -20,6 +21,7 @@ const store = createStore(
     applyMiddleware(cabinetsMiddleware),
     applyMiddleware(patientsMiddleware),
     applyMiddleware(logBookMiddleware),
+    applyMiddleware(tourMiddleware),
   ),
 );
 

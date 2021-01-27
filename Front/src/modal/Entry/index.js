@@ -24,6 +24,8 @@ const EntryModal = ({
 
 }) => {
 
+  console.log('planned date', planned_date);
+
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
   }
@@ -34,6 +36,7 @@ const EntryModal = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    console.log('planned date dans submit', planned_date);
     handleLogbook(patientId, id);
     closeModalEntry();
   };

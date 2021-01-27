@@ -1,5 +1,7 @@
+import { TOUR_CHANGE_FIELD } from 'src/actions/types';
 
 export const initialState = {
+  tour_date: null,
   tournee: [],
   list: [],
 };
@@ -8,13 +10,11 @@ export const initialState = {
 const reducer = (oldState = initialState, action = {}) => {
   switch (action.type) {
     
-    /* case TOUR_ADD_PATIENT:
-    case TOUR_SUP_PATIENT:
-    case TOUR_CHANGE_ORDER:
+    case TOUR_CHANGE_FIELD:
       return {
         ...oldState,
         ...action.payload,
-      }; */
+      };
     
     default:
       return { ...oldState };
