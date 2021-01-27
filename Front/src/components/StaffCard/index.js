@@ -33,6 +33,13 @@ const StaffCard = ({
     handleunSubNurse(params);
   } 
 
+  /*composant défaut lorsqu'il n'y a pas d'équipier dans le cabinet'*/
+  const DefaultComponant = () => {
+    return (
+      <h1 className="default-title">Aucun infirmier dans votre cabinet</h1>
+    )
+  } 
+
   return (
     <div className="staff-card">
     { 
@@ -47,7 +54,9 @@ const StaffCard = ({
 
      <div className="nurse-card-container">
 
-     {staff.map(equipier => (
+     {
+      staff.length>1 
+      ? staff.map(equipier => (
       <div className="nurse-card" key={equipier.id}>
           <img src={equipier.avatar} alt="nurse" className="nurse-card-img"/>
           <p className="nurse-card-infos nurse-card-name">
@@ -62,7 +71,9 @@ const StaffCard = ({
           <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getEquipierId(equipier.id)} />
       </div>
 
-     ))}
+     ))
+     : <DefaultComponant/>
+     }
       
      </div>
     </div>
