@@ -18,7 +18,7 @@ import PatientsPage from 'src/containers/PatientsPage';
 import PatientPage from 'src/containers/PatientPage';
 import CreateCabinet from 'src/containers/CreateCabinet';
 import CreatePatient from 'src/containers/CreatePatient';
-import TourPage from 'src/components/TourPage';
+import TourPage from 'src/containers/TourPage';
 import TransmissionPage from 'src/containers/TransmissionPage';
 
 

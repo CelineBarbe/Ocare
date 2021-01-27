@@ -53,3 +53,4 @@ export const SEED_LOGS_BY_DATE = "SEED_LOGS_BY_DATE";
 //types tour
 export const TOUR_CHANGE_FIELD = "TOUR_CHANGE_FIELD";
 export const CREATE_TOUR = "CREATE_TOUR";
+export const CHANGE_DATE = "CHANGE_DATE";

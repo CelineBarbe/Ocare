@@ -38,6 +38,7 @@ const cabinetsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
           store.dispatch(createCabinetSucceeded(response.data.savedCabinet, email));
+          console.log('id du saved cabinet', response.data.savedCabinet.id)
           store.dispatch(changeCabinet(response.data.savedCabinet.id));
         }
       })
@@ -125,10 +126,9 @@ const cabinetsMW = (store) => (next) => (action) => {
 
   if (action.type === UPDATE_CABINET) {
     console.log('passe par UPDATE cabinet');
-    const Recupstore = store.getState();
-    const {name, address,zip_code,city, phone_number, pin_code} = Recupstore.cabinets;
-    const {id, default_cabinet} = Recupstore.auth;
-    console.log("Infos de l'objet",name, address,zip_code,city, phone_number, pin_code,id, default_cabinet )
+    const {cabinets, auth} = store.getState();
+    const {name, address,zip_code,city, phone_number, pin_code} = cabinets;
+    const {id, email, default_cabinet} = auth;
     const config = {
       method: 'patch',
       url: `${URL}cabinet/${default_cabinet}`,
@@ -143,7 +143,7 @@ const cabinetsMW = (store) => (next) => (action) => {
         phone_number,
         pin_code,
         owner_id: id,
-      },
+      }
     };
     axios(config)
       .then((response) => {

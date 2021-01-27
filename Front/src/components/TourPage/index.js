@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
+var { DateTime } = require('luxon');
 const arrayMove = require('array-move');
 // == Import
 import './tourPage.scss';
@@ -23,7 +24,13 @@ import {data} from 'src/utils/data';
 
 
 // == Composant
-const TourPage = () => {
+const TourPage = ({list, date, date_tour, changeDate}) => {
+
+  //LOADING DATE TODAY
+  useEffect(() => {
+    changeDate(DateTime.local().toISO())
+}, [])
+
 
 /*Hook for MODAL add patient and create tour */
 const [addPatientModal,setAddPatientModal] = useState(false);
@@ -45,7 +52,7 @@ function closeModalCreateTour(){
   setCreateTourModal(false);
 }
 
-  let [cards,setCards] = useState(data);
+let [cards,setCards] = useState(data);
   
   const arraySortOrder = (array) => {
     const arrayReturn = array.map((item,index) => {
@@ -106,8 +113,8 @@ function closeModalCreateTour(){
                   <img src={arrow_left} className="tour-date-img" alt="fleche" />
                 </div>
                 <div className="tour-date-now">
-                  <h1 className="tour-date-now-title">Jeudi</h1>
-                  <span className="tour-date-now-title-span">21/01</span>
+                  <h1 className="tour-date-now-title">{DateTime.fromISO(date).weekdayLong}</h1>
+                  <span className="tour-date-now-title-span">{DateTime.fromISO(date).day}/{DateTime.fromISO(date).month}</span>
                 </div>
                 <div className="tour-date-next">
                   <img src={arrow_right} className="tour-date-img" alt="fleche" />
