@@ -100,8 +100,13 @@ let [cards,setCards] = useState(data);
     //renvoi un nouveau tableau dans le bon ordre suite au nouveau ytableau de fin de drag
      setCards((cards) => arraySortOrder(arrayMove(cards, oldIndex, newIndex)));
   }
-  const dateplusone = DateTime.fromISO(date).plus({days: 1});
-  console.log('date+1', dateplusone.toISODate());
+
+  //Return date +indice day
+  const datePlus = (date, indice) => {
+    const dateIndice = DateTime.fromISO(date).plus({days: indice});
+    return dateIndice.toISODate();
+  }
+
   return (
     
       <div className="tour-page-container">
@@ -111,14 +116,15 @@ let [cards,setCards] = useState(data);
 
               <div className="tour-date">
                 <div className="tour-date-previous">
-                  <img src={arrow_left} className="tour-date-img" alt="fleche" />
+                <Link to={`/tour/${datePlus(date, -1)}`}><img src={arrow_left} className="tour-date-img" alt="fleche" /></Link>
+                
                 </div>
                 <div className="tour-date-now">
                   <h1 className="tour-date-now-title">{DateTime.fromISO(date).weekdayLong}</h1>
                   <span className="tour-date-now-title-span">{DateTime.fromISO(date).day}/{DateTime.fromISO(date).month}</span>
                 </div>
                 <div className="tour-date-next">
-                  <Link to={`/tour/`}><img src={arrow_right} className="tour-date-img" alt="fleche" /></Link>
+                  <Link to={`/tour/${datePlus(date, 1)}`}><img src={arrow_right} className="tour-date-img" alt="fleche" /></Link>
                 </div>
               </div>
               
