@@ -29,7 +29,7 @@ const reducer = (oldState = initialState, action = {}) => {
     case SEED_TOUR:
       return {
         ...oldState,
-        list: [...oldState.list,action.payload],
+        list: action.payload,
         isLoading: false,
       };
 
