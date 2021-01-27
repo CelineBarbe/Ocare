@@ -343,3 +343,24 @@ SELECT thp.*,
     WHERE thp.tour_id = 2
         AND l.planned_date = '2021-01-28';
 
+-- Rechercher une tournée par date
+SELECT thp.*,
+        p.firstname,
+        p.lastname,
+        l.id AS logbook_id,
+        m.id AS medical_act_id,
+        m.name AS medical_act_name
+        FROM tour_has_patient thp
+            JOIN patient p
+                ON p.id = thp.patient_id
+            JOIN logbook l
+                ON p.id = l.patient_id
+            JOIN logbook_has_medical_act lhma
+                ON l.id = lhma.logbook_id
+            JOIN medical_act m
+                ON m.id = lhma.medical_act_id
+            JOIN tour t
+                ON t.id = thp.tour_id
+        WHERE t.date = '2021-01-28'
+            AND p.cabinet_id = 1;
+

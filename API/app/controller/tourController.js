@@ -4,34 +4,37 @@ const tourController = {
 
     async findAll(request, response, next) {
         try {
-            const idCabinet = request.app.locals.userCurrentCabinet;
-            // console.log(response.locals.userID, "-< response.locals.USERID");
 
-            const patients = await tourDataMapper.getAllPatient(idCabinet);
-            if(!patients) {
+            const idCabinet = request.app.locals.userCurrentCabinet;
+
+            const tours = await tourDataMapper.getAllPatient(idCabinet);
+
+            if(!tours) {
                 response.locals.notFound = "Aucun patients dans ce cabinet";
                 next();
                 return;
             }
-            response.json(patients);
+            response.json(tours);
         } catch (error) {
             next(error);
         }
     },
 
-    async findById(request, response, next) {
+    async findByDate(request, response, next) {
         try {
 
-            const { id } = request.params;
+            const { date } = request.params;
 
-            const patient = await tourDataMapper.getPatientById(id);
+            const idCabinet = request.app.locals.userCurrentCabinet;
 
-            if(!patient) {
-                response.locals.notFound = "patient introuvable";
+            const tour = await tourDataMapper.findByDate(date, idCabinet);
+
+            if(!tour) {
+                response.locals.notFound = "tour introuvable";
                 next();
                 return;
             }
-            response.json({ patient });
+            response.json({ tour });
         } catch (error) {
             next(error);
         }
@@ -96,7 +99,15 @@ const tourController = {
         } catch (error) {
             next(error);
         }
-    }
+    },
+
+    // async addPatient(request, response, next) {
+    //     console.log("coucou");
+    // },
+
+    // async deletePatient(request, response, next) {
+    //     console.log("coucou");
+    // },
 
 };
 
