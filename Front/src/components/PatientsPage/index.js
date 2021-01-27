@@ -22,6 +22,13 @@ const PatientsPage = ({getPatients, list}) => {
     getPatients();
 }, [])
 
+/*composant défaut lorsqu'il n'y a pas de patients à afficher */
+const DefaultComponant = () => {
+  return (
+    <h1 className="default-title">Aucun patient, cliquer sur ajouter patient</h1>
+  )
+}
+
 
 const data = (alphabetic.map(letter => (
                 <div className="patients-page-liste" id={letter} key={letter}>
@@ -47,37 +54,12 @@ const data = (alphabetic.map(letter => (
             </div>
 
             <div className="patients-page-liste-container">
-             {list.length >= 1 ? data : <p>data is loading</p>} 
-
-             
-              {/* <div className="patients-page-liste">
-                <p className="patients-page-liste-title secondary-dark1" id="A">A</p>
-                <ul className="patients-page-liste-ul">
-                  <Link to="/patient"><li className="patients-page-liste-li">Armand</li></Link>
-                  <li className="patients-page-liste-li">Arnaud</li>
-                </ul>
-              </div>
-
-              <div className="patients-page-liste">
-                <p className="patients-page-liste-title primary">B</p>
-                <ul className="patients-page-liste-ul">
-                  <li className="patients-page-liste-li">Baillet</li>
-                  <li className="patients-page-liste-li">Baral</li>
-                  <li className="patients-page-liste-li">Boulanger</li>
-                  <li className="patients-page-liste-li">Brive</li>
-                </ul>
-              </div>
-
-              <div className="patients-page-liste">
-                <p className="patients-page-liste-title secondary-dark1" id="C">C</p>
-                <ul className="patients-page-liste-ul">
-                  <li className="patients-page-liste-li">Clark</li>
-                  <li className="patients-page-liste-li">Constant</li>
-                </ul>
-              </div>
- */}
+             {
+              list.length >= 1 
+              ? data 
+              : <DefaultComponant/>
+            } 
             </div>
-
             <AlphabeticalSearchbar />
           </div>
         <Nav />
