@@ -28,11 +28,10 @@ console.log(list);
 
 const SortList = () => {
   if(list.length >= 1) {
-   let newList =  list.slice().sort((a, b) => DateTime.fromISO(b.creation_date).toISODate() > DateTime.fromISO(a.creation_date).toISODate() ? 1: -1)
-   console.log('newList:', newList)
+   let newList =  list.slice().sort((a, b) => DateTime.fromISO(b.planned_date).toISODate() > DateTime.fromISO(a.planned_date).toISODate() ? 1: -1)
+
    return newList
   } else {
-    console.log('List.lenght <1');
     return list
   }
 }
@@ -47,7 +46,7 @@ const SortList = () => {
       }
 
       { list.length >= 1 
-        ? list.map((list, index) => (
+        ? SortList().map((list, index) => (
               <div className="carnet-sante-entry" key={index}>
                 <div className="carnet-sante-entry-top">
                   <div className="carnet-sante-entry-top-icone">
@@ -60,11 +59,7 @@ const SortList = () => {
                     </div>
                     <div className="carnet-sante-entry-top-care-bottom">
                       <span className="carnet-sante-entry-top-care-bottom-date">
-                      {
-                        !list.planned_date
-                        ? DateTime.fromISO(list.creation_date).toLocaleString()
-                        : DateTime.fromISO(list.planned_date).toLocaleString()
-                      }
+                        {DateTime.fromISO(list.planned_date).toLocaleString()}
                       </span>
                     </div> 
                   </div>
