@@ -1,6 +1,6 @@
 // == Import npm
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {SortableContainer, SortableElement} from 'react-sortable-hoc';
 var { DateTime } = require('luxon');
 const arrayMove = require('array-move');
@@ -100,7 +100,8 @@ let [cards,setCards] = useState(data);
     //renvoi un nouveau tableau dans le bon ordre suite au nouveau ytableau de fin de drag
      setCards((cards) => arraySortOrder(arrayMove(cards, oldIndex, newIndex)));
   }
-
+  const dateplusone = DateTime.fromISO(date).plus({days: 1});
+  console.log('date+1', dateplusone.toISODate());
   return (
     
       <div className="tour-page-container">
@@ -117,7 +118,7 @@ let [cards,setCards] = useState(data);
                   <span className="tour-date-now-title-span">{DateTime.fromISO(date).day}/{DateTime.fromISO(date).month}</span>
                 </div>
                 <div className="tour-date-next">
-                  <img src={arrow_right} className="tour-date-img" alt="fleche" />
+                  <Link to={`/tour/`}><img src={arrow_right} className="tour-date-img" alt="fleche" /></Link>
                 </div>
               </div>
               
