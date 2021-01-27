@@ -35,10 +35,10 @@ const SortList = () => {
     return list
   }
 }
+/*composant défaut lorsqu'il n'y a pas de log présent */
+ 
 
-//TODO un composant défaut lorsqu'il n'y a pas de log présent 
 
-   
   return ( 
     <div className="carnet-sante-container">
       {
@@ -76,7 +76,7 @@ const SortList = () => {
                 </div>
               </div>  
           ))
-        : null 
+        : <DefaultComponant /> 
       }
     </div>
   )
