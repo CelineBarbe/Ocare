@@ -38,8 +38,11 @@ const App = () => (
       <Route exact path="/profil"><ProfilPage /></Route>
       <Route path="/patient/:id"><PatientPage /></Route>
       <Route exact path="/tour"><TourPage /></Route>
+      <Route exact path="/tour/:date"><TourPage /></Route>
       <Route exact path="/transmission"><TransmissionPage byDate={false} /></Route>
       <Route exact path="/transmission/:date"><TransmissionPage byDate/></Route>
+
+
     </Switch>
   </div>
 );
