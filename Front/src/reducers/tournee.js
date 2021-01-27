@@ -1,8 +1,10 @@
-import { TOUR_CHANGE_FIELD } from 'src/actions/types';
+import { TOUR_CHANGE_FIELD, CHANGE_DATE } from 'src/actions/types';
+var { DateTime } = require('luxon');
 
 export const initialState = {
+  date: undefined,
   tour_date: null,
-  tournee: [],
+  //tournee: [],
   list: [],
 };
 
@@ -15,7 +17,11 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         ...action.payload,
       };
-    
+    case CHANGE_DATE:
+      return {
+        ...oldState,
+        date: action.date,
+      };
     default:
       return { ...oldState };
   }
