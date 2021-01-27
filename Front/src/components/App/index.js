@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import './app.scss';
 
 // == Import components
-import HomePage from 'src/components/HomePage';
+import HomePage from 'src/containers/HomePage';
 import ProfilPage from 'src/components/ProfilPage';
 import Dashboard from 'src/containers/Dashboard';
 import LoginPage from 'src/containers/LoginPage';

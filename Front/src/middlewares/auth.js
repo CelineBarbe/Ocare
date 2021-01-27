@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE } from 'src/actions/types';
+import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE, AUTO_LOGIN } from 'src/actions/types';
 import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
 const URL = "https://ocare.herokuapp.com/"
 
 const auth = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');
+  
   //LOGIN
   if (action.type === AUTH_SUBMIT_LOGIN) {
     const Recupstore = store.getState();
@@ -131,28 +132,36 @@ const auth = (store) => (next) => (action) => {
       });
     next(action);
   }
-
-  //LOGOUT
-  if (action.type === LOGOUT) {
-    console.log("passe par logout");
+  if (action.type === AUTO_LOGIN) {
     const Recupstore = store.getState();
+    console.log('autoLogin')
     const config = {
       method: 'post',
-      url: `${URL}logout`,
-    
+      url: `${URL}autologin`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
     };
     axios(config)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          const { data } = response;
-          //console.log(data);
-          //store.dispatch(signUpOk());
+          const { user, userToken } = response.data;
+          localStorage.setItem('auth', userToken);
+          console.log(user);
+          store.dispatch(loginOk(user));
         }
       })
       .catch((err) => {
         console.log(err);
       });
+    
+    next(action);
+  }
+  //LOGOUT
+  if (action.type === LOGOUT) {
+    console.log("passe par logout");
+    localStorage.removeItem('auth');
     next(action);
   }
   next(action);

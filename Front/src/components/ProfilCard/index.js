@@ -1,5 +1,6 @@
 // == Import npm
 import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom';
 
 // == Import
 import './profilCard.scss';
@@ -12,6 +13,13 @@ import pen from 'src/assets/icones/pen.svg';
 
 // == Composant
 const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, siren_code, avatar, logOut }) => {
+  //REDIRECTION HomePage
+  const history = useHistory();
+  const routeHomePage = () =>{ 
+    let path = `/`; 
+    history.push(path);
+  }
+
 
   /*hook pour modal */
   const [editProfil,setEditProfil] = useState(false);
@@ -22,6 +30,11 @@ const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, sir
 
   function closeModalEditProfil(){
     setEditProfil(false);
+  }
+
+  const handleLogOut = () => {
+    logOut();
+    routeHomePage();
   }
 
   return (
@@ -43,7 +56,7 @@ const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, sir
       <p className="profil-card-infos">
         Mail : {email}
       </p>
-      <button type="Button" className="profil-card-button" onClick={logOut}> Se Déconnecter </button>
+      <button type="Button" className="profil-card-button" onClick={handleLogOut}> Se Déconnecter </button>
     </div>
   )
 };

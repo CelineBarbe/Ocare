@@ -143,7 +143,6 @@ const cabinetsMW = (store) => (next) => (action) => {
         pin_code,
         owner_id: id,
       }
-
     };
     axios(config)
       .then((response) => {

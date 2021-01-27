@@ -7,6 +7,7 @@ export const SIGNUP_OK = 'SIGNUP_OK';
 export const LOGOUT = 'LOGOUT';
 export const UPDATE_PROFIL = 'UPDATE_PROFIL';
 export const UNSUB_NURSE = 'UNSUB_NURSE';
+export const AUTO_LOGIN = 'AUTO_LOGIN';
 
 //connexion_dashboard
 export const INIT_DASHBOARD = 'INIT_DASHBOARD';
