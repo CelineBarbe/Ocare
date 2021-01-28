@@ -1,4 +1,5 @@
 const client = require('./client');
+const { DateTime } = require('luxon');
 
 const tourDataMapper = {
 
@@ -120,6 +121,7 @@ const tourDataMapper = {
         p.lastname,
         l.id AS logbook_id,
         m.id AS medical_act_id,
+        l.done,
         m.name AS medical_act_name
         FROM tour_has_patient thp
             JOIN patient p
@@ -158,6 +160,27 @@ const tourDataMapper = {
         }
 
         return tourTab;
+    },
+
+    async updateLog(idLog) {
+
+        let creation_date =  Date.now();
+    
+        // milliseconds to Timestamps
+        creation_date = DateTime.local().setZone("Europe/Paris");
+
+        // Timestamps without hours
+        done_date = DateTime.fromISO(`${creation_date}`).toFormat('yyyy-MM-dd');
+
+        const logIsDone = await client.query(`UPDATE logbook SET done = true, done_date = $1 WHERE id = $2`, [done_date, idLog]);
+
+        if (logIsDone.rowCount == 0) {
+            return null;
+        }
+
+        
+
+        return logIsDone.rowCount;
     }
 };
 

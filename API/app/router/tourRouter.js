@@ -7,6 +7,7 @@ const router = express.Router();
 // router.post('/patient', tourController.addPatient);
 // router.delete('/patient/:id(\\d+)', tourController.deletePatient);
 // router.get('/', tourController.findAll);
+router.patch('/log/:id(\\d+)', tourController.updateLog);
 router.get('/:date', tourController.findByDate);
 router.post('/', tourController.create);
 router.patch('/patient', tourController.updatePatient);

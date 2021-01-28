@@ -82,6 +82,26 @@ const tourController = {
         }
     },
 
+    async updateLog(request, response, next) {
+        try {
+
+            const { id } = request.params;
+
+            const updateLogbook = await tourDataMapper.updateLog(id);
+
+            if(!updateLogbook) {
+                response.locals.notFound = "tour introuvable!";
+                next();
+                return;
+            }
+
+            response.json({ updateLogbook });
+            
+        } catch (error) {
+            next(error);
+        }
+    },
+
     async delete(request, response, next) {
         try {
             const { id } = request.params;
