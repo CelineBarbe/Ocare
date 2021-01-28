@@ -17,8 +17,10 @@ const ProfilPage= () => {
     <Fragment>
       <Header />
       <div className="main">
+      <div className="cabinetPage-container">
         <ProfilCard />
         <ListCabinets />
+      </div>
       </div>
       <Nav />
     </Fragment>
