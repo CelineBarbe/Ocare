@@ -1,4 +1,7 @@
-import { GET_LOGS, SEED_LOGS, LOGBOOK_CHANGE_FIELD, CREATE_LOG, GET_LOGS_BY_DATE, SEED_LOGS_BY_DATE } from 'src/actions/types';
+import { GET_LOGS, SEED_LOGS, LOGBOOK_CHANGE_FIELD, CREATE_LOG, 
+  GET_LOGS_BY_DATE, SEED_LOGS_BY_DATE, CREATE_LOG_TOUR } from 'src/actions/types';
+
+
 
 export const getLogs = () => ({
   type: GET_LOGS,
@@ -29,3 +32,9 @@ export const createLog = (patient_id, nurse_id) => ({
   patient_id,
   nurse_id,
 });
+
+export const createLogTour = (patient_id, nurse_id) => ({
+  type: CREATE_LOG_TOUR,
+  patient_id,
+  nurse_id,
+})

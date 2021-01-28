@@ -71,7 +71,7 @@ function closeModalEntry(){
     <div className="modal-entry">
     { 
      tourEntry
-     ? <TourEntryModal patientId={id} />
+     ? <TourEntryModal patientId={id} closeModalEntry={closeModalEntry} closeModalAddPatient={closeModalAddPatient} />
      : null
     }
     

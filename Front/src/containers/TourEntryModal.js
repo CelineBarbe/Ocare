@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 
-import { logbookChangeField, createLog } from 'src/actions/logs';
+import { logbookChangeField, createLogTour } from 'src/actions/logs';
 
 import TourEntryModal from 'src/modal/TourEntryModal';
 
 const mapStateToProps = ({logBook, auth, tournee}, ownProps) => {
-  const { closeModalEntry, patientId } = ownProps;
+  const { closeModalEntry, patientId, closeModalAddPatient } = ownProps;
   const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated } = logBook;
   const { id } = auth;
   const { date } = tournee;
   
   return ({
     closeModalEntry,
+    closeModalAddPatient,
     planned_date,
     ending_date,
     observations,
@@ -32,7 +33,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(logbookChangeField(value, field));
   },
   handleLogbook: (patientId, nurseId) => {
-    dispatch(createLog(patientId, nurseId));
+    dispatch(createLogTour(patientId, nurseId));
   }
 })
 

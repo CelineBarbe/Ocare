@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { tourChangeField, createTour} from 'src/actions/tour';
+import { tourChangeField, createTour, changeTourDate} from 'src/actions/tour';
 
 import CreateTourModal from 'src/modal/CreateTourModal';
 
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => ({
   handleTour: () => {
     console.log("je suis dans mon container");
     dispatch(createTour());
+  },
+  changeTourDate: (date) => {
+    dispatch(changeTourDate(date));
   }
 })
 

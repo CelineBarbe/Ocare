@@ -32,7 +32,7 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
  export const returnVoid = (entry) => {
   if (entry.length <= 1) {
     //test sur une seule entrée
-     let result = entry[0] ?? [];
+     let result = [...entry] ?? [];
      console.log('result', result);
      return result
   } 
@@ -40,7 +40,6 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
     return entry
   } 
  }
-
 
 
 export const returnArrayHandleChange = (array, input) => {
@@ -58,5 +57,29 @@ export const returnArrayHandleChange = (array, input) => {
     return arrayByLetter
   }else {
     return []
+  }
+ }
+
+ export const returnObjectTourList = (data, list, listpatient) => {
+   const {tour_id}  = list[0];
+  console.log('je suis dans return object et data vaut', data);
+  console.log('je suis dans return object et list vaut', list);
+  const lastOrder = list.sort((a,b) => (b.order_tour - a.order_tour)) 
+  console.log('lastOrder', lastOrder[[0]])
+  const newOrder = lastOrder[0].order_tour+1;
+  const names = listpatient.filter(patient => patient.id == data.patient_id);
+  console.log('names',names)
+  const firstname = names[0].firstname;
+  const lastname = names[0].lastname;
+  return {
+    id: null,
+    tour_id,
+    patient_id: data.patient_id,
+    order_tour: newOrder,
+    firstname,
+    lastname,
+    medical_act_id: data?.medical_act_id ?? 1,
+    medical_act_name: data?.medical_act_name ?? "Soins infirmiers",
+    logbook_id: data.id,
   }
  }

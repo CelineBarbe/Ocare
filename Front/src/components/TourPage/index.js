@@ -12,6 +12,7 @@ import arrow_left from 'src/assets/icones/arrow_left.svg';
 import arrow_right from 'src/assets/icones/arrow_right.svg';
 import plus from 'src/assets/icones/plus2.svg';
 import calendar from 'src/assets/icones/calendar.svg';
+import check from 'src/assets/icones/check.svg';
 
 
 // == Import 
@@ -24,7 +25,7 @@ import {data} from 'src/utils/data';
 
 
 // == Composant
-const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour}) => {
+const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour, submitUpdateTour}) => {
   //LOADING DATE TODAY
   //date vaut path ou now
   const datePlace = useParams()?.date ?? DateTime.local().toISODate();
@@ -67,6 +68,11 @@ function closeModalCreateTour(){
   setCreateTourModal(false);
 }
 
+/* Function submit update tour */
+function submitUpdateTour() {
+  submitUpdateTour();
+}
+
 const arraySortStarting = (array) => {
   array.sort((a,b)=> {
     a.order_tour - b.order_tour;
@@ -85,7 +91,7 @@ const arraySortStarting = (array) => {
 
   //card 
   const Card = SortableElement((props) => (
-  <div className="planning-container-row" key={props.id} id={props.id} order={props.order}>
+  <div className="planning-container-row" key={props.logbook_id} id={props.logbook_id} order={props.order}>
                   <div className="planning-container-row-middle">
                   <Link to='/patient'><span className="planning-container-row-left-name">Mr {props.nom}</span></Link>
                   </div> 
@@ -105,14 +111,15 @@ const arraySortStarting = (array) => {
       }
       {
         createTourModal
-        ? <CreateTourModal closeModalCreateTour={closeModalCreateTour}/>
+        ? <CreateTourModal closeModalCreateTour={closeModalCreateTour}  datePlace={datePlace}/>
         : null
       }
       
         {items.map((item, index) => (
-          <Card key={`item-${item.id}`} index={index} nom={item.lastname} tag={item.medical_act_name} id={item.id} order={item.order_tour} />
+          <Card key={`item-${item.logbook_id}`} index={index} nom={item.lastname} tag={item.medical_act_name} id={item.logbook_id} order={item.order_tour} />
         ))}
       </div>
+      
     );             
   });
 
@@ -159,6 +166,7 @@ const arraySortStarting = (array) => {
                 </div>
               </div>
               <SortableList items={cards} onSortEnd={onSortEnd} />
+              <img className="modal-patient-update-img" src={check} alt="valider" onClick={submitUpdateTour}/>
             </div>
           </div>
         <Nav />

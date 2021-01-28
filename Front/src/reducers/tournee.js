@@ -1,4 +1,6 @@
-import { TOUR_CHANGE_FIELD, CHANGE_DATE,SEED_TOUR, UPDATE_TOUR } from 'src/actions/types';
+import { TOUR_CHANGE_FIELD, CHANGE_DATE,SEED_TOUR, UPDATE_TOUR, 
+  UPDATE_TOUR_ADD_PATIENT, CHANGE_TOUR_DATE,
+} from 'src/actions/types';
 var { DateTime } = require('luxon');
 
 export const initialState = {
@@ -37,7 +39,16 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         list: action.newList,
       };
-
+    case UPDATE_TOUR_ADD_PATIENT:
+      return {
+        ...oldState,
+        list: [...oldState.list, action.data]
+      };
+    case CHANGE_TOUR_DATE:
+      return {
+        ...oldState,
+        tour_date: action.date,
+      }
     default:
       return { ...oldState };
   }

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import TourPage from 'src/components/TourPage';
-import { changeDate, getTour, updateTour } from 'src/actions/tour';
+import { changeDate, getTour, updateTour, submitUpdateTour } from 'src/actions/tour';
 
 const mapStateToProps = ({ tournee }, ownProps) => {
   const { date, tour_date, list} = tournee;
@@ -23,6 +23,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateTour: (newList) => {
     dispatch(updateTour(newList))
+  },
+  submitUpdateTour: () => {
+    console.log("Submit Update Tour container");
+    dispatch(submitUpdateTour())
   }
 });
 

@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import {useHistory} from 'react-router-dom';
 
 // == Import
@@ -12,9 +12,18 @@ const CreateTourModal = ({
   closeModalCreateTour,
   changeField,
   handleTour,
-  tour_date
+  tour_date,
+  datePlace,
+  changeTourDate,
 
 }) => {
+
+const[dateTampon, setDateTampon] =useState(datePlace); 
+
+//chargement dans l'input de la date courante de la page
+useEffect(()=> {
+  changeTourDate(dateTampon)},[])
+
 
   //REDIRECTION à la date
   const history = useHistory();
@@ -33,6 +42,7 @@ const CreateTourModal = ({
     evt.preventDefault();
     console.log("je suis dans handlesumbit");
     console.log("tour_date dans handlesubmit", tour_date);
+    console.log("datePlace dans handlesubmit", datePlace);
     handleTour();
     routeTourByDate();
     closeModalCreateTour();
@@ -43,6 +53,7 @@ const CreateTourModal = ({
     event.currentTarget.type = "date";
   }
 
+  console.log("date place", datePlace);
 
   return (
     <div className="modal-entry">

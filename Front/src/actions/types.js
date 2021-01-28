@@ -8,6 +8,9 @@ export const LOGOUT = 'LOGOUT';
 export const UPDATE_PROFIL = 'UPDATE_PROFIL';
 export const UNSUB_NURSE = 'UNSUB_NURSE';
 export const AUTO_LOGIN = 'AUTO_LOGIN';
+export const CHANGE_TOUR_DATE = 'CHANGE_TOUR_DATE';
+
+  
 
 //connexion_dashboard
 export const INIT_DASHBOARD = 'INIT_DASHBOARD';
@@ -49,6 +52,8 @@ export const CREATE_LOG = "CREATE_LOG";
 export const UPDATED_LOG = "UPDATE_LOG";
 export const CREATE_LOG_SUCCEEDED = "CREATE_LOG_SUCCEEDED";
 export const SEED_LOGS_BY_DATE = "SEED_LOGS_BY_DATE";
+export const CREATE_LOG_TOUR = "CREATE_LOG_TOUR";
+
 
 //types tour
 export const TOUR_CHANGE_FIELD = "TOUR_CHANGE_FIELD";
@@ -57,3 +62,5 @@ export const CHANGE_DATE = "CHANGE_DATE";
 export const GET_TOUR = "GET_TOUR";
 export const SEED_TOUR = "SEED_TOUR";
 export const UPDATE_TOUR = "UPDATE_TOUR";
+export const UPDATE_TOUR_ADD_PATIENT = "UPDATE_TOUR_ADD_PATIENT";
+export const SUBMIT_UPDATE_TOUR = "SUBMIT_UPDATE_TOUR";

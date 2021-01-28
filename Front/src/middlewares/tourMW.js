@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CREATE_TOUR, GET_TOUR, UPDATE_TOUR } from 'src/actions/types';
+import { CREATE_TOUR, GET_TOUR, UPDATE_TOUR, } from 'src/actions/types';
 import { seedTour } from 'src/actions/tour';
 
 
@@ -19,7 +19,7 @@ const tourMW = (store) => (next) => (action) => {
     const { tour_date } = Recupstore.tournee;
     const { id } = Recupstore.auth;
     console.log('passe par CREATE TOUR');
-    console.log('date de la tournée:', tour_date ,"default cabinet", default_cabinet, "id user",id);
+    console.log('date de la tournée:', tour_date,"default cabinet", default_cabinet, "id user",id);
 
     const config = {
       method: 'post',
@@ -28,7 +28,7 @@ const tourMW = (store) => (next) => (action) => {
         Authorization: `Bearer ${tokenStorage}`,
       },
       data: {
-        date: tour_date,
+        date:tour_date,
         information: null,
         nurse_id: id,
         cabinet_id: default_cabinet

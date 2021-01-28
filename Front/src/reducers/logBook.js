@@ -1,4 +1,5 @@
-import {SEED_LOGS, LOGBOOK_CHANGE_FIELD, GET_LOGS, SEED_PATIENT, SEED_LOGS_BY_DATE, CHANGE_CABINET} from 'src/actions/types';
+import {SEED_LOGS, LOGBOOK_CHANGE_FIELD, GET_LOGS, SEED_PATIENT, 
+  SEED_LOGS_BY_DATE, CHANGE_CABINET} from 'src/actions/types';
 
 import {returnVoid} from 'src/utils/searchAndReturn'
 

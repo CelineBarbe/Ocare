@@ -7,7 +7,11 @@ import './tourEntryModal.scss';
 import close from 'src/assets/icones/close.svg';
 import check from 'src/assets/icones/check.svg';
 
+//== Import data -> array medical acte
+import { data } from 'src/utils/data';
+
 const TourEntryModal = ({
+  closeModalAddPatient,
   closeModalEntry,
   planned_date,
   ending_date,
@@ -26,7 +30,17 @@ const TourEntryModal = ({
 
 }) => {
 
-  console.log('planned date', planned_date);
+  const Select = () => {
+    return (
+      <select id="tags" name="tags" onChange={handleChange} className="select" placeholder="Choisissez un soin">
+       {
+        data.map((acte,index) => 
+        <option key={acte} index={index} value={acte}>{acte}</option>
+        )
+      } 
+      </select>
+    )
+  } 
 
   const handleChange = (event) => {
     changeField(event.target.value, event.target.name);
@@ -40,6 +54,7 @@ const TourEntryModal = ({
     evt.preventDefault();
     handleLogbook(patientId, id);
     closeModalEntry();
+    closeModalAddPatient();
   };
 
   const onFocus = (event) => {
@@ -51,17 +66,7 @@ const TourEntryModal = ({
     <form className="form" onSubmit={handleSubmit}>
     <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
 
-    <select id="tags" name="tags" onChange={handleChange} className="select" placeholder="Choisissez un soin">
-        <option value="injection">Prélèvement / Injection</option>
-        <option value="pansement">Pansements</option>
-        <option value="pansement lourd">Pansements lourds</option>
-        <option value="sonde">Pose de sonde</option>
-        <option value="soin respiratoire">Soins Respiratoire</option>
-        <option value="soin urinaire">Soins génito-urinaire</option>
-        <option value="soin digestif">Soins digestif</option>
-        <option value="soin cutane">Soins cutanée</option>
-        <option value="surveillance">Surveillance</option>
-    </select>
+    <Select />
     <input
       className="form-input"
       type="text"
