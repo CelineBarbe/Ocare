@@ -21,28 +21,29 @@ const CreateTourModal = ({
 const[dateTampon, setDateTampon] =useState(datePlace); 
 
 //chargement dans l'input de la date courante de la page
-useEffect(()=> {
-  changeTourDate(dateTampon)},[])
+
 
 
   //REDIRECTION à la date
   const history = useHistory();
   const routeTourByDate = () =>{ 
-    let path = `/tour/${tour_date}`; 
+    let path = `/tour/${dateTampon}`; 
     history.push(path);
   }
        
   console.log("tour_date", tour_date);
 
   const handleChange = (evt) => {
-    changeField(evt.target.value, evt.target.name);
+    setDateTampon(evt.target.value);
+    console.log('datetampon', dateTampon);
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log("je suis dans handlesumbit");
-    console.log("tour_date dans handlesubmit", tour_date);
     console.log("datePlace dans handlesubmit", datePlace);
+    changeTourDate(dateTampon);
+    console.log("tour_date dans handlesubmit", tour_date);
     handleTour();
     routeTourByDate();
     closeModalCreateTour();
@@ -63,7 +64,7 @@ useEffect(()=> {
         className="form-input"
         name="tour_date"
         type="text"
-        value={tour_date}
+        value={dateTampon}
         onChange={handleChange}
         onFocus={onFocus}
         placeholder="Date de la tournée"
