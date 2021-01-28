@@ -6,7 +6,7 @@ import TourEntryModal from 'src/modal/TourEntryModal';
 
 const mapStateToProps = ({logBook, auth, tournee}, ownProps) => {
   const { closeModalEntry, patientId, closeModalAddPatient } = ownProps;
-  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated } = logBook;
+  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated, medical_act_name } = logBook;
   const { id } = auth;
   const { date } = tournee;
   
@@ -25,6 +25,7 @@ const mapStateToProps = ({logBook, auth, tournee}, ownProps) => {
     time,
     done_date,
     date,
+    medical_act_name,
   })
 }
 

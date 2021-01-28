@@ -83,3 +83,9 @@ export const returnArrayHandleChange = (array, input) => {
     logbook_id: data.id,
   }
  }
+
+
+ export const toOrder = (data) => {
+   
+  return data.sort((a,b)=> a.order_tour-b.order_tour)
+ }

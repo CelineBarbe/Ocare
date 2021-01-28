@@ -3,7 +3,7 @@ import {
   UPDATE_TOUR, UPDATE_TOUR_ADD_PATIENT,CHANGE_TOUR_DATE,SUBMIT_UPDATE_TOUR
   
 } from './types';
-import {returnObjectTourList} from 'src/utils/searchAndReturn';
+import {returnObjectTourList, toOrder} from 'src/utils/searchAndReturn';
 
 
 export const tourChangeField = (value, field) => ({
@@ -20,10 +20,13 @@ export const changeDate = (date) => ({
   date,
 }) 
 
-export const seedTour = (data) => ({
+export const seedTour = (data) => {
+const result = toOrder(data);
+return ({
   type: SEED_TOUR,
-  payload: data,
+  payload: result,
 });
+}
 
 export const getTour = () => ({
   type: GET_TOUR,

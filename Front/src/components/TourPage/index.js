@@ -25,27 +25,38 @@ import {data} from 'src/utils/data';
 
 
 // == Composant
-const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour, submitUpdateTour}) => {
+const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour, submitUpdateTour, isLoading}) => {
   //LOADING DATE TODAY
   //date vaut path ou now
   const datePlace = useParams()?.date ?? DateTime.local().toISODate();
   let [cards,setCards] = useState([]);
   
-  useEffect(()=> {
-  if (list.length >= 1){
+//cas du create tournée, alimente les cartes si liste chargée change
+useEffect(()=> {
+  if (!isLoading) {
     setCards(list);
   }
-  },[list])
+  },[list])  
+
+  useEffect(()=> {
+    console.log("Je suis dans isLoading")
+  //je mets à jours mes cards en fonction de la reception de la nouvelle liste
+    if (!isLoading) {
+      setCards(list)
+    }
+  } ,[isLoading])
   
   
   console.log('list', list);
   console.log('card', cards);
+
+  //gère le changement de date de la tournee
   useEffect(() => {
     //par défaut charge la date du jour sinon la date de l'url
     console.log('passe par le useEffect location change')
     changeDate(datePlace);
     getTour();
-    setCards(list);
+    //setCards(list);
   }, [location])
 
   /*useEffect(() => {
@@ -54,6 +65,8 @@ const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateT
     console.log('card:',cards);
   }, []) */
 
+
+//refresh après le drag and drop renvoit cards vers list dans le reducer
   useEffect(() => {
     console.log("Update tour cards :", cards );
     updateTour(cards);
@@ -178,7 +191,7 @@ const arraySortStarting = (array) => {
                   <img className="tour-page-create-tour-img" src={calendar} alt="ajouter" onClick={openModalCreateTour}/>  
                 </div>
               </div>
-              {!list.length<=1 ?<SortableList items={cards} onSortEnd={onSortEnd} /> : null}
+              {!isLoading ?<SortableList items={cards} onSortEnd={onSortEnd} /> : <p>data loading...</p>}
               <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleUpdateTour}/>
             </div>
           </div>
@@ -189,3 +202,4 @@ const arraySortStarting = (array) => {
 
 // == Export
 export default TourPage;
+

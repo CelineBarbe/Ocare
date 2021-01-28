@@ -1,5 +1,5 @@
 import { TOUR_CHANGE_FIELD, CHANGE_DATE,SEED_TOUR, UPDATE_TOUR, 
-  UPDATE_TOUR_ADD_PATIENT, CHANGE_TOUR_DATE,
+  UPDATE_TOUR_ADD_PATIENT, CHANGE_TOUR_DATE, GET_TOUR, CREATE_TOUR,
 } from 'src/actions/types';
 var { DateTime } = require('luxon');
 
@@ -49,6 +49,16 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         tour_date: action.date,
+      }
+    case GET_TOUR:
+      return {
+        ...oldState,
+        isLoading: true,
+      }
+    case CREATE_TOUR:
+      return {
+        ...oldState,
+        isLoading: true,
       }
     default:
       return { ...oldState };

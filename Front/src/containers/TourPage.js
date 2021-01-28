@@ -5,12 +5,13 @@ import TourPage from 'src/components/TourPage';
 import { changeDate, getTour, updateTour, submitUpdateTour } from 'src/actions/tour';
 
 const mapStateToProps = ({ tournee }, ownProps) => {
-  const { date, tour_date, list} = tournee;
+  const { date, tour_date, list, isLoading} = tournee;
   //const {byDate} = ownProps
   return ({
     date,
     tour_date,
     list,
+    isLoading,
   });
 };
 

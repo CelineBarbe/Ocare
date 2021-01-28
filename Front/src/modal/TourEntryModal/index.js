@@ -26,18 +26,20 @@ const TourEntryModal = ({
   id,
   time,
   done_date,
-  date
+  date,
+  medical_act_name,
 
 }) => {
 
   const Select = () => {
     return (
-      <select id="medical_act_name" name="medical_act_name" onChange={handleChange} className="select" placeholder="Choisissez un soin">
+      <select value={medical_act_name} id="medical_act_name" name="medical_act_name" onChange={handleChange} className="select" placeholder="Choisissez un soin">
        {
-        data.map((acte,index) => 
-        <option key={acte} index={index} value={acte}>{acte}</option>
+        data.map((acte,index) => (
+          <option key={acte} index={index} value={acte}>{acte}</option>
         )
-      } 
+        )
+       } 
       </select>
     )
   } 
