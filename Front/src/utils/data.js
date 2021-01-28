@@ -1,6 +1,6 @@
 export const data = 
   [
-'Soins infirmier',
+'Soins infirmiers',
 'Prise de sang',
 'Pilulier',
 'Nursing',

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getPatients } from 'src/actions/patients';
 import { changeField } from 'src/actions/search';
 
+
 import AddPatientModal from 'src/modal/AddPatientModal';
 
 const mapStateToProps = ({ patients, search }, ownProps) => {

@@ -29,20 +29,32 @@ const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateT
   //LOADING DATE TODAY
   //date vaut path ou now
   const datePlace = useParams()?.date ?? DateTime.local().toISODate();
-  let [cards,setCards] = useState(list);
+  let [cards,setCards] = useState([]);
   
+  useEffect(()=> {
+  if (list.length >= 1){
+    setCards(list);
+  }
+  },[list])
+  
+  
+  console.log('list', list);
+  console.log('card', cards);
   useEffect(() => {
     //par défaut charge la date du jour sinon la date de l'url
+    console.log('passe par le useEffect location change')
     changeDate(datePlace);
     getTour();
   }, [location])
 
-  useEffect(() => {
+  /*useEffect(() => {
     setCards(list);
-    console.log('useEffect, list', list,'card:',cards);
-  }, [list])
+    console.log('useEffect set Cards, list:', list)
+    console.log('card:',cards);
+  }, []) */
 
   useEffect(() => {
+    console.log("Update tour cards :", cards );
     updateTour(cards);
   }, [cards])
 
@@ -69,7 +81,7 @@ function closeModalCreateTour(){
 }
 
 /* Function submit update tour */
-function submitUpdateTour() {
+function handleUpdateTour() {
   submitUpdateTour();
 }
 
@@ -165,8 +177,8 @@ const arraySortStarting = (array) => {
                   <img className="tour-page-create-tour-img" src={calendar} alt="ajouter" onClick={openModalCreateTour}/>  
                 </div>
               </div>
-              <SortableList items={cards} onSortEnd={onSortEnd} />
-              <img className="modal-patient-update-img" src={check} alt="valider" onClick={submitUpdateTour}/>
+              {!list.length<=1 ?<SortableList items={cards} onSortEnd={onSortEnd} /> : null}
+              <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleUpdateTour}/>
             </div>
           </div>
         <Nav />

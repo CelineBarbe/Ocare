@@ -12,6 +12,7 @@ export const initialState = {
   list: [],
   //loader
   isLoading: false,
+
 };
 
 // reducer qui va gérer les recettes

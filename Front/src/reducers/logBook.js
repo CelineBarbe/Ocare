@@ -16,6 +16,7 @@ export const initialState = {
   list: [],
   isLoading: false,
   isCreated: false,
+  medical_act_name:'',
 };
 
 // reducer qui va gérer les recettes

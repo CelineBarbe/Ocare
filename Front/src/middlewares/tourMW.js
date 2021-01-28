@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CREATE_TOUR, GET_TOUR, UPDATE_TOUR, } from 'src/actions/types';
+import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, } from 'src/actions/types';
 import { seedTour } from 'src/actions/tour';
 
 
@@ -79,27 +79,31 @@ const tourMW = (store) => (next) => (action) => {
   /*******************************/
    /* ACTION UPDATE TOUR */
   /*******************************/
-  if (action.type === UPDATE_TOUR) {
-    const { date } = Recupstore.tournee;
+  if (action.type === SUBMIT_UPDATE_TOUR) {
+    const { date, list } = Recupstore.tournee;
     console.log('passe par UPDATE TOUR');
     console.log('date de la tournée:', date);
+    console.log('list:', list);
     const config = {
-      method: 'post',
-      url: `${URL}tour/${date}`,
+      method: 'patch',
+      url: `${URL}tour/patient`,
       headers: {
         Authorization: `Bearer ${tokenStorage}`,
       },
+      data: {
+        tour: list,
+      }
     };
-    /* axios(config)
+   axios(config)
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-         store.dispatch(seedTour(response.data.tour));
+         //store.dispatch(seedTour(response.data.tour));
         }
       })
       .catch((err) => {
         console.log(err);
-      }); */
+      });
     next(action);
   }; 
   next(action);
