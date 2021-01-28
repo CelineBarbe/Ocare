@@ -17,7 +17,7 @@ router.post('/login', authController.handleLoginForm);
 router.post('/signup', authController.handleSignForm);
 
 router.use(auth);
-// router.get('/logout', authController.logout);
+router.get('/autologin', authController.autologin);
 
 //routes cabinets
 router.use('/cabinet', cabinetRouter);

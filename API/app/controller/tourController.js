@@ -10,7 +10,7 @@ const tourController = {
             const tours = await tourDataMapper.getAllPatient(idCabinet);
 
             if(!tours) {
-                response.locals.notFound = "Aucun patients dans ce cabinet";
+                response.locals.notFound = "Aucun tour dans ce cabinet";
                 next();
                 return;
             }

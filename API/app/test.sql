@@ -365,3 +365,12 @@ SELECT thp.*,
             AND p.cabinet_id = 2
             AND l.planned_date = '2021-01-28';
 
+
+SELECT l.*, 
+    m.name 
+    FROM logbook l
+        JOIN logbook_has_medical_act lhma
+            ON l.id = lhma.logbook_id
+        JOIN medical_act m
+            ON m.id = lhma.medical_act_id
+    WHERE l.id = 268;

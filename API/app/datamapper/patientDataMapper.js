@@ -6,7 +6,9 @@ const patientDataMapper = {
 
         const result = await client.query(`SELECT * FROM patient WHERE cabinet_id = $1`, [idCabinet]);
         if (result.rowCount == 0) {
-            return null;
+
+            const result = { message: 'Aucun patient dans ce cabinet'};
+            return result;
         }
         return result.rows;
     },
@@ -50,6 +52,11 @@ const patientDataMapper = {
         
         return result.rows;
     },
+
+    // async find(info) {
+    //     console.log('coucou');
+    //     console.log(info, "info");
+    // },
 
     async createPatient(patientInfo) {
 

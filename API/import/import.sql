@@ -562,7 +562,7 @@ INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES
 (49, 10),
 (50, 10),
 (51, 10),
-(52, 10)
+(52, 10),
 (53, 10),
 (54, 10),
 (55, 10),

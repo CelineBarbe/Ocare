@@ -16,3 +16,4 @@
 090-logbook-has-medical-act 2021-01-25T17:35:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table logbook_has_medical_act
 100-add-unique-constraint 2021-01-26T18:08:50Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add unique constraint on tables
 110-add-tour 2021-01-27T09:52:34Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table tour
+042-Update-View-getAllCabinet 2021-01-28T15:44:57Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add left outer JOIN on patient table

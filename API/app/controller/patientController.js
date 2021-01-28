@@ -9,7 +9,7 @@ const patientController = {
 
             const patients = await patientDataMapper.getAllPatient(idCabinet);
             if(!patients) {
-                response.locals.notFound = "Aucun patients dans ce cabinet";
+                response.locals.notFound = "Aucun patient dans ce cabinet";
                 next();
                 return;
             }

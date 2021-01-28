@@ -1,7 +1,5 @@
 const client = require('./client');
 
-const tour = require('../test.json');
-
 const tourDataMapper = {
 
     async create(info) {
@@ -136,9 +134,9 @@ const tourDataMapper = {
                 ON t.id = thp.tour_id
         WHERE t.date = $1
             AND p.cabinet_id = $2
-            AND l.planned_date = $1`, [date, idCabinet]);
+            AND l.planned_date = $1 ORDER BY thp.order_tour ASC`, [date, idCabinet]);
 
-            console.log(result, "resultat DataMapper");
+            // console.log(result, "resultat DataMapper");
 
         return result.rows;
 

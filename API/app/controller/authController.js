@@ -33,6 +33,19 @@ const authController = {
 
     },
 
+    async autologin(request, response, next) {
+        try {
+            
+            const userID = response.locals.userID;
+            const defaultCab = request.app.locals.userCurrentCabinet;
+            
+            response.json({ userID, defaultCab });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
     async handleSignForm(request, response, next) {
         try {
             const userInfo = request.body;
