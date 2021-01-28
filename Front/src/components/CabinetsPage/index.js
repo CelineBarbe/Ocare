@@ -17,10 +17,14 @@ import moins from 'src/assets/icones/moinsvert.svg';
 
 
 // == Composant
-const CabinetsPage = ({ listCabinets, handleunSubCabinet }) => {
+const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh}) => {
+
+
 
 const getCabinetId = (params) => {
   handleunSubCabinet(params);
+  //refresh dashboard init sans redirect pour test à voir
+  handleRefresh();
 } 
 
   return (

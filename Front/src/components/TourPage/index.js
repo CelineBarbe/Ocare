@@ -45,6 +45,7 @@ const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateT
     console.log('passe par le useEffect location change')
     changeDate(datePlace);
     getTour();
+    setCards(list);
   }, [location])
 
   /*useEffect(() => {
