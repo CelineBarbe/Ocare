@@ -1,14 +1,52 @@
 // == Import npm
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import {data} from 'src/utils/data';
+var { DateTime } = require('luxon');
 // == Import
 import './tour.scss';
 
 // == Composant
 const Tour= ({
-  list
+  list,
+  isLoading,
+  getTour,
+  updateTourDone,
+  updateTourDoneOk,
+  changeDate
+
 }) => {
+    
+  const date = DateTime.local().toISODate();
+  let [cards,setCards] = useState([]);
+  
+  useEffect(() => {
+    changeDate(date);
+    getTour();
+  },[])
+
+  //cas du create tournée, alimente les cartes si liste chargée change
+  useEffect(()=> {
+  if (!isLoading) {
+  
+   setCards(list);
+  }
+  },[list])  
+
+ const handleDoubleClick = (event,id) => {
+   console.log('coucou');
+   //TODO MW UPDATE...
+   updateTourDone(id);
+ }
+/* 
+  useEffect(()=> {
+    console.log("Je suis dans isLoading")
+  //je mets à jours mes cards en fonction de la reception de la nouvelle liste
+    if (!isLoading) {
+      setCards(list)
+    }
+  } ,[isLoading]) */
+
+
 
  /*composant défaut lorsqu'il n'y a pas de tournée de prévue */
 const DefaultComponant = () => {
@@ -25,15 +63,15 @@ const DefaultComponant = () => {
     </Link>
     <ul className="tour-ul">
     { 
-    data.length>1 
-    ? data.map(patient =>
-        <Link to={`/patient/${patient.id}`}>
-        <li className="tour-li" key={patient.id}>
-          <span className="tour-span-name">{patient.nom}</span>
-          <span className="tour-span-tag">{patient.tag}</span>
+    list.length>1 
+    ? list.map(patient =>
+        <li className="tour-li" key={patient.logbook_id}>
+          <Link to={`/patient/${patient.id}`}  >
+          <span className="tour-span-name">{patient.lastname}</span>
+          </Link>
+          <div className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </div>
         </li>
-      </Link>
-      )
+            )
     : <DefaultComponant/>   
     }
      {/* <Link to="/patient">

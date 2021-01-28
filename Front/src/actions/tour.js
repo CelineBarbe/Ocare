@@ -1,6 +1,7 @@
 import {
   TOUR_CHANGE_FIELD,CREATE_TOUR,CHANGE_DATE, SEED_TOUR, GET_TOUR, 
-  UPDATE_TOUR, UPDATE_TOUR_ADD_PATIENT,CHANGE_TOUR_DATE,SUBMIT_UPDATE_TOUR
+  UPDATE_TOUR, UPDATE_TOUR_ADD_PATIENT,CHANGE_TOUR_DATE,SUBMIT_UPDATE_TOUR,
+  UPDATE_TOUR_DONE, UPDATE_TOUR_DONE_OK,
   
 } from './types';
 import {returnObjectTourList, toOrder} from 'src/utils/searchAndReturn';
@@ -53,4 +54,12 @@ export const submitUpdateTour = () => ({
 export const changeTourDate = (date) => ({
   type: CHANGE_TOUR_DATE,
   date,
+})
+
+export const updateTourDone = () => ({
+  type: UPDATE_TOUR_DONE,
+})
+
+export const updateTourDoneOK = () => ({
+  type: UPDATE_TOUR_DONE_OK,
 })
