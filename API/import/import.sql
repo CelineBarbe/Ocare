@@ -394,7 +394,7 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 
 -- Medical Act
 INSERT INTO medical_act(name, category) VALUES
-('soins infirmier', 'category'),
+('Soins infirmiers', 'category'),
 ('Prise de sang', 'category'),
 ('Pilulier', 'category'),
 ('Nursing', 'category'),
