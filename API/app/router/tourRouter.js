@@ -9,7 +9,7 @@ const router = express.Router();
 // router.get('/', tourController.findAll);
 router.get('/:date', tourController.findByDate);
 router.post('/', tourController.create);
-// router.patch('/patient', tourController.updatePatient);
+router.patch('/patient', tourController.updatePatient);
 // router.patch('/:id(\\d+)', tourController.update);
 // router.delete('/:id(\\d+)', tourController.delete);
 

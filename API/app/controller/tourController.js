@@ -62,20 +62,20 @@ const tourController = {
         }
     },
 
-    async update(request, response, next) {
+    async updatePatient(request, response, next) {
         try {
-            const { id } = request.params;
+
             const patientInfo = request.body;
 
-            const updatedPatient = await tourDataMapper.updatePatientByid(id, patientInfo);
+            const updatedPatient = await tourDataMapper.updatePatient(patientInfo);
 
             if(!updatedPatient) {
-                response.locals.notFound = "patient introuvable!";
+                response.locals.notFound = "tour introuvable!";
                 next();
                 return;
             }
 
-            response.json({ updatedPatient });
+            response.json({ message: 'Tour update OK' });
             
         } catch (error) {
             next(error);

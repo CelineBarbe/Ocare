@@ -1,5 +1,7 @@
 const client = require('./client');
 
+const tour = require('../test.json');
+
 const tourDataMapper = {
 
     async create(info) {
@@ -110,8 +112,6 @@ const tourDataMapper = {
         //     return null;
         // }
 
-        console.log(result, "result tournée");
-
         return result.rows;
     },
 
@@ -138,8 +138,28 @@ const tourDataMapper = {
             AND p.cabinet_id = $2
             AND l.planned_date = $1`, [date, idCabinet]);
 
+            console.log(result, "resultat DataMapper");
+
         return result.rows;
 
+    },
+
+    async updatePatient(tour) {
+        
+        // Tableau de la tournée avec les patients
+        const tourTab = tour.tour;
+        
+        // Pour les patient dont l'id de Tour has patient est null on les ajoutes à la tournée et pour les autres on update leur order
+        for (let el of tourTab) {
+            // Si id = null
+            if (el.id == null) {
+                await client.query(`INSERT INTO tour_has_patient(tour_id, patient_id, order_tour) VALUES ($1, $2, $3)`, [el.tour_id, el.patient_id, el.order_tour]);
+            } else {
+                await client.query(`UPDATE tour_has_patient SET order_tour = $1 WHERE id = $2`, [el.order_tour, el.id]);
+            }
+        }
+
+        return tourTab;
     }
 };
 
