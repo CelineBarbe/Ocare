@@ -78,7 +78,7 @@ const DefaultComponant = () => {
                   </div>
                 </div>
               </div>  
-          ))
+        ))
         : <DefaultComponant /> 
       }
     </div>
