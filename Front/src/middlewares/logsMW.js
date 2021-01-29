@@ -75,7 +75,7 @@ const logsMW = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
-        console.log(err);s
+        console.log(err);
       });
     next(action);
   };

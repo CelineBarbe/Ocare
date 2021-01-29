@@ -29,6 +29,7 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
    }
  }
 
+ //TODO check this null
  export const returnVoid = (entry) => {
   if (entry.length <= 1) {
     //test sur une seule entrée
@@ -90,10 +91,13 @@ export const returnArrayHandleChange = (array, input) => {
  }
 
  export const doneTask= (list,id) => {
-  const task = list.map(el => {
-    if(el.logbook_id===id){
-      el.done=true;
-  }})
-  console.log('task',task);
-  return task;
+  console.log('list', list);
+  const task = list.find(el => el.logbook_id===id);
+  console.log('task',task)
+  task.done = true;
+
+  const listwithoutTask = list.filter(el => el.logbook_id!==id);
+  let listReturn = [...listwithoutTask, task];
+  console.log('listReturn avant order', listReturn)
+  return toOrder(listReturn)
  }

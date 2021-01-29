@@ -30,9 +30,11 @@ const Tour= ({
  
   //cas du create tournée, alimente les cartes si liste chargée change
   useEffect(()=> {
-  if (!isLoading) {
-   setCards(list);
-  }
+    if(!isLoading) {
+      setCards(list.filter(el => el.done===false));
+    }
+  
+  console.log('cards:', cards);
   },[list])  
 
   //gestion doubleclick maj de la liste
@@ -41,7 +43,7 @@ const Tour= ({
   //appel MAJ API
   updateTourDone(id);
   //MAJ reducer sans attendre la reponse serveur
-  updateTourDoneOK(cards,id);
+  updateTourDoneOk(cards,id);
  }
 /* 
   useEffect(()=> {
@@ -67,8 +69,8 @@ const DefaultComponant = () => {
     </Link>
     <ul className="tour-ul">
     { 
-    list.length>1 
-    ? list.map(patient =>
+    !isLoading
+    ? cards.map(patient =>
         <li className="tour-li" key={patient.logbook_id}>
           <Link to={`/patient/${patient.id}`}  >
           <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
