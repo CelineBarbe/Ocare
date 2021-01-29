@@ -37,10 +37,10 @@ const cabinetsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if(response.status === 200) {
-          console.log('coucou du if create cabinet')
+          console.log('coucou du if create cabinet');
+          console.log('response.data.savedCabinet', response.data.savedCabinet);
+          console.log('response.data.savedCabinet.id', response.data.savedCabinet.id);
           store.dispatch(createCabinetSucceeded(response.data.savedCabinet, email));
-          console.log('id du saved cabinet', response.data.savedCabinet.id)
-          store.dispatch(changeCabinet(response.data.savedCabinet.id));
         }
       })
       .catch((err) => {
