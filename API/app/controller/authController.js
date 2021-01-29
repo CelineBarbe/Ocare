@@ -18,6 +18,7 @@ const authController = {
             
             // Save current cabinet in locals
             request.app.locals.userCurrentCabinet = user.default_cabinet;
+            request.app.locals.autologin = user;
             
             response.json({ user, userToken: jwt.sign(
                 {
@@ -36,10 +37,11 @@ const authController = {
     async autologin(request, response, next) {
         try {
             
-            const userID = response.locals.userID;
-            const defaultCab = request.app.locals.userCurrentCabinet;
+            const user = response.app.locals.autologin;
             
-            response.json({ userID, defaultCab });
+            response.json({ user});
+
+            response.app.locals.autologin = "";
 
         } catch (error) {
             next(error);

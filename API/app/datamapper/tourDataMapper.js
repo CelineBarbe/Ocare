@@ -181,7 +181,9 @@ const tourDataMapper = {
         
 
         return logIsDone.rowCount;
-    }
+    },
+
+    // async delete()
 };
 
 module.exports = tourDataMapper;
