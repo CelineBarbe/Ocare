@@ -21,17 +21,21 @@ const CreateCabinet = ({
   changeField, 
   handleSubmitCab, 
   handleReset,
-  closeModalCreateCabinet
+  closeModalCreateCabinet,
+  changeCabinet,
+  id,
+  isLoading,
 }) => {
   //REDIRECTION dashboard
   const history = useHistory();
   const dashboard = () =>{ 
+    changeCabinet(id);
     let path = `/Dashboard`; 
     history.push(path);
   }
 
   //Redirection ?
-  useEffect(() => { isCreated ? dashboard() : null}, [isCreated])
+  useEffect(() => { isCreated ?  dashboard(): null}, [isCreated])
   
   //events
   const handleChange = (evt) => {
