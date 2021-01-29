@@ -33,9 +33,8 @@ const Tour= ({
   },[list])  
 
  const handleDoubleClick = (event,id) => {
-   console.log('coucou');
-   //TODO MW UPDATE...
-   updateTourDone(id);
+   console.log('coucou de dbclick, id vaut:', id)
+  updateTourDone(id);
  }
 /* 
   useEffect(()=> {
@@ -67,7 +66,7 @@ const DefaultComponant = () => {
     ? list.map(patient =>
         <li className="tour-li" key={patient.logbook_id}>
           <Link to={`/patient/${patient.id}`}  >
-          <span className="tour-span-name">{patient.lastname}</span>
+          <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
           </Link>
           <div className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </div>
         </li>

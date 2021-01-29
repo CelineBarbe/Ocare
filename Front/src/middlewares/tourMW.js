@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, } from 'src/actions/types';
+import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, UPDATE_TOUR_DONE } from 'src/actions/types';
 import { seedTour } from 'src/actions/tour';
 
 
@@ -106,6 +106,34 @@ const tourMW = (store) => (next) => (action) => {
       });
     next(action);
   }; 
+
+
+  /*******************************/
+   /* ACTION UPDATE TOUR DONE!*/
+  /*******************************/
+  if (action.type === UPDATE_TOUR_DONE) {
+    console.log('passe par UPDATE TOUR DONE !');
+    console.log('action idLog:',action.idLog)
+    const config = {
+      method: 'patch',
+      url: `${URL}tour/log/${action.idLog}`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+        };
+   axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         //store.dispatch(seedTour(response.data.tour));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  }; 
+
   next(action);
 }
 
