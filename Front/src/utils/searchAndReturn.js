@@ -86,6 +86,14 @@ export const returnArrayHandleChange = (array, input) => {
 
 
  export const toOrder = (data) => {
-   
   return data.sort((a,b)=> a.order_tour-b.order_tour)
+ }
+
+ export const doneTask= (list,id) => {
+  const task = list.map(el => {
+    if(el.logbook_id===id){
+      el.done=true;
+  }})
+  console.log('task',task);
+  return task;
  }

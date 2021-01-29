@@ -4,7 +4,7 @@ import {
   UPDATE_TOUR_DONE, UPDATE_TOUR_DONE_OK,
   
 } from './types';
-import {returnObjectTourList, toOrder} from 'src/utils/searchAndReturn';
+import {returnObjectTourList, toOrder, doneTask} from 'src/utils/searchAndReturn';
 
 
 export const tourChangeField = (value, field) => ({
@@ -61,6 +61,10 @@ export const updateTourDone = (id) => ({
   idLog: id,
 })
 
-export const updateTourDoneOK = () => ({
+export const updateTourDoneOK = (list,id) => {
+  const updateList = doneTask(list,id);
+return ({
   type: UPDATE_TOUR_DONE_OK,
+  list: updateList,
 })
+}

@@ -27,17 +27,21 @@ const Tour= ({
     }
   },[default_cabinet])
 
+ 
   //cas du create tournée, alimente les cartes si liste chargée change
   useEffect(()=> {
   if (!isLoading) {
-  
    setCards(list);
   }
   },[list])  
 
+  //gestion doubleclick maj de la liste
  const handleDoubleClick = (event,id) => {
-   console.log('coucou de dbclick, id vaut:', id)
+  console.log('coucou de dbclick, id vaut:', id)
+  //appel MAJ API
   updateTourDone(id);
+  //MAJ reducer sans attendre la reponse serveur
+  updateTourDoneOK(cards,id);
  }
 /* 
   useEffect(()=> {
@@ -47,8 +51,6 @@ const Tour= ({
       setCards(list)
     }
   } ,[isLoading]) */
-
-
 
  /*composant défaut lorsqu'il n'y a pas de tournée de prévue */
 const DefaultComponant = () => {

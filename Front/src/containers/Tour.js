@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => ({
    updateTourDone : (id) => {
      dispatch(updateTourDone(id));
    },
-   updateTourDoneOk: () => {
-     dispatch(updateTourDoneOK());
+   updateTourDoneOk: (list, id) => {
+     dispatch(updateTourDoneOK(list, id));
    },
    changeDate: (date) => {
      dispatch(changeDate(date))

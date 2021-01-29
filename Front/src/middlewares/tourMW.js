@@ -125,7 +125,7 @@ const tourMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-         //store.dispatch(seedTour(response.data.tour));
+         console.log("updated task done!")
         }
       })
       .catch((err) => {
