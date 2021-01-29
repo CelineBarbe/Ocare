@@ -6,7 +6,7 @@ import EntryModal from 'src/modal/Entry';
 
 const mapStateToProps = ({logBook, auth}, ownProps) => {
   const { closeModalEntry, patientId } = ownProps;
-  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated } = logBook;
+  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated, medical_act_name } = logBook;
   const { id } = auth;
   
   return ({
@@ -22,6 +22,7 @@ const mapStateToProps = ({logBook, auth}, ownProps) => {
     id,
     time,
     done_date,
+    medical_act_name,
   })
 }
 
