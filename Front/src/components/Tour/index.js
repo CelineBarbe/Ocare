@@ -12,7 +12,8 @@ const Tour= ({
   getTour,
   updateTourDone,
   updateTourDoneOk,
-  changeDate
+  changeDate,
+  default_cabinet,
 
 }) => {
     
@@ -20,9 +21,11 @@ const Tour= ({
   let [cards,setCards] = useState([]);
   
   useEffect(() => {
+    if (default_cabinet){
     changeDate(date);
-    getTour();
-  },[])
+    getTour(); 
+    }
+  },[default_cabinet])
 
   //cas du create tournée, alimente les cartes si liste chargée change
   useEffect(()=> {

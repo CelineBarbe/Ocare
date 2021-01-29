@@ -5,7 +5,7 @@ import Dashboard from 'src/components/Dashboard';
 
 const mapStateToProps = ({ auth }) => {
   const {
-    email, firstname, lastname, phone_number, siren_code, avatar,
+    email, firstname, lastname, phone_number, siren_code, avatar, default_cabinet
   } = auth;
   return ({
     email,
@@ -14,6 +14,7 @@ const mapStateToProps = ({ auth }) => {
     phone_number,
     siren_code,
     avatar,
+    default_cabinet,
   });
 };
 
