@@ -41,8 +41,6 @@ const authController = {
             
             response.json({ user});
 
-            response.app.locals.autologin = "";
-
         } catch (error) {
             next(error);
         }
