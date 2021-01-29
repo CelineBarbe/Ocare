@@ -5,11 +5,6 @@ import './logBook.scss';
 
 import { DateTime } from "luxon";
 
-// == Import images
-import wave from 'src/assets/icones/wave.svg';
-import pill from 'src/assets/icones/pill.svg';
-import bandage from 'src/assets/icones/bandage.svg';
-
 //== Import modal
 import EntryModal from 'src/containers/EntryModal';
 
@@ -19,6 +14,10 @@ const LogBook = ({
   list,
   patientId
 }) => {
+
+  /*Utilisation de require.context pour charger les images dynamiquement selon le nom de l'acte medical */
+  const images = require.context('src/assets/icones', true, /\.svg$/);
+
 
 useEffect(() => {
     SortList();
@@ -53,7 +52,8 @@ const DefaultComponant = () => {
               <div className="carnet-sante-entry" key={index}>
                 <div className="carnet-sante-entry-top">
                   <div className="carnet-sante-entry-top-icone">
-                    <img src={pill} className="carnet-sante-entry-top-icone-img" alt="icone"/>
+                  
+                    <img src={images(`./${list.medical_act_name}.svg`)} className="carnet-sante-entry-top-icone-img" alt="icone"/>
                   </div>
                   <div className="carnet-sante-entry-top-care">
                     <div className="carnet-sante-entry-top-care-top">
