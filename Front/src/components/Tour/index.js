@@ -33,8 +33,7 @@ const Tour= ({
     if(!isLoading) {
       setCards(list.filter(el => el.done===false));
     }
-  
-  console.log('cards:', cards);
+    console.log('cards:', cards);
   },[list])  
 
   //gestion doubleclick maj de la liste

@@ -33,7 +33,7 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
  export const returnVoid = (entry) => {
   if (entry.length <= 1) {
     //test sur une seule entrée
-     let result = [...entry] ?? [];
+     let result = entry[0] ?? [];
      console.log('result', result);
      return result
   } 
