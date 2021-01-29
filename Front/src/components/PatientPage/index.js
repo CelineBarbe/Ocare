@@ -40,7 +40,7 @@ const PatientPage = ({
   const patientInfo = () => {
     if(!isLoading){
       return <>
-              <h1 className="patient-title"> {`Mr ${lastname} ${firstname}`} </h1>
+              <h1 className="patient-title"> {`${gender} ${lastname} ${firstname}`} </h1>
               <img onClick={openModalPatient} src={info} alt="information" className="patient-infos" />
             </>
     } else {

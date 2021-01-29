@@ -15,7 +15,7 @@ const AddPatientModal = ({
   list,
   inputSearchPatient,
   changeField,
-  getPatients
+  getPatients,
 }) => {
   useEffect(() => {
     getPatients();

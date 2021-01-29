@@ -183,11 +183,11 @@ const arraySortStarting = (array) => {
               
               <div className="button-container">
                 <div className="tour-page-create-patient">
-                  <span className="tour-page-create-patient-title">Ajouter un patient</span>
+                  <span className="tour-page-create-patient-title"onClick={openModalAddPatient} >Ajouter un patient</span>
                   <img className="tour-page-create-patient-img" src={plus} alt="ajouter" onClick={openModalAddPatient}/>  
                 </div>
                 <div className="tour-page-create-tour">
-                  <span className="tour-page-create-tour-title">Créer une tournée</span>
+                  <span className="tour-page-create-tour-title" onClick={openModalCreateTour}>Créer une tournée</span>
                   <img className="tour-page-create-tour-img" src={calendar} alt="ajouter" onClick={openModalCreateTour}/>  
                 </div>
               </div>

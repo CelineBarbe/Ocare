@@ -120,12 +120,9 @@
 .planning-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 90%;
   height: 375px;
-  padding: 0 vars.$gutter;
-  padding-top: vars.$gutter*6;
   overflow-y: scroll ;
   -ms-overflow-style:none;
 

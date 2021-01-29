@@ -57,7 +57,7 @@ const DefaultComponant = () => {
                   </div>
                   <div className="carnet-sante-entry-top-care">
                     <div className="carnet-sante-entry-top-care-top">
-                      <h3 className="carnet-sante-entry-top-care-top-title">Pilulier</h3>
+                      <h3 className="carnet-sante-entry-top-care-top-title">{list.medical_act_name}</h3>
                       <span className="carnet-sante-entry-top-care-top-name">{list.nurse_firstname}</span>
                     </div>
                     <div className="carnet-sante-entry-top-care-bottom">
