@@ -38,6 +38,7 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
   }, [location])
 
   let datePres = DateTime.fromISO(date);
+
 /*  (() => {
     if(!date) {
       datePres = DateTime.local();
@@ -50,7 +51,7 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
   /*composant défaut lorsqu'il n'y a pas de log présent */
   const DefaultComponant = () => {
   return (
-    <h1 className="default-title">Aucune transmission pour aujourd'hui</h1>
+    <h1 className="default-title">Aucune transmission pour le {datePres.day} {datePres.monthLong}</h1>
   )
   }
 
