@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 // == Import npm
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // == Import
@@ -21,8 +21,13 @@ import TransmissionPage from 'src/containers/TransmissionPage';
 
 
 // == Composant
-const App = () => (
-  <div className="app">
+const App = ({autoLogin}) => {
+  useEffect(()=> {
+    autoLogin();
+  },[])
+
+  return (
+    <div className="app">
     <Switch>
       <Route exact path="/"><HomePage /></Route>
       <Route exact path="/login"><LoginPage /></Route>
@@ -37,11 +42,10 @@ const App = () => (
       <Route exact path="/tour/:date"><TourPage /></Route>
       <Route exact path="/transmission"><TransmissionPage byDate={false} /></Route>
       <Route exact path="/transmission/:date"><TransmissionPage byDate/></Route>
-
-
     </Switch>
   </div>
-);
+  )
+}
 
 // == Export
 export default App;

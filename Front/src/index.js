@@ -7,7 +7,7 @@ import { render } from 'react-dom';
 // store
 import store from 'src/store';
 // Composants
-import App from 'src/components/App';
+import App from 'src/containers/App';
 
 const rootReactElement = (
   <HashRouter>

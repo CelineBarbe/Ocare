@@ -35,6 +35,35 @@ const auth = (store) => (next) => (action) => {
     
     next(action);
   }
+  //AUTOLOGIN
+  if (action.type === AUTO_LOGIN) {
+    if(tokenStorage){
+      const Recupstore = store.getState();
+    const { email, password } = Recupstore.auth;
+    const config = {
+      method: 'get',
+      url: `${URL}autologin`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          store.dispatch(loginOk(response.data.user));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      next(action);
+    } else {
+      console.log("pas de token présent !")
+      next(action);
+    }
+    
+  }
   //SIGNUP
   if (action.type === AUTH_SUBMIT_SIGNUP) {
     const Recupstore = store.getState();
@@ -130,32 +159,6 @@ const auth = (store) => (next) => (action) => {
       .catch((err) => {
         console.log(err);
       });
-    next(action);
-  }
-  if (action.type === AUTO_LOGIN) {
-    const Recupstore = store.getState();
-    console.log('autoLogin')
-    const config = {
-      method: 'post',
-      url: `${URL}autologin`,
-      headers: {
-        Authorization: `Bearer ${tokenStorage}`,
-      },
-    };
-    axios(config)
-      .then((response) => {
-        console.log(response);
-        if (response.status === 200) {
-          const { user, userToken } = response.data;
-          localStorage.setItem('auth', userToken);
-          console.log(user);
-          store.dispatch(loginOk(user));
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    
     next(action);
   }
   //LOGOUT
