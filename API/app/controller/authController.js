@@ -37,9 +37,17 @@ const authController = {
     async autologin(request, response, next) {
         try {
             
-            const user = response.app.locals.autologin;
+            const userID = response.locals.userID;
+
+            const user = await authDataMapper.getUserAuto(userID);
+
+            if(!user) {
+                response.locals.notFound = "Autorisation refusées";
+                next();
+                return;
+            }
             
-            response.json({ user});
+            response.json({ user });
 
         } catch (error) {
             next(error);

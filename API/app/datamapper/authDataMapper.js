@@ -32,6 +32,35 @@ const authDataMapper = {
         return result.rows[0];
     },
 
+    async getUserAuto(id) {
+
+        const result = await client.query(`SELECT * FROM nurse WHERE id = $1`, [id]);
+
+        if (result.rowCount == 0) {
+            return null;
+        }
+
+        const defaultCabinet = await client.query(`
+        SELECT nurse.*,
+            chs.cabinet_id AS default_cabinet
+            FROM nurse
+                JOIN cabinet_has_nurse chs
+                    ON nurse.id = chs.nurse_id
+            WHERE nurse.id = $1
+            AND chs.default_cabinet = true;
+        `, [result.rows[0].id]);
+
+        if(defaultCabinet.rowCount != 0) {
+            // user with default cabinet
+            return defaultCabinet.rows[0];
+        }
+
+        // user without default_cabinet
+        result.rows[0].default_cabinet = null;
+
+        return result.rows[0];
+    },
+
     async createUser(userInfo) {
 
         const { email, password} = userInfo;
