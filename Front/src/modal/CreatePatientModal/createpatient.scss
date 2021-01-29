@@ -15,19 +15,23 @@
 }
 
 .create-patient {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Nunito', sans-serif;
-  padding: vars.$gutter;
-
+  width: 100%;
+  position: absolute;
+  background-color: vars.$color-white;
+  z-index: 3000;
+  left: 0;
 
   &-title {
     margin:vars.$gutter  vars.$gutter*2;
     color: vars.$color-secondary-dark2;
     font-weight: bold;
+  }
+
+  &-close {
+    position: absolute;
+    top: vars.$gutter;
+    right: vars.$gutter*3;
+    width: 25px;
   }
 }
 

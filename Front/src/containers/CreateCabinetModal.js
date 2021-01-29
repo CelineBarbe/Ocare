@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { cabChangeField, createCabinet } from 'src/actions/cabinets';
-import CreateCabinet from 'src/components/CreateCabinet';
+import CreateCabinetModal from 'src/modal/CreateCabinetModal';
 
 const mapStateToProps = ({ cabinets }) => {
   const {
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 // appel a connect et export
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCabinet);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCabinetModal);

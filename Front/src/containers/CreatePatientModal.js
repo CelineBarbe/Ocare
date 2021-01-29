@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { patientChangeField, createPatient, resetPatientField } from 'src/actions/patients';
-import CreatePatient from 'src/components/CreatePatient';
+import CreatePatientModal from 'src/modal/CreatePatientModal';
 
 const mapStateToProps = ({ patients }) => {
   const {
@@ -37,4 +37,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 // appel a connect et export
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePatient);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePatientModal);

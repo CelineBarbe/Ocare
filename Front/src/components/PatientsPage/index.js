@@ -1,5 +1,5 @@
 // == Import npm
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 // == Import
@@ -13,6 +13,7 @@ import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 import Searchbar from 'src/containers/Searchbar';
 import AlphabeticalSearchbar from 'src/components/AlphabeticalSearchbar';
+import CreatePatientModal from 'src/containers/CreatePatientModal';
 
 //UTILS
 import { alphabetic,returnArrayFirstLetterSorted } from 'src/utils/searchAndReturn';
@@ -42,6 +43,18 @@ const data = (alphabetic.map(letter => (
   ))
 )
 
+/*hook pour modal */
+const [createPatient,setCreatePatient] = useState(false);
+/* Fonction d'ouverture fermeture editProfil */
+function openModalCreatePatient() {
+  setCreatePatient(true);
+}
+
+function closeModalCreatePatient(){
+  setCreatePatient(false);
+}
+
+
   return (
     
       <div className="patients-page">
@@ -49,16 +62,22 @@ const data = (alphabetic.map(letter => (
           <div className="main">
             <Searchbar />
             <div className="patients-page-create">
-              <img className="patients-page-create-img" src={plus} alt="ajouter"/>
-              <Link to="/createpatient"><span className="patients-page-create-title">Ajouter un patient</span></Link>
+              <img className="patients-page-create-img" src={plus} alt="ajouter" onClick={openModalCreatePatient}/>
+              <span className="patients-page-create-title" onClick={openModalCreatePatient}>Ajouter un patient</span>
             </div>
 
             <div className="patients-page-liste-container">
+              { 
+              createPatient
+              ? <CreatePatientModal closeModalCreatePatient={closeModalCreatePatient} /> 
+              : null
+              }
+        
              {
               list.length >= 1 
               ? data 
-              : <DefaultComponant/>
-            } 
+              : <DefaultComponant/> 
+             } 
             </div>
             <AlphabeticalSearchbar />
           </div>

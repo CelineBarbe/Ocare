@@ -1,14 +1,31 @@
 // == Import npm
 import React, {useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
-// == Import
-import Header from 'src/containers/Header';
-import Nav from 'src/components/Nav';
+
+// == Import scss
 import './createpatient.scss';
+// == Import images
+import close from 'src/assets/icones/close.svg';
 
 // == Composant
 const CreatePatient = ({
-  firstname, lastname, birthdate, gender, address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, isCreated, changeField, handleSubmitPatient, handleReset, created_id
+  firstname, 
+  lastname, 
+  birthdate, 
+  gender, 
+  address, 
+  zip_code, 
+  city, 
+  phone_number, 
+  pathology, 
+  daily_checking, 
+  number_daily_checking, 
+  isCreated, 
+  changeField, 
+  handleSubmitPatient, 
+  handleReset, 
+  created_id,
+  closeModalCreatePatient,
 }) => {
   //REDIRECTION dashboard
   const history = useHistory();
@@ -35,10 +52,10 @@ const CreatePatient = ({
   };
   return (
     <>
-    <Header />
-    <div className="main">
+   
       <div className="create-patient">
-        <p className="create-patient-title">Créer un patient</p>
+      <img src={close} alt="stylo" className="create-patient-close" onClick={closeModalCreatePatient}/>
+  
         <form className="form" onSubmit={handleSubmit}>
           <input
             className="form-input"
@@ -118,8 +135,6 @@ const CreatePatient = ({
           </button>
         </form>
       </div>
-    </div>
-    <Nav />
   </>
   );
 };
