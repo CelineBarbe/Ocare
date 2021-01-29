@@ -18,17 +18,16 @@ const Searchbar = ({
   getPatients,
 }) => {
 
-  useEffect(() => {
-    getPatients();
-  }, [])
+  const [result,setResult] = useState([]);
 
-const [result,setResult] = useState([]);
+  const onFocusInput = () => {
+    getPatients();
+  }
 
   //events
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
     setResult(returnArrayHandleChange(list, evt.target.value));
-    //TODO return patients letter
   };
 
   const SearchResult = () => {
@@ -38,7 +37,7 @@ const [result,setResult] = useState([]);
       {
         result.length >=1 
         ? result.map(patient => (
-          <p className="searchResult-name" key={patient.lastname}>
+          <p className="searchResult-name" key={patient.id}>
           <Link to={`/patient/${patient.id}`}>{patient.lastname} {patient.firstname}</Link>
           </p>
         ))
@@ -57,6 +56,7 @@ const [result,setResult] = useState([]);
             name="inputSearchDashboard"
             value={inputSearchDashboard}
             onChange={handleChange}
+            onFocus={onFocusInput}
           />
     </form> 
     <SearchResult />
