@@ -84,7 +84,7 @@ const tourController = {
 
     async updateLog(request, response, next) {
         try {
-
+            // Signaler que le patient a été vu
             const { id } = request.params;
 
             const updateLogbook = await tourDataMapper.updateLog(id);
@@ -102,32 +102,24 @@ const tourController = {
         }
     },
 
-    async delete(request, response, next) {
+    async deletePatient(request, response, next) {
         try {
-            const { id } = request.params;
+            const { idTour, idPatient, idLog } = request.params;
 
-            const deletedPatient = await tourDataMapper.deletePatientByid(id);
+            const deletedPatientInTour = await tourDataMapper.deletePatient(idTour, idPatient, idLog);
 
-            if(!deletedPatient) {
-                response.locals.notFound = "patient introuvable!";
+            if(!deletedPatientInTour) {
+                response.locals.notFound = "Ce patient ne figure pas sur cette tournée";
                 next();
                 return;
             }
 
-            response.json({ deletedPatient });
+            response.json({ deletedPatientInTour });
             
         } catch (error) {
             next(error);
         }
-    },
-
-    // async addPatient(request, response, next) {
-    //     console.log("coucou");
-    // },
-
-    // async deletePatient(request, response, next) {
-    //     console.log("coucou");
-    // },
+    }
 
 };
 

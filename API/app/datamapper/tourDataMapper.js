@@ -149,7 +149,7 @@ const tourDataMapper = {
         // Tableau de la tournée avec les patients
         const tourTab = tour.tour;
         
-        // Pour les patient dont l'id de Tour has patient est null on les ajoutes à la tournée et pour les autres on update leur order
+        // Pour les patient dont l'id de Tour has patient est null on les ajoute à la tournée et pour les autres on update leur order
         for (let el of tourTab) {
             // Si id = null
             if (el.id == null) {
@@ -178,12 +178,27 @@ const tourDataMapper = {
             return null;
         }
 
-        
-
         return logIsDone.rowCount;
     },
 
-    // async delete()
+    async deletePatient(idTour, idPatient, idLog) {
+
+        // 1 - Supprime le tour_has_patient (tour_id))
+        const deletePatient = await client.query(`DELETE FROM tour_has_patient WHERE id = $1`, [idTour]);
+
+        if (deletePatient.rowCount == 0) {
+            return null;
+        }
+
+        // 2 - Supprime le logbook
+        const deleteLogbook = await client.query(`DELETE FROM logbook WHERE id = $1`, [idLog]);
+
+        if (deleteLogbook.rowCount == 0) {
+            return null;
+        }
+
+        return deleteLogbook.rowCount;
+    }
 };
 
 module.exports = tourDataMapper;
