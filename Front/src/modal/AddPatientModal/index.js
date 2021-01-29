@@ -5,7 +5,6 @@ import './addPatientModal.scss';
 
 //== Import images 
 import close from 'src/assets/icones/close.svg';
-import check from 'src/assets/icones/check.svg';
 
 import TourEntryModal from 'src/containers/TourEntryModal'
 
@@ -37,11 +36,6 @@ function closeModalEntry(){
     changeField(evt.target.value, evt.target.name);
     setResult(returnArrayHandleChange(list, evt.target.value));
     //TODO return patients letter
-  };
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-
   };
 
   const handleClick = (_,id) => {

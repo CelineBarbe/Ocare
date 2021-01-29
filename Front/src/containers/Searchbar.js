@@ -2,14 +2,16 @@
 import { connect } from 'react-redux';
 
 import { changeField, onSubmit } from 'src/actions/search';
+import { getPatients } from 'src/actions/patients';
 import Searchbar from 'src/components/Searchbar';
 
-const mapStateToProps = ({ search }) => {
-  const {
-    inputSearchDashboard
-  } = search;
+
+const mapStateToProps = ({ patients, search }) => {
+  const {inputSearchDashboard} = search;
+  const { list } = patients;
   return ({
     inputSearchDashboard,
+    list
   });
 };
 
@@ -17,9 +19,12 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (value, field) => {
     dispatch(changeField(value, field));
   },
-  handleSubmit: () => {
+  onSubmit: () => {
     dispatch(onSubmit());
   },
+  getPatients:() => {
+    dispatch(getPatients());
+  }
 });
 
 // appel a connect et export
