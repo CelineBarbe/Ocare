@@ -71,7 +71,7 @@ const DefaultComponant = () => {
           <Link to={`/patient/${patient.id}`}  >
           <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
           </Link>
-          <div className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </div>
+          <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>
         </li>
             )
     : <DefaultComponant/>   

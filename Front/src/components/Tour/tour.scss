@@ -8,6 +8,7 @@
 
 .tour {
   display: flex;
+  height: 210px;
   flex-direction: column;
   align-items: center;
   font-family: 'Nunito', sans-serif;
@@ -34,7 +35,8 @@
   &-li {
     display: flex;
     flex-direction: row;
-    padding: vars.$gutter;
+    justify-content: space-between;
+    padding: vars.$gutter vars.$gutter*3;
     margin: vars.$gutter;
     background-color: vars.$color-grey;
     border-radius: 10px;
@@ -42,19 +44,4 @@
     color: vars.$color-grey4;
   }
 
-  &-span-date {
-    align-self: flex-start;
-    flex-grow: 1;
-    
-  }
-
-  &-span-name {
-    align-self: center;
-    flex-grow: 1;
-  }
-
-  &-span-tag {
-    align-self: flex-end;
-    flex-grow: 1;
-  }
 }
