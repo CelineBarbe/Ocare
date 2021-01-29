@@ -23,7 +23,7 @@
   color: vars.$color-secondary-dark2;
 
   &-img {
-    width: 50px;
+    width: 30px;
   }
 
   &-title {
@@ -36,6 +36,7 @@
   max-height: 330px;
   overflow-y: scroll;
   -ms-overflow-style:none;
+  position: relative;
 }
 
 .patients-page-liste-container::-webkit-scrollbar {
