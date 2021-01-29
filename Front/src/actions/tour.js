@@ -56,8 +56,9 @@ export const changeTourDate = (date) => ({
   date,
 })
 
-export const updateTourDone = () => ({
+export const updateTourDone = (id) => ({
   type: UPDATE_TOUR_DONE,
+  idLog: id,
 })
 
 export const updateTourDoneOK = () => ({

@@ -16,8 +16,8 @@ const mapDispatchToProps = (dispatch) => ({
    getTour: () => {
      dispatch(getTour());
    },
-   updateTourDone : () => {
-     dispatch(updateTourDone());
+   updateTourDone : (id) => {
+     dispatch(updateTourDone(id));
    },
    updateTourDoneOk: () => {
      dispatch(updateTourDoneOK());
