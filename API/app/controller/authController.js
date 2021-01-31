@@ -3,6 +3,7 @@ const authDataMapper = require("../datamapper/authDataMapper");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const checkSiren = require('../services/apiSirene');
 
 const authController = {
     async handleLoginForm(request, response, next) {
@@ -15,7 +16,7 @@ const authController = {
             
             if(!findUser) {
                 
-                return response.status(404).send({
+                return response.status(404).json({
                     message: "Email et/ou password invalide"
                 });
             }
@@ -25,7 +26,7 @@ const authController = {
 
             if(!validPwd) {
                 
-                return response.status(404).send({
+                return response.status(404).json({
                     message: "Email et/ou password invalide"
                 });
             }
@@ -61,6 +62,16 @@ const authController = {
     async handleSignForm(request, response, next) {
         try {
             const userInfo = request.body;
+
+            // 0 - On vérifie si l'utilisateur est bien un infirmier en exerçice
+            const isNurse = await checkSiren.checkInfos(userInfo);
+
+            if(!isNurse) {
+                return response.status(401).json({
+                    type: "Unauthorized",
+                    message: "Les informations communiquées ne confirment pas que vous êtes infirmier par conséquent vous ne pouvez pas utiliser notre application"
+                });
+            }
             
             // 1 - On récupère le password et on le hash
             const hashedPwd = bcrypt.hashSync(userInfo.password, saltRounds);
