@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import Tour from 'src/components/Tour';
 import { getTour, updateTourDone, updateTourDoneOK, changeDate } from 'src/actions/tour';
 
-const mapStateToProps = ({ tournee, auth }) => {
+const mapStateToProps = ({ tournee, auth, cabinets }) => {
   const { list, isLoading } = tournee;
   const {default_cabinet} = auth;
+  const isLoadingCab = cabinets.isLoading;
 
   return ({
     list,
     isLoading,
     default_cabinet,
+    isLoadingCab,
   });
 };
 

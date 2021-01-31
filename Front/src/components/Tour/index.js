@@ -14,18 +14,18 @@ const Tour= ({
   updateTourDoneOk,
   changeDate,
   default_cabinet,
-
+  isLoadingCab,
 }) => {
     
   const date = DateTime.local().toISODate();
   let [cards,setCards] = useState([]);
   
   useEffect(() => {
-    if (default_cabinet){
+    if (default_cabinet && !isLoadingCab){
     changeDate(date);
     getTour(); 
     }
-  },[default_cabinet])
+  },[default_cabinet, isLoadingCab])
 
  
   //cas du create tournée, alimente les cartes si liste chargée change

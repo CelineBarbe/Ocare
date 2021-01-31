@@ -10,7 +10,8 @@ const mapStateToProps = ({ auth, cabinets }) => {
     firstname, lastname, isLogged, avatar, default_cabinet
   } = auth;
   const listCabinets = cabinets.list;
-  const name = cabinets.name
+  const name = cabinets.name;
+  const isLoading = cabinets.isLoading;
   return ({
     firstname,
     lastname,
@@ -19,6 +20,7 @@ const mapStateToProps = ({ auth, cabinets }) => {
     listCabinets, 
     default_cabinet,
     name,
+    isLoading,
   });
 };
 

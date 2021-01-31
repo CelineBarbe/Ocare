@@ -10,8 +10,10 @@ const initDashboard = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');
   const Recupstore = store.getState();
   const { default_cabinet } = Recupstore.auth;
-  if (action.type === INIT_DASHBOARD) {
-    console.log('passe par initdashboard');
+  //condition sur la presence du defaut cabinet
+
+  if (default_cabinet && action.type === INIT_DASHBOARD) {
+    console.log('passe par initdashboard avec cab = ', default_cabinet);
     const config = {
       method: 'get',
       url: `${URL}cabinet`,
@@ -32,6 +34,7 @@ const initDashboard = (store) => (next) => (action) => {
       });
     next(action);
   };
+
   if (action.type === CHANGE_CABINET) {
     console.log('passe par change cabinet');
     const {idCab} = action;

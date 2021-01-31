@@ -36,8 +36,7 @@ const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_
       <p className="cabinet-card-title">{name}</p>
       <span className="cabinet-card-nbpatient">{nbpatients} patients</span>
       <p className="cabinet-card-infos cabinet-card-adresse ">
-        {address}
-        {zip_code} {city}
+        {`${address} \n ${zip_code} ${city}`}
       </p>
       <p className="cabinet-card-infos cabinet-card-phone">
         Téléphone : {phone_number}

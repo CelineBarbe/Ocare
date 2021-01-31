@@ -63,10 +63,10 @@ const StaffCard = ({
             {equipier.firstname} {equipier.lastname}
           </p>
           <p className="nurse-card-infos nurse-card-phone">
-            Tél : {equipier.phone_number}
+            Tél : <a href={`tel:+33${equipier.phone_number}`}>{equipier.phone_number}</a>
           </p>
           <p className="nurse-card-infos nurse-card-mail">
-            Mail : jerome@oclock.io
+           <a href={`mailto:${equipier.email}`}>Envoyer un mail</a>
           </p>
           <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getEquipierId(equipier.id)} />
       </div>

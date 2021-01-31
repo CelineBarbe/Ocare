@@ -117,7 +117,7 @@ const arraySortStarting = (array) => {
 
   //card 
   const Card = SortableElement((props) => (
-  <div className="planning-container-row" key={props.logbook_id} id={props.logbook_id} order={props.order}>
+  <div className={!props.done ? "planning-container-row" : "planning-container-row done" } key={props.logbook_id} id={props.logbook_id} order={props.order}>
                   <div className="planning-container-row-middle">
                   <Link to='/patient'><span className="planning-container-row-left-name">Mr {props.nom}</span></Link>
                   </div> 
@@ -142,7 +142,7 @@ const arraySortStarting = (array) => {
       }
       
         {items.map((item, index) => (
-          <Card key={`item-${item.logbook_id}`} index={index} nom={item.lastname} tag={item.medical_act_name} id={item.logbook_id} order={item.order_tour} />
+          <Card key={`item-${item.logbook_id}`} index={index} nom={item.lastname} tag={item.medical_act_name} done={item.done} id={item.logbook_id} order={item.order_tour} />
         ))}
       </div>
       

@@ -55,11 +55,11 @@ const cabinetsMW = (store) => (next) => (action) => {
 
   if (action.type === SUB_CABINET) {
     const Recupstore = store.getState();
-    const { name, pin_code  } = Recupstore.cabinets;
+    const { newEntryName, newEntryPin_code  } = Recupstore.cabinets;
     const {id } = action;
     console.log("passe dans SUB CABINET");
   
-    console.log("name:", name, "pin code:", pin_code, "ID",id);
+    console.log("name:", newEntryName, "pin code:", newEntryPin_code, "ID",id);
     const config = {
       method: 'post',
       url: `${URL}cabinet/addnurse`,
@@ -67,9 +67,9 @@ const cabinetsMW = (store) => (next) => (action) => {
         Authorization: `Bearer ${tokenStorage}`,
       },
       data: {
-        name,
+        name: newEntryName,
         nurse_id:id,
-        pin_code: pin_code
+        pin_code: newEntryPin_code,
       }
     };
     axios(config)

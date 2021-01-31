@@ -9,8 +9,8 @@ import check from 'src/assets/icones/check.svg';
 
 const SubCabinetModal = ({ 
   closeModalSubCabinet, 
-  name, 
-  pin_code, 
+  newEntryName, 
+  newEntryPin_code, 
   changeField, 
   handleSubCabinet,
   id,
@@ -25,7 +25,7 @@ const SubCabinetModal = ({
       setSubscribe(false);
     } else {
       setSubscribe(true);
-      let path = `/Dashboard`; 
+      let path = `/dashboard`; 
       history.push(path);
     }
   }
@@ -54,17 +54,17 @@ const SubCabinetModal = ({
       <input
         className="form-input"
         type="text"
-        name="name"
+        name="newEntryName"
         placeholder="Nom du cabinet"
-        value={name}
+        value={newEntryName}
         onChange={handleChange}
       />
       <input
         className="form-input"
         type="password"
-        name="pin_code"
+        name="newEntryPin_code"
         placeholder="Code pin"
-        value={pin_code}
+        value={newEntryPin_code}
         onChange={handleChange}
       />
       <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>

@@ -9,7 +9,7 @@ import triangle from 'src/assets/icones/header_triangle.svg';
 //import {sortCabinets} from 'src/utils/searchAndReturn'
 
 // == Composant
-const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet}) => {
+const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet, isLoading}) => {
   
   //REDIRECTION dashboard
    const history = useHistory();
@@ -32,14 +32,14 @@ const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet}) =>
           <img src={logo} alt="logo" className="header-img-logo" />
         </Link>
       </li>
-
+    
       <li className="header-title">
         <select className="header-title-cabinet" onChange={handleChange}>
          <option value={default_cabinet}>{name}</option>
-          {listCabinets.filter(cab => cab.id !== ~~default_cabinet).map(cabinet => (
+          {!isLoading ? listCabinets.filter(cab => cab.id !== ~~default_cabinet).map(cabinet => (
             <option key={cabinet.id} value={cabinet.id}>{cabinet.name}</option>
           )
-          )}
+          ) : 'data loading...'}
         </select>
       </li>
 

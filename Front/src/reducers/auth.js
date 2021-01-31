@@ -13,7 +13,9 @@ export const initialState = {
   lastname: '',
   phone_number: '',
   siren_code: '',
-  default_cabinet: undefined,
+  isLoadingAuth: false,
+  error: false,
+  default_cabinet: 1,
 };
 
 // reducer qui va gérer les recettes
@@ -49,6 +51,14 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         isLogged: false,
         password:'',
+        email:'',
+        id: '',
+        avatar: '',
+        firstname: '',
+        lastname: '',
+        phone_number: '',
+        siren_code: '',
+
       }
     case CHANGE_CABINET:
       return {

@@ -9,9 +9,9 @@ import Nav from 'src/components/Nav';
 import Main from 'src/components/Main';
 
 // == Composant
-const Dashboard = ({ dashboardInit, default_cabinet }) => {
+const Dashboard = ({ dashboardInit, default_cabinet, isLoading }) => {
   useEffect(() => {
-  if(default_cabinet){
+  if(default_cabinet && !isLoading){
     console.log('coucou appelé qu au moment du didMount de dashboard !');
     dashboardInit();
   }

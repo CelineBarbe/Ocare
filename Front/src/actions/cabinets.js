@@ -7,11 +7,14 @@ export const seedCabinets = (data) => ({
   payload: data,
 });
 
-export const seedDefaultCabinet = (data) => ({
+export const seedDefaultCabinet = (data) => {
+  console.log('seed default cab avec cab', data.id)
+  return({
   type: SEED_DEFAULT_CABINET,
   data,
 })
 
+} 
 export const createCabinetSucceeded = (data,email) => ({
   type: CREATE_CABINET_SUCCEEDED,
   data,

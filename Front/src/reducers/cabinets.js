@@ -1,4 +1,6 @@
-import { CABINET_CHANGE_FIELD, SEED_CABINETS, SUB_CABINET, SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET, CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE, INIT_DASHBOARD } from 'src/actions/types';
+import { CABINET_CHANGE_FIELD, SEED_CABINETS, SUB_CABINET, 
+  SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET, 
+  CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE, INIT_DASHBOARD, CHANGE_CABINET, UNSUB_CABINET } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -9,6 +11,7 @@ export const initialState = {
   phone_number: '',
   pin_code: '',
   email:'',
+  owner_id:'',
   subcribeId:null,
   nbpatients:0,
   newEntryName:'',
@@ -20,6 +23,7 @@ export const initialState = {
   newEntryMail:'',
   isLoading: false, 
   isCreated: false,
+  error: false,
   staff:[],
   list: [],
 };
@@ -32,10 +36,17 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         ...action.payload,
       };
+    case CHANGE_CABINET:
+      return {
+        ...oldState,
+        isLoading: true,
+      };
     case SEED_CABINETS:
       return {
         ...oldState,
         list: action.payload,
+        isLoading: false,
+        isCreated: false,
       };
     case CREATE_CABINET:
       return {
@@ -46,6 +57,8 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         isLoading: true,
+        isCreated: false,
+
       };
     case SEED_DEFAULT_CABINET:
       return {
@@ -59,7 +72,10 @@ const reducer = (oldState = initialState, action = {}) => {
         staff: action.data.nurses,
         nbpatients: action.data.nbpatients,
         email: action.data.email,
-        isloading: false,
+        owner_id: action.data.owner_id,
+        isLoading: false,
+        isCreated: false,
+
       };
     case CABINET_CHANGE_FIELD_UPDATE:
       return {
@@ -70,6 +86,17 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         isCreated:true,
+      };
+    case UNSUB_CABINET:
+      return {
+        ...oldState,
+        name: '',
+        address: '',
+        zip_code: '',
+        city: '',
+        phone_number: '',
+        pin_code: '',
+        email:'',
       };
     case CREATE_CABINET_SUCCEEDED:
       return {

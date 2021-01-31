@@ -1,5 +1,5 @@
 // == Import npm
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // == Import
@@ -19,6 +19,10 @@ import moins from 'src/assets/icones/moinsvert.svg';
 
 // == Composant
 const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh}) => {
+
+useEffect(() => {
+  handleRefresh()
+}, [])
 
 const getCabinetId = (params) => {
   handleunSubCabinet(params);

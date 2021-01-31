@@ -117,6 +117,10 @@
   display: none;
 }
 
+.done {
+  opacity: 0.5;
+}
+
 .planning-container {
   display: flex;
   flex-direction: column;
@@ -170,6 +174,7 @@
       }
 
     }
+ 
 
     &-right {
       border-radius: 0 5px 5px 0 ;

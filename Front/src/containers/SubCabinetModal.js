@@ -6,13 +6,13 @@ import SubCabinetModal from 'src/modal/SubCabinetModal';
 
 const mapStateToProps = ({cabinets, auth}, ownProps) => {
 
-  const { name, pin_code } = cabinets;
+  const { newEntryName, newEntryPin_code } = cabinets;
   const { id } = auth;
   const { closeModalSubCabinet } = ownProps;
   return ({
     closeModalSubCabinet,
-    name,
-    pin_code,
+    newEntryName,
+    newEntryPin_code,
     id,
   })
 }

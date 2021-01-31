@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { dashboardInit } from 'src/actions/auth';
 import Dashboard from 'src/components/Dashboard';
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, cabinets }) => {
   const {
     email, firstname, lastname, phone_number, siren_code, avatar, default_cabinet
   } = auth;
+  const {isLoading} = cabinets
   return ({
     email,
     firstname,
@@ -15,6 +16,7 @@ const mapStateToProps = ({ auth }) => {
     siren_code,
     avatar,
     default_cabinet,
+    isLoading,
   });
 };
 
