@@ -53,7 +53,7 @@ const DefaultComponant = () => {
                 <div className="carnet-sante-entry-top">
                   <div className="carnet-sante-entry-top-icone">
                   
-                    <img src={images(`./${list.medical_act_name}.svg`)} className="carnet-sante-entry-top-icone-img" alt="icone"/>
+                    <img src={images(`./${list.medical_act_name}.svg`).default} className="carnet-sante-entry-top-icone-img" alt="icone"/>
                   </div>
                   <div className="carnet-sante-entry-top-care">
                     <div className="carnet-sante-entry-top-care-top">
