@@ -1,32 +1,49 @@
 const client = require('./client');
 
 const authDataMapper = {
-    async getUser(email, password) {
+
+    async getUserByEmail(email) {
+
         const result = await client.query(`
-        SELECT nurse.* FROM nurse 
-            WHERE email = $1 
-            AND password = $2`, [email, password]);
+        SELECT nurse.id, nurse.password FROM nurse 
+            WHERE email = $1`, [email]);
 
         if (result.rowCount == 0) {
+
             return null;
         }
 
-        const defaultCabinet = await client.query(`
+        return result.rows[0];
+    },
+
+    async getUser(idUser) {
+
+        // const result = await client.query(`
+        // SELECT nurse.* FROM nurse 
+        //     WHERE id = $1`, [idUser]);
+
+        // if (result.rowCount == 0) {
+        //     return null;
+        // }
+
+        let result = await client.query(`
         SELECT nurse.*,
             chs.cabinet_id AS default_cabinet
             FROM nurse
                 JOIN cabinet_has_nurse chs
                     ON nurse.id = chs.nurse_id
             WHERE nurse.id = $1
-            AND chs.default_cabinet = true;
-        `, [result.rows[0].id]);
+            AND chs.default_cabinet = true`, [idUser]);
 
-        if(defaultCabinet.rowCount != 0) {
+        // If user has a default cabinet
+        if(result.rowCount != 0) {
             // user with default cabinet
-            return defaultCabinet.rows[0];
+            return result.rows[0];
         }
 
         // user without default_cabinet
+        result = await client.query(`SELECT nurse.* FROM nurse WHERE id = $1`, [idUser]);
+
         result.rows[0].default_cabinet = null;
 
         return result.rows[0];
@@ -63,7 +80,7 @@ const authDataMapper = {
 
     async createUser(userInfo) {
 
-        const { email, password} = userInfo;
+        const { email, password } = userInfo;
 
         // is user already exist ?
         const isAlreadyUser = await client.query(`SELECT * FROM nurse WHERE email = $1 AND password = $2`, [email, password]);
