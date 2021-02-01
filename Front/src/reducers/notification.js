@@ -1,4 +1,4 @@
-import { SUCCESS, ERROR, CLOSE
+import { SUCCESS, ERROR, CLOSE, NOTIFY
 } from 'src/actions/types';
 
 
@@ -37,6 +37,11 @@ const reducer = (oldState = initialState, action = {}) => {
       close:true,
       success:false,
       error:false,
+    };
+    case NOTIFY:
+    return {
+      ...oldState,
+      message: action.message,
     };
     default:
       return { ...oldState };

@@ -8,10 +8,11 @@ import Notification from 'src/components/Notification';
 const mapStateToProps = ({ notification }) => {
 
 
-  const { success, error } = notification;
+  const { success, error, message } = notification;
   return ({
     success,
     error,
+    message,
   })
 }
 

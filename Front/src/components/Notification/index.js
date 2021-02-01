@@ -10,14 +10,15 @@ const Notification = ({
   closeModal,
   success,
   error,
+  message,
 
 }) => {
 
+  console.log(message);
 
   function closeModalNotify(){
     closeModal(true);
   }
-
 
   return (
     <Fragment>
@@ -26,7 +27,7 @@ const Notification = ({
         <img src={x} className="notification-message-close" onClick={closeModalNotify}/>
         <img src={checkWhite} className="notification-message-img"/>
         <p className="notification-message-title">
-          Success
+          {message}
         </p>
       </div>
     : null
@@ -36,7 +37,7 @@ const Notification = ({
         <img src={x} className="notification-message-close" onClick={closeModalNotify}/>
         <img src={errorImg} className="notification-message-img"/>
         <p className="notification-message-title">
-          Erreur 
+          {message}
         </p>
       </div>
     : null

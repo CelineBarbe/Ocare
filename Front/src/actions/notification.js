@@ -1,4 +1,4 @@
-import { SUCCESS, ERROR, OPEN, CLOSE
+import { SUCCESS, ERROR, OPEN, CLOSE,NOTIFY 
 } from 'src/actions/types';
 
 export const success = () => ({
@@ -17,3 +17,7 @@ export const close = () => ({
   type: CLOSE,
 });
 
+export const notify = (message) => ({
+  type: NOTIFY,
+  message
+});

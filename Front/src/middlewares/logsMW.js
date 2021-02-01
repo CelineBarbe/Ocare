@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GET_LOGS, CREATE_LOG, GET_LOGS_BY_DATE, CREATE_LOG_TOUR} from 'src/actions/types';
 import { seedLogs, seedLogsByDate } from 'src/actions/logs';
 import {updateTourAddPatient} from 'src/actions/tour';
-import { success, error, close } from 'src/actions/notification';
+import { success, error, close, notify } from 'src/actions/notification';
 const URL = "https://ocare.herokuapp.com/";
 
 const logsMW = (store) => (next) => (action) => {
@@ -72,6 +72,7 @@ const logsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log("response",response.data.savedLog);
         if (response.status === 200) {
+          store.dispatch(notify("Nouveau soin ajouté"))
           store.dispatch(seedLogs(response.data.savedLog));
           store.dispatch(success());
           setTimeout(() => {
@@ -80,6 +81,7 @@ const logsMW = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
+        store.dispatch(notify("Erreur : un des champs est incorrect. "))
         store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());
@@ -158,6 +160,7 @@ const logsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log("response",response.data.savedLog);
         if (response.status === 200) {
+          store.dispatch(notify("Nouveau soin ajouté"))
           store.dispatch(seedLogs(response.data.savedLog));
           store.dispatch(updateTourAddPatient(response.data.savedLog, list, listpatient))
           store.dispatch(success());
@@ -167,6 +170,7 @@ const logsMW = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
+        store.dispatch(notify("Erreur : un des champs est incorrect. "))
         store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());

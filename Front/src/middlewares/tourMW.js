@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, UPDATE_TOUR_DONE, DELETE_TOUR_PATIENT } from 'src/actions/types';
 import { seedTour, deleteTourPatientDone } from 'src/actions/tour';
-import { success, error, close } from 'src/actions/notification';
+import { success, error, close, notify } from 'src/actions/notification';
 
 
 const URL = "https://ocare.herokuapp.com/";
@@ -40,6 +40,7 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log('tournée créé');
+         store.dispatch(notify("Tournée créé"))
          store.dispatch(seedTour(response.data.createTour));
          store.dispatch(success());
           setTimeout(() => {
@@ -48,6 +49,7 @@ const tourMW = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
+        store.dispatch(notify("Erreur : un des champs est incorrect."))
         store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());
@@ -108,6 +110,7 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          //store.dispatch(seedTour(response.data.tour));
+         store.dispatch(notify("Modification de la tournée validé"))
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
@@ -144,6 +147,7 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("updated task done!")
+         store.dispatch(notify("Patient sortie de la liste"))
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
@@ -180,6 +184,7 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("delete patient tour done!")
+         store.dispatch(notify("Patient supprimé de la tournée"))
          store.dispatch(deleteTourPatientDone(action.idLog, list))
          store.dispatch(success());
           setTimeout(() => {

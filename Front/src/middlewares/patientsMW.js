@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GET_PATIENTS, UPDATE_PATIENT, CREATE_PATIENT, GET_PATIENT } from 'src/actions/types';
 import { seedPatients, createPatientSucceeded, seedPatient } from 'src/actions/patients';
-import { success, error, close } from 'src/actions/notification';
+import { success, error, close, notify } from 'src/actions/notification';
 
 const URL = "https://ocare.herokuapp.com/";
 
@@ -84,6 +84,7 @@ const patientsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
+          store.dispatch(notify("Informations du patient mise à jour"))
           store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
@@ -130,6 +131,7 @@ const patientsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
+          store.dispatch(notify("Patient bien créé"))
           store.dispatch(createPatientSucceeded(response.data.savedPatient.id));
           store.dispatch(success());
           setTimeout(() => {
@@ -138,6 +140,7 @@ const patientsMW = (store) => (next) => (action) => {
         } 
       })
       .catch((err) => {
+        store.dispatch(notify("Erreur : un des champs est incorrect."))
         store.dispatch(error());
         setTimeout(() => {
           store.dispatch(close());

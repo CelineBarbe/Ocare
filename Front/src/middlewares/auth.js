@@ -3,7 +3,7 @@ import axios from 'axios';
 import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE, AUTO_LOGIN } from 'src/actions/types';
 import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
 import {unSubNurseCabinetOK} from 'src/actions/cabinets';
-import { success, error, close } from 'src/actions/notification';
+import { success, error, close, notify } from 'src/actions/notification';
 const URL = "https://ocare.herokuapp.com/"
 
 const auth = (store) => (next) => (action) => {
@@ -13,6 +13,7 @@ const auth = (store) => (next) => (action) => {
   if (action.type === AUTH_SUBMIT_LOGIN) {
     const Recupstore = store.getState();
     const { email, password } = Recupstore.auth;
+    const { isLoading } = Recupstore.notification;
     const config = {
       method: 'post',
       url: `${URL}login`,
@@ -32,7 +33,8 @@ const auth = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
-        store.dispatch(error());
+          store.dispatch(notify("Identifiant ou mot de passe incorrect"))
+          store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());
           }, 3000)
@@ -135,6 +137,7 @@ const auth = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("UPDATE PROFIL DONE");
+         store.dispatch(notify("Profil mis à jour"))
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
@@ -142,6 +145,7 @@ const auth = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
+        store.dispatch(notify("Erreur : un des champs est incorrect."))
         store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());
@@ -177,6 +181,7 @@ const auth = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("Utilisateur désinscrit du cabinet");
+         store.dispatch(notify("Utilisateur désinscrit du cabinet"))
          store.dispatch(unSubNurseCabinetOK(nurseId, staff));
          store.dispatch(success());
           setTimeout(() => {
@@ -185,6 +190,7 @@ const auth = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
+        store.dispatch(notify("erreur"))
         store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());

@@ -76,4 +76,5 @@ export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";
 export const OPEN = "OPEN";
 export const CLOSE = "CLOSE";
+export const NOTIFY = "NOTIFY";
 
