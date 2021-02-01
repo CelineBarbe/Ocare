@@ -181,10 +181,18 @@ const tourMW = (store) => (next) => (action) => {
         if (response.status === 200) {
          console.log("delete patient tour done!")
          store.dispatch(deleteTourPatientDone(action.idLog, list))
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
         console.log(err);
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
       });
     next(action);
   }; 

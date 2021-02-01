@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom';
 // == Import
 import './loginPage.scss';
 
+import Notification from 'src/containers/Notification';
+
 // == Composant
 const LoginPage = ({
   email, password, changeField, handleLogin, isLogged
@@ -27,6 +29,7 @@ const LoginPage = ({
  
   return (
     <form className="form" onSubmit={handleSubmit}>
+    <Notification />
       <input
         className="form-input"
         type="email"

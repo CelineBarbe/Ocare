@@ -11,6 +11,8 @@ export const initialState = {
   open:false,
    // close  modal
   close:false,
+  // message
+  message:'',
 };
 
 // reducer qui va gérer les recettes

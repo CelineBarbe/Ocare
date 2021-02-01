@@ -29,10 +29,6 @@ const auth = (store) => (next) => (action) => {
           localStorage.setItem('auth', userToken);
           console.log(user);
           store.dispatch(loginOk(user));
-          store.dispatch(success());
-          setTimeout(() => {
-            store.dispatch(close());
-          }, 3000)
         }
       })
       .catch((err) => {
