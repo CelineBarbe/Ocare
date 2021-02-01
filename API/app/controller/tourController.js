@@ -106,7 +106,7 @@ const tourController = {
         try {
             const { idTour, idLog } = request.params;
 
-            const deletedPatientInTour = await tourDataMapper.deletePatient(idTour, idPatient, idLog);
+            const deletedPatientInTour = await tourDataMapper.deletePatient(idTour, idLog);
 
             if(!deletedPatientInTour) {
                 response.locals.notFound = "Ce patient ne figure pas sur cette tournée";
