@@ -7,13 +7,14 @@ import EditProfilModal from 'src/modal/EditProfilModal';
 
 const mapStateToProps = ({ auth }, ownProps) => {
 
-  const { id, email, firstname, lastname, phone_number, siren_code } = auth;
+  const { id, avatar, email, firstname, lastname, phone_number, siren_code } = auth;
   const { closeModalEditProfil } = ownProps;
   return ({
     closeModalEditProfil,
     id,
     email, 
-    firstname, 
+    firstname,
+    avatar, 
     lastname, 
     phone_number, 
     siren_code

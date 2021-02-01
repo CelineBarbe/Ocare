@@ -12,6 +12,7 @@ const EditProfilModal = ({
   changeField,
   handleUpdateProfil,
   id,
+  avatar,
   email, 
   firstname, 
   lastname, 
@@ -76,6 +77,14 @@ const EditProfilModal = ({
         name="siren_code"
         placeholder="Code SIREN"
         value={siren_code}
+        onChange={handleChange}
+      />
+        <input
+        className="form-input"
+        type="text"
+        name="avatar"
+        placeholder="Avatar"
+        value={avatar}
         onChange={handleChange}
       />
       <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>

@@ -116,9 +116,9 @@ const auth = (store) => (next) => (action) => {
   if (action.type === UPDATE_PROFIL) {
     console.log("Passe par Update profil");
     const Recupstore = store.getState();
-    const { email, firstname, lastname, phone_number, siren_code } = Recupstore.auth;
+    const { email, avatar, firstname, lastname, phone_number, siren_code } = Recupstore.auth;
     const { id } = action;
-    console.log("Infos dans update profil middleware:", "ID:", id, "la suite", email, firstname, lastname, phone_number, siren_code)
+    console.log("Infos dans update profil middleware:", "ID:", id, "la suite", email, firstname, lastname, phone_number, siren_code, avatar)
     const config = {
       method: 'patch',
       url: `${URL}nurse/${id}`,
@@ -131,6 +131,7 @@ const auth = (store) => (next) => (action) => {
         lastname,
         email,
         phone_number,
+        avatar,
       },
     };
     axios(config)
