@@ -96,7 +96,9 @@ const cabinetDataMapper = {
 
         const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [enabledCode.rows[0].id, idNurse]);
 
-        return result.rows[0];
+        const cabinetAdded = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [result.rows[0].cabinet_id]);
+
+        return cabinetAdded.rows[0];
     },
 
     async addNurseToCabinet(emailNurse, ownerID, cabinetID , pin_code) {
