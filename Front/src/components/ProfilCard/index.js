@@ -12,7 +12,16 @@ import EditProfilModal from 'src/containers/EditProfilModal';
 import pen from 'src/assets/icones/pen.svg';
 
 // == Composant
-const ProfilCard = ({ changeField, lastname, firstname, email, phone_number, siren_code, avatar, logOut }) => {
+const ProfilCard = ({ 
+  changeField,
+  lastname, 
+  firstname, 
+  email, 
+  phone_number, 
+  siren_code, 
+  avatar, 
+  logOut,
+ }) => {
   //REDIRECTION HomePage
   const history = useHistory();
   const routeHomePage = () =>{ 

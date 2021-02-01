@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import './notification.scss';
 
 import checkWhite from 'src/assets/icones/checkWhite.svg';
+import errorImg from 'src/assets/icones/errorImg.svg';
 import x from 'src/assets/icones/x.svg';
 
-const Notification = () => {
+const Notification = ({
+  closeModal,
+  success,
+  error,
 
-  const [notify,setNotify] = useState(false);
+}) => {
 
-  function openModalNotify() {
-    setNotify(true);
-  }
 
   function closeModalNotify(){
-    setNotify(false);
+    closeModal(true);
   }
 
 
   return (
-    <div className="notification">
-    { notify 
-    ? <div className="notification-message">
+    <Fragment>
+    { success  
+    ? <div className="notification-message success">
         <img src={x} className="notification-message-close" onClick={closeModalNotify}/>
         <img src={checkWhite} className="notification-message-img"/>
         <p className="notification-message-title">
@@ -30,9 +31,17 @@ const Notification = () => {
       </div>
     : null
     }
-      
-      <button className="btn" onClick={openModalNotify}>Notify !</button>
-    </div>
+    { error  
+    ? <div className="notification-message error">
+        <img src={x} className="notification-message-close" onClick={closeModalNotify}/>
+        <img src={errorImg} className="notification-message-img"/>
+        <p className="notification-message-title">
+          Erreur 
+        </p>
+      </div>
+    : null
+    }
+    </Fragment>
   );
   
 }

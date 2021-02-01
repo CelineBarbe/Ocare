@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE, AUTO_LOGIN } from 'src/actions/types';
 import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
+import { success, error, close } from 'src/actions/notification';
 const URL = "https://ocare.herokuapp.com/"
 
 const auth = (store) => (next) => (action) => {
@@ -27,9 +28,17 @@ const auth = (store) => (next) => (action) => {
           localStorage.setItem('auth', userToken);
           console.log(user);
           store.dispatch(loginOk(user));
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     
@@ -87,9 +96,17 @@ const auth = (store) => (next) => (action) => {
           const { data } = response;
           //console.log(data);
           store.dispatch(signUpOk());
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -120,9 +137,17 @@ const auth = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("UPDATE PROFIL DONE");
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -154,9 +179,17 @@ const auth = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("Utilisateur désinscrit du cabinet");
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);

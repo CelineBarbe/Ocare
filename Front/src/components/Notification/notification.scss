@@ -1,14 +1,12 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
-.notification {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 64px;
+.success {
+  background-color:#07C50E;
+}
+
+.error {
+  background-color:rgb(196, 31, 31);
 }
 
 .notification-message {
@@ -20,14 +18,16 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    position: relative;
-    background-color:#07C50E;
+    position: absolute;
+    
     height: 64px;
     animation: progress-bar 1000ms;
     width: 100%;
     margin: 0 auto;
     padding: vars.$gutter;
     z-index: 3000;
+    right:0;
+    top: 0;
 
     &-img {
       width: 40px;

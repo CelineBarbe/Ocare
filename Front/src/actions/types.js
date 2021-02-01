@@ -66,3 +66,10 @@ export const UPDATE_TOUR_ADD_PATIENT = "UPDATE_TOUR_ADD_PATIENT";
 export const SUBMIT_UPDATE_TOUR = "SUBMIT_UPDATE_TOUR";
 export const UPDATE_TOUR_DONE = "UPDATE_TOUR_DONE";
 export const UPDATE_TOUR_DONE_OK = "UPDATE_TOUR_DONE_OK";
+
+// types notification 
+export const SUCCESS = "SUCCESS";
+export const ERROR = "ERROR";
+export const OPEN = "OPEN";
+export const CLOSE = "CLOSE";
+

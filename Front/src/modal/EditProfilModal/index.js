@@ -16,7 +16,8 @@ const EditProfilModal = ({
   firstname, 
   lastname, 
   phone_number, 
-  siren_code
+  siren_code,
+  openModalNotification
 }) => {
 
   const handleChange = (evt) => {
@@ -27,6 +28,7 @@ const EditProfilModal = ({
     evt.preventDefault();
     handleUpdateProfil(id);
     closeModalEditProfil();
+    openModalNotification(true);
   };
 
   return (

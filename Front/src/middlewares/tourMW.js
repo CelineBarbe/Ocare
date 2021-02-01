@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, UPDATE_TOUR_DONE } from 'src/actions/types';
 import { seedTour } from 'src/actions/tour';
+import { success, error, close } from 'src/actions/notification';
 
 
 const URL = "https://ocare.herokuapp.com/";
@@ -40,9 +41,17 @@ const tourMW = (store) => (next) => (action) => {
         if (response.status === 200) {
          console.log('tournée créé');
          store.dispatch(seedTour(response.data.createTour));
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -99,9 +108,17 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          //store.dispatch(seedTour(response.data.tour));
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -126,9 +143,17 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("updated task done!")
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);

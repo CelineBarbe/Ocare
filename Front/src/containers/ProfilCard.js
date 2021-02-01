@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { logOut, authChangeField } from 'src/actions/auth';
+import { open } from 'src/actions/notification';
 import ProfilCard from 'src/components/ProfilCard';
 
 const mapStateToProps = ({ auth }) => {
@@ -23,7 +24,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   logOut: () => {
     dispatch(logOut());
-  }
+  },
+  openModalNotification: () => {
+    dispatch(open());
+  },
 
 });
 

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { GET_LOGS, CREATE_LOG, GET_LOGS_BY_DATE, CREATE_LOG_TOUR} from 'src/actions/types';
 import { seedLogs, seedLogsByDate } from 'src/actions/logs';
 import {updateTourAddPatient} from 'src/actions/tour';
+import { success, error, close } from 'src/actions/notification';
 const URL = "https://ocare.herokuapp.com/";
 
 const logsMW = (store) => (next) => (action) => {
@@ -72,10 +73,17 @@ const logsMW = (store) => (next) => (action) => {
         console.log("response",response.data.savedLog);
         if (response.status === 200) {
           store.dispatch(seedLogs(response.data.savedLog));
-         /* store.dispatch(updateTourAddPatient(response.data.savedLog, list)) */
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -152,9 +160,17 @@ const logsMW = (store) => (next) => (action) => {
         if (response.status === 200) {
           store.dispatch(seedLogs(response.data.savedLog));
           store.dispatch(updateTourAddPatient(response.data.savedLog, list, listpatient))
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
