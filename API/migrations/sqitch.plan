@@ -1,0 +1,20 @@
+%syntax-version=1.0.0
+%project=ocare
+
+000-init 2021-01-18T12:23:37Z "Etudiant O'clock",,, <etudiant@teleporteur> # Database init
+010-add-cabinet 2021-01-19T15:23:01Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table cabinet
+020-add-cabinet-has-nurse 2021-01-20T06:01:41Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table cabinet_has_nurse
+030-add-avatar-to-nurse 2021-01-20T12:17:10Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add a field avatar in table nurse and rename the field user_id in table cabinet
+040-View-getAllCabinet 2021-01-20T19:21:14Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add view getAllCabinet by Nurse
+050-add-patient 2021-01-21T18:48:23Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add patient table
+060-add-logbook 2021-01-22T09:18:43Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add logbook and patient_has_logbook table
+041-View-getAllCabinet-with-patient 2021-01-24T14:37:38Z "Etudiant O'clock",,, <etudiant@teleporteur> # Update View getAllCabinet to add number of patient by cabinet
+051-add-column-to-patient 2021-01-24T20:59:42Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add column additional_address to patient table
+061-add-column-to-logbook 2021-01-24T21:13:07Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add column time to logbook and drop table patient_has_logbook
+070-add-medical-act 2021-01-25T09:01:37Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table medical_act
+080-View-logbook-with-nurse 2021-01-25T13:34:12Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add View logbook-with-nurse
+090-logbook-has-medical-act 2021-01-25T17:35:18Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table logbook_has_medical_act
+100-add-unique-constraint 2021-01-26T18:08:50Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add unique constraint on tables
+110-add-tour 2021-01-27T09:52:34Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table tour
+042-Update-View-getAllCabinet 2021-01-28T15:44:57Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add left outer JOIN on patient table
+081-Update-View-logbook-with-nurse 2021-01-29T14:25:21Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add medical_act name in View
