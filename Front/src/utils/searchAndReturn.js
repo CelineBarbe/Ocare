@@ -107,3 +107,10 @@ export const returnArrayHandleChange = (array, input) => {
    console.log(newList);
    return newList
  }
+
+
+ export const filterUnsubNurseList= (idNurse, staffList) => {
+  const newList = staffList.filter(element => element.id !== idNurse);
+  console.log(newList);
+  return newList
+}

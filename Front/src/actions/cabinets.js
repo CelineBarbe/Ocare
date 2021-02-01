@@ -4,6 +4,8 @@ import {
   CABINET_CHANGE_FIELD_UPDATE, SUB_NURSE_CABINET, UNSUB_NURSE_CABINET_OK, SUB_NURSE_CABINET_OK
 } from './types';
 
+import {filterUnsubNurseList} from 'src/utils/searchAndReturn';
+
 export const seedCabinets = (data) => ({
   type: SEED_CABINETS,
   payload: data,
@@ -57,12 +59,21 @@ export const unSubCabinet = (cabinetId) => ({
   cabinetId
 })
 
-/* export const unSubNurseCabinet = (idNurse) => ({
-  type: UNSUB_NURSE_CABINET,
-  idNurse,
-}) */
-
+ export const unSubNurseCabinetOK = (idNurse, staff) => {
+  const newStaffList = filterUnsubNurseList(idNurse, staff)
+  return ({
+  type: UNSUB_NURSE_CABINET_OK,
+  list: newStaffList,
+}) 
+ }
 export const subNurseCabinet = (idNurse) => ({
   type: SUB_NURSE_CABINET,
   idNurse,
 })
+
+export const subNurseCabinetOK = (nurse) => {
+return ({
+  type: SUB_NURSE_CABINET_OK,
+  data: nurse,
+})
+} 

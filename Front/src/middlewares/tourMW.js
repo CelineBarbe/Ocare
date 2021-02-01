@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, UPDATE_TOUR_DONE } from 'src/actions/types';
+import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, UPDATE_TOUR_DONE, DELETE_TOUR_PATIENT } from 'src/actions/types';
 import { seedTour, deleteTourPatientDone } from 'src/actions/tour';
 import { success, error, close } from 'src/actions/notification';
 

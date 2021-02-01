@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET, UPDATE_CABINET, SUB_NURSE_CABINET, UNSUB_NURSE_CABINET } from 'src/actions/types';
-import { createCabinetSucceeded, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
+import { createCabinetSucceeded, subNurseCabinetOK, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
 import { success, error, close } from 'src/actions/notification';
 
 const URL = "https://ocare.herokuapp.com/";
@@ -218,6 +218,8 @@ const cabinetsMW = (store) => (next) => (action) => {
         if (response.status === 200) {
           console.log('cabinet updated!');
           //TODO SEED STAFF ou new getCabinet
+          store.dispatch(subNurseCabinetOK(nurse))
+          
         }
       })
       .catch((err) => {

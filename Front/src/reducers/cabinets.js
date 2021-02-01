@@ -1,5 +1,5 @@
-import { CABINET_CHANGE_FIELD, SEED_CABINETS, SUB_CABINET, 
-  SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET, 
+import { CABINET_CHANGE_FIELD, SEED_CABINETS, SUB_CABINET, UNSUB_NURSE_CABINET_OK,
+  SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET, SUB_NURSE_CABINET_OK,
   CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE, INIT_DASHBOARD, CHANGE_CABINET, UNSUB_CABINET, LOGOUT } from 'src/actions/types';
 
 export const initialState = {
@@ -41,6 +41,11 @@ const reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         isLoading: true,
       };
+    case UNSUB_NURSE_CABINET_OK:
+      return {
+        ...oldState,
+        staff: action.list,
+      }
     case SEED_CABINETS:
       return {
         ...oldState,
@@ -59,6 +64,11 @@ const reducer = (oldState = initialState, action = {}) => {
         isLoading: true,
         isCreated: false,
 
+      };
+    case SUB_NURSE_CABINET_OK:
+      return {
+        ...oldState,
+        staff: [...oldState.staff,action.data],
       };
     case SEED_DEFAULT_CABINET:
       return {

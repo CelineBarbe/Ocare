@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE, AUTO_LOGIN } from 'src/actions/types';
 import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
+import {unSubNurseCabinetOK} from 'src/actions/cabinets';
 import { success, error, close } from 'src/actions/notification';
 const URL = "https://ocare.herokuapp.com/"
 
@@ -157,7 +158,7 @@ const auth = (store) => (next) => (action) => {
 
   if (action.type === UNSUB_NURSE) {
     const Recupstore = store.getState();
-    const { id } = Recupstore.cabinets;
+    const { id, staff } = Recupstore.cabinets;
     const { nurseId } = action;
     console.log("passe dans UNSUB_NURSE");
     console.log("nurse id:",nurseId);
@@ -179,6 +180,7 @@ const auth = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("Utilisateur désinscrit du cabinet");
+         store.dispatch(unSubNurseCabinetOK(nurseId, staff));
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
