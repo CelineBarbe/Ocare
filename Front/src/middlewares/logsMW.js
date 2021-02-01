@@ -43,6 +43,7 @@ const logsMW = (store) => (next) => (action) => {
   if (action.type === CREATE_LOG) {
     const { planned_date, time, done_date, ending_date, observations, daily, done, medical_act_name } = Recupstore.logBook;
     console.log('passe par create Log');
+    console.log('acte medical:', medical_act_name);
     console.log('planned_date:',planned_date,'ending_date:', ending_date,'observations:', observations, 'daily:',daily,'done:', done, 'default cabinet:',default_cabinet, 'time:',time, 'done date',done_date)
     const { patient_id, nurse_id } = action;
     console.log('patient_id ',patient_id, 'nurse id', nurse_id);
@@ -71,7 +72,7 @@ const logsMW = (store) => (next) => (action) => {
         console.log("response",response.data.savedLog);
         if (response.status === 200) {
           store.dispatch(seedLogs(response.data.savedLog));
-          store.dispatch(updateTourAddPatient(response.data.savedLog, list))
+         /* store.dispatch(updateTourAddPatient(response.data.savedLog, list)) */
         }
       })
       .catch((err) => {
