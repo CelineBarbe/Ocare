@@ -160,7 +160,10 @@ const logbookDataMapper = {
         // 2 - On lie l'actID au loogbookID
         await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES($1, $2) RETURNING *`, [result.rows[0].id, findAct.rows[0].id]);
 
-        return result.rows[0];
+        // 3 - On renvoie les infos du logbook avec le nurse et le medical_act en +
+        const logResult = await client.query(`SELECT * FROM logbook_with_nurse_infos WHERE id = $1`, [result.rows[0].id]);
+
+        return logResult.rows[0];
     },
 
     async updateLogByid(idLog, logInfo) {

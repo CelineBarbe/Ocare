@@ -104,7 +104,7 @@ const tourController = {
 
     async deletePatient(request, response, next) {
         try {
-            const { idTour, idPatient, idLog } = request.params;
+            const { idTour, idLog } = request.params;
 
             const deletedPatientInTour = await tourDataMapper.deletePatient(idTour, idPatient, idLog);
 

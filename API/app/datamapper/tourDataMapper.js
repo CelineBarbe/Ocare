@@ -181,7 +181,7 @@ const tourDataMapper = {
         return logIsDone.rowCount;
     },
 
-    async deletePatient(idTour, idPatient, idLog) {
+    async deletePatient(idTour, idLog) {
 
         // 1 - Supprime le tour_has_patient (tour_id))
         const deletePatient = await client.query(`DELETE FROM tour_has_patient WHERE id = $1`, [idTour]);
