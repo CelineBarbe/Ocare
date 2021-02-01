@@ -1,3 +1,4 @@
+const { response } = require('express');
 const client = require('./client');
 
 const cabinetDataMapper = {
@@ -30,19 +31,24 @@ const cabinetDataMapper = {
 
     async getCabinetById(id, userID, defaultCab) {
 
-    const result = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [id])
+        let result = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [id])
 
-        if(result.rowCount == 0) {
-            return null;
-        }
+            if(result.rowCount == 0) {
+                return null;
+            }
 
-    // Remove default_cabinet
-    await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE cabinet_id = $1 AND nurse_id = $2`, [defaultCab, userID]);
+        // Remove default_cabinet
+        await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE cabinet_id = $1 AND nurse_id = $2`, [defaultCab, userID]);
 
-    // Save this cabinet like current_cab
-    await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE cabinet_id = $1 AND nurse_id = $2`, [id, userID]);
+        // Save this cabinet like current_cab
+        await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE cabinet_id = $1 AND nurse_id = $2`, [id, userID]);
 
-        return result.rows;
+        // Add owner_id email
+        const ownerEmail = await client.query(`SELECT nurse.email FROM nurse WHERE nurse.id = $1`, [result.rows[0].owner_id]);
+
+        result.rows[0].email = ownerEmail.rows[0].email;
+
+        return result.rows[0];
     },
 
     async createCabinet(infoCab) {
@@ -96,7 +102,12 @@ const cabinetDataMapper = {
 
         const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [enabledCode.rows[0].id, idNurse]);
 
-        const cabinetAdded = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [result.rows[0].cabinet_id]);
+        let cabinetAdded = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [result.rows[0].cabinet_id]);
+
+        // Add owner_id email
+        const ownerEmail = await client.query(`SELECT nurse.email FROM nurse WHERE nurse.id = $1`, [cabinetAdded.rows[0].owner_id]);
+
+        cabinetAdded.rows[0].email = ownerEmail.rows[0].email;
 
         return cabinetAdded.rows[0];
     },
