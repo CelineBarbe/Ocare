@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import { authChangeField, updateProfil} from 'src/actions/auth';
+import { open } from 'src/actions/notification';
 
 import EditProfilModal from 'src/modal/EditProfilModal';
 
@@ -25,7 +26,11 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleUpdateProfil: (id) => {
     dispatch(updateProfil(id));
-  }
+  },
+  openModalNotification: () => {
+    dispatch(open());
+  },
+
 })
 
 // appel a connect et export

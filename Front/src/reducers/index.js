@@ -8,6 +8,7 @@ import search from './search';
 import patients from './patients';
 import tournee from './tournee';
 import logBook from './logBook';
+import notification from './notification';
 
 export default combineReducers({
   auth,
@@ -16,4 +17,5 @@ export default combineReducers({
   patients,
   tournee,
   search,
+  notification,
 });

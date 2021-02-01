@@ -70,3 +70,10 @@ export const UPDATE_TOUR_DONE_OK = "UPDATE_TOUR_DONE_OK";
 export const DELETE_TOUR_PATIENT = "DELETE_TOUR_PATIENT";
 export const DELETE_TOUR_PATIENT_DONE = "DELETE_TOUR_PATIENT_DONE";
 export const CHANGE_TOUR_DATE = 'CHANGE_TOUR_DATE';
+
+// types notification 
+export const SUCCESS = "SUCCESS";
+export const ERROR = "ERROR";
+export const OPEN = "OPEN";
+export const CLOSE = "CLOSE";
+

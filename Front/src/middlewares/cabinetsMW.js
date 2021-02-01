@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET, UPDATE_CABINET, SUB_NURSE_CABINET, UNSUB_NURSE_CABINET } from 'src/actions/types';
 import { createCabinetSucceeded, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
+import { success, error, close } from 'src/actions/notification';
 
 const URL = "https://ocare.herokuapp.com/";
 
@@ -41,9 +42,17 @@ const cabinetsMW = (store) => (next) => (action) => {
           console.log('response.data.savedCabinet', response.data.savedCabinet);
           console.log('response.data.savedCabinet.id', response.data.savedCabinet.id);
           store.dispatch(createCabinetSucceeded(response.data.savedCabinet, email));
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       }); 
     next(action);
@@ -77,9 +86,17 @@ const cabinetsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("ABONNEMENT DONE");
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -113,9 +130,17 @@ const cabinetsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("Utilisateur désinscrit du cabinet");
+         store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -151,9 +176,17 @@ const cabinetsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
           console.log('cabinet updated!');
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       }); 
     next(action);

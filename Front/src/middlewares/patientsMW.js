@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { GET_PATIENTS, UPDATE_PATIENT, CREATE_PATIENT, GET_PATIENT } from 'src/actions/types';
 import { seedPatients, createPatientSucceeded, seedPatient } from 'src/actions/patients';
+import { success, error, close } from 'src/actions/notification';
 
 const URL = "https://ocare.herokuapp.com/";
 
@@ -45,6 +46,7 @@ const patientsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
           store.dispatch(seedPatient(response.data.patient[0]));
+          
         }
       })
       .catch((err) => {
@@ -82,10 +84,18 @@ const patientsMW = (store) => (next) => (action) => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-         console.log("Update DONE");
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
+          console.log("Update DONE");
         }
       })
       .catch((err) => {
+        store.dispatch(error());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
         console.log(err);
       });
     next(action);
@@ -121,9 +131,17 @@ const patientsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
           store.dispatch(createPatientSucceeded(response.data.savedPatient.id));
-        }
+          store.dispatch(success());
+          setTimeout(() => {
+            store.dispatch(close());
+          }, 3000)
+        } 
       })
       .catch((err) => {
+        store.dispatch(error());
+        setTimeout(() => {
+          store.dispatch(close());
+        }, 3000)
         console.log(err);
       });
     next(action);

@@ -6,6 +6,8 @@ import './header.scss';
 import logo from 'src/assets/images/logo.svg';
 import triangle from 'src/assets/icones/header_triangle.svg';
 
+import Notification from 'src/containers/Notification';
+
 //import {sortCabinets} from 'src/utils/searchAndReturn'
 
 // == Composant
@@ -25,6 +27,7 @@ const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet, isL
   
   return(
     <header className="header">
+    
     <ul className="header-ul">
 
       <li className="header-home">
@@ -49,6 +52,7 @@ const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet, isL
         </Link>
       </li>
     </ul>
+    <Notification />
   </header>
   )
 }
