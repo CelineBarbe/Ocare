@@ -2,11 +2,11 @@
 @import 'src/styles/mixins';
 
 .success {
-  background-color:#07C50E;
+  background-color:vars.$color-secondary;
 }
 
 .error {
-  background-color:rgb(196, 31, 31);
+  background-color:vars.$color-primary-dark1;
 }
 
 .notification-message {
