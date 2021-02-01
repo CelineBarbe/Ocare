@@ -109,7 +109,7 @@ const cabinetDataMapper = {
         }
 
         // Trouvez le nurse à ajouter
-        const nurse = await client.query(`SELECT * FROM nurse WHERE nurse.email = $1`, [emailNurse]);
+        const nurse = await client.query(`SELECT * FROM nurse_without_password nwp WHERE nwp.email = $1`, [emailNurse]);
 
         if (nurse.rowCount == 0) {
             const result = { message: 'Aucun infirmier n\'a été trouvé'};
@@ -117,9 +117,9 @@ const cabinetDataMapper = {
         }
 
         // Association du nurse au cabinet
-        const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [cabinet.rows[0].id, nurse.rows[0].id]);
+        await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [cabinet.rows[0].id, nurse.rows[0].id]);
 
-        return result.rows[0];
+        return nurse.rows[0];
 
     },
 

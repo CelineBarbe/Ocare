@@ -8,11 +8,7 @@ const patientController = {
             // console.log(response.locals.userID, "-< response.locals.USERID");
 
             const patients = await patientDataMapper.getAllPatient(idCabinet);
-            if(!patients) {
-                response.locals.notFound = "Aucun patient dans ce cabinet";
-                next();
-                return;
-            }
+
             response.json(patients);
         } catch (error) {
             next(error);
