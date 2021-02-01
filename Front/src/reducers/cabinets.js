@@ -1,6 +1,6 @@
 import { CABINET_CHANGE_FIELD, SEED_CABINETS, SUB_CABINET, 
   SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET, 
-  CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE, INIT_DASHBOARD, CHANGE_CABINET, UNSUB_CABINET } from 'src/actions/types';
+  CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE, INIT_DASHBOARD, CHANGE_CABINET, UNSUB_CABINET, LOGOUT } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -97,6 +97,19 @@ const reducer = (oldState = initialState, action = {}) => {
         phone_number: '',
         pin_code: '',
         email:'',
+      };
+    case LOGOUT:
+      return {
+        ...oldState,
+        name: '',
+        address: '',
+        zip_code: '',
+        city: '',
+        phone_number: '',
+        pin_code: '',
+        email:'',
+        staff:[],
+        list: [],
       };
     case CREATE_CABINET_SUCCEEDED:
       return {

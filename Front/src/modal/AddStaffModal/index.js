@@ -8,7 +8,11 @@ import check from 'src/assets/icones/check.svg';
 
 
 const AddStaffModal = ({ 
-  closeModalAddStaff
+  closeModalAddStaff,
+  newEntryMail,
+  newEntryPin_code,
+  changeField,
+  subNurseCabinet
 }) => {
 
   const handleChange = (evt) => {
@@ -17,8 +21,8 @@ const AddStaffModal = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    handleUpdateProfil(id);
-    closeModalEditProfil();
+    subNurseCabinet()
+    closeModalAddStaff();
   };
 
   return (
@@ -27,22 +31,26 @@ const AddStaffModal = ({
       <p className="modal-sub-cabinet-title">
        Ajouter un infirmier
       </p>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
       <input
         className="form-input"
-        type="text"
-        name="lastname"
-        placeholder="Nom"
+        type="mail"
+        name="newEntryMail"
+        placeholder="Email de l'infirmier"
+        value={newEntryMail}
+        onChange={handleChange}
     
       />
       <input
         className="form-input"
-        type="text"
-        name="firstname"
-        placeholder="Prénom"
+        type="password"
+        name="newEntryPin_code"
+        value={newEntryPin_code}
+        placeholder="Code Pin du cabinet"
+        onChange={handleChange}
       />
       
-      <img className="modal-patient-update-img" src={check} alt="valider"/>
+      <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
     </form>
     </div>
   )

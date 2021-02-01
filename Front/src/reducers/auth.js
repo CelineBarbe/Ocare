@@ -58,6 +58,7 @@ const reducer = (oldState = initialState, action = {}) => {
         lastname: '',
         phone_number: '',
         siren_code: '',
+        default_cabinet: null,
 
       }
     case CHANGE_CABINET:

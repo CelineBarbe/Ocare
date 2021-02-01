@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, UPDATE_TOUR_DONE } from 'src/actions/types';
-import { seedTour } from 'src/actions/tour';
+import { CREATE_TOUR, GET_TOUR, SUBMIT_UPDATE_TOUR, UPDATE_TOUR_DONE, DELETE_TOUR_PATIENT } from 'src/actions/types';
+import { seedTour, deleteTourPatientDone} from 'src/actions/tour';
 
 
 const URL = "https://ocare.herokuapp.com/";
@@ -112,6 +112,7 @@ const tourMW = (store) => (next) => (action) => {
    /* ACTION UPDATE TOUR DONE!*/
   /*******************************/
   if (action.type === UPDATE_TOUR_DONE) {
+
     console.log('passe par UPDATE TOUR DONE !');
     console.log('action idLog:',action.idLog)
     const config = {
@@ -133,7 +134,35 @@ const tourMW = (store) => (next) => (action) => {
       });
     next(action);
   }; 
+   /*******************************/
+   /* ACTION DELETE TOUR PATIENT */
+  /*******************************/
+  if (action.type === DELETE_TOUR_PATIENT) {
+    const { list } = Recupstore.tournee;
+    console.log('passe par DELETE TOUR PATIENT !');
+    console.log('action idTour:',action.idTourPatient);
+    console.log('action idLog:',action.idLog)
 
+    const config = {
+      method: 'delete',
+      url: `${URL}tour/${action.idTourPatient}/log/${action.idLog}`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+        };
+   axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+         console.log("delete patient tour done!")
+         store.dispatch(deleteTourPatientDone(action.idLog, list))
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    next(action);
+  }; 
   next(action);
 }
 

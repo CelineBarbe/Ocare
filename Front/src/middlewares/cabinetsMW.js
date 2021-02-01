@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET, UPDATE_CABINET  } from 'src/actions/types';
+import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET, UPDATE_CABINET, SUB_NURSE_CABINET, UNSUB_NURSE_CABINET } from 'src/actions/types';
 import { createCabinetSucceeded, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
 
 const URL = "https://ocare.herokuapp.com/";
@@ -86,7 +86,7 @@ const cabinetsMW = (store) => (next) => (action) => {
   };
 
   /*******************************/
-  /* ACTION UNSUBSCRIBE CABINET */
+  /* ACTION UNSUBSCRIBE CABINET  */
   /*******************************/
 
   if (action.type === UNSUB_CABINET) {
@@ -158,6 +158,41 @@ const cabinetsMW = (store) => (next) => (action) => {
       }); 
     next(action);
   };
+   /*******************************/
+   /* ACTION ADD NURSE CABINET */
+  /*******************************/
+  if (action.type === SUB_NURSE_CABINET) {
+    console.log('passe par UPDATE cabinet');
+    const {cabinets, auth } = store.getState();
+    const {newEntryMail, newEntryPin_code,} = cabinets;
+    const {id, default_cabinet} = auth
+    const config = {
+      method: 'post',
+      url: `${URL}cabinet/owner/addnurse`,
+      headers: {
+        Authorization: `Bearer ${tokenStorage}`,
+      },
+      data: {
+        email: newEntryMail,
+        pin_code: newEntryPin_code,
+        nurse_id: id,
+        cabinet_id: default_cabinet,
+      }
+    };
+    axios(config)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          console.log('cabinet updated!');
+          //TODO SEED STAFF ou new getCabinet
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      }); 
+    next(action);
+  };
+  
   next(action);
 }
 

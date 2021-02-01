@@ -1,10 +1,10 @@
 import {
   TOUR_CHANGE_FIELD,CREATE_TOUR,CHANGE_DATE, SEED_TOUR, GET_TOUR, 
   UPDATE_TOUR, UPDATE_TOUR_ADD_PATIENT,CHANGE_TOUR_DATE,SUBMIT_UPDATE_TOUR,
-  UPDATE_TOUR_DONE, UPDATE_TOUR_DONE_OK,
+  UPDATE_TOUR_DONE, UPDATE_TOUR_DONE_OK, DELETE_TOUR_PATIENT,DELETE_TOUR_PATIENT_DONE,
   
 } from './types';
-import {returnObjectTourList, toOrder, doneTask} from 'src/utils/searchAndReturn';
+import {returnObjectTourList, toOrder, doneTask, filterDeletePatientList} from 'src/utils/searchAndReturn';
 
 
 export const tourChangeField = (value, field) => ({
@@ -67,4 +67,21 @@ return ({
   type: UPDATE_TOUR_DONE_OK,
   list: updateList,
 })
+}
+
+export const deleteTourPatient = (idTourPatient, idLog) => {
+  return ({
+    type: DELETE_TOUR_PATIENT,
+    idTourPatient,
+    idLog,
+  })
+}
+
+export const deleteTourPatientDone = (idLog, list) => {
+console.log("a faire filter avec idLog", idLog)
+const newList = filterDeletePatientList(idLog, list);
+  return ({
+    type: DELETE_TOUR_PATIENT_DONE,
+    list : newList,
+  })
 }

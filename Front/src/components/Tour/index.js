@@ -71,7 +71,7 @@ const DefaultComponant = () => {
     !isLoading
     ? cards.map(patient =>
         <li className="tour-li" key={patient.logbook_id}>
-          <Link to={`/patient/${patient.id}`}  >
+          <Link to={`/patient/${patient.patient_id}`}  >
           <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
           </Link>
           <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>

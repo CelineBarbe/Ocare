@@ -101,3 +101,9 @@ export const returnArrayHandleChange = (array, input) => {
   console.log('listReturn avant order', listReturn)
   return toOrder(listReturn)
  }
+
+ export const filterDeletePatientList= (idLog, List) => {
+   const newList = List.filter(element => element.logbook_id !== idLog);
+   console.log(newList);
+   return newList
+ }

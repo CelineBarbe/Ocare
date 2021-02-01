@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-//import { dashboardInit } from 'src/actions/auth';
+import { dashboardInit } from 'src/actions/auth';
 import CabinetPage from 'src/components/CabinetPage';
 
 const mapStateToProps = ({ cabinets }) => {
@@ -16,8 +16,10 @@ const mapStateToProps = ({ cabinets }) => {
   });
 };
 
-const mapDispatchToProps = () => ({
- //
+const mapDispatchToProps = (dispatch) => ({
+  handleRefresh: () => {
+    dispatch(dashboardInit())
+  }
 
 });
 

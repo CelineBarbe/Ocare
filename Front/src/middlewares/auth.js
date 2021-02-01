@@ -140,7 +140,7 @@ const auth = (store) => (next) => (action) => {
   
     const config = {
       method: 'patch',
-      url: `${URL}nurse/unsubscribe`,
+      url: `${URL}cabinet/unsubscribe`,
       headers: {
         Authorization: `Bearer ${tokenStorage}`,
       },

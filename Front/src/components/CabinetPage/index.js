@@ -1,5 +1,5 @@
 // == Import npm
-import React, { Fragment } from 'react';
+import React, {useEffect, Fragment } from 'react';
 
 // == Import
 import './cabinetPage.scss';
@@ -11,8 +11,13 @@ import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 
 
+
 // == Composant
-const CabinetPage = () => {
+const CabinetPage = ({handleRefresh}) => {
+useEffect(() => {
+  handleRefresh()
+}, [])
+
   return (
     <Fragment>
       <Header />

@@ -1,23 +1,25 @@
 import { connect } from 'react-redux';
 
-import { authChangeField, updateProfil} from 'src/actions/auth';
+import { cabChangeField, subNurseCabinet} from 'src/actions/cabinets';
 
 import AddStaffModal from 'src/modal/AddStaffModal';
 
-const mapStateToProps = ({ auth }, ownProps) => {
-
+const mapStateToProps = ({ auth, cabinets }, ownProps) => {
+  const {newEntryMail, newEntryPin_code} =  cabinets;
   const { closeModalAddStaff } = ownProps;
   return ({
+    newEntryMail,
+    newEntryPin_code,
     closeModalAddStaff,
   })
 }
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, field) => {
-    dispatch(authChangeField(value, field));
+    dispatch(cabChangeField(value, field));
   },
-  handleUpdateProfil: (id) => {
-    dispatch(updateProfil(id));
+  subNurseCabinet: (id) => {
+    dispatch(subNurseCabinet(id));
   }
 })
 

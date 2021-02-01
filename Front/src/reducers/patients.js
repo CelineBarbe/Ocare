@@ -1,4 +1,4 @@
-import { SEED_PATIENTS, PATIENT_CHANGE_FIELD, UPDATE_PATIENT, CREATE_PATIENT_SUCCEEDED, RESET_PATIENT_FIELD, SEED_PATIENT, GET_PATIENT } from 'src/actions/types';
+import { SEED_PATIENTS, PATIENT_CHANGE_FIELD, UPDATE_PATIENT, CREATE_PATIENT_SUCCEEDED, RESET_PATIENT_FIELD, SEED_PATIENT, GET_PATIENT, LOGOUT } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -26,7 +26,12 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         list: action.payload,
-      }; 
+      };
+    case LOGOUT:
+      return {
+        ...oldState,
+        list: [],
+      };  
     case SEED_PATIENT:
       return {
         ...oldState,

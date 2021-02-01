@@ -1,5 +1,5 @@
 import {SEED_LOGS, LOGBOOK_CHANGE_FIELD, GET_LOGS, SEED_PATIENT, 
-  SEED_LOGS_BY_DATE, CHANGE_CABINET} from 'src/actions/types';
+  SEED_LOGS_BY_DATE, CHANGE_CABINET, LOGOUT} from 'src/actions/types';
 
 import {returnVoid} from 'src/utils/searchAndReturn'
 
@@ -26,6 +26,11 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         ...action.payload,
+      };
+    case LOGOUT:
+      return {
+        ...oldState,
+        list: [],
       };
       case SEED_LOGS:
         return {

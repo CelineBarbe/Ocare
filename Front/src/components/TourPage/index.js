@@ -14,6 +14,7 @@ import plus from 'src/assets/icones/plus2.svg';
 import calendar from 'src/assets/icones/calendar.svg';
 import check from 'src/assets/icones/check.svg';
 
+import moins from 'src/assets/icones/moinsvert.svg';
 
 // == Import 
 import Header from 'src/containers/Header';
@@ -25,7 +26,7 @@ import {data} from 'src/utils/data';
 
 
 // == Composant
-const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour, submitUpdateTour, isLoading}) => {
+const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour, submitUpdateTour, isLoading, deleteTourPatient}) => {
   //LOADING DATE TODAY
   //date vaut path ou now
   const datePlace = useParams()?.date ?? DateTime.local().toISODate();
@@ -72,7 +73,13 @@ useEffect(()=> {
     updateTour(cards);
   }, [cards])
 
-  
+//demontage du composant
+useEffect(() => {
+  // Indique comment nettoyer l'effet :
+  return () => {
+    console.log('demontage, update possible ici !');
+  };
+});
 
 /*Hook for MODAL add patient and create tour */
 const [addPatientModal,setAddPatientModal] = useState(false);
@@ -99,6 +106,12 @@ function handleUpdateTour() {
   submitUpdateTour();
 }
 
+/* Delete tour's patient */
+const updateDelete = (_,idLog, idTourPatient) => {
+  console.log(idTourPatient, idLog)
+  deleteTourPatient(idTourPatient,idLog);
+}
+
 const arraySortStarting = (array) => {
   array.sort((a,b)=> {
     a.order_tour - b.order_tour;
@@ -117,13 +130,14 @@ const arraySortStarting = (array) => {
 
   //card 
   const Card = SortableElement((props) => (
-  <div className={!props.done ? "planning-container-row" : "planning-container-row done" } key={props.logbook_id} id={props.logbook_id} order={props.order}>
+  <div className={!props.done ? "planning-container-row" : "planning-container-row done" } key={props.id} id={props.id} order={props.order}>
                   <div className="planning-container-row-middle">
-                  <Link to='/patient'><span className="planning-container-row-left-name">Mr {props.nom}</span></Link>
+                  <Link to={`/patient/${props.patientId}`}><span className="planning-container-row-left-name">Mr {props.nom}</span></Link>
                   </div> 
                   <div className="planning-container-row-right">
                   <span className="planning-container-row-right-care">{props.tag}</span>
                   </div>
+                  <img src={moins} alt="moins" className="cabinets-card-add" onClick={e => updateDelete(e, props.id, props.idTourPatient)} />
   </div>)
   )
 //list journée
@@ -142,7 +156,7 @@ const arraySortStarting = (array) => {
       }
       
         {items.map((item, index) => (
-          <Card key={`item-${item.logbook_id}`} index={index} nom={item.lastname} tag={item.medical_act_name} done={item.done} id={item.logbook_id} order={item.order_tour} />
+          <Card key={`item-${item.logbook_id}`} index={index} nom={item.lastname} tag={item.medical_act_name} done={item.done} id={item.logbook_id} patientId={item.patient_id} order={item.order_tour} idTourPatient={item.id} />
         ))}
       </div>
       
@@ -191,8 +205,9 @@ const arraySortStarting = (array) => {
                   <img className="tour-page-create-tour-img" src={calendar} alt="ajouter" onClick={openModalCreateTour}/>  
                 </div>
               </div>
-              {!isLoading ?<SortableList items={cards} onSortEnd={onSortEnd} /> : <p>data loading...</p>}
+              {!isLoading ?<SortableList items={cards} onSortEnd={onSortEnd} lockAxis="y" transitionDuration="700" pressDelay="200"/> : <p>data loading...</p>}
               <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleUpdateTour}/>
+              <progress className="progress-bar" max="100" min="0" value="15" />
             </div>
           </div>
         <Nav />
