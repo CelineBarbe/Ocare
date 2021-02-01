@@ -76,7 +76,7 @@ const cabinetDataMapper = {
         return result.rows[0];
     },
 
-    async addNurseToCabinet(name, idNurse, pinCodeCab) {
+    async subscribeToCabinet(name, idNurse, pinCodeCab) {
 
         // check pinCode to save the nurse
         const enabledCode = await client.query(`SELECT * FROM cabinet WHERE name ILIKE $1 AND pin_code = $2`, [name, pinCodeCab]);
@@ -97,6 +97,30 @@ const cabinetDataMapper = {
         const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [enabledCode.rows[0].id, idNurse]);
 
         return result.rows[0];
+    },
+
+    async addNurseToCabinet(emailNurse, ownerID, cabinetID , pin_code) {
+
+        // 1 On vérifie qu'il s'agit bien du owner du cabinet
+        const cabinet = await client.query(`SELECT * FROM cabinet WHERE cabinet.id = $1 AND cabinet.owner_id = $2 AND cabinet.pin_code = $3`, [cabinetID, ownerID, pin_code]);
+
+        if (cabinet.rowCount == 0) {
+            return null;
+        }
+
+        // Trouvez le nurse à ajouter
+        const nurse = await client.query(`SELECT * FROM nurse WHERE nurse.email = $1`, [emailNurse]);
+
+        if (nurse.rowCount == 0) {
+            const result = { message: 'Aucun infirmier n\'a été trouvé'};
+            return result;
+        }
+
+        // Association du nurse au cabinet
+        const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [cabinet.rows[0].id, nurse.rows[0].id]);
+
+        return result.rows[0];
+
     },
 
     async updateNurseToCabinet(info) {

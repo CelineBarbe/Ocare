@@ -75,7 +75,7 @@ const cabinetController = {
         try {
             const { name, nurse_id, pin_code } = request.body;
 
-            const savedNurseToCabinet = await cabinetDataMapper.addNurseToCabinet(name, nurse_id, pin_code);
+            const savedNurseToCabinet = await cabinetDataMapper.subscribeToCabinet(name, nurse_id, pin_code);
 
             if (!savedNurseToCabinet) {
                 response.locals.notFound = 'Autorisation refusée';
@@ -87,6 +87,25 @@ const cabinetController = {
             request.app.locals.userCurrentCabinet = savedNurseToCabinet.cabinet_id;
 
             response.json({ savedNurseToCabinet });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async ownerAddNurse(request, response, next) {
+        try {
+            const { email, nurse_id, cabinet_id, pin_code} = request.body;
+
+            const addNurseToCabinet = await cabinetDataMapper.addNurseToCabinet(email, nurse_id, cabinet_id, pin_code);
+
+            if(!addNurseToCabinet) {
+                response.locals.notFound = 'Autorisation refusée';
+                next();
+                return;
+            }
+
+            response.json({ addNurseToCabinet });
 
         } catch (error) {
             next(error);
