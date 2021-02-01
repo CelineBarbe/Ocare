@@ -18,6 +18,7 @@ router.post('/signup', authController.handleSignForm);
 
 router.use(auth);
 router.get('/autologin', authController.autologin);
+router.get('/autologintest', authController.autologintest);
 
 //routes cabinets
 router.use('/cabinet', cabinetRouter);

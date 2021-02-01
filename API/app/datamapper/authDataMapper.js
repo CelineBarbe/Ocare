@@ -27,12 +27,12 @@ const authDataMapper = {
         // }
 
         let result = await client.query(`
-        SELECT nurse.*,
+        SELECT nwp.*,
             chs.cabinet_id AS default_cabinet
-            FROM nurse
+            FROM nurse_without_password nwp
                 JOIN cabinet_has_nurse chs
-                    ON nurse.id = chs.nurse_id
-            WHERE nurse.id = $1
+                    ON nwp.id = chs.nurse_id
+            WHERE nwp.id = $1
             AND chs.default_cabinet = true`, [idUser]);
 
         // If user has a default cabinet
@@ -42,7 +42,7 @@ const authDataMapper = {
         }
 
         // user without default_cabinet
-        result = await client.query(`SELECT nurse.* FROM nurse WHERE id = $1`, [idUser]);
+        result = await client.query(`SELECT nwp.* FROM nurse_without_password nwp WHERE id = $1`, [idUser]);
 
         result.rows[0].default_cabinet = null;
 
@@ -51,19 +51,48 @@ const authDataMapper = {
 
     async getUserAuto(id) {
 
-        const result = await client.query(`SELECT * FROM nurse WHERE id = $1`, [id]);
+        let result = await client.query(`SELECT * FROM nurse_without_password WHERE id = $1`, [id]);
 
         if (result.rowCount == 0) {
             return null;
         }
 
         const defaultCabinet = await client.query(`
-        SELECT nurse.*,
+        SELECT nwp.*,
             chs.cabinet_id AS default_cabinet
-            FROM nurse
+            FROM nurse_without_password nwp
                 JOIN cabinet_has_nurse chs
-                    ON nurse.id = chs.nurse_id
-            WHERE nurse.id = $1
+                    ON nwp.id = chs.nurse_id
+            WHERE nwp.id = $1
+            AND chs.default_cabinet = true;
+        `, [result.rows[0].id]);
+
+        if(defaultCabinet.rowCount != 0) {
+            // user with default cabinet
+            return defaultCabinet.rows[0];
+        }
+
+        // user without default_cabinet
+        result.rows[0].default_cabinet = null;
+
+        return result.rows[0];
+    },
+
+    async getUserAutoTest(id) {
+
+        let result = await client.query(`SELECT * FROM nurse_without_password WHERE id = $1`, [id]);
+
+        if (result.rowCount == 0) {
+            return null;
+        }
+
+        const defaultCabinet = await client.query(`
+        SELECT nwp.*,
+            chs.cabinet_id AS default_cabinet
+            FROM nurse_without_password nwp
+                JOIN cabinet_has_nurse chs
+                    ON nwp.id = chs.nurse_id
+            WHERE nwp.id = $1
             AND chs.default_cabinet = true;
         `, [result.rows[0].id]);
 

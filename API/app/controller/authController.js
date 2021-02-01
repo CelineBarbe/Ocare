@@ -1,5 +1,6 @@
 require('dotenv').config();
 const authDataMapper = require("../datamapper/authDataMapper");
+const cabinetDataMapper = require("../datamapper/cabinetDataMapper");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -106,6 +107,36 @@ const authController = {
                 next();
                 return;
             }
+            
+            response.json({ user });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async autologintest(request, response, next) {
+        try {
+            
+            const userID = response.locals.userID;
+
+            let user = await authDataMapper.getUserAutoTest(userID);
+
+            if(!user) {
+                response.locals.notFound = "Autorisation refusées";
+                next();
+                return;
+            }
+
+            // Obtenir les cabinets du nurse
+            let cabinets = await cabinetDataMapper.getAllCabinet(userID);
+
+            if (!cabinets) {
+                cabinets = [];
+            }
+
+            // Ajout des cabinets affiliés nurse
+            user.cabinets = cabinets
             
             response.json({ user });
 
