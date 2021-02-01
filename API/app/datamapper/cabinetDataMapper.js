@@ -1,4 +1,3 @@
-const { response } = require('express');
 const client = require('./client');
 
 const cabinetDataMapper = {
@@ -48,7 +47,7 @@ const cabinetDataMapper = {
 
         result.rows[0].email = ownerEmail.rows[0].email;
 
-        return result.rows[0];
+        return result.rows;
     },
 
     async createCabinet(infoCab) {
