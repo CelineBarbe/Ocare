@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { unSubcabChangeField, unSubCabinet} from 'src/actions/cabinets';
+import { unSubcabChangeField, unSubCabinet, changeCabinet} from 'src/actions/cabinets';
 import {dashboardInit} from 'src/actions/auth';
 
 import CabinetsPage from 'src/components/CabinetsPage';
@@ -20,7 +20,11 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleRefresh: () => {
     dispatch(dashboardInit())
+  },
+  changeCabinet: (id) => {
+    dispatch(changeCabinet(id));
   }
+
 });
 
 // appel a connect et export

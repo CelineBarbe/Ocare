@@ -1,6 +1,6 @@
 // == Import npm
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
 // == Import
 import './cabinetsPage.scss';
@@ -18,8 +18,13 @@ import moins from 'src/assets/icones/moinsvert.svg';
 
 
 // == Composant
-const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh}) => {
-
+const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh, changeCabinet}) => {
+//REDIRECTION dashboard
+const history = useHistory();
+const routeDashboard = () =>{ 
+  let path = `/Dashboard`; 
+  history.push(path);
+}
 /* useEffect(() => {
   console.log("refresh listCabinets dans cabinetsPage et envoi dashboard init")
   handleRefresh()
@@ -42,6 +47,11 @@ function closeModalCreateCabinet(){
   setCreateCabinet(false);
 }
 
+const handleClick= (_,id) => {
+  changeCabinet(id);
+  routeDashboard();
+}
+
   return (
 
         <Fragment>
@@ -60,7 +70,7 @@ function closeModalCreateCabinet(){
           
           {listCabinets.map(cabinet => (
                 <div className="cabinets-card" key={cabinet.id} id={cabinet.id}>
-                  <img src={hospital} alt="cabinet" className="cabinets-card-img" />
+                  <img src={hospital} alt="cabinet" className="cabinets-card-img" onClick={(e) => handleClick(e, cabinet.id)}/>
                   <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
                   <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
 

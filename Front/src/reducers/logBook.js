@@ -33,11 +33,34 @@ const reducer = (oldState = initialState, action = {}) => {
         list: [],
       };
       case SEED_LOGS:
-        return {
+        if (oldState.list.length >= 1) {
+           return {
           ...oldState,
+          planned_date: null,
+          time:null,
+          done_date:null,
+          observations: '',
+          daily: false,
+          done: false,
+          ending_date:null,
           list: [...oldState.list,action.payload],
           isLoading: false,
         };
+        } else {
+          return {
+            ...oldState,
+          planned_date: null,
+          time:null,
+          done_date:null,
+          observations: '',
+          daily: false,
+          done: false,
+          ending_date:null,
+          list: [action.payload],
+          isLoading: false,
+          }
+        }
+       
       case SEED_LOGS_BY_DATE:
         return {
           ...oldState,
