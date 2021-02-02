@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import './app.scss';
 
 // == Import components
+<<<<<<< HEAD
 import HomePage from 'src/containers/HomePage';
 import ProfilPage from 'src/components/ProfilPage';
 import Dashboard from 'src/containers/Dashboard';
@@ -46,6 +47,18 @@ const App = ({autoLogin}) => {
   </div>
   )
 }
+=======
+import Header from 'src/components/Header';
+import ReactFirebaseFileUpload from 'src/components/ReactFirebaseFileUpload'
+
+// == Composant
+const App = () => {
+  return (<div className="app">
+    <Header />
+    <ReactFirebaseFileUpload />
+  </div>)
+};
+>>>>>>> origin/firebase
 
 // == Export
 export default App;
