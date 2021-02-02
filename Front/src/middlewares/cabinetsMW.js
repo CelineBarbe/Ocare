@@ -145,6 +145,7 @@ const cabinetsMW = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
+        store.dispatch(notify(""))
         store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());

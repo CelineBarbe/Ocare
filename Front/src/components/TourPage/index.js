@@ -167,7 +167,7 @@ const arraySortStarting = (array) => {
       }
       
         {items.map((item, index) => (
-          <Card key={`item-${item.logbook_id}`} index={index} nom={item.lastname} tag={item.medical_act_name} done={item.done} id={item.logbook_id} patientId={item.patient_id} order={item.order_tour} idTourPatient={item.id} />
+          <Card key={`item-${item.id}`} index={index} nom={item.lastname} tag={item.medical_act_name} done={item.done} id={item.logbook_id} patientId={item.patient_id} order={item.order_tour} idTourPatient={item.id} />
         ))}
       </div>
       
