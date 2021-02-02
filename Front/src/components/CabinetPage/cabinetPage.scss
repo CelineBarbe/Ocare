@@ -3,10 +3,10 @@
 
 .cabinetPage-container {
   font-family: Nunito,sans-serif;
-  height: 100%;
+  height: 520px;
   width: 100%;
   padding: .5rem;
-  overflow-y: scroll;
+  overflow-y: hidden;
   -ms-overflow-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -18,8 +18,5 @@
   position: relative;
 }
 
-.cabinetPage-container::-webkit-scrollbar {
-  display: none;
-}
 
 

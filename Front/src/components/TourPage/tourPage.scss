@@ -47,13 +47,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     &-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
       color: vars.$color-secondary-dark2;
 
       &-span {
-        font-size: 15px;
+        font-size: 13px;
         font-style: italic;
         padding: vars.$gutter/4;
         font-weight: bold;
@@ -66,7 +67,7 @@
 // Button create new  patient
 
 .tour-page-create-patient {
-  padding: vars.$gutter*2 vars.$gutter;
+  padding: vars.$gutter;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -93,7 +94,7 @@
 // Button create new  patient
 
 .tour-page-create-tour {
-  padding: vars.$gutter*2 vars.$gutter;
+  padding: vars.$gutter;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -126,9 +127,10 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 375px;
+  height: 355px;
   overflow-y: scroll ;
   -ms-overflow-style:none;
+  padding: vars.$gutter;
 
   &-row {
     display: flex;
@@ -140,6 +142,11 @@
     height: 30px;
     margin: vars.$gutter/3 0;
     border-radius: 5px;
+
+    &-delete {
+      width: 25px;
+      margin-left: 10px;
+    }
 
     &-left {
       border-radius: 5px 0 0 5px ;
@@ -197,26 +204,20 @@
   }
 }
 
-.progress-bar {
-  position: absolute;
-  left: -40%;
-  bottom: 40%;
-  width: 360px;
-  transform: rotate(90deg);
-  border-radius: 7px; 
-  box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+.submit-update-tour {
+  background-color: white;
+  color: vars.$color-secondary-dark2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  cursor: pointer;
+
+  &-img {
+    width: 30px;
+    margin-left: 10px;
+  }
 }
 
 
-.progress-bar::-webkit-progress-bar {
-  background-color: vars.$color-primary-light3;
-  border-radius: 7px;
-}
-.progress-bar::-webkit-progress-value {
-  background-color: vars.$color-primary-dark1;
-  border-radius: 7px;
-  box-shadow: 1px 1px 3px 3px rgba( 0, 0, 0, 0.2 );
-}
-.progress-bar::-moz-progress-bar {
-  /* style rules */
-}

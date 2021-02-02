@@ -4,7 +4,7 @@ import React from 'react';
 import './addStaffModal.scss';
 
 import close from 'src/assets/icones/close.svg';
-import check from 'src/assets/icones/check.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 
 
 const AddStaffModal = ({ 
@@ -26,9 +26,9 @@ const AddStaffModal = ({
   };
 
   return (
-    <div className="modal-sub-cabinet">
-      <img src={close} alt="stylo" className="modal-sub-cabinet-close" onClick={closeModalAddStaff}/>
-      <p className="modal-sub-cabinet-title">
+    <div className="modal-add-nurse">
+      <img src={close} alt="stylo" className="modal-add-nurse-close" onClick={closeModalAddStaff}/>
+      <p className="modal-add-nurse-title">
        Ajouter un infirmier
       </p>
       <form className="form" onSubmit={handleSubmit}>
@@ -50,7 +50,10 @@ const AddStaffModal = ({
         onChange={handleChange}
       />
       
-      <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
+      <div className="submit-update" onClick={handleSubmit}>
+          <span className="modal-patient-update-img-title">Valider</span>
+          <img className="modal-patient-update-img" src={check} alt="valider"/>
+      </div>
     </form>
     </div>
   )

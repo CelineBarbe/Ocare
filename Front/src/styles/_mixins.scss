@@ -28,11 +28,11 @@
 
 
 @mixin formulaire-input() {
-  padding: vars.$gutter/1.2;
-  margin: vars.$gutter*0.5;
+  padding: vars.$gutter/1.8;
+  margin: vars.$gutter*0.5 0;
   border: 0;
   border-bottom: 1px solid vars.$color-primary-light1;
-  font-size: 18px;
+  font-size: 17px;
   color: vars.$color-grey4;
   font-family: 'Nunito', sans-serif;
 }

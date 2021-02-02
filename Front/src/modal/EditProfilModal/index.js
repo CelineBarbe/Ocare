@@ -4,7 +4,7 @@ import React from 'react';
 import './editProfilModal.scss';
 
 import close from 'src/assets/icones/close.svg';
-import check from 'src/assets/icones/check.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 
 
 const EditProfilModal = ({ 
@@ -33,9 +33,9 @@ const EditProfilModal = ({
   };
 
   return (
-    <div className="modal-sub-cabinet">
-      <img src={close} alt="stylo" className="modal-sub-cabinet-close" onClick={closeModalEditProfil}/>
-      <p className="modal-sub-cabinet-title">
+    <div className="modal-edit-profil">
+      <img src={close} alt="stylo" className="modal-edit-profil-close" onClick={closeModalEditProfil}/>
+      <p className="modal-edit-profil-title">
        Editer votre profil 
       </p>
       <form className="form" onSubmit={handleSubmit}>
@@ -87,7 +87,10 @@ const EditProfilModal = ({
         value={avatar}
         onChange={handleChange}
       />
-      <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
+      <div className="submit-update" onClick={handleSubmit}>
+          <span className="modal-patient-update-img-title">Valider</span>
+          <img className="modal-patient-update-img" src={check} alt="valider"/>
+      </div>
     </form>
     </div>
   )

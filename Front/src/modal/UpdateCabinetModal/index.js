@@ -5,6 +5,7 @@ import './updatecabinet.scss';
 
 //== Import images 
 import close from 'src/assets/icones/close.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 
 const UpdateCabinetModal = ({
   id,
@@ -49,9 +50,9 @@ newEntryPin_code = pin_code;
 
 
   return (
-    <div className="modal-entry">
+    <div className="modal-edit-cabinet">
     <form className="form" onSubmit={handleSubmit}>
-    <img  className="modal-patient-close" alt="close" src={close} onClick={closeModal}/>
+    <img  className="modal-edit-cabinet-close" alt="close" src={close} onClick={closeModal}/>
       <input
         className="form-input"
         type="text"
@@ -110,9 +111,10 @@ newEntryPin_code = pin_code;
         onChange={handleChange}
       />
       
-      <button type="button" className="form-button" onClick={handleSubmit}>
-        Update le cabinet !
-      </button>
+      <div className="submit-update" onClick={handleSubmit}>
+          <span className="modal-patient-update-img-title">Valider</span>
+          <img className="modal-patient-update-img" src={check} alt="valider"/>
+      </div>
     </form>
   </div>
   )

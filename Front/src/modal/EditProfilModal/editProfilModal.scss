@@ -1,0 +1,36 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+/* MODAL INFORMATION PATIENT */
+
+.modal-edit-profil{
+  position: absolute;
+  z-index: 500;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  padding: vars.$gutter;
+  background-color: vars.$color-grey;
+  border-radius: 10px;
+  width: 100%;
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
+  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+
+  &-close {
+    position: absolute;
+    top: vars.$gutter;
+    right: vars.$gutter;
+    width: 25px;
+  }
+
+  &-title {
+    margin:vars.$gutter  vars.$gutter*2;
+    color: vars.$color-secondary-dark2;
+    font-weight: bold;
+  }
+}
+
+

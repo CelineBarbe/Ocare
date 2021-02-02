@@ -41,12 +41,12 @@
     align-self: flex-start;
     font-weight: bold;
     color: vars.$color-primary-dark1;
-    margin-top: vars.$gutter;
+    margin: vars.$gutter 0;
     font-size: 15px;
   }
 
   p {
-    line-height: 1.4em;
+    line-height: 1.6em;
   }
 
   &-edit {

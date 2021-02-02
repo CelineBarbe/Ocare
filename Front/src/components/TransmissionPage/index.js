@@ -64,14 +64,6 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
               <Transmission />
               <div className="transmission-container">
                 <h1 className="transmission-h1"> Transmission du {datePres.day} {datePres.monthLong}</h1>
-                <input
-        className="form-input"
-        name="tour_date"
-        type="date"
-        //value={dateTampon}
-        //onChange={handleChange}
-        placeholder="Date de la transmission"
-      />
                
               {isLoading
               ? 'data is loading' 
@@ -82,7 +74,7 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
                           <img className="transmission-container-row-left-img" alt="woman" src={element.gender == 'F'? F : M}/>
                         </div>
                           <div className="transmission-container-row-right secondary">
-                          <h3>{element.gender} {element.lastname}</h3>
+                          <h3>{element.lastname}</h3>
                             <p>{element.observations}</p>
                           </div>  
                           

@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import './createpatient.scss';
 // == Import images
 import close from 'src/assets/icones/close.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 
 // == Composant
 const CreatePatient = ({
@@ -50,6 +51,9 @@ const CreatePatient = ({
     evt.preventDefault();
     handleSubmitPatient();
   };
+  const onFocus = (event) => {
+    event.currentTarget.type = "date";
+  }
   return (
     <>
    
@@ -58,7 +62,7 @@ const CreatePatient = ({
   
         <form className="form" onSubmit={handleSubmit}>
           <input
-            className="form-input"
+            className="form-input big"
             type="text"
             name="firstname"
             placeholder="Prénom"
@@ -66,7 +70,7 @@ const CreatePatient = ({
             onChange={handleChange}
           />
           <input
-            className="form-input"
+            className="form-input big"
             type="text"
             name="lastname"
             placeholder="Nom"
@@ -74,20 +78,20 @@ const CreatePatient = ({
             onChange={handleChange}
           />
           <input
-            className="form-input"
-            type="date"
-            name="birthdate"
-            placeholder="Date de Naissance"
-            value={birthdate}
-            onChange={handleChange}
+          className="form-input big"
+          type="text"
+          name="birthdate"
+          placeholder="Date de Naissance"
+          onFocus={onFocus}
+          value={birthdate}
+          onChange={handleChange}
           />
-          <select id="gender" name="gender" value={gender} onChange={handleChange}
-    >
+          <select className="form-input create-patient-select" id="gender" name="gender" value={gender} onChange={handleChange}>
             <option value="M"> Homme</option>
             <option value="F">Femme</option>
           </select>
           <input
-            className="form-input"
+            className="form-input big"
             type="text"
             name="address"
             placeholder="Adresse"
@@ -95,7 +99,7 @@ const CreatePatient = ({
             onChange={handleChange}
           />
           <input
-          className="form-input"
+          className="form-input big"
           type="text"
           name="zip_code"
           placeholder="Code Postal"
@@ -103,7 +107,7 @@ const CreatePatient = ({
           onChange={handleChange}
         />
           <input
-            className="form-input"
+            className="form-input big"
             type="text"
             name="city"
             placeholder="Ville"
@@ -111,7 +115,7 @@ const CreatePatient = ({
             onChange={handleChange}
           />
           <input
-            className="form-input"
+            className="form-input big"
             type="phone"
             name="phone_number"
             placeholder="Téléphone"
@@ -119,20 +123,28 @@ const CreatePatient = ({
             onChange={handleChange}
           />
           <input
-            className="form-input"
+            className="form-input big"
             type="text"
             name="pathology"
             placeholder="Pathologie"
             value={pathology}
             onChange={handleChange}
           />
-          <input type="checkbox" id="isQuotidien" name="daily_checking" onChange={handleChecked} value={daily_checking}
-    />
-          <label htmlFor="isQuotidien">Patient Quotidien</label>
-          {daily_checking ? <input type="number" placeholder="Nombre de visite/jour" name="number_daily_checking" min='0' max='3'/> : null}
-          <button type="button" className="form-button" onClick={handleSubmit}>
-            Créer le Patient !
-          </button>
+          <div className="checkbox-container form-input big">
+            <label htmlFor="isQuotidien">Patient Quotidien</label>
+            <input 
+              type="checkbox" 
+              id="isQuotidien" 
+              name="daily_checking"
+              onChange={handleChecked}
+              value={daily_checking}
+            />
+          </div>
+          {daily_checking ? <input className="form-input daily-checking big" type="number" placeholder="Nombre de visites par jour" name="number_daily_checking" min='0' max='3'/> : null}
+          <div className="submit-update" onClick={handleSubmit} >
+            <span className="modal-patient-update-img-title">Valider</span>
+            <img className="modal-patient-update-img" src={check} alt="valider"/>
+          </div>
         </form>
       </div>
   </>

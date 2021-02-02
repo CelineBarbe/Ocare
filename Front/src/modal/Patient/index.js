@@ -16,7 +16,9 @@ const PatientModal = ({
   phone_number, 
   pathology, 
   daily_checking, 
-  number_dailychecking
+  number_dailychecking,
+  lastname,
+  firstname,
 }) => {
 
   /* Hook gestion modal */
@@ -46,11 +48,11 @@ const PatientModal = ({
   return (
     <div className="modal-patient">
     <h3 className="modal-patient-title secondary">Etat Civil</h3> 
-    <p className="modal-patient-address"> {gender} de {age} ans. </p>
+    <p className="modal-patient-address"> {lastname} {firstname} - {age} ans </p>
 
     <h2 className="modal-patient-title primary">Adresse</h2>
-    <p className="modal-patient-address"> {address}, {zip_code} {city}</p>
-    <p className="modal-patient-phone">{phone_number}</p>
+    <p className="modal-patient-address"> Adresse : {address}, {zip_code} {city}</p>
+    <p className="modal-patient-phone">Téléphone : {phone_number}</p>
 
     <h3 className="modal-patient-title secondary">Pathologies / antécédents</h3>
     <p className="modal-patient-pathologie"> {pathology} </p>
