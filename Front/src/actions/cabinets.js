@@ -12,7 +12,7 @@ export const seedCabinets = (data) => ({
 });
 
 export const seedDefaultCabinet = (data) => {
-  console.log('seed default cab avec cab', data.id)
+  console.log('seed default cab avec:', data.id)
   return({
   type: SEED_DEFAULT_CABINET,
   data,
