@@ -207,7 +207,7 @@ const arraySortStarting = (array) => {
               </div>
               {!isLoading ?<SortableList items={cards} onSortEnd={onSortEnd} lockAxis="y" transitionDuration="700" pressDelay="200"/> : <p>data loading...</p>}
               <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleUpdateTour}/>
-              <progress className="progress-bar" max="100" min="0" value="15" />
+              {/* <progress className="progress-bar" max="100" min="0" value="15" /> */}
             </div>
           </div>
         <Nav />
