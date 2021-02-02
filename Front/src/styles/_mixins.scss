@@ -28,7 +28,7 @@
 
 
 @mixin formulaire-input() {
-  padding: vars.$gutter;
+  padding: vars.$gutter/1.2;
   margin: vars.$gutter*0.5;
   border: 0;
   border-bottom: 1px solid vars.$color-primary-light1;
