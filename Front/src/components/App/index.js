@@ -7,7 +7,6 @@ import { Route, Switch } from 'react-router-dom';
 import './app.scss';
 
 // == Import components
-<<<<<<< HEAD
 import HomePage from 'src/containers/HomePage';
 import ProfilPage from 'src/components/ProfilPage';
 import Dashboard from 'src/containers/Dashboard';

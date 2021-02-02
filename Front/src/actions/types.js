@@ -8,6 +8,7 @@ export const LOGOUT = 'LOGOUT';
 export const UNSUB_NURSE = 'UNSUB_NURSE';
 export const AUTO_LOGIN = 'AUTO_LOGIN';
 export const UPDATE_PROFIL = 'UPDATE_PROFIL';
+export const UPDATE_AVATAR = 'UPDATE_AVATAR';
   
 
 //connexion_dashboard

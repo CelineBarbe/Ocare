@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import { AUTH_CHANGE_FIELD, LOGIN_OK, SIGNUP_OK, CHANGE_CABINET, CREATE_CABINET_SUCCEEDED, LOGOUT } from 'src/actions/types';
+import { AUTH_CHANGE_FIELD, LOGIN_OK, SIGNUP_OK, CHANGE_CABINET, CREATE_CABINET_SUCCEEDED, UPDATE_AVATAR, LOGOUT } from 'src/actions/types';
 
 export const initialState = {
   id: null,
@@ -60,6 +60,11 @@ const reducer = (oldState = initialState, action = {}) => {
         siren_code: '',
         default_cabinet: null,
 
+      }
+    case UPDATE_AVATAR:
+      return {
+        ...oldState,
+        avatar: action.url,
       }
     case CHANGE_CABINET:
       return {

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios';
 import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NURSE, AUTO_LOGIN } from 'src/actions/types';
-import { loginOk, signUpOk, dashboardInit} from 'src/actions/auth';
+import { loginOk, signUpOk, dashboardInit, updateAvatar} from 'src/actions/auth';
 import {unSubNurseCabinetOK} from 'src/actions/cabinets';
 import { success, error, close, notify } from 'src/actions/notification';
 const URL = "https://ocare.herokuapp.com/"
@@ -115,8 +115,9 @@ const auth = (store) => (next) => (action) => {
     console.log("Passe par Update profil");
     const Recupstore = store.getState();
     const { email, avatar, firstname, lastname, phone_number, siren_code } = Recupstore.auth;
-    const { id } = action;
+    const { id, url } = action;
     console.log("Infos dans update profil middleware:", "ID:", id, "la suite", email, firstname, lastname, phone_number, siren_code, avatar)
+    console.log("URL DE ACTION:",url);
     const config = {
       method: 'patch',
       url: `${URL}nurse/${id}`,
@@ -124,12 +125,11 @@ const auth = (store) => (next) => (action) => {
         Authorization: `Bearer ${tokenStorage}`,
       },
       data: {
-        siren_code,
         firstname,
         lastname,
         email,
         phone_number,
-        avatar,
+        avatar: url,
       },
     };
     axios(config)
@@ -137,7 +137,8 @@ const auth = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("UPDATE PROFIL DONE");
-         store.dispatch(notify("Profil mis à jour"))
+         store.dispatch(notify("Profil mis à jour"));
+         store.dispatch(updateAvatar(url));
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
