@@ -4,8 +4,9 @@ import CabinetCard from 'src/components/CabinetCard';
 
 import {updateCabinet, cabChangeFieldUpdate} from 'src/actions/cabinets';
 
-const mapStateToProps = ({ cabinets }) => {
-  const {id,name,address,zip_code,city,phone_number, nbpatients, email, pin_code,newEntryMail} = cabinets;
+const mapStateToProps = ({ cabinets, auth }) => {
+  const {id,name,address,zip_code,city,phone_number, nbpatients, email, pin_code,newEntryMail, owner_id} = cabinets;
+  const {id:idUser} = auth;
   return ({
     id,
     name,
@@ -15,6 +16,8 @@ const mapStateToProps = ({ cabinets }) => {
     phone_number,
     nbpatients,
     email,
+    owner_id,
+    idUser,
   });
 };
 
