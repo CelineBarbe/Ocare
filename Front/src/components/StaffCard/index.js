@@ -15,7 +15,9 @@ import moins from 'src/assets/icones/moinsvert.svg';
 // == Composant
 const StaffCard = ({
   staff,
-  handleunSubNurse
+  handleunSubNurse,
+  owner_id,
+  idUser,
 }) => {
   
   /*hook pour modal */
@@ -47,7 +49,7 @@ const StaffCard = ({
       ? <AddStaffModal closeModalAddStaff={closeModalAddStaff} />
       : null
     }
-     <img src={plus} alt="stylo" className="staff-card-add" onClick={openModalAddStaff} />
+     {owner_id === idUser ? <img src={plus} alt="stylo" className="staff-card-add" onClick={openModalAddStaff} /> : null}
      <p className="staff-card-title">
        Notre équipe
      </p>
