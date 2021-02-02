@@ -1,6 +1,6 @@
 // == Import npm
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 
 // == Import
 import './cabinetsPage.scss';
@@ -18,16 +18,22 @@ import moins from 'src/assets/icones/moinsvert.svg';
 
 
 // == Composant
-const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh}) => {
-
-useEffect(() => {
+const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh, changeCabinet}) => {
+//REDIRECTION dashboard
+const history = useHistory();
+const routeDashboard = () =>{ 
+  let path = `/Dashboard`; 
+  history.push(path);
+}
+/* useEffect(() => {
+  console.log("refresh listCabinets dans cabinetsPage et envoi dashboard init")
   handleRefresh()
-}, [])
+}, [listCabinets]) */
 
 const getCabinetId = (params) => {
   handleunSubCabinet(params);
   //refresh dashboard init sans redirect pour test à voir
-  handleRefresh();
+  //handleRefresh();
 } 
 
 /*hook pour modal */
@@ -39,6 +45,11 @@ function openModalCreateCabinet() {
 
 function closeModalCreateCabinet(){
   setCreateCabinet(false);
+}
+
+const handleClick= (_,id) => {
+  changeCabinet(id);
+  routeDashboard();
 }
 
   return (
@@ -58,8 +69,8 @@ function closeModalCreateCabinet(){
           }
           
           {listCabinets.map(cabinet => (
-                <div className="cabinets-card" key={cabinet.id}>
-                  <img src={hospital} alt="cabinet" className="cabinets-card-img" />
+                <div className="cabinets-card" key={cabinet.id} id={cabinet.id}>
+                  <img src={hospital} alt="cabinet" className="cabinets-card-img" onClick={(e) => handleClick(e, cabinet.id)}/>
                   <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
                   <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
 

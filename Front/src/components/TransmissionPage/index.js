@@ -64,7 +64,11 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
               <Transmission />
               <div className="transmission-container">
                 <h1 className="transmission-h1"> Transmission du {datePres.day} {datePres.monthLong}</h1>
+<<<<<<< HEAD
    {/*              <input
+=======
+               {/*  <input
+>>>>>>> debugStef
         className="form-input"
         name="tour_date"
         type="date"

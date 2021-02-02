@@ -12,7 +12,7 @@ import UpdateCabinetModal from 'src/containers/UpdateCabinetModal';
 
 
 // == Composant
-const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_number, nbpatients, 
+const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_number, nbpatients, owner_id, idUser
   
 }) => {
   
@@ -28,10 +28,9 @@ const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_
    
   return (
     <div className="cabinet-card">
-    <img src={pen} alt="stylo" className="cabinet-card-edit" onClick={handleModal}/>
+    {owner_id === idUser ? <img src={pen} alt="stylo" className="cabinet-card-edit" onClick={handleModal}/> : null}
     {entryModal ? 
     <UpdateCabinetModal handleModal={handleModal} />
-    
     : null}
       <p className="cabinet-card-title">{name}</p>
       <span className="cabinet-card-nbpatient">{nbpatients} patients</span>
