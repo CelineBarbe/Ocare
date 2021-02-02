@@ -94,13 +94,29 @@ const tourDataMapper = {
             JOIN medical_act m
                 ON m.id = lhma.medical_act_id
         WHERE thp.tour_id = $1
-            AND l.planned_date = $2`, [tourID, date]);
+            AND l.planned_date = $2 ORDER BY thp.order_tour ASC`, [tourID, date]);
 
         // if (result.rowCount == 0) {
         //     return null;
         // }
 
-        return result.rows;
+        // Suppressions de l'affichage des logbooks en double
+        let tab = [];
+
+        let idTour = null;
+        let logbookId = null;
+
+        for (let el of result.rows) {
+            if(el.id != idTour && el.logbook_id != logbookId) {
+                tab.push(el);
+
+                // Mets à jour le check
+                idTour = el.id;
+                logbookId = el.logbook_id;
+            }
+        };
+
+        return tab;
     },
 
     async findByDate(date, idCabinet) {
@@ -127,9 +143,23 @@ const tourDataMapper = {
             AND p.cabinet_id = $2
             AND l.planned_date = $1 ORDER BY thp.order_tour ASC`, [date, idCabinet]);
 
-            // console.log(result, "resultat DataMapper");
+        // Suppressions de l'affichage des logbooks en double
+        let tab = [];
 
-        return result.rows;
+        let idTour = null;
+        let logbookId = null;
+
+        for (let el of result.rows) {
+            if(el.id != idTour && el.logbook_id != logbookId) {
+                tab.push(el);
+
+                // Mets à jour le check
+                idTour = el.id;
+                logbookId = el.logbook_id;
+            }
+        };
+
+        return tab;
 
     },
 
