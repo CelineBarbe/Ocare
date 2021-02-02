@@ -226,7 +226,7 @@ const cabinetsMW = (store) => (next) => (action) => {
           console.log('cabinet updated!');
           //TODO SEED STAFF ou new getCabinet
           store.dispatch(notify("Infirmier ajouté au cabinet"))
-          store.dispatch(subNurseCabinetOK(nurse))
+          store.dispatch(subNurseCabinetOK(response.data.addNurseToCabinet))
           
         }
       })

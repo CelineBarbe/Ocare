@@ -69,6 +69,8 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         staff: [...oldState.staff,action.data],
+        newEntryPin_code:'',
+        newEntryMail:'',
       };
     case SEED_DEFAULT_CABINET:
       return {
@@ -111,6 +113,7 @@ const reducer = (oldState = initialState, action = {}) => {
     case LOGOUT:
       return {
         ...oldState,
+        id:'',
         name: '',
         address: '',
         zip_code: '',
@@ -118,6 +121,13 @@ const reducer = (oldState = initialState, action = {}) => {
         phone_number: '',
         pin_code: '',
         email:'',
+        newEntryName:'',
+        newEntryAddress:'',
+        newEntryZip_code:'',
+        newEntryCity:'',
+        newEntryPhone_number:'',
+        newEntryPin_code:'',
+        newEntryMail:'',
         staff:[],
         list: [],
       };
