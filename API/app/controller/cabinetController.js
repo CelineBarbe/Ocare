@@ -138,7 +138,7 @@ const cabinetController = {
 
             const unsubscription = await cabinetDataMapper.unsubscribe(cabinet_id, nurse_id);
 
-            if (unsubscription == 1) {
+            if (unsubscription == 2) {
 
                 return response.status(409).json({
                     message: "Vous ếtes propriétaire de ce cabinet et ne pouvez pas vous en désabonner"

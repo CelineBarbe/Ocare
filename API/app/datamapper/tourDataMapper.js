@@ -94,7 +94,7 @@ const tourDataMapper = {
             JOIN medical_act m
                 ON m.id = lhma.medical_act_id
         WHERE thp.tour_id = $1
-            AND l.planned_date = $2 ORDER BY thp.order_tour ASC`, [tourID, date]);
+            AND l.planned_date = $2 ORDER BY thp.patient_id, thp.order_tour ASC`, [tourID, date]);
 
         // if (result.rowCount == 0) {
         //     return null;
@@ -116,7 +116,14 @@ const tourDataMapper = {
             }
         };
 
-        return tab;
+        // Tri selon le tour_order
+        const tabSorted = tab.sort(function (a, b) {
+            return a.order_tour - b.order_tour;
+        });
+
+        console.log(tabSorted, "TabSorted");
+
+        return tabSorted;
     },
 
     async findByDate(date, idCabinet) {

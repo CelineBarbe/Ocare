@@ -170,12 +170,14 @@ const cabinetDataMapper = {
         // Vérifier qui est owner_ID
         const whoIsOwner = await client.query(`SELECT owner_id FROM cabinet WHERE id = $1`, [idCab]);
 
-        console.log(whoIsOwner, "whoIsOner, regarde l'objet ?")
+        // console.log(whoIsOwner, "whoIsOner, regarde l'objet ?")
 
+        console.log(whoIsOwner.rows[0].owner_id, "Owneer", idNurse, "nurseeID")
         // Si owner_id = idNurse ne peut pas supprimer
         if (whoIsOwner.rows[0].owner_id == idNurse) {
-            return 1;
+            return 2;
         }
+
 
         const result = await client.query(`DELETE FROM cabinet_has_nurse chn WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2 RETURNING*`, [idCab, idNurse]);
 
