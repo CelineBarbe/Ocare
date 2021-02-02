@@ -164,7 +164,7 @@ const logsMW = (store) => (next) => (action) => {
           store.dispatch(seedLogs(response.data.savedLog));
           store.dispatch(updateTourAddPatient(response.data.savedLog, list, listpatient))
           
-          /*  store.dispatch(submitUpdateTour())*/
+            /*store.dispatch(submitUpdateTour())*/
           
           
           store.dispatch(success());

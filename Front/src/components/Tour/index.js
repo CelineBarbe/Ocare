@@ -56,7 +56,7 @@ const Tour= ({
  /*composant défaut lorsqu'il n'y a pas de tournée de prévue */
 const DefaultComponant = () => {
   return (
-    <h1 className="default-title">Aucune tournée pour aujourd'hui</h1>
+    <h1 className="default-title-tour">Aucune tournée pour aujourd'hui</h1>
   )
 }
 
@@ -77,8 +77,14 @@ const DefaultComponant = () => {
           <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>
         </li>
             )
-    : <DefaultComponant/>   
+    : null   
     }
+    {
+     cards.length >= 1 
+      ? data 
+      : <DefaultComponant/> 
+    } 
+
      {/* <Link to="/patient">
         <li className="tour-li">
           <span className="tour-span-date">06:00</span>
