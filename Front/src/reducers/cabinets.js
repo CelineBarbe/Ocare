@@ -1,7 +1,9 @@
 import { CABINET_CHANGE_FIELD, SEED_CABINETS, SUB_CABINET, UNSUB_NURSE_CABINET_OK,
   SEED_DEFAULT_CABINET, PRE_CREATE_CABINET, CREATE_CABINET, SUB_NURSE_CABINET_OK,
-  CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE, INIT_DASHBOARD, CHANGE_CABINET, UNSUB_CABINET, LOGOUT } from 'src/actions/types';
+  CREATE_CABINET_SUCCEEDED, CABINET_CHANGE_FIELD_UPDATE, INIT_DASHBOARD, CHANGE_CABINET, UNSUB_CABINET, LOGOUT,
+  SUB_CABINET_OK, UNSUB_CABINET_OK } from 'src/actions/types';
 
+  
 export const initialState = {
   id: null,
   name: '',
@@ -72,6 +74,18 @@ const reducer = (oldState = initialState, action = {}) => {
         newEntryPin_code:'',
         newEntryMail:'',
       };
+    case SUB_CABINET_OK:
+      return {
+        ...oldState,
+        list: [...oldState.list,action.data],
+        newEntryPin_code:'',
+        newEntryName:'',
+      };
+    case UNSUB_CABINET_OK:
+      return {
+        ...oldState,
+        list: action.list,
+      };
     case SEED_DEFAULT_CABINET:
       return {
         ...oldState,
@@ -100,8 +114,10 @@ const reducer = (oldState = initialState, action = {}) => {
         isCreated:true,
       };
     case UNSUB_CABINET:
+      if (action.cabinetId===oldState.id){
       return {
         ...oldState,
+        id: null,
         name: '',
         address: '',
         zip_code: '',
@@ -109,7 +125,16 @@ const reducer = (oldState = initialState, action = {}) => {
         phone_number: '',
         pin_code: '',
         email:'',
+        owner_id:'',
+        subcribeId:null,
+        nbpatients:0,
+      }
+      }
+      else {
+         return {
+        ...oldState,
       };
+      }
     case LOGOUT:
       return {
         ...oldState,
@@ -141,6 +166,13 @@ const reducer = (oldState = initialState, action = {}) => {
         city: action.data.city,
         phone_number: action.data.phone_number,
         email: action.email,
+        newEntryName:'',
+        newEntryAddress:'',
+        newEntryZip_code:'',
+        newEntryCity:'',
+        newEntryPhone_number:'',
+        newEntryPin_code:'',
+        newEntryMail:'',
         isCreated: true,
         isLoading: false,
       };

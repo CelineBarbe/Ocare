@@ -1,10 +1,11 @@
 import {
   SEED_CABINETS, SEED_DEFAULT_CABINET, UNSUB_CABINET, SUB_CABINET, CHANGE_CABINET, 
   CREATE_CABINET, CABINET_CHANGE_FIELD, CREATE_CABINET_SUCCEEDED, UPDATE_CABINET, 
-  CABINET_CHANGE_FIELD_UPDATE, SUB_NURSE_CABINET, UNSUB_NURSE_CABINET_OK, SUB_NURSE_CABINET_OK
+  CABINET_CHANGE_FIELD_UPDATE, SUB_NURSE_CABINET, UNSUB_NURSE_CABINET_OK, SUB_NURSE_CABINET_OK,
+  SUB_CABINET_OK, UNSUB_CABINET_OK
 } from './types';
 
-import {filterUnsubNurseList} from 'src/utils/searchAndReturn';
+import {filterUnsubNurseList, filterUnsubCabinet} from 'src/utils/searchAndReturn';
 
 export const seedCabinets = (data) => ({
   type: SEED_CABINETS,
@@ -54,10 +55,26 @@ export const subCabinet = (id) => ({
   id
 })
 
+export const subCabinetOK = (cabinet) => ({
+  type: SUB_CABINET_OK,
+  data: cabinet,
+})
+
 export const unSubCabinet = (cabinetId) => ({
   type: UNSUB_CABINET,
   cabinetId
 })
+
+export const unSubCabinetOK = (cabinetId, list) => {
+  console.log(cabinetId, list);
+  const result = filterUnsubCabinet(cabinetId, list);
+  return ({
+  type: UNSUB_CABINET_OK,
+  list: result,
+})
+}
+
+
 
  export const unSubNurseCabinetOK = (idNurse, staff) => {
   const newStaffList = filterUnsubNurseList(idNurse, staff)

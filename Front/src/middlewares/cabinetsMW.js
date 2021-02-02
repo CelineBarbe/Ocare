@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET, UPDATE_CABINET, SUB_NURSE_CABINET, UNSUB_NURSE_CABINET } from 'src/actions/types';
-import { createCabinetSucceeded, subNurseCabinetOK, changeCabinet, subCabinet } from 'src/actions/cabinets'; 
+import { createCabinetSucceeded, subNurseCabinetOK, changeCabinet, subCabinet, subCabinetOK, unSubCabinetOK } from 'src/actions/cabinets'; 
 import { success, error, close, notify } from 'src/actions/notification';
 
 const URL = "https://ocare.herokuapp.com/";
@@ -88,7 +88,8 @@ const cabinetsMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          console.log("ABONNEMENT DONE");
-         store.dispatch(notify("Inscription au cabinet autorisé"))
+         store.dispatch(notify("Inscription au cabinet autorisé"));
+         store.dispatch(subCabinetOK(response.data.savedNurseToCabinet));
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
@@ -113,6 +114,7 @@ const cabinetsMW = (store) => (next) => (action) => {
   if (action.type === UNSUB_CABINET) {
     const Recupstore = store.getState();
     const { id } = Recupstore.auth;
+    const { list } = Recupstore.cabinets;
     const { cabinetId } = action;
     console.log("passe dans UNSUB CABINET");
     console.log("cabinet ID:",cabinetId);
@@ -135,6 +137,7 @@ const cabinetsMW = (store) => (next) => (action) => {
         if (response.status === 200) {
          console.log("Utilisateur désinscrit du cabinet");
          store.dispatch(notify("Utilisateur désinscrit du cabinet"))
+         store.dispatch(unSubCabinetOK(cabinetId, list))
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());

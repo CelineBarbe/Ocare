@@ -20,14 +20,15 @@ import moins from 'src/assets/icones/moinsvert.svg';
 // == Composant
 const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh}) => {
 
-useEffect(() => {
+/* useEffect(() => {
+  console.log("refresh listCabinets dans cabinetsPage et envoi dashboard init")
   handleRefresh()
-}, [])
+}, [listCabinets]) */
 
 const getCabinetId = (params) => {
   handleunSubCabinet(params);
   //refresh dashboard init sans redirect pour test à voir
-  handleRefresh();
+  //handleRefresh();
 } 
 
 /*hook pour modal */
@@ -58,7 +59,7 @@ function closeModalCreateCabinet(){
           }
           
           {listCabinets.map(cabinet => (
-                <div className="cabinets-card" key={cabinet.id}>
+                <div className="cabinets-card" key={cabinet.id} id={cabinet.id}>
                   <img src={hospital} alt="cabinet" className="cabinets-card-img" />
                   <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
                   <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>

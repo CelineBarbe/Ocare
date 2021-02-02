@@ -114,3 +114,9 @@ export const returnArrayHandleChange = (array, input) => {
   console.log(newList);
   return newList
 }
+
+export const filterUnsubCabinet= (cabinetId, list) => {
+  const newList = list.filter(element => element.id !== cabinetId);
+  console.log(newList);
+  return newList
+}
