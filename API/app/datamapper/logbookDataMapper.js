@@ -122,7 +122,7 @@ const logbookDataMapper = {
 
     async createLog(logInfo) {
 
-        let { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id, medical_act_name } = logInfo;
+        let { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id, medical_act_name, document } = logInfo;
         // + info de l'act à ajouter via table d'association
         // save Log
 
@@ -139,7 +139,7 @@ const logbookDataMapper = {
             planned_date = DateTime.fromISO(`${creation_date}`).toFormat('yyyy-MM-dd');
         }
         
-        const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, time, done_date, observations, daily, done, ending_date, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,[
+        const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, time, done_date, observations, daily, done, ending_date, document, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`,[
             creation_date,
             planned_date,
             time,
@@ -148,6 +148,7 @@ const logbookDataMapper = {
             daily,
             done,
             ending_date,
+            document,
             nurse_id,
             patient_id
         ]);
@@ -161,7 +162,7 @@ const logbookDataMapper = {
         await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES($1, $2) RETURNING *`, [result.rows[0].id, findAct.rows[0].id]);
 
         // 3 - On renvoie les infos du logbook avec le nurse et le medical_act en +
-        const logResult = await client.query(`SELECT * FROM logbook_with_nurse_infos WHERE id = $1`, [result.rows[0].id]);
+        const logResult = await client.query(`SELECT * FROM logbook_with_nurse_infos_documents WHERE id = $1`, [result.rows[0].id]);
 
         return logResult.rows[0];
     },

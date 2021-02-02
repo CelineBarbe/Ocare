@@ -63,8 +63,6 @@ const tourDataMapper = {
         //     return null;
         // }
 
-        console.log(patients, "patient pour la tournée");
-
         // console.log(patients, "patients"); patient.rows
         // console.log(patients, "patients"); // 2 patients 19 Labbé book 26 & 24 Garnier book 27
         // 5 - Créer la tournée en liant tourID et patientID pour chaque ligne
@@ -100,7 +98,7 @@ const tourDataMapper = {
         //     return null;
         // }
 
-        // Suppressions de l'affichage des logbooks en double
+        // Suppression de l'affichage des logbooks en double
         let tab = [];
 
         let idTour = null;
@@ -120,8 +118,6 @@ const tourDataMapper = {
         const tabSorted = tab.sort(function (a, b) {
             return a.order_tour - b.order_tour;
         });
-
-        console.log(tabSorted, "TabSorted");
 
         return tabSorted;
     },
@@ -148,7 +144,7 @@ const tourDataMapper = {
                 ON t.id = thp.tour_id
         WHERE t.date = $1
             AND p.cabinet_id = $2
-            AND l.planned_date = $1 ORDER BY thp.order_tour ASC`, [date, idCabinet]);
+            AND l.planned_date = $1 ORDER BY thp.patient_id, thp.order_tour ASC`, [date, idCabinet]);
 
         // Suppressions de l'affichage des logbooks en double
         let tab = [];
@@ -166,7 +162,12 @@ const tourDataMapper = {
             }
         };
 
-        return tab;
+        // Tri selon le tour_order
+        const tabSorted = tab.sort(function (a, b) {
+            return a.order_tour - b.order_tour;
+        });
+
+        return tabSorted;
 
     },
 

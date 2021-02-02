@@ -29,10 +29,10 @@ const patientDataMapper = {
         p.daily_checking,
         p.number_daily_checking,
         p.cabinet_id,
-        JSON_AGG(logbook_with_nurse_infos) as logbook
+        JSON_AGG(logbook_with_nurse_infos_documents) as logbook
         FROM patient p
-            LEFT OUTER JOIN logbook_with_nurse_infos
-                ON p.id = logbook_with_nurse_infos.patient_id 
+            LEFT OUTER JOIN logbook_with_nurse_infos_documents
+                ON p.id = logbook_with_nurse_infos_documents.patient_id 
         WHERE p.id = $1 GROUP BY p.id`, [id]);
 
         // const result = await client.query(`SELECT patient.*,
