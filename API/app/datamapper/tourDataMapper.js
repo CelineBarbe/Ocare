@@ -16,41 +16,30 @@ const tourDataMapper = {
 
         const tourID = createTour.rows[0].id;
 
-        // 2 - Faire un appel pour avoir tous les patients qui ont daily_checking = true et qui n'ont pas de loggbook à la date du jour
+        // 2 - Faire un appel pour avoir tous les patients qui ont daily_checking = true et qui n'ont pas de logbook à la date du jour ou qui n'ont jamais encore eu de logbook
         let patientsWithoutLogbook = await client.query(`SELECT DISTINCT p.firstname,
         lastname,
         p.id AS patient_id,
         p.number_daily_checking
         FROM patient p
-            JOIN logbook l
+            LEFT OUTER JOIN logbook l
                 ON p.id = l.patient_id
         WHERE p.cabinet_id = $1 
             AND p.daily_checking = true
-            AND l.planned_date <> $2
-        GROUP BY p.id`, [cabinet_id, date]);
+            AND (l.planned_date <> $2
+                OR l.id IS NULL)
+        GROUP BY p.id, l.id`, [cabinet_id, date]);
 
-        // 2b - Patients qui n'ont aucun logbook et pour lesquels la requête précédente à échouer
-        if (patientsWithoutLogbook.rowCount == 0) {
-            patientsWithoutLogbook = await client.query(`SELECT DISTINCT p.firstname,
-        lastname,
-        p.id AS patient_id,
-        p.number_daily_checking
-        FROM patient p
-        WHERE p.cabinet_id = $1 
-            AND p.daily_checking = true
-        GROUP BY p.id`, [cabinet_id]);
-        }
-
-        console.log(patientsWithoutLogbook, 'patient sans logbook');
-
-        // 3 - Ouvrir un logbook avec pour les patients qui n'en ont pas avec un acte soins infirmiers
-
-        for (let patient of patientsWithoutLogbook.rows) {
-            const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, daily, observations, nurse_id, patient_id) VALUES ($1, $1, true, 'visite quotidienne - soins infirmiers', $2, $3) RETURNING *`, [date, nurse_id, patient.patient_id]);
-
-            const logbookID = result.rows[0].id;
-
-            await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES ($1, 1)`, [logbookID]);
+        if(patientsWithoutLogbook) {
+            
+            // 3 - Ouvrir un logbook pour les patients qui n'en ont pas avec un acte soins infirmiers
+            for (let patient of patientsWithoutLogbook.rows) {
+                const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, daily, observations, nurse_id, patient_id) VALUES ($1, $1, true, 'visite quotidienne - soins infirmiers', $2, $3) RETURNING *`, [date, nurse_id, patient.patient_id]);
+    
+                const logbookID = result.rows[0].id;
+    
+                await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES ($1, 1)`, [logbookID]);
+            }
         }
 
         // 4 - Faire un appel pour récupérer tous les patients qui ont un logbook à la date de la tournée

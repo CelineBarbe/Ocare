@@ -167,10 +167,31 @@ const cabinetDataMapper = {
         
         // const result = await client.query(`UPDATE cabinet_has_nurse chn SET allowed = false, default_cabinet = false WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
 
-        const result = await client.query(`DELETE FROM cabinet_has_nurse chn WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
+        // Vérifier qui est owner_ID
+        const whoIsOwner = await client.query(`SELECT owner_id FROM cabinet WHERE id = $1`, [idCab]);
+
+        console.log(whoIsOwner, "whoIsOner, regarde l'objet ?")
+
+        // Si owner_id = idNurse ne peut pas supprimer
+        if (whoIsOwner.rows[0].owner_id == idNurse) {
+            return 1;
+        }
+
+        const result = await client.query(`DELETE FROM cabinet_has_nurse chn WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2 RETURNING*`, [idCab, idNurse]);
 
         if (result.rowCount == 0) {
             return null;
+        }
+
+        // Si le cabinet supprimé est le cabinet par défaut, il faut sélectionner un nouveau cabinet par défaut
+        console.log(result, "résultat de la suppression")
+        if (result.rows[0].default_cabinet == true) {
+            // Trouver un cabinet auquel le nursee est affilié
+            const idCab = await client.query(`SELECT id FROM cabinet_has_nurse WHERE nurse_id = $1 LIMIT 1`, [idNurse]);
+
+            if(idCab) {
+                await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE id = $1`, [idCab.rows[0].id]);
+            }
         }
 
         return result.rowCount;

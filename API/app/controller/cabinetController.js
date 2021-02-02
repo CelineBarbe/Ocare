@@ -138,8 +138,15 @@ const cabinetController = {
 
             const unsubscription = await cabinetDataMapper.unsubscribe(cabinet_id, nurse_id);
 
+            if (unsubscription == 1) {
+
+                return response.status(409).json({
+                    message: "Vous ếtes propriétaire de ce cabinet et ne pouvez pas vous en désabonner"
+                });
+            }
+
             if (!unsubscription) {
-                response.locals.notFound = 'Une erreur est survenue lors du désabonnement';
+                response.locals.notFound = "Erreur : infirmier est introuvable";
                 next();
                 return;
             }

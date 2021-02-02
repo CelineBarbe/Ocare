@@ -1,6 +1,6 @@
 const nurseDataMapper = require('../datamapper/nurseDataMapper');
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+// const bcrypt = require('bcrypt');
+// const saltRounds = 10;
 
 const nurseController = {
 
