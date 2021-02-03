@@ -74,3 +74,10 @@
 #titleB,#titleD,#titleF,#titleH,#titleJ,#titleM,#titleO,#titleQ,#titleS,#titleU,#titleW,#titleY{
   background-color: vars.$color-primary;   
 }
+
+@media screen and (min-width: 414px) {
+  .patients-page-liste-container {
+    min-height: 430px;
+    max-height: 430px;
+  }
+}

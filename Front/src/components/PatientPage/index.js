@@ -70,7 +70,7 @@ const PatientPage = ({
   
   return (
     
-      <div className="patient-page">
+      <>
         <Header />
           <div className="main">
           {/* LOCAL CONTAINER DISPLAY FLEX COLUMN AND OVERFLOW-Y SCROLL */} 
@@ -109,7 +109,7 @@ const PatientPage = ({
             </div>
           </div>
         <Nav />
-      </div>
+      </>
   )
 };
 
