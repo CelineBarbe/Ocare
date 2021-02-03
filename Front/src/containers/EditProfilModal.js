@@ -25,8 +25,8 @@ const mapDispatchToProps = (dispatch) => ({
   changeField: (value, field) => {
     dispatch(authChangeField(value, field));
   },
-  handleUpdateProfil: (id) => {
-    dispatch(updateProfil(id));
+  handleUpdateProfil: (id,url) => {
+    dispatch(updateProfil(id,url));
   },
   openModalNotification: () => {
     dispatch(open());

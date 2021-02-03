@@ -1,5 +1,5 @@
 import {
-  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTO_LOGIN,
+  AUTH_CHANGE_FIELD, AUTH_SUBMIT_LOGIN, LOGIN_OK, AUTO_LOGIN,UPDATE_AVATAR,
   AUTH_SUBMIT_SIGNUP, SIGNUP_OK, INIT_DASHBOARD, LOGOUT, UNSUB_NURSE, UPDATE_PROFIL
 } from './types';
 
@@ -52,7 +52,13 @@ export const autoLogin = () => ({
   type: AUTO_LOGIN,
 })
 
-export const updateProfil = (id) => ({
+export const updateProfil = (id, url) => ({
   type: UPDATE_PROFIL,
-  id
+  id,
+  url,
+})
+
+export const updateAvatar = (url) => ({
+  type: UPDATE_AVATAR,
+  url,
 })

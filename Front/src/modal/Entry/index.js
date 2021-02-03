@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { storage } from 'src/Firebase';
 
 // == Import
 import './entryModal.scss';
@@ -25,7 +26,8 @@ const EntryModal = ({
   id,
   time,
   done_date,
-  medical_act_name
+  medical_act_name,
+  picture
 
 }) => {
 
@@ -41,9 +43,48 @@ const EntryModal = ({
       </select>
     )
   } 
+
+  /*FIREBASE STUFF */
+const [image, setImage] = useState(null);
+const [urlImage, setUrlImage] = useState(picture);
+
+//avatar par défaut
+const handleChangeFile = e => {
+        if (e.target.files[0]) {
+            setImage(e.target.files[0]);
+        }
+};
+
+const handleUpload = () => {
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {},
+            error =>{
+                console.log(error);
+            },
+            () => {
+                storage
+                .ref("images")
+                .child(image.name)
+                .getDownloadURL()
+                .then (url => {
+                    console.log(url);
+                    handleChangePicture(url)
+                })
+            }
+        )
+    };
   
-  
+  /* */
+  const targetPicture = 'picture';
+  const handleChangePicture = (url) => {
+    console.log('urlImage dans handleChangePicture',url);
+    setUrlImage(url);
+    changeField(url, targetPicture);
+  }
   const handleChange = (event) => {
+    console.log(event.target.name);
     changeField(event.target.value, event.target.name);
   }
 
@@ -76,6 +117,7 @@ const EntryModal = ({
       value={observations}
       onChange={handleChange}
     />
+<<<<<<< HEAD
     <div className=" form-input big">
       <label htmlFor="isQuotidien">Ajouter dates</label>
       <input 
@@ -88,6 +130,15 @@ const EntryModal = ({
     </div>
 
 
+=======
+    <input type="file" id="profile_pic" name="profile_pic"
+          accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
+      <button onClick={handleUpload} type='button'>Upload</button>
+    <img className="modal-patient-avatar" src={urlImage} />
+    <input type="checkbox" id="date" name="daily" onChange={handleChecked} value={daily}
+    />
+    <label htmlFor="isQuotidien">Ajouter dates</label>
+>>>>>>> frontFirebase
     {daily
       ?
       <Fragment>

@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
-
 import { logbookChangeField, createLog } from 'src/actions/logs';
 
 import EntryModal from 'src/modal/Entry';
 
 const mapStateToProps = ({logBook, auth}, ownProps) => {
   const { closeModalEntry, patientId } = ownProps;
-  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated, medical_act_name } = logBook;
+  const { planned_date, time, done_date, ending_date, observations, daily, done, tags, isCreated, medical_act_name, picture } = logBook;
   const { id } = auth;
   
   return ({
@@ -23,11 +22,13 @@ const mapStateToProps = ({logBook, auth}, ownProps) => {
     time,
     done_date,
     medical_act_name,
+    picture,
   })
 }
 
 const mapDispatchToProps = (dispatch) => ({
   changeField: (value, field) => {
+    console.log("changeField container entry moral:", value ,"+ field", field);
     dispatch(logbookChangeField(value, field));
   },
   handleLogbook: (patientId, nurseId) => {

@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import LogBook from 'src/components/LogBook';
 
 const mapStateToProps = ({logBook}, ownProps) => {
-  const { list } = logBook;
+  const { list, picture } = logBook;
   const { entryModal, closeModalEntry, patientId } = ownProps;
   return ({
     entryModal,
     closeModalEntry,
     list,
-    patientId
+    patientId,
+    picture
   })
 }
 

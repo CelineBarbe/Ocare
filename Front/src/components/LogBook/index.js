@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-
+import {Link} from 'react-router-dom';
 // == Import fichier scss
 import './logBook.scss';
 
@@ -12,7 +12,8 @@ const LogBook = ({
   entryModal, 
   closeModalEntry, 
   list,
-  patientId
+  patientId,
+  picture
 }) => {
 
   /*Utilisation de require.context pour charger les images dynamiquement selon le nom de l'acte medical */
@@ -75,6 +76,7 @@ const DefaultComponant = () => {
                     <span className="carnet-sante-entry-bottom-right-observation">
                       {list.observations}
                     </span>
+                   {list.document ? <a href={`${list.document}`} target='_blank'><img className="carnet-sante-entry-image" src={list.document} /></a> : null}  
                   </div>
                 </div>
               </div>  
