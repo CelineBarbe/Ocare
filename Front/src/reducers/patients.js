@@ -57,10 +57,23 @@ const reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         isLoading: true,
+        isCreated: false,
       };
     case CREATE_PATIENT_SUCCEEDED:
       return {
         ...oldState,
+        id: null,
+        firstname: '',
+        lastname: '',
+        birthdate: '',
+        gender: 'male',
+        address:'',
+        zip_code:'',
+        city:'',
+        phone_number:'',
+        pathology:'',
+        daily_checking: false,
+        number_dailychecking:undefined,
         isCreated: true,
         created_id: action.created_id,
       };
