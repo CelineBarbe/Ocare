@@ -153,6 +153,8 @@ const reducer = (oldState = initialState, action = {}) => {
         newEntryPhone_number:'',
         newEntryPin_code:'',
         newEntryMail:'',
+        nbpatients:0,
+        owner_id:'',
         staff:[],
         list: [],
       };

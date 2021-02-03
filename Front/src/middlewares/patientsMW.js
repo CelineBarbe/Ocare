@@ -2,6 +2,7 @@ import axios from 'axios';
 import { GET_PATIENTS, UPDATE_PATIENT, CREATE_PATIENT, GET_PATIENT } from 'src/actions/types';
 import { seedPatients, createPatientSucceeded, seedPatient } from 'src/actions/patients';
 import { success, error, close, notify } from 'src/actions/notification';
+import {returnFirstLetterUpper} from 'src/utils/searchAndReturn';
 
 const URL = "https://ocare.herokuapp.com/";
 
@@ -67,7 +68,7 @@ const patientsMW = (store) => (next) => (action) => {
       },
       data: {
         firstname,
-        lastname,
+        lastname: returnFirstLetterUpper(lastname),
         birthdate,
         gender,
         address,
@@ -114,7 +115,7 @@ const patientsMW = (store) => (next) => (action) => {
       },
       data: {
         firstname,
-        lastname,
+        lastname: returnFirstLetterUpper(lastname),
         birthdate,
         gender,
         address,

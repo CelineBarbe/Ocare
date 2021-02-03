@@ -122,3 +122,13 @@ export const filterUnsubCabinet= (cabinetId, list) => {
   console.log(newList);
   return newList
 }
+
+export const returnFirstLetterUpper = (lastname) => {
+  console.log(lastname);
+  let newLastname = lastname.substr(1,lastname.length);
+  console.log(newLastname);
+  let majLetter = lastname.charAt(0).toUpperCase()
+  newLastname = majLetter.concat(newLastname)
+  console.log(majLetter);
+  return newLastname;
+}
