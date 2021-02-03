@@ -1,6 +1,9 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
+.staff-card::-webkit-scrollbar {
+  display: none;
+}
 
 .staff-card {
   position: relative;
@@ -15,6 +18,8 @@
   width: 90%;
   -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
   box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+  overflow-y: scroll;
+  -ms-overflow-style: none;
 
   &-add {
     position: absolute;

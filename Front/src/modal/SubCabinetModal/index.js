@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './SubCabinetModal.scss';
 
 import close from 'src/assets/icones/close.svg';
-import check from 'src/assets/icones/check.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 
 
 const SubCabinetModal = ({ 
@@ -67,7 +67,10 @@ const SubCabinetModal = ({
         value={newEntryPin_code}
         onChange={handleChange}
       />
-      <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
+      <div className="submit-update" onClick={handleSubmit}>
+          <span className="modal-patient-update-img-title">Valider</span>
+          <img className="modal-patient-update-img" src={check} alt="valider"/>
+      </div>
     </form>
     </div>
   )

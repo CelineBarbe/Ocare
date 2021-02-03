@@ -70,7 +70,7 @@ const StaffCard = ({
           <p className="nurse-card-infos nurse-card-mail">
            <a href={`mailto:${equipier.email}`}>Envoyer un mail</a>
           </p>
-          <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getEquipierId(equipier.id)} />
+          {owner_id === idUser ? <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getEquipierId(equipier.id)} /> : null}
       </div>
 
      ))

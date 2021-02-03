@@ -8,6 +8,7 @@ import './createcabinetmodal.scss';
 
 //== Import images 
 import close from 'src/assets/icones/close.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 
 // == Composant
 const CreateCabinet = ({
@@ -105,9 +106,10 @@ const CreateCabinet = ({
           onChange={handleChange}
         />
         
-        <button type="button" className="form-button" onClick={handleSubmit}>
-          Créer le cabinet !
-        </button>
+        <div className="submit-update" onClick={handleSubmit}>
+          <span className="modal-patient-update-img-title">Valider</span>
+          <img className="modal-patient-update-img" src={check} alt="valider"/>
+      </div>
       </form>
     </div>
   );

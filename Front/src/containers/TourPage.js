@@ -26,7 +26,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateTour(newList))
   },
   submitUpdateTour: () => {
-    console.log("Submit Update Tour container");
     dispatch(submitUpdateTour())
   },
   deleteTourPatient: (idTourPatient, idLog) => {

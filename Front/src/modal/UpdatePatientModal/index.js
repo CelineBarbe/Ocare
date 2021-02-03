@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 
 import './updatePatientModal.scss';
 
-import check from 'src/assets/icones/check.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 import close from 'src/assets/icones/close.svg';
 
 const UpdatePatientModal = ({
@@ -72,7 +72,7 @@ const UpdatePatientModal = ({
           value={birthdate}
           onChange={handleChange}
         />
-        <select id="gender" name="gender" value={gender} onChange={handleChange}>
+        <select className="form-input gender" id="gender" name="gender" value={gender} onChange={handleChange}>
           <option value="M"> Homme</option>
           <option value="F">Femme</option>
         </select>
@@ -116,16 +116,21 @@ const UpdatePatientModal = ({
           value={pathology}
           onChange={handleChange}
         />
-        <input 
-          type="checkbox" 
-          id="isQuotidien" 
-          name="daily_checking"
-          onChange={handleChecked}
-          value={daily_checking}
-        />
-        <label htmlFor="isQuotidien">Patient Quotidien</label>
-          {daily_checking ? <input type="number" placeholder="Nombre de visite/jour" name="number_daily_checking" min='0' max='3'/> : null}
-        <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
+        <div className="checkbox-container form-input">
+          <label htmlFor="isQuotidien">Patient Quotidien</label>
+          <input 
+            type="checkbox" 
+            id="isQuotidien" 
+            name="daily_checking"
+            onChange={handleChecked}
+            value={daily_checking}
+          />
+        </div>
+        {daily_checking ? <input className="form-input daily-checking" type="number" placeholder="Nombre de visites par jour" name="number_daily_checking" min='0' max='3'/> : null}
+        <div className="submit-update" onClick={handleSubmit}>
+          <span className="modal-patient-update-img-title">Valider</span>
+          <img className="modal-patient-update-img" src={check} alt="valider"/>
+        </div>
       </form>
     </div>
   )

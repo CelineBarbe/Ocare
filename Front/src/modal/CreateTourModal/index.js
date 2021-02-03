@@ -6,7 +6,7 @@ import './createTourModal.scss';
 
 //== Import images 
 import close from 'src/assets/icones/close.svg';
-import check from 'src/assets/icones/check.svg';
+import check from 'src/assets/icones/checkWhite.svg';
 
 const CreateTourModal = ({
   closeModalCreateTour,
@@ -69,7 +69,10 @@ const[dateTampon, setDateTampon] =useState(datePlace);
         onFocus={onFocus}
         placeholder="Date de la tournée"
       />
-      <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
+      <div className="submit-update" onClick={handleSubmit} >
+        <span className="modal-patient-update-img-title">Valider</span>
+        <img className="modal-patient-update-img" src={check} alt="valider"/>
+      </div>
     </form>
   </div>
   )

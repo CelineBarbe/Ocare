@@ -26,7 +26,18 @@ import {data} from 'src/utils/data';
 
 
 // == Composant
-const TourPage = ({list, date, date_tour, changeDate, location, getTour, updateTour, submitUpdateTour, isLoading, deleteTourPatient}) => {
+const TourPage = ({
+  list,
+  date, 
+  date_tour, 
+  changeDate, 
+  location, 
+  getTour, 
+  updateTour, 
+  submitUpdateTour, 
+  isLoading, 
+  deleteTourPatient
+}) => {
   //LOADING DATE TODAY
   //date vaut path ou now
   const datePlace = useParams()?.date ?? DateTime.local().toISODate();
@@ -137,7 +148,7 @@ const arraySortStarting = (array) => {
                   <div className="planning-container-row-right">
                   <span className="planning-container-row-right-care">{props.tag}</span>
                   </div>
-                  <img src={moins} alt="moins" className="cabinets-card-add" onClick={e => updateDelete(e, props.id, props.idTourPatient)} />
+                  <img src={moins} alt="moins" className="planning-container-row-delete" onClick={e => updateDelete(e, props.id, props.idTourPatient)} />
   </div>)
   )
 //list journée
@@ -156,7 +167,7 @@ const arraySortStarting = (array) => {
       }
       
         {items.map((item, index) => (
-          <Card key={`item-${item.logbook_id}`} index={index} nom={item.lastname} tag={item.medical_act_name} done={item.done} id={item.logbook_id} patientId={item.patient_id} order={item.order_tour} idTourPatient={item.id} />
+          <Card key={`item-${item.id}`} index={index} nom={item.lastname} tag={item.medical_act_name} done={item.done} id={item.logbook_id} patientId={item.patient_id} order={item.order_tour} idTourPatient={item.id} />
         ))}
       </div>
       
@@ -206,8 +217,10 @@ const arraySortStarting = (array) => {
                 </div>
               </div>
               {!isLoading ?<SortableList items={cards} onSortEnd={onSortEnd} lockAxis="y" transitionDuration="700" pressDelay="200"/> : <p>data loading...</p>}
-              <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleUpdateTour}/>
-              {/* <progress className="progress-bar" max="100" min="0" value="15" /> */}
+              <div className="submit-update-tour" onClick={handleUpdateTour} >
+                <span>Valider tournée</span>
+                <img className="submit-update-tour-img" src={check} alt="valider"/>
+              </div>
             </div>
           </div>
         <Nav />

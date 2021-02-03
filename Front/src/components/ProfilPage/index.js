@@ -17,7 +17,7 @@ const ProfilPage= () => {
     <Fragment>
       <Header />
       <div className="main">
-      <div className="cabinetPage-container">
+      <div className="profilPage-container">
         <ProfilCard />
         <ListCabinets />
       </div>
