@@ -9,6 +9,7 @@ export const initialState = {
   time:null,
   done_date:null,
   observations: '',
+  picture:'',
   daily: false,
   done: false,
   ending_date:null,

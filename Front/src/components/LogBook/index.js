@@ -12,7 +12,8 @@ const LogBook = ({
   entryModal, 
   closeModalEntry, 
   list,
-  patientId
+  patientId,
+  picture
 }) => {
 
   /*Utilisation de require.context pour charger les images dynamiquement selon le nom de l'acte medical */
@@ -75,6 +76,7 @@ const DefaultComponant = () => {
                     <span className="carnet-sante-entry-bottom-right-observation">
                       {list.observations}
                     </span>
+                    <img src={list.document} /> 
                   </div>
                 </div>
               </div>  

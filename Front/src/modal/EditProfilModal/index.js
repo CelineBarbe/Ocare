@@ -19,7 +19,7 @@ const EditProfilModal = ({
   lastname, 
   phone_number, 
   siren_code,
-  openModalNotification
+  openModalNotification,
 }) => {
 /*FIREBASE STUFF */
 const [image, setImage] = useState(null);
