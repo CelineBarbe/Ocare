@@ -2,10 +2,17 @@
 
 .app {
   width: 375px;
-  height: 667px;
   margin: 0 auto;
   background-color:#FFFFFF;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+@media screen and (max-width: 414px) {
+  .app {
+    width: 100%;
+  }
+}

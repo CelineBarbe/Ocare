@@ -57,7 +57,7 @@ function closeModalCreatePatient(){
 
   return (
     
-      <div className="patients-page">
+      <>
         <Header />
           <div className="main">
             <Searchbar />
@@ -82,7 +82,7 @@ function closeModalCreatePatient(){
             <AlphabeticalSearchbar />
           </div>
         <Nav />
-      </div>
+      </>
     
   )
 };
