@@ -64,20 +64,6 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
               <Transmission />
               <div className="transmission-container">
                 <h1 className="transmission-h1"> Transmission du {datePres.day} {datePres.monthLong}</h1>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> ff3a01b3f903f400b8d4d69e61cd746140226745
-               {/*  <input
-        className="form-input"
-        name="tour_date"
-        type="date"
-        //value={dateTampon}
-        //onChange={handleChange}
-        placeholder="Date de la transmission"
-      /> */}
-               
               {isLoading
               ? 'data is loading' 
               : list.length>1 ? list.map(element => ( 
