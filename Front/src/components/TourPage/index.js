@@ -187,7 +187,7 @@ const arraySortStarting = (array) => {
 
   return (
     
-      <div className="tour-page-container">
+      <>
         <Header />
           <div className="main">
             <div className="tour-page">
@@ -224,7 +224,7 @@ const arraySortStarting = (array) => {
             </div>
           </div>
         <Nav />
-      </div>
+      </>
   )
 };
 

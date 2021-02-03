@@ -18,11 +18,12 @@ const Dashboard = ({ dashboardInit, default_cabinet, isLoading }) => {
 }, [default_cabinet])
  
   return (
-  <div className="dashboard">
-    <Header />
-    <Main />
-    <Nav />
-  </div>
+    <>
+      <Header />
+      <Main />
+      <Nav />
+    </>
+  
   )
 };
 

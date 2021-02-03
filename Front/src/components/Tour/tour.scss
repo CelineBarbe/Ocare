@@ -8,7 +8,6 @@
 
 .tour {
   display: flex;
-  height: 210px;
   flex-direction: column;
   align-items: center;
   font-family: 'Nunito', sans-serif;
@@ -22,6 +21,8 @@
   -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
   box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
   text-align: center;
+  height: 200px;
+
 
   &-title {
     margin:vars.$gutter  vars.$gutter*2;
@@ -53,4 +54,11 @@
   font-family: Nunito,sans-serif;
   margin: 50px auto;
   align-self: center;
+}
+
+
+@media (min-width: 376px) and (min-width: 414px) {
+  .tour {
+    height: 280px;
+  }
 }

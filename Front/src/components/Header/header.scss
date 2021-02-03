@@ -3,11 +3,11 @@
 
 .header {
   background-color: vars.$color-white;
-  height: 64px;
   width: 100%;
   padding: vars.$gutter  vars.$gutter*2;
   font-family: 'Nunito', sans-serif;
   position: relative;
+
 
   &-ul {
     display: flex;
