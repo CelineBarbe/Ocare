@@ -115,19 +115,12 @@ const [urlImage, setUrlImage] = useState(avatar)
         value={urlImage}
         onChange={handleChange}
       />
-<<<<<<< HEAD
-      <div className="submit-update" onClick={handleSubmit}>
-          <span className="modal-patient-update-img-title">Valider</span>
-          <img className="modal-patient-update-img" src={check} alt="valider"/>
-      </div>
-=======
 
       <input type="file" id="profile_pic" name="profile_pic"
           accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
       <button onClick={handleUpload} type='button'>Upload</button>
       <img className="modal-patient-avatar" src={urlImage} />
       <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
->>>>>>> frontFirebase
     </form>
     </div>
   )

@@ -18,7 +18,7 @@ import moins from 'src/assets/icones/moinsvert.svg';
 
 
 // == Composant
-const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh, changeCabinet}) => {
+const CabinetsPage = ({ listCabinets, handleunSubCabinet, handleRefresh, changeCabinet, idUser}) => {
 //REDIRECTION dashboard
 const history = useHistory();
 const routeDashboard = () =>{ 
@@ -74,7 +74,7 @@ const handleClick= (_,id) => {
                   <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
                   <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
 
-                  <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getCabinetId(cabinet.id)} />
+                  {idUser !== cabinet.owner_id ? <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getCabinetId(cabinet.id)} /> : null}
                 </div>
           ))}
           </div>

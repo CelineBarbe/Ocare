@@ -32,19 +32,12 @@ export const returnArrayFirstLetterSorted = (array, letter) => {
  //TODO check this null
  export const returnVoid = (entry) => {
   if (entry.length <= 1) {
-    //test sur une seule entrée
-<<<<<<< HEAD
+
      if (entry[0]) {
        return [entry[0]]
      } else {
        return []
      }
-=======
-    //test string vide to do rendre un array s'il y a qu'une seule entrée!
-     let result = entry[0] ?? '';
-     console.log('result', result);
-     return result
->>>>>>> frontFirebase
   } 
   else {
     return entry

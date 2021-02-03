@@ -117,20 +117,6 @@ const handleUpload = () => {
       value={observations}
       onChange={handleChange}
     />
-<<<<<<< HEAD
-    <div className=" form-input big">
-      <label htmlFor="isQuotidien">Ajouter dates</label>
-      <input 
-        type="checkbox" 
-        id="date" 
-        name="daily"
-        onChange={handleChecked}
-        value={daily}
-      />
-    </div>
-
-
-=======
     <input type="file" id="profile_pic" name="profile_pic"
           accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
       <button onClick={handleUpload} type='button'>Upload</button>
@@ -138,7 +124,6 @@ const handleUpload = () => {
     <input type="checkbox" id="date" name="daily" onChange={handleChecked} value={daily}
     />
     <label htmlFor="isQuotidien">Ajouter dates</label>
->>>>>>> frontFirebase
     {daily
       ?
       <Fragment>
