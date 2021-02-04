@@ -38,7 +38,6 @@ const nurseController = {
             response.json(nurse);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -66,7 +65,6 @@ const nurseController = {
             response.json({ updatedNurseProfil });
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },

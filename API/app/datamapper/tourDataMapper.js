@@ -63,8 +63,6 @@ const tourDataMapper = {
         //     return null;
         // }
 
-        // console.log(patients, "patients"); patient.rows
-        // console.log(patients, "patients"); // 2 patients 19 Labbé book 26 & 24 Garnier book 27
         // 5 - Créer la tournée en liant tourID et patientID pour chaque ligne
         
         let order_tour = 1;

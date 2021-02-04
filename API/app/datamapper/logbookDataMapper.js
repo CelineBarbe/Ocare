@@ -105,13 +105,13 @@ const logbookDataMapper = {
     },
 
     async getLogById(id) {
-        const result = await client.query(`SELECT l.*,
+        const result = await client.query(`SELECT lwnid.*,
         p.firstname,
         p.lastname
-        FROM logbook l
+        FROM logbook_with_nurse_infos_documents lwnid
             JOIN patient p
-                ON l.patient_id = p.id
-        WHERE l.id = $1`, [id]);
+                ON lwnid.patient_id = p.id
+        WHERE lwnid.id = $1`, [id]);
 
 
         if (result.rowCount == 0) {

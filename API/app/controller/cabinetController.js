@@ -18,7 +18,6 @@ const cabinetController = {
             response.json({ cabinets });
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -182,9 +181,6 @@ const cabinetController = {
         try {
             const idCab = parseInt(request.params.id, 10);
             const userID = response.locals.userID;
-
-            console.log(idCab, "- id controller");
-            console.log("coucou controller");
 
             const deletedCabinet = await cabinetDataMapper.deleteCabinetByid(idCab, userID);
 

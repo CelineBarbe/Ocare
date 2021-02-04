@@ -17,7 +17,6 @@ const logbookController = {
             response.json(logs);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -27,8 +26,6 @@ const logbookController = {
 
             const idCabinet = request.app.locals.userCurrentCabinet;
             const { date } = request.query;
-
-            console.log(date, "date");
 
             const logsByDate = await logbookDataMapper.getAllLogsByDate(idCabinet, date);
 
@@ -41,7 +38,6 @@ const logbookController = {
             response.json(logsByDate);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -63,7 +59,6 @@ const logbookController = {
             response.json(logsByDate);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },

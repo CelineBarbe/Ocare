@@ -45,7 +45,6 @@ const tourController = {
         try {
             const tourInfo = request.body;
 
-            console.log(tourInfo, "tour info controller");
             const createTour = await tourDataMapper.create(tourInfo);
 
             if(!createTour) {
@@ -57,7 +56,6 @@ const tourController = {
             response.json({ createTour });
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },

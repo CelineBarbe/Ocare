@@ -5,7 +5,6 @@ const patientController = {
     async findAll(request, response, next) {
         try {
             const idCabinet = request.app.locals.userCurrentCabinet;
-            // console.log(response.locals.userID, "-< response.locals.USERID");
 
             const patients = await patientDataMapper.getAllPatient(idCabinet);
 
@@ -47,7 +46,6 @@ const patientController = {
             }
             response.json({ savedPatient });
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },

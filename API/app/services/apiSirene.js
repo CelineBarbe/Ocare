@@ -56,7 +56,6 @@ const checkSiren = {
             etablissement: validPeriod.nicSiegeUniteLegale
         };
 
-        console.log(INSEE, "Infos INSEE");
         // Si le code APE est différent de '86.90D' le Siren ne correspond pas à :
         // Activités des infirmiers et des sages-femmes (8690D)
         if(INSEE.ape != '86.90D') {

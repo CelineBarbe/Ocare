@@ -35,8 +35,6 @@ const medicalActDataMapper = {
     async updateActById(id, actInfo) {
         const { name, category } = actInfo;
 
-        //console.log(actInfo, id, 'medicalact datamapper' );
-
         const findAct = await client.query(`SELECT * FROM medical_act WHERE id = $1`, [id]);
         if (findAct.rowCount == 0) {
             return null;

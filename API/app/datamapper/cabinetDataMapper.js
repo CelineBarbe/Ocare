@@ -137,11 +137,8 @@ const cabinetDataMapper = {
 
     async updateNurseToCabinet(info) {
 
-        console.log(info);
         // check which default cabinet is true
         const defaultCab = await client.query(`SELECT * FROM cabinet_has_nurse JOIN nurse ON nurse.id = cabinet_has_nurse.nurse_id WHERE nurse.id = $1 AND default_cabinet = true`, [info.nurse_id]);
-
-        console.log(defaultCab, "defaultCab");
 
         if (defaultCab.rowCount == 1) {
             // this cabinet become false
@@ -170,9 +167,6 @@ const cabinetDataMapper = {
         // Vérifier qui est owner_ID
         const whoIsOwner = await client.query(`SELECT owner_id FROM cabinet WHERE id = $1`, [idCab]);
 
-        // console.log(whoIsOwner, "whoIsOner, regarde l'objet ?")
-
-        console.log(whoIsOwner.rows[0].owner_id, "Owneer", idNurse, "nurseeID")
         // Si owner_id = idNurse ne peut pas supprimer
         if (whoIsOwner.rows[0].owner_id == idNurse) {
             return 2;
@@ -186,7 +180,6 @@ const cabinetDataMapper = {
         }
 
         // Si le cabinet supprimé est le cabinet par défaut, il faut sélectionner un nouveau cabinet par défaut
-        console.log(result, "résultat de la suppression")
         if (result.rows[0].default_cabinet == true) {
             // Trouver un cabinet auquel le nursee est affilié
             const idCab = await client.query(`SELECT id FROM cabinet_has_nurse WHERE nurse_id = $1 LIMIT 1`, [idNurse]);

@@ -44,7 +44,7 @@ INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet, allowed) VA
 -- NURSE CABINET 2 - PEZZO // Patient 69 à 139
 (2, 1, true, default), -- Olivier Raynal
 (2, 2, false, default), -- Camille Janvier
-(2, 3, true, default) -- Carine Guerino -- OWNER
+(2, 3, true, default), -- Carine Guerino -- OWNER
 (2, 4, default, default), -- Jérémy Chemin
 (2, 5, default, default), -- Sandrine Pasquier
 (2, 6, default, default), -- Judith Noleen
@@ -361,78 +361,68 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 ('2021-01-23', '2021-01-25', '2021-01-25', 'Nettoyage de plaie/pansement', true, true, '2021-01-27', 2, 2),
 ('2020-12-26', '2020-12-26', '2020-12-26', 'Prise de sang à domicile', false, true, null, 4,3),
 ('2020-11-14', '2020-11-15', '2020-12-15', 'Injection traitement', true, true, '2020-12-15', 6, 4),
-('2021-01-22', '2021-01-23', '2021-01-23', 'Vérification des points suite opération genou', true, true, '2021-02-08', 8, 5),
+('2021-01-22', '2021-01-23', '2021-01-23', 'Vérification des points suite opération genou', true, true, '2021-02-08', 8, 5), -- Logbook 5
 ('2021-01-27', '2021-01-27', '2021-01-27', 'Nettoyage cathéter', true, true, '2021-02-16', 14, 6),
 ('2021-01-28', '2021-01-28', '2021-01-28', 'Première prise traitement injectable', false, true, null, 16, 7),
 ('2021-01-29', '2021-01-29', '2021-01-29', 'Prise de sang', false, true, null, 1, 8),
-
-
--- Camille Janvier
 ('2020-12-14', '2020-12-15', '2020-12-15', 'Prise de sang à domicile', false, true, null, 2, 9), 
-
-('2021-01-23', '2021-01-24', '2021-01-24', 'Nettoyage de plaie, vérification points', true, true, '2021-02-12', 4, 10),-- Logbook 10
+('2021-01-23', '2021-01-24', '2021-01-24', 'Nettoyage de plaie, vérification points', true, true, '2021-02-12', 4, 10), -- Logbook 10
 ('2021-01-19', '2021-01-20', '2021-01-20', 'Controle de la glycémie, normal', false, true, null, 6, 11),
 ('2020-12-04', '2020-12-05', '2020-12-05', 'Controle de la glycémie, 1,13', false, true, null, 8, 12),
 ('2019-10-12', '2019-10-13', '2019-10-13', 'Prise en charge plaie du pied', true, true, '2019-11-23', 14, 13),
-('2021-01-25', '2021-01-25', '2021-01-25', 'test', false, false, null, 16, 14),
-('2021-01-25', '2021-01-28', '2021-01-28', 'nouveau pansement à partir du 28', true, true, '2021-01-31', 1, 15),
-
+('2021-01-25', '2021-01-25', '2021-01-25', 'RAS', false, false, null, 16, 14),
+('2021-01-25', '2021-01-28', '2021-01-28', 'nouveau pansement à partir du 28', true, true, '2021-01-31', 1, 15), -- Logbook 15
 ('2020-12-14', '2020-12-15', '2020-12-15', 'Prise de sang à domicile', false, true, null, 2, 16),
 ('2019-05-08', '2019-05-10', '2019-05-10', 'Prise de sang à domicile', false, true, null, 4, 17),
-
 ('2018-03-01', '2018-03-02', '2018-03-02', 'Pansement à refaire sur plaie genou', true, true, '2018-03-06', 6, 18),
-
 ('2018-04-21', '2018-04-22', '2018-04-22', 'Lavement, conseils', false, true, null, 8, 19),
-('2018-06-07', '2018-06-08', '2018-06-08', 'Problèmes pour aller à la selle, lavement', false, true, null, 14, 20),
+('2018-06-07', '2018-06-08', '2018-06-08', 'Problèmes pour aller à la selle, lavement', false, true, null, 14, 20), -- Logbook 20
 ('2019-11-02', '2019-11-03', '2019-11-03', 'Crise, prise en charge journalière', true, true, '2019-12-30', 16, 21),
 ('2020-03-12', '2020-03-13', '2020-03-13', 'Lavement, conseils', false, true, null, 2, 22), 
-
 ('2020-08-21', '2020-08-22', '2020-08-22', 'Nettoyage de cathéter', false, true, null, 1, 23),
 ('2020-09-12', '2020-09-13', '2020-09-13', 'Nettoyage de cathéter + pansement', false, true, null, 2, 24),
-('2020-10-27', '2020-10-28', '2020-10-28', 'Prise de sang', false, true, null, 4, 25),
-
+('2020-10-27', '2020-10-28', '2020-10-28', 'Prise de sang', false, true, null, 4, 25), -- Logbook 25
 ('2020-11-27', '2020-12-28', '2020-12-28', 'Vérification des points, pansement', false, true, null, 6, 26),
 ('2021-01-25', '2021-01-28', '2021-01-28', 'attention patient dur à piquer', false, true, '2021-01-31', 8, 27),
 ('2021-01-25', '2021-01-25', '2021-01-25', 'Lavement, conseils', false, true, null, 14, 28),
 ('2021-01-25', '2021-01-25', '2021-01-25', 'Problèmes pour aller à la selle, lavement', false, true, null, 16, 29),
-
--- Tester les tournées / tournée 1
-('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie un peu rouge, à surveiller', false, true, null, 1, 30), 
+-- LOGBOOKS
+('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie un peu rouge, à surveiller', false, true, null, 1, 30), -- Logbook 30
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Infection urinaire toujours en cours', false, true, null, 2, 31),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Tension 13/7', false, true, null, 4, 32),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'En bonne forme à la dernière visite', false, true, null, 6, 33),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Surveillance de points', false, true, null, 8, 34), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Récupérer l ordonnance', false, true, null, 14, 35), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Récupérer l ordonnance', false, true, null, 14, 35), -- Logbook 35
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Fausse route, gorge toujours irritée', false, true, null, 16, 36), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Changement d ordonnance, vérifier posologie', false, true, null, 1, 37),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 2, 38),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 4, 39),
-('2021-02-01', '2021-02-01', '2021-02-01', 'Dernière prise 11/6', false, true, null, 6, 40), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Dernière prise 11/6', false, true, null, 6, 40), -- Logbook 40
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Dernier point à retirer', false, true, null, 8, 41), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 14, 42),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Doliprane 500 en +', false, true, null, 16, 43), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 1, 44), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie plantaire, coupure verre', false, true, null, 2, 45), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie plantaire, coupure verre', false, true, null, 2, 45), -- Logbook 45
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 4, 46),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 6, 47), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 8, 48), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'RAS', false, true, null, 14, 49), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 16, 50),
+('2021-02-01', '2021-02-01', '2021-02-01', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 16, 50), -- Logbook 50
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Glaires normaux', false, true, null, 1, 51), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Cloques suite à une brulure, pansement gras', false, true, null, 2, 52),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie purulente', false, true, null, 4, 53), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Nausées post chimio', false, true, null, 6, 54), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 8, 55),
+('2021-02-01', '2021-02-01', '2021-02-01', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 8, 55), -- Logbook 55
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Urines troubles, ECBU à prévoir', false, true, null, 14, 56),
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Sondage difficile', false, true, null, 16, 57), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'RAS', false, true, null, 1, 58), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Revérifier le cathé', false, true, null, 2, 59),
-('2021-02-02', '2021-02-02', '2021-02-02', 'Poser cataplasme', false, true, null, 4, 60),
+('2021-02-02', '2021-02-02', '2021-02-02', 'Poser cataplasme', false, true, null, 4, 60), -- Logbook 60
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Revoir ordo avant PDS', false, true, null, 6, 61), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Nouvelle ordonnance', false, true, null, 8, 62), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Reprise après arrachage de sonde', false, true, null, 14, 63), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Plaie du cuir chevelu suturée', false, true, null, 16, 64), 
-('2021-02-02', '2021-02-02', '2021-02-02', 'Tension 12/8', false, true, null, 1, 65), 
+('2021-02-02', '2021-02-02', '2021-02-02', 'Tension 12/8', false, true, null, 1, 65), -- Logbook 65
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Encore douloureuse', false, true, null, 2, 66),
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Lavement avant coloscopie', false, true, null, 4, 67), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Reprise de fistule', false, true, null, 6, 68),
@@ -440,72 +430,72 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 -- LOGBOOK PATIENT CABINET 2 // PATIENT 69 à 139
 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie un peu rouge, à surveiller', false, true, null, 3, 69), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Infection urinaire toujours en cours', false, true, null, 5, 70), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Infection urinaire toujours en cours', false, true, null, 5, 70), -- Logbook 70
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Tension 13/7', false, true, null, 10, 71), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'En bonne forme à la dernière visite', false, true, null, 12, 72),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Surveillance de points', false, true, null, 3, 73),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Récupérer l ordonnance', false, true, null, 5, 74), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Fausse route, gorge toujours irritée', false, true, null, 10, 75), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Fausse route, gorge toujours irritée', false, true, null, 10, 75), -- Logbook 75
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Changement d ordonnance, vérifier posologie', false, true, null, 12, 76), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 3, 77),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 5, 78), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Dernière prise 11/6', false, true, null, 10, 79),
-('2021-02-01', '2021-02-01', '2021-02-01', 'Dernier point à retirer', false, true, null, 12, 80), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Dernier point à retirer', false, true, null, 12, 80), -- Logbook 80
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 3, 81),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Doliprane 500 en +', false, true, null, 5, 82),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 10, 83),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie plantaire, coupure verre', false, true, null, 12, 84), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Peau fragile, vérifier l'absence d'hématome après injection', false, true, null, 3, 85), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 3, 85), -- Logbook 85
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 5, 86), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 10, 87), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'RAS', false, true, null, 12, 88), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 3, 89), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Glaires normaux', false, true, null, 5, 90), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Glaires normaux', false, true, null, 5, 90), -- Logbook 90
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Cloques suite à une brulure, pansement gras', false, true, null, 10, 91),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie purulente', false, true, null, 12, 92), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Nausées post chimio', false, true, null, 3, 93), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 5, 94),
-('2021-02-02', '2021-02-02', '2021-02-02', 'Urines troubles, ECBU à prévoir', false, true, null, 10, 95),
+('2021-02-02', '2021-02-02', '2021-02-02', 'Urines troubles, ECBU à prévoir', false, true, null, 10, 95), -- Logbook 95
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Sondage difficile', false, true, null, 12, 96), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'RAS', false, true, null, 3, 97),
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Revérifier le cathé', false, true, null, 5, 98), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Poser cataplasme', false, true, null, 10, 99), 
-('2021-02-02', '2021-02-02', '2021-02-02', 'Revoir ordo avant PDS', false, true, null, 12, 100), 
+('2021-02-02', '2021-02-02', '2021-02-02', 'Revoir ordo avant PDS', false, true, null, 12, 100), -- Logbook 100
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Nouvelle ordonnance', false, true, null, 3, 101), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Reprise après arrachage de sonde', false, true, null, 5, 102), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Plaie du cuir chevelu suturée', false, true, null, 10, 103),
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Tension 12/8', false, true, null, 12, 104), 
-('2021-02-02', '2021-02-02', '2021-02-02', 'Encore douloureuse', false, true, null, 3, 105), 
+('2021-02-02', '2021-02-02', '2021-02-02', 'Encore douloureuse', false, true, null, 3, 105), -- Logbook 105
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Lavement avant coloscopie', false, true, null, 5, 106), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Reprise de fistule', false, true, null, 10, 107), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie un peu rouge, à surveiller', false, true, null, 12, 108), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Infection urinaire toujours en cours', false, true, null, 3, 109)
-('2021-02-01', '2021-02-01', '2021-02-01', 'Tension 13/7', false, true, null, 5, 110)
-('2021-02-01', '2021-02-01', '2021-02-01', 'En bonne forme à la dernière visite', false, true, null, 10, 111)
-('2021-02-01', '2021-02-01', '2021-02-01', 'Surveillance de points', false, true, null, 12, 112)
-('2021-02-01', '2021-02-01', '2021-02-01', 'Récupérer l ordonnance', false, true, null, 3, 113)
+('2021-02-01', '2021-02-01', '2021-02-01', 'Infection urinaire toujours en cours', false, true, null, 3, 109),
+('2021-02-01', '2021-02-01', '2021-02-01', 'Tension 13/7', false, true, null, 5, 110), -- Logbook 110
+('2021-02-01', '2021-02-01', '2021-02-01', 'En bonne forme à la dernière visite', false, true, null, 10, 111),
+('2021-02-01', '2021-02-01', '2021-02-01', 'Surveillance de points', false, true, null, 12, 112),
+('2021-02-01', '2021-02-01', '2021-02-01', 'Récupérer l ordonnance', false, true, null, 3, 113),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Fausse route, gorge toujours irritée', false, true, null, 5, 114),
-('2021-02-01', '2021-02-01', '2021-02-01', 'Changement d ordonnance, vérifier posologie', false, true, null, 10, 115),
+('2021-02-01', '2021-02-01', '2021-02-01', 'Changement d ordonnance, vérifier posologie', false, true, null, 10, 115), -- Logbook 115
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 12, 116), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 3, 117), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Dernière prise 11/6', false, true, null, 5, 118), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Dernier point à retirer', false, true, null, 10, 119), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 12, 120),
+('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 12, 120), -- Logbook 120
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Doliprane 500 en +', false, true, null, 3, 121), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 5, 122), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie plantaire, coupure verre', false, true, null, 10, 123), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 12, 124),
-('2021-02-01', '2021-02-01', '2021-02-01', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 3, 125), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 3, 125), -- Logbook 125 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 5, 126), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'RAS', false, true, null, 10, 127),
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 12, 128), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Glaires normaux', false, true, null, 3, 129), 
-('2021-02-01', '2021-02-01', '2021-02-01', 'Cloques suite à une brulure, pansement gras', false, true, null, 5, 130), 
+('2021-02-01', '2021-02-01', '2021-02-01', 'Cloques suite à une brulure, pansement gras', false, true, null, 5, 130), -- Logbook 130
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaie purulente', false, true, null, 10, 131), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Nausées post chimio', false, true, null, 12, 132), 
 ('2021-02-01', '2021-02-01', '2021-02-01', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 3, 133), 
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Urines troubles, ECBU à prévoir', false, true, null, 5, 134),
-('2021-02-02', '2021-02-02', '2021-02-02', 'Sondage difficile', false, true, null, 10, 135), 
+('2021-02-02', '2021-02-02', '2021-02-02', 'Sondage difficile', false, true, null, 10, 135), -- Logbook 135
 ('2021-02-02', '2021-02-02', '2021-02-02', 'RAS', false, true, null, 12, 136),
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Revérifier le cathé', false, true, null, 3, 137),
 ('2021-02-02', '2021-02-02', '2021-02-02', 'Poser cataplasme', false, true, null, 5, 138), 
@@ -513,105 +503,132 @@ INSERT INTO logbook(creation_date, planned_date, done_date, observations, daily,
 
 -- LOGBOOK PATIENT CABINET 3 // PATIENT 140 à 196
 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie un peu rouge, à surveiller', false, true, null, 3, 140), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Infection urinaire toujours en cours', false, true, null, 5, 141), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Tension 13/7', false, true, null, 10, 142), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'En bonne forme à la dernière visite', false, true, null, 12, 143),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Surveillance de points', false, true, null, 3, 144),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Récupérer l ordonnance', false, true, null, 5, 145), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Fausse route, gorge toujours irritée', false, true, null, 10, 146), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Changement d ordonnance, vérifier posologie', false, true, null, 12, 147), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 3, 148),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 5, 149), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Dernière prise 11/6', false, true, null, 10, 150),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Dernier point à retirer', false, true, null, 12, 151), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 3, 152),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Doliprane 500 en +', false, true, null, 5, 153),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 10, 154),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie plantaire, coupure verre', false, true, null, 12, 84), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Peau fragile, vérifier l'absence d'hématome après injection', false, true, null, 3, 85), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 5, 86), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 10, 87), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'RAS', false, true, null, 12, 88), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 3, 89), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Glaires normaux', false, true, null, 5, 90), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Cloques suite à une brulure, pansement gras', false, true, null, 10, 91),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie purulente', false, true, null, 12, 92), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Nausées post chimio', false, true, null, 3, 93), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 5, 94),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Urines troubles, ECBU à prévoir', false, true, null, 10, 95),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Sondage difficile', false, true, null, 12, 96), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'RAS', false, true, null, 3, 97),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Revérifier le cathé', false, true, null, 5, 98), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Poser cataplasme', false, true, null, 10, 99), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Revoir ordo avant PDS', false, true, null, 12, 100), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Nouvelle ordonnance', false, true, null, 3, 101), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Reprise après arrachage de sonde', false, true, null, 5, 102), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie du cuir chevelu suturée', false, true, null, 10, 103),
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Tension 12/8', false, true, null, 12, 104), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Encore douloureuse', false, true, null, 3, 105), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Lavement avant coloscopie', false, true, null, 5, 106), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Reprise de fistule', false, true, null, 10, 107), 
--- ('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie un peu rouge, à surveiller', false, true, null, 12, 108), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Infection urinaire toujours en cours', false, true, null, 3, 109)
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Tension 13/7', false, true, null, 5, 110)
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'En bonne forme à la dernière visite', false, true, null, 10, 111)
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Surveillance de points', false, true, null, 12, 112)
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Récupérer l ordonnance', false, true, null, 3, 113)
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Fausse route, gorge toujours irritée', false, true, null, 5, 114),
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Changement d ordonnance, vérifier posologie', false, true, null, 10, 115),
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 12, 116), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 3, 117), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Dernière prise 11/6', false, true, null, 5, 118), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Dernier point à retirer', false, true, null, 10, 119), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 12, 120),
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Doliprane 500 en +', false, true, null, 3, 121), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 5, 122), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Plaie plantaire, coupure verre', false, true, null, 10, 123), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 12, 124),
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 3, 125), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 5, 126), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'RAS', false, true, null, 10, 127),
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 12, 128), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Glaires normaux', false, true, null, 3, 129), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Cloques suite à une brulure, pansement gras', false, true, null, 5, 130), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Plaie purulente', false, true, null, 10, 131), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Nausées post chimio', false, true, null, 12, 132), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 3, 133), 
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Urines troubles, ECBU à prévoir', false, true, null, 5, 134),-- lb 56 act 9
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Sondage difficile', false, true, null, 10, 135), act 7
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'RAS', false, true, null, 12, 136), act 1
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Revérifier le cathé', false, true, null, 3, 137), act 6
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Poser cataplasme', false, true, null, 5, 138), -- Logbook 60 - act 1
--- ('2021-02-04', '2021-02-04', '2021-02-04', 'Revoir ordo avant PDS', false, true, null, 10, 139),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie un peu rouge, à surveiller', false, true, null, 3, 140), -- Logbook 140
+('2021-02-03', '2021-02-03', '2021-02-03', 'Infection urinaire toujours en cours', false, true, null, 7, 141), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Tension 13/7', false, true, null, 9, 142), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'En bonne forme à la dernière visite', false, true, null, 10, 143),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Surveillance de points', false, true, null, 11, 144),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Récupérer l ordonnance', false, true, null, 12, 145), -- Logbook 145
+('2021-02-03', '2021-02-03', '2021-02-03', 'Fausse route, gorge toujours irritée', false, true, null, 14, 146), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Changement d ordonnance, vérifier posologie', false, true, null, 15, 147), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 3, 148),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 7, 149), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Dernière prise 11/6', false, true, null, 9, 150), -- Logbook 150
+('2021-02-03', '2021-02-03', '2021-02-03', 'Dernier point à retirer', false, true, null, 10, 151), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 11, 152),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Doliprane 500 en +', false, true, null, 12, 153),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 14, 154),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie plantaire, coupure verre', false, true, null, 15, 155), -- Logbook 155
+('2021-02-03', '2021-02-03', '2021-02-03', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 3, 156), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 7, 157), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 9, 158), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'RAS', false, true, null, 10, 159), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 11, 160), -- Logbook 160
+('2021-02-03', '2021-02-03', '2021-02-03', 'Glaires normaux', false, true, null, 12, 161), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Cloques suite à une brulure, pansement gras', false, true, null, 14, 162),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie purulente', false, true, null, 15, 163), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Nausées post chimio', false, true, null, 3, 164), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 7, 165), -- Logbook 165
+('2021-02-03', '2021-02-03', '2021-02-03', 'Urines troubles, ECBU à prévoir', false, true, null, 9, 166),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Sondage difficile', false, true, null, 10, 167), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'RAS', false, true, null, 11, 168),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Revérifier le cathé', false, true, null, 12, 169), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Poser cataplasme', false, true, null, 14, 170), -- Logbook 170
+('2021-02-03', '2021-02-03', '2021-02-03', 'Revoir ordo avant PDS', false, true, null, 15, 171), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Nouvelle ordonnance', false, true, null, 3, 172), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Reprise après arrachage de sonde', false, true, null, 7, 173), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie du cuir chevelu suturée', false, true, null, 9, 174),
+('2021-02-03', '2021-02-03', '2021-02-03', 'Tension 12/8', false, true, null, 10, 175), -- Logbook 175
+('2021-02-03', '2021-02-03', '2021-02-03', 'Encore douloureuse', false, true, null, 11, 176), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Lavement avant coloscopie', false, true, null, 12, 177), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Reprise de fistule', false, true, null, 14, 178), 
+('2021-02-03', '2021-02-03', '2021-02-03', 'Plaie un peu rouge, à surveiller', false, true, null, 15, 179), 
+('2021-02-04', '2021-02-04', '2021-02-04', 'Infection urinaire toujours en cours', false, true, null, 3, 180), -- Logbook 180
+('2021-02-04', '2021-02-04', '2021-02-04', 'Tension 13/7', false, true, null, 7, 181),
+('2021-02-04', '2021-02-04', '2021-02-04', 'En bonne forme à la dernière visite', false, true, null, 9, 182),
+('2021-02-04', '2021-02-04', '2021-02-04', 'Surveillance de points', false, true, null, 10, 183),
+('2021-02-04', '2021-02-04', '2021-02-04', 'Récupérer l ordonnance', false, true, null, 11, 184),
+('2021-02-04', '2021-02-04', '2021-02-04', 'Fausse route, gorge toujours irritée', false, true, null, 12, 185), -- Logbook 185
+('2021-02-04', '2021-02-04', '2021-02-04', 'Changement d ordonnance, vérifier posologie', false, true, null, 14, 186),
+('2021-02-04', '2021-02-04', '2021-02-04', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 15, 187), 
+('2021-02-04', '2021-02-04', '2021-02-04', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 3, 188), 
+('2021-02-04', '2021-02-04', '2021-02-04', 'Dernière prise 11/6', false, true, null, 7, 189), 
+('2021-02-04', '2021-02-04', '2021-02-04', 'Dernier point à retirer', false, true, null, 9, 190), -- Logbook 190
+('2021-02-04', '2021-02-04', '2021-02-04', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 10, 191),
+('2021-02-04', '2021-02-04', '2021-02-04', 'Doliprane 500 en +', false, true, null, 11, 192), 
+('2021-02-04', '2021-02-04', '2021-02-04', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 12, 193), 
+('2021-02-04', '2021-02-04', '2021-02-04', 'Plaie plantaire, coupure verre', false, true, null, 14, 194), 
+('2021-02-04', '2021-02-04', '2021-02-04', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 15, 195), -- Logbook 195
+('2021-02-04', '2021-02-04', '2021-02-04', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 3, 196), 
 
--- Tester les tournées / tournée 4
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 2), -- lb 102
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 4),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 6),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 8),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 11),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 12),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 32),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 16),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 5), -- Logbook 110
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 64),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 26),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 15),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 17),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 21),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 22),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 31),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 33),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 34),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 41), -- Logbook 120
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 45),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 46),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 48),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 47),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 63),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 56),
--- ('2021-02-04', '2021-02-04', null, 'test février tournée 4', false, false, null, 1, 67);  -- lb 127
+-- LOGBOOK PATIENT CABINET 4 // PATIENT 197 à 261
+
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie un peu rouge, à surveiller', false, true, null, 5, 197), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Infection urinaire toujours en cours', false, true, null, 7, 198), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Tension 13/7', false, true, null, 8, 199), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'En bonne forme à la dernière visite', false, true, null, 9, 200), -- Logbook 200
+('2021-02-05', '2021-02-05', '2021-02-05', 'Surveillance de points', false, true, null, 11, 201),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Récupérer l ordonnance', false, true, null, 13, 202), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Fausse route, gorge toujours irritée', false, true, null, 14, 203), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Changement d ordonnance, vérifier posologie', false, true, null, 15, 204), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 16, 205), -- Logbook 205
+('2021-02-05', '2021-02-05', '2021-02-05', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 5, 206), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Dernière prise 11/6', false, true, null, 7, 207),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Dernier point à retirer', false, true, null, 8, 208), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 9, 209),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Doliprane 500 en +', false, true, null, 11, 210), -- Logbook 210
+('2021-02-05', '2021-02-05', '2021-02-05', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 13, 211),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie plantaire, coupure verre', false, true, null, 14, 212), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 15, 213), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 16, 214), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 5, 215), -- Logbook 215 
+('2021-02-05', '2021-02-05', '2021-02-05', 'RAS', false, true, null, 7, 216), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 8, 217), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Glaires normaux', false, true, null, 9, 218), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Cloques suite à une brulure, pansement gras', false, true, null, 11, 219),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie purulente', false, true, null, 13, 220), -- Logbook 220
+('2021-02-05', '2021-02-05', '2021-02-05', 'Nausées post chimio', false, true, null, 14, 221), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 15, 222),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Urines troubles, ECBU à prévoir', false, true, null, 16, 223),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Sondage difficile', false, true, null, 5, 224), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'RAS', false, true, null, 7, 225), -- Logbook 225
+('2021-02-05', '2021-02-05', '2021-02-05', 'Revérifier le cathé', false, true, null, 8, 226), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Poser cataplasme', false, true, null, 9, 227), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Revoir ordo avant PDS', false, true, null, 11, 228), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Nouvelle ordonnance', false, true, null, 13, 229), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Reprise après arrachage de sonde', false, true, null, 14, 230), -- Logbook 230 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie du cuir chevelu suturée', false, true, null, 15, 231),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Tension 12/8', false, true, null, 16, 232), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Encore douloureuse', false, true, null, 5, 233), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Lavement avant coloscopie', false, true, null, 7, 234), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Reprise de fistule', false, true, null, 8, 235), -- Logbook 235
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie un peu rouge, à surveiller', false, true, null, 9, 236), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Infection urinaire toujours en cours', false, true, null, 11, 237),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Tension 13/7', false, true, null, 13, 238),
+('2021-02-05', '2021-02-05', '2021-02-05', 'En bonne forme à la dernière visite', false, true, null, 14, 239),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Surveillance de points', false, true, null, 15, 240), -- Logbook 240
+('2021-02-05', '2021-02-05', '2021-02-05', 'Récupérer l ordonnance', false, true, null, 16, 241),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Fausse route, gorge toujours irritée', false, true, null, 5, 242),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Changement d ordonnance, vérifier posologie', false, true, null, 7, 243),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Prégabaline à augmenter, vu avec le neuro', false, true, null, 8, 244), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Rappeler le RDV avec son médecin pour le 15/02', false, true, null, 9, 245), -- Logbook 245 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Dernière prise 11/6', false, true, null, 11, 246), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Dernier point à retirer', false, true, null, 13, 247), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie cicatrisant mal, à surveiller ++', false, true, null, 14, 248),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Doliprane 500 en +', false, true, null, 15, 249), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Mauvaise chute en sortant de la douche, surveiller les hématomes', false, true, null, 16, 250), -- Logbook 250 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie plantaire, coupure verre', false, true, null, 5, 251), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Peau fragile, vérifier l absence d hématome après injection', false, true, null, 7, 252),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Vérifier les papiers pour la visite chez le généraliste', false, true, null, 8, 253),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Fin d ordonnance, vérifier la nouvelle', false, true, null, 9, 254),
+('2021-02-05', '2021-02-05', '2021-02-05', 'RAS', false, true, null, 11, 255), -- Logbook 255
+('2021-02-05', '2021-02-05', '2021-02-05', 'Lavage cheveux, demander pour le coiffeur', false, true, null, 13, 256), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Glaires normaux', false, true, null, 14, 257), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Cloques suite à une brulure, pansement gras', false, true, null, 15, 258),
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaie purulente', false, true, null, 16, 259), 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Nausées post chimio', false, true, null, 5, 260), -- Logbook 260 
+('2021-02-05', '2021-02-05', '2021-02-05', 'Plaques d eczéma derrière les genoux à surveiller', false, true, null, 7, 261); 
+
 
 -- Medical Act
 INSERT INTO medical_act(name, category) VALUES
@@ -822,8 +839,73 @@ INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES
 (192, 3),
 (193, 1),
 (194, 5),
-(196, 6),
-
+(195, 6),
+(196, 1),
+(197, 1),
+(198, 7),
+(199, 10),
+(200, 1),
+(201, 5),
+(202, 1),
+(203, 8),
+(204, 3),
+(205, 3),
+(206, 1),
+(207, 10),
+(208, 5),
+(209, 5),
+(210, 3),
+(211, 1),
+(212, 5),
+(213, 6),
+(214, 1),
+(215, 1),
+(216, 1),
+(217, 1),
+(218, 8),
+(219, 5),
+(220, 5),
+(221, 1),
+(222, 1),
+(223, 9),
+(224, 7),
+(225, 1),
+(226, 6),
+(227, 1),
+(228, 2),
+(229, 3),
+(230, 7),
+(231, 5),
+(232, 10),
+(233, 9),
+(234, 1),
+(235, 1),
+(236, 1),
+(237, 7),
+(238, 10),
+(239, 1),
+(240, 5),
+(241, 1),
+(242, 8),
+(243, 3),
+(244, 3),
+(245, 1),
+(246, 10),
+(247, 5),
+(248, 5),
+(249, 3),
+(250, 1),
+(251, 5),
+(252, 6),
+(253, 1),
+(254, 1),
+(255, 1),
+(256, 1),
+(257, 8),
+(258, 5),
+(259, 5),
+(260, 1),
+(261, 1);
 
 
 -- Tour

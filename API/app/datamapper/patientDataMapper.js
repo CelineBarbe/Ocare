@@ -49,11 +49,6 @@ const patientDataMapper = {
         return result.rows;
     },
 
-    // async find(info) {
-    //     console.log('coucou');
-    //     console.log(info, "info");
-    // },
-
     async createPatient(patientInfo) {
 
         const { firstname, lastname, birthdate, gender, address, additional_address, zip_code, city, phone_number, pathology, daily_checking, number_daily_checking, cabinet_id } = patientInfo;
