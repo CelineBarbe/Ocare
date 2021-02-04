@@ -33,7 +33,7 @@ const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_
     <UpdateCabinetModal handleModal={handleModal} />
     : null}
       <p className="cabinet-card-title">{name}</p>
-      <span className="cabinet-card-nbpatient">{nbpatients} patients</span>
+      <span className="cabinet-card-nbpatient"><Link to={`/patients`}>{nbpatients>=2 ? `${nbpatients} patients` : `${nbpatients} patient`} </Link></span>
       <p className="cabinet-card-infos cabinet-card-adresse ">
         {`${address} \n ${zip_code} ${city}`}
       </p>

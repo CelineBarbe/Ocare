@@ -73,8 +73,8 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
                           <img className="transmission-container-row-left-img" alt="woman" src={element.gender == 'F'? F : M}/>
                         </div>
                           <div className="transmission-container-row-right secondary">
-                          <h3>{element.lastname}</h3>
-                            <p>{element.observations}</p>
+                          <h3>{`${element.lastname} ${element.firstname}`}</h3>
+                            <p>{element.observations ? element.observations : element.medical_act_name}</p>
                           </div>  
                           
                     </div>
