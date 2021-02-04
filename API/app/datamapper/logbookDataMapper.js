@@ -169,7 +169,7 @@ const logbookDataMapper = {
 
     async updateLogByid(idLog, logInfo) {
         //pas de update de tag dans un premier temps
-        const { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id } = logInfo;
+        const { observations, document, nurse_id, patient_id } = logInfo;
 
         const findLog = await client.query(`SELECT * FROM logbook WHERE id = $1 AND logbook.patient_id = $2`, [idLog, patient_id]);
 
@@ -177,19 +177,18 @@ const logbookDataMapper = {
             return null;
         }
 
-        const result = await client.query(`UPDATE logbook SET planned_date = $1, time = $2, done_date = $3, observations = $4, daily = $5, done = $6, ending_date = $7, nurse_id = $8 WHERE id = $9`, [
-            planned_date,
-            time,
-            done_date,
+        // Modifie le logbook
+        await client.query(`UPDATE logbook SET observations = $1, document = $2, nurse_id = $3 WHERE id = $4 RETURNING *`, [
             observations,
-            daily,
-            done,
-            ending_date,
+            document,
             nurse_id,
             idLog
         ]);
 
-        return result.rowCount;
+        // 3 - On renvoie les infos du logbook avec le nurse et le medical_act en +
+        const logUpdated = await client.query(`SELECT * FROM logbook_with_nurse_infos_documents WHERE id = $1`, [idLog]);
+
+        return logUpdated.rows;
     },
 
     async deleteLogByid(idLog) {
