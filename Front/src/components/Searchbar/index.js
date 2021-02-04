@@ -30,6 +30,13 @@ const Searchbar = ({
     setResult(returnArrayHandleChange(list, evt.target.value));
   };
 
+  //vide l'input au click
+  const handleClick = (evt) => {
+    const reset = '';
+    let name = 'inputSearchDashboard';
+    changeField(reset,name);
+  }
+
   const SearchResult = () => {
     console.log("Resulat dans SearchResult", result);
     return (
@@ -38,7 +45,7 @@ const Searchbar = ({
         result.length >=1 
         ? result.map(patient => (
           <p className="searchResult-name" key={patient.id}>
-          <Link to={`/patient/${patient.id}`}>{patient.lastname} {patient.firstname}</Link>
+          <Link to={`/patient/${patient.id}`} onClick={handleClick}>{patient.lastname} {patient.firstname}</Link>
           </p>
         ))
        : null  
