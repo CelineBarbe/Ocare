@@ -74,7 +74,7 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
                         </div>
                           <div className="transmission-container-row-right secondary">
                           <h3>{`${element.lastname} ${element.firstname}`}</h3>
-                            <p>{element.observations}</p>
+                            <p>{element.observations ? element.observations : element.medical_act_name}</p>
                           </div>  
                           
                     </div>
