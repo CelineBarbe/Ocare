@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><defs><style>.cls-1,.cls-2{fill:none;}.cls-2{stroke:#294C51;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>home</title><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><path class="cls-1" d="M0,0H52V52H0Z"/><polyline class="cls-2" points="10.83 26 6.5 26 26 6.5 45.5 26 41.17 26"/><path class="cls-2" d="M10.83,26V41.17a4.33,4.33,0,0,0,4.34,4.33H36.83a4.33,4.33,0,0,0,4.34-4.33V26"/><path class="cls-2" d="M19.5,45.5v-13a4.33,4.33,0,0,1,4.33-4.33h4.34A4.33,4.33,0,0,1,32.5,32.5v13"/><path class="cls-1" d="M0,0H52V52H0Z"/><polyline class="cls-2" points="10.83 26 6.5 26 26 6.5 45.5 26 41.17 26"/><path class="cls-2" d="M10.83,26V41.17a4.33,4.33,0,0,0,4.34,4.33H36.83a4.33,4.33,0,0,0,4.34-4.33V26"/><path class="cls-2" d="M19.5,45.5v-13a4.33,4.33,0,0,1,4.33-4.33h4.34A4.33,4.33,0,0,1,32.5,32.5v13"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-2" width="72" height="72" viewBox="0 0 24 24" stroke-width="1" stroke="#294C51" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <rect x="10" y="12" width="4" height="4" />
+</svg>

@@ -62,47 +62,26 @@ const DefaultComponant = () => {
 
 
   return ( 
-  <div className="tour">
+  <div className="tour-container">
     <Link to='/tour'>
-      <p className="tour-title">Ma tournée </p>
+        <p className="tour-title">Ma Tournée </p>
     </Link>
-    <ul className="tour-ul">
-    { 
-    cards.length >= 1 && !isLoading
-    ? cards.map(patient =>
-        <li className="tour-li" key={patient.logbook_id}>
-          <Link to={`/patient/${patient.patient_id}`}  >
-          <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
-          </Link>
-          <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>
-        </li>
-            )
-    : <DefaultComponant/>  
-    }
-    
-     {/* <Link to="/patient">
-        <li className="tour-li">
-          <span className="tour-span-date">06:00</span>
-          <span className="tour-span-name">Mr Pichon</span>
-          <span className="tour-span-tag">Pansement</span>
-        </li>
-      </Link>
-      <li className="tour-li">
-        <span className="tour-span-date">07:00</span>
-        <span className="tour-span-name">Mme Paco</span>
-        <span className="tour-span-tag">Toilette</span>
-      </li>
-      <li className="tour-li">
-        <span className="tour-span-date">08:00</span>
-        <span className="tour-span-name">Mr Robillard</span>
-        <span className="tour-span-tag">Injection</span>
-      </li>
-      <li className="tour-li">
-        <span className="tour-span-date">09:00</span>
-        <span className="tour-span-name">Mme Vidal</span>
-        <span className="tour-span-tag">Prise de sang</span>
-      </li> */}
+    <div className="tour"> 
+      <ul className="tour-ul">
+      { 
+      cards.length >= 1 && !isLoading
+      ? cards.map(patient =>
+          <li className="tour-li" key={patient.logbook_id}>
+            <Link to={`/patient/${patient.patient_id}`}  >
+            <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
+            </Link>
+            <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>
+          </li>
+              )
+      : <DefaultComponant/>  
+      }
     </ul>
+    </div>
   </div>
   )
 };

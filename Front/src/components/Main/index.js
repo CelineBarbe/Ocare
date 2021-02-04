@@ -7,7 +7,6 @@ import './main.scss';
 // == Import components
 import Searchbar from 'src/containers/Searchbar';
 import Transmission from 'src/components/Transmission';
-import Patients from 'src/components/Patients';
 import Tour from 'src/containers/Tour';
 
 // == Composant
@@ -15,11 +14,8 @@ const Main = () => (
   <main className="main">
   
       <Searchbar />
-      <Transmission />
-      <Link to='/patients'>
-        <Patients />
-      </Link>
-       <Tour />     
+      <Tour />   
+      <Transmission />  
     
   </main>
 );

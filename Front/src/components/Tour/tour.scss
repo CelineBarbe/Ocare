@@ -9,25 +9,22 @@
 .tour {
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-family: 'Nunito', sans-serif;
-  padding: vars.$gutter/2;
-  margin: 0 auto;
-  background-color: vars.$color-primary;
+  padding: vars.$gutter;
+  margin: vars.$gutter;
   border-radius: 10px;
-  width: 90%;
   overflow-y: scroll;
   -ms-overflow-style:none;
-  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
-  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
-  text-align: center;
-  height: 200px;
+  height: 300px;
 
 
   &-title {
-    margin:vars.$gutter  vars.$gutter*2;
-    color: vars.$color-white;
+    font-family: 'Montserrat', sans-serif;
+    margin: vars.$gutter vars.$gutter*2 vars.$gutter*2 vars.$gutter*2;
+    color: #495866;
     font-weight: bold;
+    font-size: 20px;
+    text-align: center;
   }
 
   &-ul {
@@ -38,12 +35,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: vars.$gutter vars.$gutter*3;
+    padding: vars.$gutter*3;
     margin: vars.$gutter;
-    background-color: vars.$color-grey;
-    border-radius: 10px;
-    font-weight: 400;
-    color: vars.$color-grey4;
+    background-color: #27A693;
+    border-radius: 17px;
+    font-weight: bold;
+    color: #fefefe;
   }
 
 }
@@ -57,8 +54,3 @@
 }
 
 
-@media (min-width: 376px) and (min-width: 414px) {
-  .tour {
-    height: 280px;
-  }
-}

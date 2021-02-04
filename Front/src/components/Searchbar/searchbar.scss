@@ -5,8 +5,13 @@
   @include formulaire-search-container();
   
   &-input {
-    @include formulaire-search-input();
+    padding: vars.$gutter vars.$gutter*2;
+    font-size: 14px;
+    color: vars.$color-grey4;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 10px;
+    border: 1px solid rgb(224, 224, 224);
   }
-
 }
+
 
