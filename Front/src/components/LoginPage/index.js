@@ -30,37 +30,36 @@ const LoginPage = ({
  
   return (
     <div className="login-container">
-      <Notification />
-    <div className="login-container-top">
-      <h1 className="login-container-title">O'CARE</h1>
-      <img src={logo} className="login-container-logo" alt="logo"/>
-    </div>
-    <div className="login-container-bot">
-    <form className="login-container-form" onSubmit={handleSubmit}>
-        <input
-          className="login-container-form-input"
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={handleChange}
-        />
-        <input
-          className="login-container-form-input"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleChange}
-        />
-        <button type="submit" className="login-container-form-button" onClick={handleLogin}>
-          Se connecter
-        </button>
-      </form>
-    </div>
-    
-    
-      
+      <div className="container-top">
+        <Notification />
+        
+        <img src={logo} className="login-container-logo" alt="logo"/>
+        <h1 className="login-container-title">OCARE</h1>
+      </div>
+      <div className="container-bot">
+        <form className="login-container-form" onSubmit={handleSubmit}>
+          <input
+            className="login-container-form-input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={handleChange}
+          />
+          <input
+            className="login-container-form-input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+          />
+          <button type="submit" className="login-container-form-button" onClick={handleLogin}>
+            Se connecter
+          </button>
+        </form>
+        <p className="inscription">Inscription</p>
+      </div>
     </div>
   );
 };
