@@ -77,7 +77,7 @@ const patientsMW = (store) => (next) => (action) => {
         phone_number,
         pathology,
         daily_checking,
-        number_daily_checking,
+        number_daily_checking: 1,
         cabinet_id: default_cabinet,
       }
     };
