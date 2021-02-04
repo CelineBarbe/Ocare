@@ -77,7 +77,7 @@ const logbookDataMapper = {
         // Tomorrow = date + 1
         const tomorrow = DateTime.fromISO(`${date}`).plus({days: 1}).toISODate();
 
-        const result = await client.query(`SELECT l.*,
+        const result = await client.query(`SELECT lwnid.*,
         p.firstname,
         p.lastname,
         p.birthdate,
@@ -91,15 +91,15 @@ const logbookDataMapper = {
         p.daily_checking,
         p.number_daily_checking,
         p.cabinet_id
-        FROM logbook l
+        FROM logbook_with_nurse_infos_documents lwnid
             JOIN patient p
-                ON p.id = l.patient_id
+                ON p.id = lwnid.patient_id
             JOIN cabinet c
                 ON c.id = p.cabinet_id
         WHERE c.id = $1
-        AND (l.planned_date = $2
-        OR l.planned_date = $3)
-        ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet, date, tomorrow]);
+        AND (lwnid.planned_date = $2
+        OR lwnid.planned_date = $3)
+        ORDER BY lwnid.creation_date DESC LIMIT 200`, [idCabinet, date, tomorrow]);
 
         return result.rows;
     },
