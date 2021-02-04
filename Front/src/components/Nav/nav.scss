@@ -2,8 +2,6 @@
 @import 'src/styles/mixins';
 
 .navbar {
-  background-color: vars.$color-white;
-  border-top: 1px solid vars.$color-grey2;
   width: 100%;
   flex-shrink: 0;
 
@@ -21,6 +19,6 @@
   }
 
   &-img{
-    width: 50px;
+    width: 55px;
   }
 }

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 import {returnArrayHandleChange} from 'src/utils/searchAndReturn';
 
+import search from 'src/assets/icones/search.svg';
+
 // == Import
 import './searchbar.scss';
 
@@ -50,7 +52,7 @@ const Searchbar = ({
   return (
     <Fragment>
     <form className="searchbar">
-          <input type="text" 
+          <input className="searchbar-input" type="text" 
             className="searchbar-input"
             placeholder="Rechercher un patient..."
             name="inputSearchDashboard"
@@ -58,6 +60,7 @@ const Searchbar = ({
             onChange={handleChange}
             onFocus={onFocusInput}
           />
+          <img src={search} alt="loupe" className="searchbar-img"/>
     </form> 
     <SearchResult />
     </Fragment>

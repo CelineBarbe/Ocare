@@ -4,7 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 // == Import
 import './header.scss';
 import logo from 'src/assets/images/logo.svg';
-import triangle from 'src/assets/icones/header_triangle.svg';
+import logo2 from 'src/assets/images/logo_fin_nude.svg';
+import logo3 from 'src/assets/images/logo_fin_shadow.svg';
 
 import Notification from 'src/containers/Notification';
 
@@ -32,7 +33,7 @@ const Header = ({avatar, listCabinets, default_cabinet, name, changeCabinet, isL
 
       <li className="header-home">
         <Link to="/dashboard">
-          <img src={logo} alt="logo" className="header-img-logo" />
+          <img src={logo2} alt="logo" className="header-img-logo" />
         </Link>
       </li>
     

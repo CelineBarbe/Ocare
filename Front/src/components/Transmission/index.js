@@ -48,7 +48,6 @@ seedDate()
          state: { date: date.link }
        }} key={date.link}>
         <li className="transmission-li">
-          <img className="transmission-img" src={notes} alt="notes" />
           <span className="transmission-date">{date.pres}</span>
         </li>
       </Link>

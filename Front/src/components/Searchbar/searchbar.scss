@@ -2,16 +2,38 @@
 @import 'src/styles/mixins';
 
 .searchbar {
-  @include formulaire-search-container();
-  
-  &-input {
-    padding: vars.$gutter vars.$gutter*2;
-    font-size: 14px;
-    color: vars.$color-grey4;
-    font-family: 'Nunito', sans-serif;
-    border-radius: 10px;
-    border: 1px solid rgb(224, 224, 224);
-  }
+    width: 80%;
+    margin: vars.$gutter*2 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around; 
+    position: relative;
+
+    &-input {
+      padding: vars.$gutter;
+      font-size: 18px;
+      font-family: 'Heebo', sans-serif;
+      height: 34px;
+      width: 100%;
+      border-radius: 15px;
+      border: 1px solid transparent;
+      border-top: none;
+      border-bottom: 1px solid #DDD;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+    }
+
+    &-input::placeholder {
+      font-size: 18px;
+      font-family: 'Heebo', sans-serif;
+    }
+
+    &-img {
+      width: 30px;
+      position: absolute;
+      right: 20px;
+    }
+    
 }
 
 
