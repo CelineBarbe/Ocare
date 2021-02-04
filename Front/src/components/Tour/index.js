@@ -64,10 +64,10 @@ const DefaultComponant = () => {
 
 
   return ( 
-  <div className="tour-container">
+  <>
     <Link to='/tour'>
-        <p className="tour-title">Ma Tournée </p>
-    </Link>
+      <p className="tour-title">Tournée </p> 
+    </Link> 
     <div className="tour"> 
       <ul className="tour-ul">
       { 
@@ -85,8 +85,8 @@ const DefaultComponant = () => {
       : <DefaultComponant/>  
       }
     </ul>
-    </div>
   </div>
+  </>
   )
 };
 

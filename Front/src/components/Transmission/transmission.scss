@@ -24,6 +24,7 @@
     justify-content: space-around;
     align-items: center;
     padding: vars.$gutter;
+    padding-top: vars.$gutter*2.5;
     width: 100%;
     
   }
@@ -35,17 +36,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: vars.$color-secondary-dark1;
-    border-radius: 15px;
     background-image: url('./icone_transmission2.svg');
-    width: 100px;
     background-size:cover;
+    width: 100px;
+    height: 115px;
   }
 
   &-date {
     font-size: 16px;
-    color: vars.$color-white;
+    color: rgb(110, 110, 110);
     font-weight: bold;
   }
 
+}
+
+.transmission-title {
+    color: vars.$color-white;
+    font-family: 'Heebo', sans-serif;
+    padding: vars.$gutter;
+    font-weight: bold;
+    font-size: 18px;
+    width: 40%;
+    border-radius: 0 15px 15px 0;
+    background-color: vars.$color-secondary;
+    margin: vars.$gutter/2 0;
 }
