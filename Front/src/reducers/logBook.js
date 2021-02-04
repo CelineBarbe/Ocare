@@ -43,6 +43,7 @@ const reducer = (oldState = initialState, action = {}) => {
           observations: '',
           daily: false,
           done: false,
+          picture:'',
           ending_date:null,
           list: [...oldState.list,action.payload],
           isLoading: false,
