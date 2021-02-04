@@ -5,6 +5,8 @@ var { DateTime } = require('luxon');
 // == Import
 import './tour.scss';
 
+import check from 'src/assets/icones/checkWhite.svg'
+
 // == Composant
 const Tour= ({
   list,
@@ -73,9 +75,11 @@ const DefaultComponant = () => {
       ? cards.map(patient =>
           <li className="tour-li" key={patient.logbook_id}>
             <Link to={`/patient/${patient.patient_id}`}  >
-            <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
+            <p className="tour-span-name">{patient.lastname} </p>
+            <p className="tour-span-name">{patient.firstname}</p>
             </Link>
             <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>
+            <img className="tour-check" src={check} alt="valider"/>
           </li>
               )
       : <DefaultComponant/>  

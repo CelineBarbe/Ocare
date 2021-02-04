@@ -17,10 +17,21 @@
   -ms-overflow-style:none;
   height: 300px;
 
+  &-check {
+    width: 30px;
+  }
+
+  &-span-tag {
+    display: inline-block;
+    width: 80px;
+    color: #97D6CB;
+    font-weight: 100;
+  }
+
 
   &-title {
     font-family: 'Montserrat', sans-serif;
-    margin: vars.$gutter vars.$gutter*2 vars.$gutter*2 vars.$gutter*2;
+    margin: vars.$gutter;
     color: #495866;
     font-weight: bold;
     font-size: 20px;
@@ -36,11 +47,13 @@
     flex-direction: row;
     justify-content: space-between;
     padding: vars.$gutter*3;
-    margin: vars.$gutter;
+    margin: vars.$gutter*1.5;
     background-color: #27A693;
     border-radius: 17px;
     font-weight: bold;
     color: #fefefe;
+    text-align: center;
+    line-height: 1.3;
   }
 
 }
