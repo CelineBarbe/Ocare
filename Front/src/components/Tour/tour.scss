@@ -7,7 +7,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Heebo', sans-serif;
   border-radius: 0 50px 0 0;
   height: 220px;
   background-color: #FFF;
@@ -37,17 +36,17 @@
 
   &-title {
     color: rgb(39, 39, 39);
-    font-family: 'Crete Round', serif;
-    padding: 0 vars.$gutter;
-    font-size: 24px;
+    font-family: 'Lobster', cursive;
+    padding: 0 vars.$gutter*1.5;
+    font-size: 25px;
     width: 60%;
-    margin: vars.$gutter/2 0;
+    margin: vars.$gutter 0 0 0 ;
   }
 
   &-ul {
     width: 100%;
     height: 100%;
-    height: 200px;
+    height: 220px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

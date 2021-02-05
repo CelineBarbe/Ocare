@@ -9,17 +9,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nobile:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Nobile:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 body {
   
-  background-image: url('./forme_menu_1.svg'), url('./miroir.svg');
-  background-position: left bottom -15px, right top -15px;
+  background-image: url('./forme_menu_1.svg'), url('./header_test_full.svg');
+  background-position: left bottom -15px, right top;
   background-repeat: no-repeat, no-repeat;
   background-size:contain,contain;
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Roboto', sans-serif;
 } 
 
