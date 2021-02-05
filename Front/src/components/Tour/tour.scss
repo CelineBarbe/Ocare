@@ -35,10 +35,10 @@
   }
 
   &-title {
-    color: rgb(39, 39, 39);
+    color: vars.$color-secondary-dark1;
     font-family: 'Lobster', cursive;
     padding: 0 vars.$gutter*1.5;
-    font-size: 25px;
+    font-size: 30px;
     width: 60%;
     margin: vars.$gutter 0 0 0 ;
   }
