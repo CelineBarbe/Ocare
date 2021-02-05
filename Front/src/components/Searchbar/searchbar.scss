@@ -2,8 +2,8 @@
 @import 'src/styles/mixins';
 
 .searchbar {
-    width: 80%;
-    margin: vars.$gutter*2 auto;
+    width: 60%;
+    margin: vars.$gutter*3 auto vars.$gutter auto;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,7 +14,7 @@
       padding: vars.$gutter;
       font-size: 18px;
       font-family: 'Heebo', sans-serif;
-      height: 34px;
+      height: 45px;
       width: 100%;
       border-radius: 15px;
       border: 1px solid transparent;

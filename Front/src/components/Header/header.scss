@@ -2,7 +2,6 @@
 @import 'src/styles/mixins';
 
 .header {
-  background-color: vars.$color-white;
   width: 100%;
   padding: vars.$gutter  vars.$gutter*2 0 vars.$gutter*2;
   font-family: 'Nunito', sans-serif;
@@ -22,9 +21,10 @@
   }
 
   &-img-avatar {
+    position: relative;
     width: 50px;
     height: 50px;
-    border-radius: 25px;
+    border-radius: 10px 0 10px 0;
   }
 
   &-title {
@@ -33,16 +33,6 @@
     justify-content: center;
     align-items:center; 
     padding: 0.25em 0.5em;
-    border-bottom: 1px solid vars.$color-primary;
-  }
-
-  &-title::after {
-    content: "";
-    width: 1em;
-    height: 0.7em;
-    margin-left: vars.$gutter/2;
-    background-color: vars.$color-primary;
-    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   }
 
   &-title-cabinet {
@@ -56,8 +46,8 @@
     cursor: inherit;
     line-height: inherit;
     font-weight: bold;
-    font-size: 1.2rem;
-    color: vars.$color-secondary-dark2;
+    font-size: 1.5rem;
+    color: vars.$color-white;
     outline: none;
   }
 }

@@ -48,6 +48,7 @@
   margin: 0  auto;
   max-height: 495px;
   overflow: hidden;
+  align-items: flex-start;
 }
 
 .cabinets-card {
@@ -80,36 +81,32 @@
 
 #hospital0 {
   background-image: url('../../assets/images/hospital1.svg');
-  width: 120px;
-  height: 120px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
   background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 #hospital1 {
-  background-image: url('../../assets/images/hospital_2.svg');
-  width: 120px;
-  height: 120px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-image: url('../../assets/images/hospital2.svg');
+  width: 100px;
+  height: 100px;
   background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 #hospital2 {
-  background-image: url('../../assets/images/hospital_3.svg');
-  width: 120px;
-  height: 120px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-image: url('../../assets/images/hospital3.svg');
+  width: 100px;
+  height: 100px;
   background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 #hospital4 {
-  background-image: url('../../assets/images/hospital_4.svg');
-  width: 120px;
-  height: 120px;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-image: url('../../assets/images/hospital4.svg');
+  width: 100px;
+  height: 100px;
   background-position: bottom;
+  background-repeat: no-repeat;
 }

@@ -3,9 +3,9 @@ import React, {useEffect} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 // == Import
 import './header.scss';
-import logo from 'src/assets/images/logo.svg';
-import logo2 from 'src/assets/images/logo_fin_nude.svg';
-import logo3 from 'src/assets/images/logo_fin_shadow.svg';
+import logo from 'src/assets/images/logo_fin_nude.svg';
+import logo2 from 'src/assets/images/green_logo.svg';
+import logo3 from 'src/assets/images/logo_truecolor_shadowwhite.svg';
 
 import Notification from 'src/containers/Notification';
 
