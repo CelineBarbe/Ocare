@@ -36,8 +36,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('./icone_transmission2.svg');
-    background-size:cover;
+    
     width: 100px;
     height: 115px;
   }
@@ -60,4 +59,18 @@
     border-radius: 0 15px 15px 0;
     background-color: vars.$color-secondary;
     margin: vars.$gutter/2 0;
+}
+
+#li0 {
+  background-image: url('./icone_transmission_2_bis.svg');
+  background-size:cover;
+}
+#li1 {
+  background-image: url('./icone_transmission_5_bis.svg');
+  background-size:cover;
+}
+
+#li2 {
+  background-image: url('./icone_transmission_4_bis.svg');
+  background-size:cover;
 }

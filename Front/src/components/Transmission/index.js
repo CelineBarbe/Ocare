@@ -43,12 +43,12 @@ seedDate()
     </Link>
     <div className="transmission">
     <ul className="transmission-ul">
-    {arrayDate.length>1 ? arrayDate.map(date => (
+    {arrayDate.length>1 ? arrayDate.map((date,index) => (
        <Link to={{
          pathname : `/transmission/${date.link}`,
          state: { date: date.link }
        }} key={date.link}>
-        <li className="transmission-li"></li>
+        <li className="transmission-li" id={`li${index}`}></li>
         <span className="transmission-date">{date.pres}</span>
       </Link>
 
