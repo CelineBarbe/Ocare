@@ -11,8 +11,7 @@ import Header from 'src/containers/Header';
 import Nav from 'src/components/Nav';
 import CreateCabinetModal from 'src/containers/CreateCabinetModal';
 
-// == Import images
-import hospital from 'src/assets/images/hospital.png';
+
 import plus from 'src/assets/icones/plus2.svg';
 import moins from 'src/assets/icones/moinsvert.svg';
 
@@ -57,9 +56,12 @@ const handleClick= (_,id) => {
         <Fragment>
         <Header />
         <div className="main">
-        <div className="cabinets">
-        <h1 className="cabinets-title"> Gestion des cabinets </h1>
-        <img src={plus} alt="croix" className="cabinets-add" onClick={openModalCreateCabinet} />
+      
+            <div className="title-container">
+              <h1 className="cabinets-title"> Gestion des cabinets </h1>
+              <img src={plus} alt="croix" className="cabinets-add" onClick={openModalCreateCabinet} />
+            </div>
+        
         
           <div className="cabinets-container">
           {
@@ -68,16 +70,15 @@ const handleClick= (_,id) => {
             : null
           }
           
-          {listCabinets.map(cabinet => (
+          {listCabinets.map((cabinet,index) => (
                 <div className="cabinets-card" key={cabinet.id} id={cabinet.id}>
-                  <img src={hospital} alt="cabinet" className="cabinets-card-img" onClick={(e) => handleClick(e, cabinet.id)}/>
-                  <p className="cabinets-card-infos cabinets-card-name">{cabinet.name}</p>
-                  <span className="cabinets-card-infos cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
+                  <div id={`hospital${index}`} alt="cabinet" className="cabinets-card-img" onClick={(e) => handleClick(e, cabinet.id)}></div>
+                  <p className="cabinets-card-name cabinets-card-style">{cabinet.name}</p>
+                  <span className="cabinets-card-name cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
 
                   {idUser !== cabinet.owner_id ? <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getCabinetId(cabinet.id)} /> : null}
                 </div>
           ))}
-          </div>
           </div>
         </div>
         <Nav />

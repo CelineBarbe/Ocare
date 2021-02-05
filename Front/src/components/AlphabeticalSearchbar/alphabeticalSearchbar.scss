@@ -2,15 +2,16 @@
 @import 'src/styles/mixins';
 
 .alphabetical-searchbar {
-  padding: vars.$gutter;
+  padding: vars.$gutter*2 vars.$gutter;
   margin: vars.$gutter;
   
   &-ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
-    box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+    -webkit-box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+      box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+    border-radius: 0 0 15px 15px;
     background-color: vars.$color-white;
     padding: vars.$gutter*2;
     height: 47px;
@@ -28,6 +29,10 @@
     color: vars.$color-primary;
     font-weight: bold;
     cursor: pointer;
-    font-size: 20px;
+    transform: scale(2);
+    transition: all 0.5s;
+    margin: 0 vars.$gutter;
   }
 }
+
+
