@@ -11,6 +11,7 @@
     position: relative;
 
     &-input {
+      margin-top: vars.$gutter*1.5;
       padding: vars.$gutter;
       font-size: 18px;
       font-family: 'Heebo', sans-serif;
