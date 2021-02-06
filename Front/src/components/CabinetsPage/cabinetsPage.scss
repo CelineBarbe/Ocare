@@ -8,37 +8,25 @@
   align-items: center;
   width: 100%;
   padding-top: vars.$gutter;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   min-height: 500px;
   max-height: 500px;
   overflow-y: hidden;
   justify-content: center;
-
-
-  &-add {
-    right: vars.$gutter*5;
-    width: 30px;
-  }
   
  &-title {
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
+  color: vars.$color-secondary-dark1;
+  align-self: center;
+  margin: 20px 0;
+  padding: vars.$gutter*2 ;
+  font-size: 20px;
+  font-weight: 700;
  }
 }
 
-.title-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  align-self: flex-start;
-  padding: vars.$gutter vars.$gutter*2;
-  width: 70%;
-  padding-top: 50px;
-}
 
 .cabinets-container {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -46,28 +34,29 @@
   padding: vars.$gutter;
   width: 100%; 
   margin: 0  auto;
-  max-height: 495px;
-  overflow: hidden;
+  min-height: 380px;
+  max-height: 380px;
+  overflow-y: scroll;
   align-items: flex-start;
 }
 
 .cabinets-card {
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: vars.$gutter;
-  margin: vars.$gutter;
   width: 150px;
 
-  &-add {
+  &-remove {
     margin-top: vars.$gutter;
     width: 25px;
   }
 
-  &-style {
+  &-name {
     color: vars.$color-secondary-dark2;
     padding: vars.$gutter/3;
     margin: vars.$gutter/2 0;
@@ -75,38 +64,60 @@
 
   &-nbpatient {
     color: #f8778B;
-    text-decoration: underline;
   }
 }
 
 #hospital0 {
   background-image: url('../../assets/images/hospital1.svg');
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-position: bottom;
   background-repeat: no-repeat;
 }
 
 #hospital1 {
   background-image: url('../../assets/images/hospital2.svg');
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-position: bottom;
   background-repeat: no-repeat;
 }
 
 #hospital2 {
   background-image: url('../../assets/images/hospital3.svg');
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-position: bottom;
   background-repeat: no-repeat;
 }
 
 #hospital4 {
   background-image: url('../../assets/images/hospital4.svg');
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-position: bottom;
   background-repeat: no-repeat;
+}
+
+.button-create-cabinet {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+  padding: vars.$gutter/1.2 vars.$gutter*1.5;
+  background-color:vars.$color-secondary-dark1;
+  -webkit-box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  border-radius: 15px;
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: vars.$color-white;
+  font-family: 'Roboto', sans-serif;
+
+  &-add {
+    width: 30px;
+    margin-left: 10px;
+  }
+
 }

@@ -5,39 +5,46 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-family: 'Nunito', sans-serif;
+  align-items: flex-start;
+  font-family: 'Roboto', sans-serif;
   padding: vars.$gutter/2;
-  margin: vars.$gutter*4 auto;
-  background-color: vars.$color-grey;
-  border-radius: 10px;
-  width: 90%;
-  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
-  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
+  margin: 0 auto;
+  width: 75%;
+  
 
   &-edit {
     position: absolute;
-    top: vars.$gutter;
+    top: calc(1rem+20px);
     right: vars.$gutter;
     width: 25px;
   }
 
   &-title {
-    margin:vars.$gutter  vars.$gutter*2;
+    color: vars.$color-secondary-dark1;
+    align-self: center;
+    margin: 20px 0 0 0;
+    padding: vars.$gutter*2 ;
+    font-size: 20px;
+    font-weight: 700;
+    align-self: center;
+  }
+}
+
+.container-cabinet-infos {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: vars.$gutter/2.5;
+
+  &-img {
+    width: 30px;
+  }
+
+  &-title {
     color: vars.$color-secondary-dark2;
-    font-weight: bold;
-  }
-
-  &-nbpatient {
-    font-size: 14px;
-    color: vars.$color-primary;
-    font-weight: bold;
-    text-decoration: underline;
-    margin: vars.$gutter;
-  }
-
-  &-infos {
-    color: vars.$color-grey4;
-    margin:vars.$gutter/2;
+    padding-left: 10px;
   }
 }

@@ -7,6 +7,10 @@ import './cabinetCard.scss';
 
 //== Import images
 import pen from 'src/assets/icones/pen.svg';
+import nbPatients from 'src/assets/icones/patients_rose.svg';
+import adresse from 'src/assets/icones/map.svg';
+import phone from 'src/assets/icones/phone.svg';
+import mail from 'src/assets/icones/mail.svg';
 
 import UpdateCabinetModal from 'src/containers/UpdateCabinetModal';
 
@@ -33,16 +37,24 @@ const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_
     <UpdateCabinetModal handleModal={handleModal} />
     : null}
       <p className="cabinet-card-title">{name}</p>
-      <span className="cabinet-card-nbpatient">{nbpatients} patients</span>
-      <p className="cabinet-card-infos cabinet-card-adresse ">
-        {`${address} \n ${zip_code} ${city}`}
-      </p>
-      <p className="cabinet-card-infos cabinet-card-phone">
-        Téléphone : {phone_number}
-      </p>
-      <p className="cabinet-card-infos cabinet-card-mail">
-        Mail : {email}
-      </p>
+
+      <div className="container-cabinet-infos">
+        <img src={nbPatients} alt="homme" className="container-cabinet-infos-img"/>
+        <p className="container-cabinet-infos-title">{nbpatients} patients</p>
+      </div>
+      
+      <div className="container-cabinet-infos">
+        <img src={adresse}  alt="homme" className="container-cabinet-infos-img"/>
+        <p className="container-cabinet-infos-title">{`${address} \n ${zip_code} ${city}`}</p>
+      </div>
+      <div className="container-cabinet-infos">
+        <img src={phone}  alt="homme" className="container-cabinet-infos-img"/>
+        <p className="container-cabinet-infos-title">{phone_number}</p>
+      </div>
+      <div className="container-cabinet-infos">
+        <img src={mail}  alt="homme" className="container-cabinet-infos-img"/>
+        <p className="container-cabinet-infos-title">{email}</p>
+      </div>
 
     </div>
   )

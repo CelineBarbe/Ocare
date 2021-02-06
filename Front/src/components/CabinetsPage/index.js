@@ -12,7 +12,7 @@ import Nav from 'src/components/Nav';
 import CreateCabinetModal from 'src/containers/CreateCabinetModal';
 
 
-import plus from 'src/assets/icones/plus2.svg';
+import plus from 'src/assets/icones/plus_blanc.svg';
 import moins from 'src/assets/icones/moinsvert.svg';
 
 
@@ -56,13 +56,7 @@ const handleClick= (_,id) => {
         <Fragment>
         <Header />
         <div className="main">
-      
-            <div className="title-container">
-              <h1 className="cabinets-title"> Gestion des cabinets </h1>
-              <img src={plus} alt="croix" className="cabinets-add" onClick={openModalCreateCabinet} />
-            </div>
-        
-        
+          <h1 className="cabinets-title"> Gestion des cabinets </h1>
           <div className="cabinets-container">
           {
             createCabinet 
@@ -71,14 +65,18 @@ const handleClick= (_,id) => {
           }
           
           {listCabinets.map((cabinet,index) => (
-                <div className="cabinets-card" key={cabinet.id} id={cabinet.id}>
-                  <div id={`hospital${index}`} alt="cabinet" className="cabinets-card-img" onClick={(e) => handleClick(e, cabinet.id)}></div>
-                  <p className="cabinets-card-name cabinets-card-style">{cabinet.name}</p>
-                  <span className="cabinets-card-name cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
+            <div className="cabinets-card" key={cabinet.id} id={cabinet.id}>
+              <div id={`hospital${index}`} alt="cabinet" className="cabinets-card-img" onClick={(e) => handleClick(e, cabinet.id)}></div>
+                <p className="cabinets-card-name">{cabinet.name}</p>
+                <span className="cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
 
-                  {idUser !== cabinet.owner_id ? <img src={moins} alt="moins" className="cabinets-card-add" onClick={ event => getCabinetId(cabinet.id)} /> : null}
-                </div>
+                {idUser !== cabinet.owner_id ? <img src={moins} alt="moins" className="cabinets-card-remove" onClick={ event => getCabinetId(cabinet.id)} /> : null}
+            </div>
           ))}
+            </div>
+          <div className="button-create-cabinet" onClick={openModalCreateCabinet} >
+            <span className="button-create-cabinet-title">Créer un cabinet</span>
+            <img src={plus} alt="croix" className="button-create-cabinet-add"/>
           </div>
         </div>
         <Nav />

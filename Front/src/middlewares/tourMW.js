@@ -110,7 +110,7 @@ const tourMW = (store) => (next) => (action) => {
         console.log(response);
         if (response.status === 200) {
          //store.dispatch(seedTour(response.data.tour));
-         store.dispatch(notify("Modification de la tournée validé"))
+         store.dispatch(notify("Modification de la tournée validée"))
          store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
