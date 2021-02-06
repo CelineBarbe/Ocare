@@ -5,8 +5,8 @@
 // Style of container entry care / transmission
 
 .carnet-sante-container {
-  font-family: 'Nunito', sans-serif;
-  height: 350px;
+  font-family: 'Roboto', sans-serif;
+  height: 400px;
   width: 100%;
   padding: vars.$gutter;
   overflow-y: scroll;
@@ -15,6 +15,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
+  border-radius: 15px;
 }
 
 // style scrollbar for IE and EDGE
@@ -32,7 +33,7 @@
 }
 
 .carnet-sante-entry-top {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 359px;
   height: 50px;
   display: flex;
@@ -73,7 +74,7 @@
     }
   
     &-name {
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Roboto', sans-serif;
       color: vars.$color-primary;
       font-weight: bold;
       font-size: 14px;
@@ -84,7 +85,7 @@
     padding: vars.$gutter/3;
 
     &-date {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 13px;
       color: vars.$color-grey4;
       font-style: italic;
@@ -94,7 +95,7 @@
 }
 
 .carnet-sante-entry-bottom {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 359px;
   max-height: 100px;
   display: flex;
@@ -126,7 +127,7 @@
       display: inline-block;
       padding: vars.$gutter*2;
       background-color: #f5f5f5;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Roboto', sans-serif;
       max-height: 90px;
       overflow-y: scroll;
       -ms-overflow-style:none;
@@ -144,7 +145,7 @@
 .default-title {
   color: vars.$color-primary;
   font-weight: bold;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 50px auto 50px auto;
 }
 

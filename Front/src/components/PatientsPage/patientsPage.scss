@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: vars.$color-secondary-dark2;
 
   &-img {
@@ -48,7 +48,7 @@
 .patients-page-liste {
   padding: vars.$gutter/2;
   margin: vars.$gutter/2;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   
   &-title {
     padding: 0.5em;
@@ -59,7 +59,7 @@
   }
 
   &-li {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: vars.$gutter;
     padding: vars.$gutter/2;
     background-color:  #f3f3f3;

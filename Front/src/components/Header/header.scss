@@ -30,7 +30,7 @@
   &-img-avatar {
     width: 60px;
     height: 60px;
-    border-radius: 30px;
+    border-radius: 10px;
   }
 
   &-title {
@@ -41,14 +41,18 @@
   }
 
   &-title-cabinet {
+    font-weight: 400;
+    font-size: 1.8rem;
+    font-family: 'Lobster', cursive;
+    border: none;
+    color: #f8778B;
     appearance: none;
     outline: none;
-    font-weight: 400;
-    font-size: 2.5rem;
-    font-family: 'Lobster', cursive;
-    background-color: transparent;
-    border: none;
-    color: #FFF;
+    background-color: #FFF;
+    -webkit-box-shadow: inset 5px 5px 5px -1px rgba(0,0,0,0.25); 
+    box-shadow:  5px 5px 5px -1px rgba(0,0,0,0.25);
+    border-radius: 15px;
+    padding: vars.$gutter vars.$gutter*2;
   }
   
 }

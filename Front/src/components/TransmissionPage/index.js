@@ -63,7 +63,7 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
             <div className="transmission-page">
               <Transmission />
               <div className="transmission-container">
-            <h1 className="transmission-h1"> Transmission du {datePres.day} {datePres.monthLong}</h1>
+            <h1 className="transmission-h1">{datePres.day} {datePres.monthLong}</h1>
             {isLoading
               ? 'data is loading' 
               : list.length>1 ? list.map(element => ( 

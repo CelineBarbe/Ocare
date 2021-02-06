@@ -7,7 +7,7 @@ import './patientPage.scss';
 
 // == Import images
 import info from 'src/assets/icones/info.svg';
-import plus from 'src/assets/icones/plus2.svg';
+import plus from 'src/assets/icones/plus_blanc.svg';
 
 // == Import 
 import Header from 'src/containers/Header';
@@ -40,8 +40,11 @@ const PatientPage = ({
   const patientInfo = () => {
     if(!isLoading){
       return <>
-              <h1 className="patient-title"> {`${lastname} ${firstname}`} </h1>
-              <img onClick={openModalPatient} src={info} alt="information" className="patient-infos" />
+              <div className="patient-infos">
+                <h1 className="patient-title"> {`${lastname} ${firstname}`} </h1>
+                <img onClick={openModalPatient} src={info} alt="information" className="patient-img" />
+              </div>
+              
             </>
     } else {
       return 'data is loading'
@@ -94,18 +97,18 @@ const PatientPage = ({
             : null
             }
 
-              <p className="patient-title-primary"> Carnet de santé </p>
 
            {/* PART ADD A TREATMENT */} 
-              <div className="patient-add-care">
-                <img onClick={openModalEntry} className="patient-add-care-img" src={plus} alt="ajouter"/>
-                <span onClick={openModalEntry} className="patient-add-care-title">Ajouter une entrée</span>
-              </div>
+             
               <LogBook 
                 entryModal={entryModal} 
                 closeModalEntry={closeModalEntry} 
                 patientId={id}
               />
+               <div className="patient-add-care">
+                <span onClick={openModalEntry} className="patient-add-care-title">Transmission</span>
+                <img onClick={openModalEntry} className="patient-add-care-img" src={plus} alt="ajouter"/>
+              </div>
             </div>
           </div>
         <Nav />
