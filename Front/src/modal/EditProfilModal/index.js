@@ -121,6 +121,10 @@ const [urlImage, setUrlImage] = useState(avatar)
       <button onClick={handleUpload} type='button'>Upload</button>
       <img className="modal-patient-avatar" src={urlImage} />
       <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
+      <div className="submit-update-tour" onClick={handleSubmit} >
+        <span>Valider</span>
+        <img className="submit-update-tour-img" src={check} alt="valider"/>
+      </div>
     </form>
     </div>
   )

@@ -50,12 +50,13 @@ const ProfilCard = ({
   }
 
   return (
-    <div className="profil-card">
+    <>
     { 
       editProfil
       ? <EditProfilModal closeModalEditProfil={closeModalEditProfil} />
       : null
     }
+    <div className="profil-card">
     <img src={pen} alt="stylo" className="profil-card-edit" onClick={openModalEditProfil} />
 
     <p className="profil-card-title">{`${firstname} ${lastname}`}</p>
@@ -72,6 +73,7 @@ const ProfilCard = ({
       <img src={logout} alt="croix" className="button-logout-img"/>
     </div>
     </div>
+    </>
   )
 };
 

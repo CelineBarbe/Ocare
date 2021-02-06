@@ -33,7 +33,7 @@ const EntryModal = ({
 
   const Select = () => {
     return (
-      <select value={medical_act_name} id="medical_act_name" name="medical_act_name" onChange={handleChange} className="form-input create-patient-select" placeholder="Choisissez un soin">
+      <select value={medical_act_name} id="medical_act_name" name="medical_act_name" onChange={handleChange} className="form-input create-patient-select big" placeholder="Choisissez un soin">
        {
         data.map((acte,index) => (
           <option key={acte} index={index} value={acte}>{acte}</option>
@@ -104,55 +104,54 @@ const handleUpload = () => {
   }
 
   return (
-    <div className="modal-entry">
-    <form className="form" onSubmit={handleSubmit}>
-    <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
+    <div className="modal-entry-new">
+      <form className="form" onSubmit={handleSubmit}>
+      <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
 
-     <Select />
-    <input
+      <Select />
+      <input
       className="form-input big"
       type="text"
       name="observations"
       placeholder="Observations"
       value={observations}
       onChange={handleChange}
-    />
-    <input type="file" id="profile_pic" name="profile_pic"
-          accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
-      <button onClick={handleUpload} type='button'>Upload</button>
-    <img className="modal-patient-avatar" src={urlImage} />
-    <input type="checkbox" id="date" name="daily" onChange={handleChecked} value={daily}
-    />
-    <label htmlFor="isQuotidien">Ajouter dates</label>
-    {daily
-      ?
-      <Fragment>
+      />
+      <input type="file" id="profile_pic" name="profile_pic"
+            accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
+        <button onClick={handleUpload} type='button'>Upload</button>
+      <img className="modal-patient-avatar" src={urlImage} />
+      <input type="checkbox" id="date" name="daily" onChange={handleChecked} value={daily}
+      />
+      <label htmlFor="isQuotidien">Ajouter dates</label>
+      {daily
+        ?
+        <Fragment>
+        <input
+        className="form-input big"
+        type="text"
+        onFocus={onFocus}
+        name="planned_date"
+        onChange={handleChange}
+        value={planned_date}
+        placeholder="Date de début du soin"
+      />
       <input
-      className="form-input big"
-      type="text"
-      onFocus={onFocus}
-      name="planned_date"
-      onChange={handleChange}
-      value={planned_date}
-      placeholder="Date de début du soin"
-    />
-    <input
-      className="form-input big"
-      type="text"
-      onFocus={onFocus}
-      name="ending_date"
-      onChange={handleChange}
-      value={ending_date}
-      placeholder="Date de fin du soin"
-    />
-    </Fragment>
-     : null
-    }
-    
-    <div className="submit-update" onClick={handleSubmit} >
-      <span className="modal-patient-update-img-title">Valider</span>
-      <img className="modal-patient-update-img" src={check} alt="valider"/>
-    </div>
+        className="form-input big"
+        type="text"
+        onFocus={onFocus}
+        name="ending_date"
+        onChange={handleChange}
+        value={ending_date}
+        placeholder="Date de fin du soin"
+      />
+      </Fragment>
+      : null
+      }
+      <div className="submit-update-tour" onClick={handleSubmit} >
+        <span>Valider</span>
+        <img className="submit-update-tour-img" src={check} alt="valider"/>
+      </div>
   </form>
   </div>
   )

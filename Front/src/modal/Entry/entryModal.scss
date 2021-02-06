@@ -1,13 +1,11 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
-
-
-.modal-entry {
+.modal-entry-new {
   width: 100%;
-  height: 400px;
+  height: 650px;
   position: absolute;
-  background-color: vars.$color-white;
+  background-color: #fff;
   left: 0;
 }
 

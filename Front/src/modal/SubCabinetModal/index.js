@@ -67,10 +67,11 @@ const SubCabinetModal = ({
         value={newEntryPin_code}
         onChange={handleChange}
       />
-      <div className="submit-update" onClick={handleSubmit}>
-          <span className="modal-patient-update-img-title">Valider</span>
-          <img className="modal-patient-update-img" src={check} alt="valider"/>
+      <div className="submit-update-tour" onClick={handleSubmit} >
+        <span>Valider</span>
+        <img className="submit-update-tour-img" src={check} alt="valider"/>
       </div>
+      
     </form>
     </div>
   )

@@ -4,9 +4,10 @@
 .create-patient {
   width: 100%;
   position: absolute;
-  background-color: vars.$color-white;
+  background-color: #fff;
   z-index: 3000;
   left: 0;
+  height: 640px;
 
   &-title {
     margin:vars.$gutter  vars.$gutter*2;
@@ -26,7 +27,6 @@
     background-color: transparent;
     cursor: inherit;
     outline: none;
-    width: 70%;
     color: vars.$color-grey4;
   }
 }
