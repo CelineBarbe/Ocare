@@ -61,10 +61,9 @@ const StaffCard = ({
       staff.length>1 
       ? staff.map(equipier => (
       <div className="nurse-card" key={equipier.id}>
-          <img src={equipier.avatar} alt="nurse" className="nurse-card-img"/>
-          <p className="nurse-card-name">
-            {equipier.firstname} {equipier.lastname}
-          </p>
+        <img src={equipier.avatar} alt="nurse" className="nurse-card-img"/>
+        <p className="nurse-card-name">{equipier.firstname}</p>
+        <p className="nurse-card-name">{equipier.lastname}</p>
 
         <div className="nurse-card-contact"> 
           <a href={`tel:+33${equipier.phone_number}`}>

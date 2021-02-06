@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import './listcabinets.scss';
 
 // == Import images
-import plus from 'src/assets/icones/plus2.svg';
+import plus from 'src/assets/icones/plus_blanc.svg';
 import cabinetIcone from 'src/assets/images/hospital1.svg';
 
 //== Import Component 
@@ -40,20 +40,14 @@ function closeModalSubCabinet(){
 }
 
   return (
+    <>
+    <p className="listcabinet-title">Mes cabinets affiliés</p>
     <div className="listcabinet-card">
     { 
       subCabinetModal
       ? <SubCabinetModal closeModalSubCabinet={closeModalSubCabinet} />
       : null
     }
-    
-     <img src={plus} alt="stylo" className="listcabinet-card-add" onClick={openModalSubCabinet} />
-     <p className="listcabinet-card-title">
-       Mes cabinets affiliés
-     </p>
-    
-           
-     <div className="hospital-card-container">
      {list.map(cabinet => (
         <div className="hospital-card" key={cabinet.id} onClick={(e) => handleClick(e, cabinet.id)}>
            <img src={cabinetIcone} alt="nurse" className="hospital-card-img"/>
@@ -62,8 +56,13 @@ function closeModalSubCabinet(){
           </p>
     </div>
      ))}
-     </div>
     </div>
+    <div className="button-create-cabinet" onClick={openModalSubCabinet} >
+      <span className="button-create-cabinet-title">Souscrire à un cabinet</span>
+      <img src={plus} alt="croix" className="button-create-cabinet-add"/>
+    </div>
+
+    </>
   )
 };
 

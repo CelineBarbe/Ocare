@@ -12,7 +12,7 @@
   align-items: center;
   font-family: 'Roboto', sans-serif;
   padding: vars.$gutter;
-  margin: 0 auto;
+  margin: vars.$gutter*2 0 0 0;
   width: 100%;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -32,7 +32,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   align-items: center;
   padding: vars.$gutter 0;
@@ -46,12 +46,20 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 0.2em;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 3px 1px rgba(155, 109, 116, 0.4);
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  height: 150px;
+  width: 150px;
+
 
   &-remove {
     width: 16px;
     position: absolute;
-    left: 0;
-    top:0;
+    left: 5px;
+    top:5px;
   }
  
   &-img {
@@ -63,7 +71,8 @@
   &-name {
     color: vars.$color-secondary-dark1;
     font-weight: bold;
-    padding: vars.$gutter;
+    padding: vars.$gutter/2 0 vars.$gutter/2 0;
+    text-align: center;
   }
 }
 
@@ -75,7 +84,7 @@
 }
 
 .nurse-card-contact-img {
-  width: 30px;
+  width: 35px;
 }
 
 @media (min-width: 376px) and (min-width: 414px) {

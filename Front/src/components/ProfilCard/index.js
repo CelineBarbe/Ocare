@@ -10,6 +10,9 @@ import EditProfilModal from 'src/containers/EditProfilModal';
 
 //== Import images
 import pen from 'src/assets/icones/pen.svg';
+import phone from 'src/assets/icones/phone.svg';
+import mail from 'src/assets/icones/mail.svg';
+import logout from 'src/assets/icones/logout.svg';
 
 // == Composant
 const ProfilCard = ({ 
@@ -54,18 +57,20 @@ const ProfilCard = ({
       : null
     }
     <img src={pen} alt="stylo" className="profil-card-edit" onClick={openModalEditProfil} />
-      <p className="profil-card-nom">{`${firstname} ${lastname}`}</p>
-      <span className="profil-card-siren_code">{siren_code}</span>
-      <p className="profil-card-infos cabinet-card-adresse ">
-      Avatar: </p><img src={avatar} alt="avatar" className="profil-card-img"></img>
-      
-      <p className="profil-card-infos">
-        Téléphone : {phone_number}
-      </p>
-      <p className="profil-card-infos">
-        Mail : {email}
-      </p>
-      <button type="Button" className="profil-card-button" onClick={handleLogOut}> Se Déconnecter </button>
+
+    <p className="profil-card-title">{`${firstname} ${lastname}`}</p>
+    <div className="container-cabinet-infos">
+      <img src={phone}  alt="homme" className="container-cabinet-infos-img"/>
+      <p className="container-cabinet-infos-title">{phone_number}</p>
+    </div>
+    <div className="container-cabinet-infos">
+      <img src={mail}  alt="homme" className="container-cabinet-infos-img"/>
+      <p className="container-cabinet-infos-title">{email}</p>
+    </div>
+    <div className="button-logout" onClick={handleLogOut} >
+      {/*<span className="button-logout-title">Déconnexion</span> */} 
+      <img src={logout} alt="croix" className="button-logout-img"/>
+    </div>
     </div>
   )
 };

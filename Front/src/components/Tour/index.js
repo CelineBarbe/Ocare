@@ -78,9 +78,9 @@ const DefaultComponant = () => {
             <p className="tour-span-lastname">{patient.lastname}</p>
             <p className="tour-span-firstname">{patient.firstname}</p>
             </Link>
-            <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>
+            <span className="tour-span-tag" >{patient.medical_act_name} </span>
             <div className="check-container">
-              <img className="tour-check" src={check} alt="valider"/>
+              <img className="tour-check" src={check} alt="valider" onClick={e => handleDoubleClick(e,patient.logbook_id)}/>
             </div>
           </li>
       )

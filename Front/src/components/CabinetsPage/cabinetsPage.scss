@@ -1,20 +1,7 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
-.cabinets {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding-top: vars.$gutter;
-  font-family: 'Roboto', sans-serif;
-  min-height: 500px;
-  max-height: 500px;
-  overflow-y: hidden;
-  justify-content: center;
-  
- &-title {
+.cabinets-title {
   color: vars.$color-secondary-dark1;
   align-self: center;
   margin: 20px 0;
@@ -22,8 +9,6 @@
   font-size: 20px;
   font-weight: 700;
  }
-}
-
 
 .cabinets-container {
   font-family: 'Roboto', sans-serif;
