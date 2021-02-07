@@ -6,6 +6,9 @@
   height: 400px;
   position: absolute;
   background-color: #fff;
+  border-radius: 0 0 30px 0;
   left: 0;
+  z-index: 2000;
+  margin-top: vars.$gutter;
 }
 

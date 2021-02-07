@@ -8,6 +8,8 @@ import close from 'src/assets/icones/close.svg';
 
 import TourEntryModal from 'src/containers/TourEntryModal'
 
+import search from 'src/assets/icones/search.svg';
+
 import {returnArrayHandleChange} from 'src/utils/searchAndReturn';
 
 const AddPatientModal = ({
@@ -70,19 +72,26 @@ function closeModalEntry(){
      : null
     }
     
-    <form className="form">
+    <div className="form">
     <img  className="modal-entry-patient-close" alt="close" src={close} onClick={closeModalAddPatient}/>
     <p className="modal-entry-patient-title">Recherchez un patient</p>
-      <input
-        className="form-input"
-        type="text"
-        name="inputSearchPatient"
-        value={inputSearchPatient}
-        placeholder="nom"
-        onChange={handleChange}
-      />
-      <SearchResult /> 
-    </form>
+      <div className="searchbar-container">
+      <form className="searchbar">
+            <input 
+              className="form-input" 
+              type="text" 
+              placeholder="nom"
+              name="inputSearchPatient"
+              value={inputSearchPatient}
+              onChange={handleChange}
+            />    
+      </form>  
+      {result.length >= 1
+      ? <SearchResult />
+      : null
+      }
+      </div>
+    </div>
   </div>
   )
 };

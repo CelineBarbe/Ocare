@@ -50,20 +50,25 @@ const Searchbar = ({
   }
 
   return (
-    <Fragment>
-    <form className="searchbar">
-          <input className="searchbar-input" type="text" 
-            className="searchbar-input"
-            placeholder="Rechercher un patient..."
-            name="inputSearchDashboard"
-            value={inputSearchDashboard}
-            onChange={handleChange}
-            onFocus={onFocusInput}
-          />
-          <img src={search} alt="loupe" className="searchbar-img"/>
-    </form> 
-    <SearchResult />
-    </Fragment>
+    <div className="searchbar-container">
+      <form className="searchbar">
+            <input 
+            className="searchbar-input" 
+              type="text" 
+              placeholder="Rechercher un patient..."
+              name="inputSearchDashboard"
+              value={inputSearchDashboard}
+              onChange={handleChange}
+              onFocus={onFocusInput}
+            />
+            <img src={search} alt="loupe" className="searchbar-img"/>       
+      </form>  
+      {result.length >= 1
+      ? <SearchResult />
+      : null
+      }
+        
+    </div>
   )
 };
 

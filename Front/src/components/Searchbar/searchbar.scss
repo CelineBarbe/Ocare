@@ -34,7 +34,35 @@
       position: absolute;
       right: 20px;
     }
-    
+}
+
+.searchbar-container {
+  width: 100%;
+  position: relative;
+}
+
+.searchResult {
+  width: 90%;
+  position: absolute;
+  z-index: 1000;
+  left: 5%;
+  margin: vars.$gutter auto;
+  padding: vars.$gutter;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background-color: vars.$color-white;
+  border: 1px solid rgb(219, 219, 219) ;
+  border-radius: 15px;
+  box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.25);
+  font-family: 'Roboto', sans-serif;
+
+  &-name {
+    margin: vars.$gutter/2;
+    color: vars.$color-secondary-dark1;
+    font-size: 17px;
+  }
 }
 
 
