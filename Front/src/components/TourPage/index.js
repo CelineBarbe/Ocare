@@ -218,7 +218,7 @@ const arraySortStarting = (array) => {
               </div>
               {!isLoading ?<SortableList items={cards} onSortEnd={onSortEnd} lockAxis="y" transitionDuration="700" pressDelay="200"/> : <p>data loading...</p>}
               
-              {createTourModal
+              {createTourModal || addPatientModal
               ? null
               : <div className="formulaire-button" onClick={handleUpdateTour} >
                   <span className="formulaire-button-title">Valider tournée</span>

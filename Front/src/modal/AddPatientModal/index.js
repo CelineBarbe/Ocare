@@ -63,7 +63,7 @@ function closeModalEntry(){
   }
       
   return (
-    <div className="modal-entry">
+    <div className="modal-entry-patient">
     { 
      tourEntry
      ? <TourEntryModal patientId={id} closeModalEntry={closeModalEntry} closeModalAddPatient={closeModalAddPatient} />
@@ -71,7 +71,8 @@ function closeModalEntry(){
     }
     
     <form className="form">
-    <img  className="modal-patient-close" alt="close" src={close} onClick={closeModalAddPatient}/>
+    <img  className="modal-entry-patient-close" alt="close" src={close} onClick={closeModalAddPatient}/>
+    <p className="modal-entry-patient-title">Recherchez un patient</p>
       <input
         className="form-input"
         type="text"

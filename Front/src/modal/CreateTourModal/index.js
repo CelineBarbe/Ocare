@@ -60,7 +60,7 @@ const[dateTampon, setDateTampon] =useState(datePlace);
     <div className="modal-entry">
     <form className="form" onSubmit={handleSubmit}>
     <img  className="modal-entry-close" alt="close" src={close} onClick={closeModalCreateTour}/>
-    <p className="modal-edit-profil-title">Date de la tournée</p>
+    <p className="modal-entry-patient-title">Date de la tournée</p>
       <input
         className="form-input"
         name="tour_date"
