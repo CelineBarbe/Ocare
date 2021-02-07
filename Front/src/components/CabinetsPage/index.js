@@ -74,10 +74,14 @@ const handleClick= (_,id) => {
             </div>
           ))}
             </div>
-          <div className="button-create-cabinet" onClick={openModalCreateCabinet} >
-            <span className="button-create-cabinet-title">Créer un cabinet</span>
-            <img src={plus} alt="croix" className="button-create-cabinet-add"/>
-          </div>
+            {createCabinet
+            ? null
+            : <div className="button-create-cabinet" onClick={openModalCreateCabinet} >
+                <span className="button-create-cabinet-title">Créer un cabinet</span>
+                <img src={plus} alt="croix" className="button-create-cabinet-add"/>
+              </div>
+            }
+          
         </div>
         <Nav />
         </Fragment>

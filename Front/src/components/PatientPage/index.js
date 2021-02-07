@@ -105,10 +105,15 @@ const PatientPage = ({
                 closeModalEntry={closeModalEntry} 
                 patientId={id}
               />
-               <div className="patient-add-care">
-                <span onClick={openModalEntry} className="patient-add-care-title">Transmission</span>
-                <img onClick={openModalEntry} className="patient-add-care-img" src={plus} alt="ajouter"/>
+              { entryModal 
+              ? null
+              : 
+              <div className="formulaire-button">
+                <span onClick={openModalEntry} className="formulaire-button-title">Transmission</span>
+                <img onClick={openModalEntry} className="formulaire-button-img" src={plus} alt="ajouter"/>
               </div>
+              }
+               
             </div>
           </div>
         <Nav />

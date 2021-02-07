@@ -81,7 +81,7 @@ const StaffCard = ({
       
      </div>
     </div>
-    { owner_id === idUser 
+    { (owner_id === idUser) && !addStaff
     ? <div className="button-create-cabinet" onClick={openModalAddStaff} >
         <span className="button-create-cabinet-title">Inviter un infirmier</span>
         <img src={plus} alt="croix" className="button-create-cabinet-add"/>

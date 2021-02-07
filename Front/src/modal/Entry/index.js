@@ -148,9 +148,9 @@ const handleUpload = () => {
       </Fragment>
       : null
       }
-      <div className="submit-update-tour" onClick={handleSubmit} >
-        <span>Valider</span>
-        <img className="submit-update-tour-img" src={check} alt="valider"/>
+      <div className="formulaire-button" onClick={handleSubmit} >
+        <span className="formulaire-button-title">Valider</span>
+        <img className="formulaire-button-img" src={check} alt="valider"/>
       </div>
   </form>
   </div>

@@ -19,10 +19,11 @@
   padding: vars.$gutter;
   width: 100%; 
   margin: 0  auto;
-  min-height: 380px;
-  max-height: 380px;
+  min-height: 410px;
+  max-height: 410px;
   overflow-y: scroll;
   align-items: flex-start;
+  position: relative;
 }
 
 .cabinets-card {
