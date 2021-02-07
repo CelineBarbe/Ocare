@@ -217,10 +217,14 @@ const arraySortStarting = (array) => {
                 </div>
               </div>
               {!isLoading ?<SortableList items={cards} onSortEnd={onSortEnd} lockAxis="y" transitionDuration="700" pressDelay="200"/> : <p>data loading...</p>}
-              <div className="submit-update-tour" onClick={handleUpdateTour} >
-                <span>Valider tournée</span>
-                <img className="submit-update-tour-img" src={check} alt="valider"/>
-              </div>
+              
+              {createTourModal
+              ? null
+              : <div className="formulaire-button" onClick={handleUpdateTour} >
+                  <span className="formulaire-button-title">Valider tournée</span>
+                  <img className="formulaire-button-img" src={check} alt="valider"/>
+                </div>
+              }
             </div>
           </div>
         <Nav />

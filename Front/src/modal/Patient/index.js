@@ -75,11 +75,11 @@ const PatientModal = ({
 
     <span onClick={openModalUpdate} className="modal-patient-edit">editer</span>
       {updatePatientModal 
-        ? 
-            <UpdatePatientModal 
-              closeModalUpdate={closeModalUpdate}
-             /> 
-            : null
+      ? 
+        <UpdatePatientModal 
+          closeModalUpdate={closeModalUpdate}
+        /> 
+      : null
       }
   </div>
   )

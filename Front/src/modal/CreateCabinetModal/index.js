@@ -56,7 +56,8 @@ const CreateCabinet = ({
 
     <div className="create-cabinet">
       <form className="form" onSubmit={handleSubmit}>
-      <img  className="modal-patient-close" alt="close" src={close} onClick={closeForm}/>
+      <img  className="create-cabinet-close" alt="close" src={close} onClick={closeForm}/>
+      <p className="modal-edit-profil-title">Créer un cabinet</p>
         <input
           className="form-input"
           type="text"

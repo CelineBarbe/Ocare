@@ -141,9 +141,9 @@ const CreatePatient = ({
             />
           </div>
           {daily_checking ? <input className="form-input daily-checking big" type="number" placeholder="Nombre de visites par jour" name="number_daily_checking" min='0' max='3'/> : null}
-          <div className="submit-update-tour" onClick={handleSubmit} >
-            <span>Valider</span>
-            <img className="submit-update-tour-img" src={check} alt="valider"/>
+          <div className="formulaire-button" onClick={handleSubmit} >
+            <span className="formulaire-button-title">Valider</span>
+            <img className="formulaire-button-img" src={check} alt="valider"/>
           </div>
         </form>
       </div>
