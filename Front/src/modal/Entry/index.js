@@ -106,8 +106,10 @@ const handleUpload = () => {
   return (
     <div className="modal-entry-new">
       <form className="form" onSubmit={handleSubmit}>
-      <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
-
+      <img onClick={closeModalEntry} src={close} className="modal-entry-new-close" alt="close"/>
+      <p className="modal-entry-new-title">
+       Nouvelle transmission 
+      </p>
       <Select />
       <input
       className="form-input big"

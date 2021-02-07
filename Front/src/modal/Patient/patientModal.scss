@@ -4,57 +4,31 @@
 /* MODAL INFORMATION PATIENT */
 
 .modal-patient {
+  font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: vars.$gutter;
-  width: 90%;
-  background-color: #f5f5f5;
-  -webkit-box-shadow: 0px 1px 6px -4px #000000; 
-  box-shadow: 0px 1px 6px -4px #000000;
-  border-radius: 5px;
-  animation: fadein 2s;
-
-  &-close {
-    width: 30px;
-    align-self: flex-end;
-  }
-
-  &-title {
-    align-self: center;
-    margin-bottom: vars.$gutter*1.5;
-    margin-top: vars.$gutter*2;
-    padding: vars.$gutter/2 vars.$gutter*5;
-    color: vars.$color-white;
-    -webkit-box-shadow: 0px 1px 6px -4px #000000; 
-    box-shadow: 0px 1px 6px -4px #000000;
-    border-radius: 5px;
-  }
+  align-items: center;
+  padding: vars.$gutter*2;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  z-index: 500;
+  left: 0;
+  top: 100px;
 
   &-content {
-    align-self: center;
-    font-size: 14px;
-
-  }
-
-  &-pathologie {
-    align-self: flex-start;
-    font-weight: bold;
-    color: vars.$color-primary-dark1;
-    margin: vars.$gutter 0;
+    align-self: flex-end;
+    font-style: italic;
     font-size: 15px;
-  }
-
-  p {
-    line-height: 1.6em;
+    color: vars.$color-primary;
   }
 
   &-edit {
     align-self: flex-end;
     font-style: italic;
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: vars.$gutter*2;
-    color: vars.$color-grey4;
+    color: vars.$color-primary;
     text-decoration: underline;
   }
 }

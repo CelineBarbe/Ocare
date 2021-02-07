@@ -4,6 +4,11 @@ import { DateTime } from "luxon";
 // == Import
 import './patientModal.scss';
 
+import nbPatients from 'src/assets/icones/patients_rose.svg';
+import adresse from 'src/assets/icones/map.svg';
+import phone from 'src/assets/icones/phone.svg';
+import patho from 'src/assets/icones/patho.svg';
+
 //== Import Component
 import UpdatePatientModal from 'src/containers/UpdatePatientModal';
 
@@ -47,16 +52,26 @@ const PatientModal = ({
 
   return (
     <div className="modal-patient">
-    <h3 className="modal-patient-title secondary">Etat Civil</h3> 
-    <p className="modal-patient-address"> {lastname} {firstname} - {age} ans </p>
-
-    <h2 className="modal-patient-title primary">Adresse</h2>
-    <p className="modal-patient-address"> Adresse : {address}, {zip_code} {city}</p>
-    <p className="modal-patient-phone">Téléphone : {phone_number}</p>
-
-    <h3 className="modal-patient-title secondary">Pathologies / antécédents</h3>
-    <p className="modal-patient-pathologie"> {pathology} </p>
     <p className="modal-patient-content">{daily_checking? number_dailychecking>1 ? `Patient Quotidien : ${number_dailychecking} visites par jour.`: "Patient quotidien" : null}</p>
+    <div className="container-cabinet-infos">
+        <img src={nbPatients} alt="homme" className="container-cabinet-infos-img"/>
+        <p className="container-cabinet-infos-title">{gender} - {age} ans</p>
+    </div>
+    <div className="container-cabinet-infos">
+        <img src={adresse}  alt="homme" className="container-cabinet-infos-img"/>
+        <p className="container-cabinet-infos-title">{`${address} \n ${zip_code} ${city}`}</p>
+    </div>
+    <div className="container-cabinet-infos">
+        <img src={phone}  alt="homme" className="container-cabinet-infos-img"/>
+        <p className="container-cabinet-infos-title">{phone_number}</p>
+    </div>
+    {pathology 
+    ? <div className="container-cabinet-infos">
+      <img src={patho}  alt="homme" className="container-cabinet-infos-img"/>
+      <p className="container-cabinet-infos-title">{pathology}</p>
+    </div>
+    : null
+    }
 
     <span onClick={openModalUpdate} className="modal-patient-edit">editer</span>
       {updatePatientModal 

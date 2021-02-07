@@ -99,12 +99,15 @@ const PatientPage = ({
 
 
            {/* PART ADD A TREATMENT */} 
-             
-              <LogBook 
+             {patientModal
+             ? null
+             : <LogBook 
                 entryModal={entryModal} 
                 closeModalEntry={closeModalEntry} 
                 patientId={id}
-              />
+               />
+             }
+              
               { entryModal 
               ? null
               : 
