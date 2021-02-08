@@ -1,6 +1,7 @@
 // == Import npm
 import React, {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // == Import
 import './loginPage.scss';
 
@@ -68,7 +69,9 @@ const LoginPage = ({
             Se connecter
           </button>
         </form>
+        <Link to='/signup'>
         <p className="inscription">Inscription</p>
+        </Link>
       </div>
     </div>
   );

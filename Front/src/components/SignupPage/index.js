@@ -24,7 +24,9 @@ const SignupPage = ({
     handleSignup();
   };
   return (
+    <div className="singup-container">
     <form className="form" onSubmit={handleSubmit}>
+    <p className="cabinet-card-title">Inscription</p>
       <input
         className="form-input"
         type="text"
@@ -73,10 +75,11 @@ const SignupPage = ({
         value={siren_code}
         onChange={handleChange}
       />
-      <button type="button" className="form-button" onClick={handleSignup}>
+      <button type="button" className="button-signup" onClick={handleSignup}>
         S'inscrire !
       </button>
     </form>
+    </div>
   );
 };
 
