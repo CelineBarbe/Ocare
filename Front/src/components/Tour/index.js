@@ -58,7 +58,12 @@ const Tour= ({
  /*composant défaut lorsqu'il n'y a pas de tournée de prévue */
 const DefaultComponant = () => {
   return (
-    <h1 className="default-title-tour">Aucune tournée pour aujourd'hui</h1>
+    <div className="default-component">
+      <span className="default-component-tag" >
+        Aucune tournée pour aujourd'hui
+      </span>
+      <div className="default-container"></div>
+    </div>
   )
 }
 

@@ -6,6 +6,7 @@ import './editProfilModal.scss';
 
 import close from 'src/assets/icones/close.svg';
 import check from 'src/assets/icones/checkWhite.svg';
+import checkRose from 'src/assets/icones/check.svg';
 
 
 const EditProfilModal = ({ 
@@ -51,11 +52,6 @@ const [urlImage, setUrlImage] = useState(avatar)
             }
         )
     };
-
-
-/* */
-
-
 
   const handleChange = (evt) => {
     changeField(evt.target.value, evt.target.name);
@@ -116,11 +112,17 @@ const [urlImage, setUrlImage] = useState(avatar)
         onChange={handleChange}
       />
 
-      <input type="file" id="profile_pic" name="profile_pic"
+      <label className="file-label" htmlFor="profile_pic">Choisir une photo</label>
+      {image ?
+      <span className="file-label-name">{image.name}</span>
+      : null
+      }
+      <input hidden type="file" id="profile_pic" name="profile_pic"
           accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
-      <button onClick={handleUpload} type='button'>Upload</button>
+
       <img className="modal-patient-avatar" src={urlImage} />
-      <img className="modal-patient-update-img" src={check} alt="valider" onClick={handleSubmit}/>
+      <img src={checkRose} onClick={handleUpload} className="modal-patient-avatar-upload"/>
+
       <div className="formulaire-button" onClick={handleSubmit} >
         <span className="formulaire-button-title">Valider</span>
         <img className="formulaire-button-img" src={check} alt="valider"/>

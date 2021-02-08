@@ -73,10 +73,15 @@ const DefaultComponant = () => {
                     <div className="carnet-sante-entry-bottom-left-border"></div>
                   </div>
                   <div className="carnet-sante-entry-bottom-right">
-                    <span className="carnet-sante-entry-bottom-right-observation">
+
+                  {list.observations 
+                  ? <span className="carnet-sante-entry-bottom-right-observation">
                       {list.observations}
                     </span>
-                   {list.document ? <a href={`${list.document}`} target='_blank'><img className="carnet-sante-entry-image" src={list.document} /></a> : null}  
+                  : null
+                  }
+                    
+                   {list.document ? <div className="container-entry-image"><a href={`${list.document}`} target='_blank'><img className="carnet-sante-entry-image" src={list.document} /></a></div> : null}  
                   </div>
                 </div>
               </div>  

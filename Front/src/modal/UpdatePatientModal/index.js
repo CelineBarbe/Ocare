@@ -127,7 +127,7 @@ const UpdatePatientModal = ({
           />
         </div>
         {daily_checking ? <input className="form-input daily-checking" type="number" placeholder="Nombre de visites par jour" name="number_daily_checking" min='0' max='3'/> : null}
-        <div className="formulaire-button" onClick={handleSubmit}>
+        <div className="formulaire-button big" onClick={handleSubmit}>
           <span className="formulaire-button-title">Valider</span>
           <img className="formulaire-button-img" src={check} alt="valider"/>
         </div>

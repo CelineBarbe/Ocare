@@ -56,7 +56,7 @@ function closeModalEntry(){
       {
         result.length >=1 
         ? result.map(patient => (
-          <p className="searchResult-name" key={patient.lastname} onClick={(e) => handleClick(e, patient.id)}>{patient.lastname}</p>
+          <p className="searchResult-name" key={patient.lastname} onClick={(e) => handleClick(e, patient.id)}>{patient.lastname} {patient.firstname}</p>
         ))
        : null  
       }

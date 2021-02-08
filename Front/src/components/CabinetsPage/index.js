@@ -66,7 +66,7 @@ const handleClick= (_,id) => {
           
           {listCabinets.map((cabinet,index) => (
             <div className="cabinets-card" key={cabinet.id} id={cabinet.id}>
-              <div id={`hospital${index}`} alt="cabinet" className="cabinets-card-img" onClick={(e) => handleClick(e, cabinet.id)}></div>
+              <div alt="cabinet" className="cabinets-card-img hospital" onClick={(e) => handleClick(e, cabinet.id)}></div>
                 <p className="cabinets-card-name">{cabinet.name}</p>
                 <span className="cabinets-card-nbpatient">{cabinet.nbpatients} patients</span>
 

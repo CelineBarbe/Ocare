@@ -35,7 +35,7 @@
   justify-content: center;
   align-items: center;
   padding: vars.$gutter;
-  width: 150px;
+  width: 170px;
 
   &-remove {
     margin-top: vars.$gutter;
@@ -53,32 +53,8 @@
   }
 }
 
-#hospital0 {
-  background-image: url('../../assets/images/hospital1.svg');
-  width: 70px;
-  height: 70px;
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-
-#hospital1 {
-  background-image: url('../../assets/images/hospital2.svg');
-  width: 70px;
-  height: 70px;
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-
-#hospital2 {
+.hospital {
   background-image: url('../../assets/images/hospital3.svg');
-  width: 70px;
-  height: 70px;
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-
-#hospital4 {
-  background-image: url('../../assets/images/hospital4.svg');
   width: 70px;
   height: 70px;
   background-position: bottom;

@@ -36,5 +36,25 @@
 }
 
 .modal-patient-avatar {
-    width:100px
+
+    width:100px;
+
+  &-upload {
+    width: 30px;
+  }
+}
+
+.file {
+  
+
+  &-label{
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-size: 14px;
+  padding: vars.$gutter/1.2 vars.$gutter*1.5;
+  margin: vars.$gutter/2 0 vars.$gutter 0;
+  background-color:vars.$color-secondary-dark1;
+  border-radius: 5px;
+  font-weight: 500;
+  }
 }

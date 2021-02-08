@@ -10,6 +10,7 @@ import { data } from 'src/utils/data';
 //== Import images 
 import close from 'src/assets/icones/close.svg';
 import check from 'src/assets/icones/checkWhite.svg';
+import checkRose from 'src/assets/icones/check.svg';
 
 const EntryModal = ({
   closeModalEntry,
@@ -119,13 +120,14 @@ const handleUpload = () => {
       value={observations}
       onChange={handleChange}
       />
-      <input type="file" id="profile_pic" name="profile_pic"
-            accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
-        <button onClick={handleUpload} type='button'>Upload</button>
-      <img className="modal-patient-avatar" src={urlImage} />
-      <input type="checkbox" id="date" name="daily" onChange={handleChecked} value={daily}
-      />
-      <label htmlFor="isQuotidien">Ajouter dates</label>
+      
+      <div className="checkbox-container form-input big">
+        <label htmlFor="isQuotidien">Ajouter dates</label>
+        <input type="checkbox" id="date" name="daily" onChange={handleChecked} value={daily}
+        />
+      </div>
+      
+      
       {daily
         ?
         <Fragment>
@@ -150,6 +152,17 @@ const handleUpload = () => {
       </Fragment>
       : null
       }
+      <label className="file-label" htmlFor="profile_pic">Choisir une photo</label>
+      {image ?
+      <span className="file-label-name">{image.name}</span>
+      : null
+      }
+      <input hidden type="file" id="profile_pic" name="profile_pic"
+          accept="image/*, .jpg, .jpeg, .png"  onChange={handleChangeFile}/>
+
+      <img className="modal-patient-avatar" src={urlImage} />
+      <img src={checkRose} onClick={handleUpload} className="modal-patient-avatar-upload"/>
+
       <div className="formulaire-button" onClick={handleSubmit} >
         <span className="formulaire-button-title">Valider</span>
         <img className="formulaire-button-img" src={check} alt="valider"/>

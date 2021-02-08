@@ -6,7 +6,7 @@ import './listcabinets.scss';
 
 // == Import images
 import plus from 'src/assets/icones/plus_blanc.svg';
-import cabinetIcone from 'src/assets/images/hospital1.svg';
+import cabinetIcone from 'src/assets/images/hospital3.svg';
 
 //== Import Component 
 import SubCabinetModal from 'src/containers/SubCabinetModal';
