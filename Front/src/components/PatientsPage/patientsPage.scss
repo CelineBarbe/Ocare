@@ -70,14 +70,13 @@
 #titleA,#titleC,#titleE,#titleG,#titleI,#titleK,#titleM,#titleO,#titleQ,#titleS,#titleU,#titleW,#titleY{
   background-color: vars.$color-secondary-dark2;   
 }
-
 #titleB,#titleD,#titleF,#titleH,#titleJ,#titleL,#titleN,#titleP,#titleR,#titleT,#titleV,#titleX,#titleZ{
-  background-color: #f8778B;   
+  background-color: #f8778B;  
+} 
 
-  
 @media screen and (min-width: 414px) {
   .patients-page-liste-container {
-    min-height: 380px;
-    max-height: 380px;
+min-height: 380px;
+max-height: 380px;
   }
 }

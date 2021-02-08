@@ -35,10 +35,7 @@ const CabinetCard = ({id, name, address, email, zip_code, pin_code, city, phone_
     {owner_id === idUser ? <img src={pen} alt="stylo" className="cabinet-card-edit" onClick={handleModal}/> : null}
     {entryModal ? 
     <UpdateCabinetModal handleModal={handleModal} />
-    : null}
-      <p className="cabinet-card-title">{name}</p>
-
-      <div className="container-cabinet-infos">
+    : null}<p className="cabinet-card-title">{name}</p><div className="container-cabinet-infos">
         <img src={nbPatients} alt="homme" className="container-cabinet-infos-img"/>
         <p className="container-cabinet-infos-title">{nbpatients} patients</p>
       </div>
