@@ -1,13 +1,30 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
-
-
-.modal-entry {
+.modal-entry-new {
   width: 100%;
-  height: 400px;
+  height: 650px;
   position: absolute;
-  background-color: vars.$color-white;
+  background-color: #fff;
   left: 0;
+
+  &-close {
+    position: absolute;
+    top: .5rem;
+    right: 1.5rem;
+    width: 25px;
+  }
+  
+  &-title {
+    color: vars.$color-secondary-dark1;
+    padding: vars.$gutter*1.2 ;
+    margin-bottom: vars.$gutter;
+    font-size: 20px;
+    font-weight: 700;
+  }
 }
 
+.file-label-name {
+  font-family: 'Roboto', sans-serif;
+  padding: vars.$gutter;
+}

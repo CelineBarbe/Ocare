@@ -1,33 +1,28 @@
 @use '/src/styles/vars';
 @import 'src/styles/mixins';
 
+.listcabinet-title {
+  color: vars.$color-secondary-dark1;
+  align-self: center;
+  margin: 20px 0 0 0;
+  padding: vars.$gutter*2 0 0 0 ;
+  font-size: 20px;
+  font-weight: 700;
+}
 
 .listcabinet-card {
-  position: relative;
+  font-family: 'Roboto', sans-serif;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Nunito', sans-serif;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: vars.$gutter;
-  margin: vars.$gutter*2 auto;
-  background-color: vars.$color-grey;
-  border-radius: 10px;
-  width: 90%;
-  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
-  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
-
-  &-add {
-    position: absolute;
-    top: vars.$gutter;
-    right: vars.$gutter;
-    width: 25px;
-  }
-
-  &-title {
-    margin:vars.$gutter  vars.$gutter*2;
-    color: vars.$color-secondary-dark2;
-    font-weight: bold;
-  }
+  width: 100%; 
+  margin: 0  auto;
+  min-height: 200px;
+  max-height: 200px;
+  overflow-y: scroll;
+  align-items: center;
 }
 
 .hospital-card-container {
@@ -50,14 +45,8 @@
   padding: vars.$gutter/3;
  
   &-img {
-    width: 40px;
+    width: 50px;
     margin:vars.$gutter;
-  }
-
-  &-infos {
-    font-size: 14px;
-    color: vars.$color-grey4;
-    margin:vars.$gutter/8;
   }
 
   &-name {
@@ -66,7 +55,5 @@
     color: vars.$color-primary;
     margin-bottom:vars.$gutter;
   }
-
-
 }
 

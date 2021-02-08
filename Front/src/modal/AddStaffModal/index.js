@@ -28,7 +28,7 @@ const AddStaffModal = ({
   return (
     <div className="modal-add-nurse">
       <img src={close} alt="stylo" className="modal-add-nurse-close" onClick={closeModalAddStaff}/>
-      <p className="modal-add-nurse-title">
+      <p className="formulaire-title">
        Ajouter un infirmier
       </p>
       <form className="form" onSubmit={handleSubmit}>
@@ -50,9 +50,9 @@ const AddStaffModal = ({
         onChange={handleChange}
       />
       
-      <div className="submit-update" onClick={handleSubmit}>
-          <span className="modal-patient-update-img-title">Valider</span>
-          <img className="modal-patient-update-img" src={check} alt="valider"/>
+      <div className="formulaire-button" onClick={handleSubmit}>
+          <span className="formulaire-button-title">Valider</span>
+          <img className="formulaire-button-img" src={check} alt="valider"/>
       </div>
     </form>
     </div>

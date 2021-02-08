@@ -86,7 +86,7 @@ const CreatePatient = ({
           value={birthdate}
           onChange={handleChange}
           />
-          <select className="form-input create-patient-select" id="gender" name="gender" value={gender} onChange={handleChange}>
+          <select className="form-input create-patient-select big" id="gender" name="gender" value={gender} onChange={handleChange}>
             <option value="M"> Homme</option>
             <option value="F">Femme</option>
           </select>
@@ -141,9 +141,9 @@ const CreatePatient = ({
             />
           </div>
           {daily_checking ? <input className="form-input daily-checking big" type="number" placeholder="Nombre de visites par jour" name="number_daily_checking" min='0' max='3'/> : null}
-          <div className="submit-update" onClick={handleSubmit} >
-            <span className="modal-patient-update-img-title">Valider</span>
-            <img className="modal-patient-update-img" src={check} alt="valider"/>
+          <div className="formulaire-button" onClick={handleSubmit} >
+            <span className="formulaire-button-title">Valider</span>
+            <img className="formulaire-button-img" src={check} alt="valider"/>
           </div>
         </form>
       </div>

@@ -63,7 +63,7 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
             <div className="transmission-page">
               <Transmission />
               <div className="transmission-container">
-            <h1 className="transmission-h1"> Transmission du {datePres.day} {datePres.monthLong}</h1>
+            <h1 className="transmission-h1">{datePres.day} {datePres.monthLong}</h1>
             {isLoading
               ? 'data is loading' 
               : list.length>1 ? list.map(element => ( 
@@ -73,8 +73,8 @@ const TransmissionPage = ({list, getLogs, isLoading, byDate, getLogsByDate, loca
                           <img className="transmission-container-row-left-img" alt="woman" src={element.gender == 'F'? F : M}/>
                         </div>
                           <div className="transmission-container-row-right secondary">
-                          <h3>{`${element.lastname} ${element.firstname}`}</h3>
-                            <p>{element.observations ? element.observations : element.medical_act_name}</p>
+                          <h3>{element.lastname} {element.firstname}</h3>
+                            <p>{element.observations}</p>
                           </div>  
                           
                     </div>

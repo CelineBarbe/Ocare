@@ -95,6 +95,7 @@ const auth = (store) => (next) => (action) => {
           const { data } = response;
           //console.log(data);
           store.dispatch(signUpOk());
+          store.dispatch(notify("Inscription validée, bienvenue sur Ocare"))
           store.dispatch(success());
           setTimeout(() => {
             store.dispatch(close());
@@ -102,6 +103,7 @@ const auth = (store) => (next) => (action) => {
         }
       })
       .catch((err) => {
+        store.dispatch(notify("Erreur : un des champs est incorrect."))
         store.dispatch(error());
           setTimeout(() => {
             store.dispatch(close());

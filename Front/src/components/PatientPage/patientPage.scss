@@ -9,18 +9,6 @@
   background-color: vars.$color-secondary-dark1;
 }
 
-.title-primary {
-  color: vars.$color-primary;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.title-secondary {
-  color: vars.$color-secondary-dark1;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
 // main container style
 
 .patient-page {
@@ -36,65 +24,52 @@
   align-items: center;
   width: 100%;
   padding-top: vars.$gutter;
-  font-family: 'Nunito', sans-serif;
-
-  &-title {
-    margin:vars.$gutter*2;
-    padding:vars.$gutter*1.5 vars.$gutter*3.5;
-    color: vars.$color-white;
-    font-weight: bold;
-    background-color: vars.$color-secondary-dark2;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
-    box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
-    max-width: 200px;
-    text-overflow: ellipsis ;
-    white-space: nowrap ;
-    overflow: hidden ;
-  }
+  font-family: 'Roboto', sans-serif;
 
   &-infos {
-    position: absolute;
-    top: 23px;
-    right: vars.$gutter*4;
-    width: 40px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: vars.$gutter*2 ;
+    font-size: 20px;
+    width: 100%;
   }
-}
 
-// style patient name 
+  &-title {
+    color: vars.$color-secondary-dark1;
+    padding-right: vars.$gutter;
+  }
 
-.patient-title-primary {
-  margin:vars.$gutter;
-  padding:vars.$gutter*1.2 0;
-  color: vars.$color-white;
-  font-weight: bold;
-  font-size: 16px;
-  background-color: vars.$color-primary;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75); 
-  box-shadow: 0px 3px 4px 0px rgba(64,58,58,0.75);
-  width: 95%;
-  text-align: center;
+  &-img {
+    width: 25px;
+  }
 }
 
 // style button add entry
 
 .patient-add-care {
-  width: 100%;
-  padding: vars.$gutter/2;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-family: 'Nunito', sans-serif;
-  color: vars.$color-secondary-dark2;
+  margin-top: vars.$gutter*2.5;
+  padding: vars.$gutter/1.2 vars.$gutter*1.5;
+  background-color:vars.$color-secondary-dark1;
+  -webkit-box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  border-radius: 15px;
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: vars.$color-white;
+  font-family: 'Roboto', sans-serif;
 
   &-img {
     width: 30px;
+    margin-left: 10px;
   }
 
-  &-title {
-    font-size: 17px;
-    margin-left: 0.5em;
-  }
 }

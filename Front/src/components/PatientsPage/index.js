@@ -74,7 +74,7 @@ function closeModalCreatePatient(){
               }
         
              {
-              list.length >= 1 
+              list.length >= 1 && !createPatient
               ? data 
               : <DefaultComponant/> 
              } 

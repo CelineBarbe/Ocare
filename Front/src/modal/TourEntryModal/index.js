@@ -34,7 +34,7 @@ const TourEntryModal = ({
 
   const Select = () => {
     return (
-      <select value={medical_act_name} id="medical_act_name" name="medical_act_name" onChange={handleChange} className="form-input create-patient-select" placeholder="Choisissez un soin">
+      <select value={medical_act_name} id="medical_act_name" name="medical_act_name" onChange={handleChange} className="form-input create-patient-select big" placeholder="Choisissez un soin">
        {
         data.map((acte,index) => (
           <option key={acte} index={index} value={acte}>{acte}</option>
@@ -63,9 +63,9 @@ const TourEntryModal = ({
 
 
   return (
-    <div className="modal-entry">
+    <div className="tour-modal-entry">
     <form className="form" onSubmit={handleSubmit}>
-    <img onClick={closeModalEntry} src={close} className="modal-patient-close" alt="close"/>
+    <p className="modal-entry-patient-title">Ajouter un soin</p>
 
     <Select />
     <input
@@ -77,9 +77,9 @@ const TourEntryModal = ({
       onChange={handleChange}
     /> 
 
-    <div className="submit-update" onClick={handleSubmit} >
-      <span className="modal-patient-update-img-title">Valider</span>
-      <img className="modal-patient-update-img" src={check} alt="valider"/>
+    <div className="formulaire-button" onClick={handleSubmit} >
+      <span className="formulaire-button-title">Valider</span>
+      <img className="formulaire-button-img" src={check} alt="valider"/>
     </div>
   </form>
   </div>

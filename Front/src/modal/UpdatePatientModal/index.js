@@ -45,7 +45,7 @@ const UpdatePatientModal = ({
   return (
     <div className="modal-patient-update">
      <img src={close} alt="stylo" className="modal-patient-update-close" onClick={closeModalUpdate}/>
-      <p className="modal-patient-update-title">Modifier Patient</p>
+      <p className="formulaire-title">Modifier Patient</p>
       <form className="form" onSubmit={handleSubmit} >
         <input
           className="form-input"
@@ -127,9 +127,9 @@ const UpdatePatientModal = ({
           />
         </div>
         {daily_checking ? <input className="form-input daily-checking" type="number" placeholder="Nombre de visites par jour" name="number_daily_checking" min='0' max='3'/> : null}
-        <div className="submit-update" onClick={handleSubmit}>
-          <span className="modal-patient-update-img-title">Valider</span>
-          <img className="modal-patient-update-img" src={check} alt="valider"/>
+        <div className="formulaire-button big" onClick={handleSubmit}>
+          <span className="formulaire-button-title">Valider</span>
+          <img className="formulaire-button-img" src={check} alt="valider"/>
         </div>
       </form>
     </div>

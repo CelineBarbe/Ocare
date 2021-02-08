@@ -3,13 +3,13 @@
 
 
 @mixin formulaire-container() { // Si aucune valeur n'est précisée alors $margin vaut 10px
+  width: 90%;
   padding: vars.$gutter;
-  margin: vars.$gutter;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
-  
+  justify-content: space-around;  
 }
 
 
@@ -28,13 +28,17 @@
 
 
 @mixin formulaire-input() {
-  padding: vars.$gutter/1.8;
-  margin: vars.$gutter*0.5 0;
-  border: 0;
-  border-bottom: 1px solid vars.$color-primary-light1;
-  font-size: 17px;
+  width: 60%;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  margin: vars.$gutter/1.5;
+  padding: vars.$gutter;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  font-family: 'Roboto', sans-serif;
   color: vars.$color-grey4;
-  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
 }
 
 @mixin small-input() {
@@ -47,24 +51,6 @@
   font-family: 'Nunito', sans-serif;
 }
 
-// Mixin formulaire recherche 
 
-@mixin formulaire-search-container() { // Si aucune valeur n'est précisée alors $margin vaut 10px
-  padding: vars.$gutter/2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  
-  
-}
-
-@mixin formulaire-search-input() {
-  padding: vars.$gutter;
-  border: 0;
-  border-bottom: 1px solid vars.$color-primary-light1;
-  font-size: 14px;
-  color: vars.$color-grey4;
-  font-family: 'Nunito', sans-serif;
-}
 
   

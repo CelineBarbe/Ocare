@@ -5,6 +5,8 @@ var { DateTime } = require('luxon');
 // == Import
 import './tour.scss';
 
+import check from 'src/assets/icones/checkWhite.svg'
+
 // == Composant
 const Tour= ({
   list,
@@ -56,54 +58,42 @@ const Tour= ({
  /*composant défaut lorsqu'il n'y a pas de tournée de prévue */
 const DefaultComponant = () => {
   return (
-    <h1 className="default-title-tour">Aucune tournée pour aujourd'hui</h1>
+    <div className="default-component">
+      <span className="default-component-tag" >
+        Aucune tournée pour aujourd'hui
+      </span>
+      <div className="default-container"></div>
+    </div>
   )
 }
 
 
   return ( 
-  <div className="tour">
+  <>
     <Link to='/tour'>
-      <p className="tour-title">Ma tournée </p>
-    </Link>
-    <ul className="tour-ul">
-    { 
-    cards.length >= 1 && !isLoading
-    ? cards.map(patient =>
-        <li className="tour-li" key={patient.logbook_id}>
-          <Link to={`/patient/${patient.patient_id}`}  >
-          <span className="tour-span-name">{patient.lastname} {patient.firstname}</span>
-          </Link>
-          <span className="tour-span-tag" onDoubleClick={e => handleDoubleClick(e,patient.logbook_id)}>{patient.medical_act_name} </span>
-        </li>
-            )
-    : <DefaultComponant/>  
-    }
-    
-     {/* <Link to="/patient">
-        <li className="tour-li">
-          <span className="tour-span-date">06:00</span>
-          <span className="tour-span-name">Mr Pichon</span>
-          <span className="tour-span-tag">Pansement</span>
-        </li>
-      </Link>
-      <li className="tour-li">
-        <span className="tour-span-date">07:00</span>
-        <span className="tour-span-name">Mme Paco</span>
-        <span className="tour-span-tag">Toilette</span>
-      </li>
-      <li className="tour-li">
-        <span className="tour-span-date">08:00</span>
-        <span className="tour-span-name">Mr Robillard</span>
-        <span className="tour-span-tag">Injection</span>
-      </li>
-      <li className="tour-li">
-        <span className="tour-span-date">09:00</span>
-        <span className="tour-span-name">Mme Vidal</span>
-        <span className="tour-span-tag">Prise de sang</span>
-      </li> */}
+      <p className="tour-title">Tournée </p> 
+    </Link> 
+    <div className="tour"> 
+      <ul className="tour-ul">
+      { 
+      cards.length >= 1 && !isLoading
+      ? cards.map(patient =>
+          <li className="tour-li" key={patient.logbook_id}>
+            <Link to={`/patient/${patient.patient_id}`}  >
+            <p className="tour-span-lastname">{patient.lastname}</p>
+            <p className="tour-span-firstname">{patient.firstname}</p>
+            </Link>
+            <span className="tour-span-tag" >{patient.medical_act_name} </span>
+            <div className="check-container">
+              <img className="tour-check" src={check} alt="valider" onClick={e => handleDoubleClick(e,patient.logbook_id)}/>
+            </div>
+          </li>
+      )
+      : <DefaultComponant/>  
+      }
     </ul>
   </div>
+  </>
   )
 };
 

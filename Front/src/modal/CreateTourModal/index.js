@@ -59,7 +59,8 @@ const[dateTampon, setDateTampon] =useState(datePlace);
   return (
     <div className="modal-entry">
     <form className="form" onSubmit={handleSubmit}>
-    <img  className="modal-patient-close" alt="close" src={close} onClick={closeModalCreateTour}/>
+    <img  className="modal-entry-close" alt="close" src={close} onClick={closeModalCreateTour}/>
+    <p className="modal-entry-patient-title">Date de la tournée</p>
       <input
         className="form-input"
         name="tour_date"
@@ -69,9 +70,9 @@ const[dateTampon, setDateTampon] =useState(datePlace);
         onFocus={onFocus}
         placeholder="Date de la tournée"
       />
-      <div className="submit-update" onClick={handleSubmit} >
-        <span className="modal-patient-update-img-title">Valider</span>
-        <img className="modal-patient-update-img" src={check} alt="valider"/>
+      <div className="formulaire-button" onClick={handleSubmit} >
+        <span className="formulaire-button-title">Valider</span>
+        <img className="formulaire-button-img" src={check} alt="valider"/>
       </div>
     </form>
   </div>

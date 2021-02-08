@@ -25,8 +25,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding-top: vars.$gutter;
-  font-family: 'Nunito', sans-serif;
+  padding-top: vars.$gutter*3;
+  font-family: 'Roboto', sans-serif;
 }
 
 // Date picker style
@@ -49,17 +49,20 @@
     align-items: center;
 
     &-title {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
       color: vars.$color-secondary-dark2;
 
       &-span {
-        font-size: 13px;
+        font-size: 14px;
         font-style: italic;
         padding: vars.$gutter/4;
         font-weight: bold;
         color: vars.$color-primary;
       }
+    }
+    &-title::first-letter {
+      text-transform: uppercase;
     }
   }
 }
@@ -72,7 +75,7 @@
   flex-direction: row;
   align-items: center;
   align-self: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: vars.$color-secondary-dark2;
 
   &-img {
@@ -80,7 +83,7 @@
   }
 
   &-title {
-    font-size: 15px;
+    font-size: 17px;
     margin-right: 0.5em;
   }
 }
@@ -99,7 +102,7 @@
   flex-direction: row;
   align-items: center;
   align-self: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: vars.$color-secondary-dark2;
 
   &-img {
@@ -107,7 +110,7 @@
   }
 
   &-title {
-    font-size: 15px;
+    font-size: 17px;
     margin-right: 0.5em;
   }
 }
@@ -127,7 +130,7 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 355px;
+  height: 380px;
   overflow-y: scroll ;
   -ms-overflow-style:none;
   padding: vars.$gutter;
@@ -139,26 +142,13 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    height: 30px;
+    height: 35px;
     margin: vars.$gutter/3 0;
     border-radius: 5px;
 
     &-delete {
       width: 25px;
       margin-left: 10px;
-    }
-
-    &-left {
-      border-radius: 5px 0 0 5px ;
-      height: 30px;
-      width: 20%;
-      padding: 0 vars.$gutter;
-      background-color: #e98282;
-      color: vars.$color-white;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
     }
 
     &-middle {
@@ -168,7 +158,7 @@
       justify-content: flex-start;
       align-items: center;
       width: 45%;
-      height: 30px;
+      height: 35px;
       background-color: vars.$color-primary;
       color: vars.$color-white;
 
@@ -191,7 +181,7 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      height: 30px;
+      height: 35px;
       background-color: vars.$color-secondary-dark1;
       color: vars.$color-white;
       &-care {
@@ -205,14 +195,21 @@
 }
 
 .submit-update-tour {
-  background-color: white;
-  color: vars.$color-secondary-dark2;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  cursor: pointer;
+  margin-top: vars.$gutter*2.5;
+  padding: vars.$gutter vars.$gutter*2;
+  background-color:vars.$color-secondary-dark1;
+  -webkit-box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  border-radius: 15px;
+  border: 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: vars.$color-white;
+  font-family: 'Roboto', sans-serif;
 
   &-img {
     width: 30px;

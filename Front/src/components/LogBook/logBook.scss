@@ -5,8 +5,8 @@
 // Style of container entry care / transmission
 
 .carnet-sante-container {
-  font-family: 'Nunito', sans-serif;
-  height: 350px;
+  font-family: 'Roboto', sans-serif;
+  height: 400px;
   width: 100%;
   padding: vars.$gutter;
   overflow-y: scroll;
@@ -15,6 +15,7 @@
   flex-direction: column;
   position: relative;
   align-items: center;
+  border-radius: 15px;
 }
 
 // style scrollbar for IE and EDGE
@@ -27,12 +28,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 150px;
   margin-bottom: vars.$gutter;
 }
 
 .carnet-sante-entry-top {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 359px;
   height: 50px;
   display: flex;
@@ -73,7 +73,7 @@
     }
   
     &-name {
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Roboto', sans-serif;
       color: vars.$color-primary;
       font-weight: bold;
       font-size: 14px;
@@ -84,7 +84,7 @@
     padding: vars.$gutter/3;
 
     &-date {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Roboto', sans-serif;
       font-size: 13px;
       color: vars.$color-grey4;
       font-style: italic;
@@ -94,9 +94,9 @@
 }
 
 .carnet-sante-entry-bottom {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   width: 359px;
-  max-height: 100px;
+  max-height: 180px;
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -119,14 +119,20 @@
     width: 100%;
     padding: vars.$gutter;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-content: center;
 
     &-observation {
-      display: inline-block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 85%;
+      margin: vars.$gutter/1.5 auto;
       padding: vars.$gutter*2;
       background-color: #f5f5f5;
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Roboto', sans-serif;
+      min-height: 60px;
       max-height: 90px;
       overflow-y: scroll;
       -ms-overflow-style:none;
@@ -144,8 +150,16 @@
 .default-title {
   color: vars.$color-primary;
   font-weight: bold;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 50px auto 50px auto;
+}
+
+.container-entry-image {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: vars.$gutter;
 }
 
 .carnet-sante-entry-image{

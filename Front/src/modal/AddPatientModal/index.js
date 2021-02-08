@@ -8,6 +8,8 @@ import close from 'src/assets/icones/close.svg';
 
 import TourEntryModal from 'src/containers/TourEntryModal'
 
+import search from 'src/assets/icones/search.svg';
+
 import {returnArrayHandleChange} from 'src/utils/searchAndReturn';
 
 const AddPatientModal = ({
@@ -54,7 +56,7 @@ function closeModalEntry(){
       {
         result.length >=1 
         ? result.map(patient => (
-          <p className="searchResult-name" key={patient.lastname} onClick={(e) => handleClick(e, patient.id)}>{patient.lastname}</p>
+          <p className="searchResult-name" key={patient.lastname} onClick={(e) => handleClick(e, patient.id)}>{patient.lastname} {patient.firstname}</p>
         ))
        : null  
       }
@@ -63,25 +65,33 @@ function closeModalEntry(){
   }
       
   return (
-    <div className="modal-entry">
+    <div className="modal-entry-patient">
     { 
      tourEntry
      ? <TourEntryModal patientId={id} closeModalEntry={closeModalEntry} closeModalAddPatient={closeModalAddPatient} />
      : null
     }
     
-    <form className="form">
-    <img  className="modal-patient-close" alt="close" src={close} onClick={closeModalAddPatient}/>
-      <input
-        className="form-input"
-        type="text"
-        name="inputSearchPatient"
-        value={inputSearchPatient}
-        placeholder="nom"
-        onChange={handleChange}
-      />
-      <SearchResult /> 
-    </form>
+    <div className="form">
+    <img  className="modal-entry-patient-close" alt="close" src={close} onClick={closeModalAddPatient}/>
+    <p className="modal-entry-patient-title">Recherchez un patient</p>
+      <div className="searchbar-container">
+      <form className="searchbar">
+            <input 
+              className="form-input" 
+              type="text" 
+              placeholder="nom"
+              name="inputSearchPatient"
+              value={inputSearchPatient}
+              onChange={handleChange}
+            />    
+      </form>  
+      {result.length >= 1
+      ? <SearchResult />
+      : null
+      }
+      </div>
+    </div>
   </div>
   )
 };
