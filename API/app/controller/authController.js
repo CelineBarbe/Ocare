@@ -41,10 +41,6 @@ const authController = {
                 return;
             }
             
-            // Save current cabinet in locals
-            request.app.locals.userCurrentCabinet = user.default_cabinet;
-            request.app.locals.autologin = user;
-            
             response.json({ user, userToken: jwt.sign(
                 {
                     userId: user.id, 

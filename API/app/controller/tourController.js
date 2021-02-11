@@ -5,7 +5,7 @@ const tourController = {
     async findAll(request, response, next) {
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
 
             const tours = await tourDataMapper.getAllPatient(idCabinet);
 
@@ -25,7 +25,7 @@ const tourController = {
 
             const { date } = request.params;
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
 
             const tour = await tourDataMapper.findByDate(date, idCabinet);
 

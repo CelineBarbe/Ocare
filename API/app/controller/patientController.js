@@ -4,7 +4,8 @@ const patientController = {
 
     async findAll(request, response, next) {
         try {
-            const idCabinet = request.app.locals.userCurrentCabinet;
+
+            const idCabinet = response.locals.default_cabinet;
 
             const patients = await patientDataMapper.getAllPatient(idCabinet);
 

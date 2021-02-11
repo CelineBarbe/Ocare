@@ -5,7 +5,7 @@ const logbookController = {
 
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
 
             const logs = await logbookDataMapper.getAllLogs(idCabinet);
             if(!logs) {
@@ -24,7 +24,7 @@ const logbookController = {
     async getByDate(request, response, next) {
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
             const { date } = request.query;
 
             const logsByDate = await logbookDataMapper.getAllLogsByDate(idCabinet, date);
@@ -45,7 +45,7 @@ const logbookController = {
     async findByDate(request, response, next) {
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
             const { date } = request.body;
 
             const logsByDate = await logbookDataMapper.getAllLogsByDate(idCabinet, date);

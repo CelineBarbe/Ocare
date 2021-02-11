@@ -53,7 +53,7 @@ INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet, allowed) VA
 
 -- NURSE CABINET 3 - RESPONZA // PATIENT 140 à 196
 (3, 3, default, default), -- Carine Guerino -- OWNER
-(2, 7, true, default), -- Ludivine Marques
+(3, 7, true, default), -- Ludivine Marques
 (3, 9, default, default), -- Victor Huster
 (3, 10, default, default), -- Luc Jasmin
 (3, 11, true, default), -- Pauline Revest

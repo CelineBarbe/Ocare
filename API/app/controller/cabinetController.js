@@ -26,7 +26,7 @@ const cabinetController = {
         try {
             
             const userID = response.locals.userID;
-            const defaultCab = request.app.locals.userCurrentCabinet
+            const defaultCab = response.locals.default_cabinet;
 
             const { id } = request.params;
 
@@ -37,9 +37,6 @@ const cabinetController = {
                 next();
                 return;
             }
-
-            // Save current_cabinet in locals
-            request.app.locals.userCurrentCabinet = parseInt(request.params.id, 10);
 
             response.json({ cabinet });
 
@@ -60,9 +57,6 @@ const cabinetController = {
                 return;
             }
 
-            // Save current_cabinet in locals
-            request.app.locals.userCurrentCabinet = savedCabinet.id;
-
             response.json({ savedCabinet });
 
         } catch (error) {
@@ -81,9 +75,6 @@ const cabinetController = {
                 next();
                 return;
             }
-            
-            // Save current_cabinet in locals
-            request.app.locals.userCurrentCabinet = savedNurseToCabinet.cabinet_id;
 
             response.json({ savedNurseToCabinet });
 
