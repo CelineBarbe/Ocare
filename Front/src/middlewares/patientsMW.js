@@ -4,7 +4,7 @@ import { seedPatients, createPatientSucceeded, seedPatient } from 'src/actions/p
 import { success, error, close, notify } from 'src/actions/notification';
 import {returnFirstLetterUpper} from 'src/utils/searchAndReturn';
 
-const URL = "https://ocare.herokuapp.com/";
+const URL = "http://localhost:3000/";
 
 const patientsMW = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');

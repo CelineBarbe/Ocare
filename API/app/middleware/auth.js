@@ -21,7 +21,7 @@ module.exports = async (request, response, next) => {
       next();
     }
   } catch {
-    res.status(401).json({
+    response.status(401).json({
       error: new Error('Invalid request!')
     });
   }

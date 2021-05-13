@@ -4,7 +4,7 @@ import { INIT_DASHBOARD, CHANGE_CABINET } from 'src/actions/types';
 import { seedCabinets, seedDefaultCabinet } from 'src/actions/cabinets';
 import { findDefaultCabinet } from 'src/utils/searchAndReturn';
 
-const URL = "https://ocare.herokuapp.com/";
+const URL = "http://localhost:3000/";
 
 const initDashboard = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');

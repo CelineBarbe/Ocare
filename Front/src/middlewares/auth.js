@@ -4,7 +4,7 @@ import { AUTH_SUBMIT_LOGIN, AUTH_SUBMIT_SIGNUP, LOGOUT, UPDATE_PROFIL, UNSUB_NUR
 import { loginOk, signUpOk, dashboardInit, updateAvatar} from 'src/actions/auth';
 import {unSubNurseCabinetOK} from 'src/actions/cabinets';
 import { success, error, close, notify } from 'src/actions/notification';
-const URL = "https://ocare.herokuapp.com/"
+const URL = "http://localhost:3000/";
 
 const auth = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');

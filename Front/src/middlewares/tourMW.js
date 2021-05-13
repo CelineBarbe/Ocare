@@ -5,7 +5,7 @@ import { seedTour, deleteTourPatientDone } from 'src/actions/tour';
 import { success, error, close, notify } from 'src/actions/notification';
 
 
-const URL = "https://ocare.herokuapp.com/";
+const URL = "http://localhost:3000/";
 
 const tourMW = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');

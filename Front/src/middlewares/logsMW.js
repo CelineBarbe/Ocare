@@ -3,7 +3,7 @@ import { GET_LOGS, CREATE_LOG, GET_LOGS_BY_DATE, CREATE_LOG_TOUR} from 'src/acti
 import { seedLogs, seedLogsByDate } from 'src/actions/logs';
 import {updateTourAddPatient, submitUpdateTour} from 'src/actions/tour';
 import { success, error, close, notify } from 'src/actions/notification';
-const URL = "https://ocare.herokuapp.com/";
+const URL = "http://localhost:3000/";
 
 const logsMW = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');

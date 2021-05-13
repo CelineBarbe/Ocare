@@ -4,7 +4,7 @@ import { CREATE_CABINET, SUB_CABINET, UNSUB_CABINET, UPDATE_CABINET, SUB_NURSE_C
 import { createCabinetSucceeded, subNurseCabinetOK, changeCabinet, subCabinet, subCabinetOK, unSubCabinetOK } from 'src/actions/cabinets'; 
 import { success, error, close, notify } from 'src/actions/notification';
 
-const URL = "https://ocare.herokuapp.com/";
+const URL = "http://localhost:3000/";
 
 const cabinetsMW = (store) => (next) => (action) => {
   const tokenStorage = localStorage.getItem('auth');
