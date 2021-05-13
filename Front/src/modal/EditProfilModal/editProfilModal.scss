@@ -1,0 +1,60 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+/* MODAL INFORMATION PATIENT */
+
+.modal-edit-profil{
+  position: absolute;
+  z-index: 500;
+  top: 30px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  background-color: #FFF;
+  padding: vars.$gutter;
+  width: 90%;
+  height: 520px;
+  overflow-y: scroll;
+  border-radius: 10px;
+
+
+  &-close {
+    position: absolute;
+    top: vars.$gutter;
+    right: vars.$gutter;
+    width: 25px;
+  }
+
+  &-title {
+    color: vars.$color-secondary-dark1;
+    padding: vars.$gutter*1.2 ;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.modal-patient-avatar {
+
+    width:100px;
+
+  &-upload {
+    width: 30px;
+  }
+}
+
+.file {
+  
+
+  &-label{
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-size: 14px;
+  padding: vars.$gutter/1.2 vars.$gutter*1.5;
+  margin: vars.$gutter/2 0 vars.$gutter 0;
+  background-color:vars.$color-secondary-dark1;
+  border-radius: 5px;
+  font-weight: 500;
+  }
+}

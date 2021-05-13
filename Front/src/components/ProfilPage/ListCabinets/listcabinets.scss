@@ -1,0 +1,59 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.listcabinet-title {
+  color: vars.$color-secondary-dark1;
+  align-self: center;
+  margin: 20px 0 0 0;
+  padding: vars.$gutter*2 0 0 0 ;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.listcabinet-card {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: vars.$gutter;
+  width: 100%; 
+  margin: 0  auto;
+  min-height: 200px;
+  max-height: 200px;
+  overflow-y: scroll;
+  align-items: center;
+}
+
+.hospital-card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.hospital-card {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin: vars.$gutter auto;
+  padding: vars.$gutter/3;
+ 
+  &-img {
+    width: 50px;
+    margin:vars.$gutter;
+  }
+
+  &-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: vars.$color-primary;
+    margin-bottom:vars.$gutter;
+  }
+}
+

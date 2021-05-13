@@ -1,0 +1,97 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.primary {
+  background-color: vars.$color-primary;
+}
+
+.secondary {
+  background-color: vars.$color-secondary-light1;
+}
+
+.transmission-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.transmission-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: vars.$gutter;
+  font-family: 'Roboto', sans-serif;
+}
+
+// container style list
+
+.transmission-container::-webkit-scrollbar {
+  display: none;
+}
+.link {
+  width: 100%;
+  display: block;
+}
+.transmission-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  height: 330px;
+  padding: 0 vars.$gutter;
+  margin-top: vars.$gutter*1.5;
+  border-radius: 20px;
+  overflow-y: scroll ;
+  -ms-overflow-style:none;
+  
+
+  &-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin: vars.$gutter/3 0;
+    border-radius: 10px;
+    
+
+    &-left {
+      border-radius: 10px 0 0 10px ;
+      width: 20%;
+      padding: vars.$gutter;
+      color: vars.$color-white;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      img {
+        width: 50px;
+      }
+    }
+
+    &-right {
+      border-radius: 0 10px 10px 0 ;
+      width: 80%;
+      padding: vars.$gutter;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: vars.$color-white;
+
+      h3 {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      p {
+        font-size: 15px;
+        padding: vars.$gutter;
+        color: rgb(24, 24, 24);
+      }
+    }
+  }
+}
+

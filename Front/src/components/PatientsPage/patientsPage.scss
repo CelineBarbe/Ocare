@@ -1,0 +1,82 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.primary {
+  background-color: vars.$color-primary;
+}
+
+.secondary-dark1 {
+  background-color: vars.$color-secondary-dark1;
+}
+
+.patients-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.patients-page-create {
+  padding: vars.$gutter;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  color: vars.$color-secondary-dark2;
+
+  &-img {
+    width: 30px;
+  }
+
+  &-title {
+    font-size: 17px;
+    margin-left: 0.5em;
+  }
+}
+
+.patients-page-liste-container {
+  min-height: 340px;
+  max-height: 340px;
+  overflow-y: scroll;
+  -ms-overflow-style:none;
+  position: relative;
+}
+
+.patients-page-liste-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.patients-page-liste {
+  padding: vars.$gutter/2;
+  margin: vars.$gutter/2;
+  font-family: 'Roboto', sans-serif;
+  
+  &-title {
+    padding: 0.5em;
+    border-radius: vars.$gutter;
+    font-weight: bold;
+    font-size: 18px;
+    color: vars.$color-white;
+  }
+
+  &-li {
+    font-family: 'Roboto', sans-serif;
+    margin: vars.$gutter;
+    padding: vars.$gutter/2;
+    background-color:  #f3f3f3;
+    color: vars.$color-secondary-dark2;
+  }
+}
+
+#titleA,#titleC,#titleE,#titleG,#titleI,#titleK,#titleM,#titleO,#titleQ,#titleS,#titleU,#titleW,#titleY{
+  background-color: vars.$color-secondary-dark2;   
+}
+#titleB,#titleD,#titleF,#titleH,#titleJ,#titleL,#titleN,#titleP,#titleR,#titleT,#titleV,#titleX,#titleZ{
+  background-color: #f8778B;  
+} 
+
+@media screen and (min-width: 414px) {
+  .patients-page-liste-container {
+min-height: 380px;
+max-height: 380px;
+  }
+}

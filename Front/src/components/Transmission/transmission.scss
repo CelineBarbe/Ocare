@@ -1,0 +1,72 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.transmission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Heebo', sans-serif;
+  padding: vars.$gutter/2;
+  margin: 0;
+
+  &-h1 {
+    font-family: 'Roboto', sans-serif;
+    margin: vars.$gutter vars.$gutter*2 vars.$gutter*2 vars.$gutter*2;
+    color: vars.$color-primary;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  &-ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: vars.$gutter;
+    width: 100%;
+    
+  }
+
+  &-li {
+    margin: 0;
+    padding: 0 vars.$gutter;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 115px;
+  }
+
+  &-date {
+    font-size: 16px;
+    color: rgb(110, 110, 110);
+    font-weight: bold;
+  }
+
+}
+
+.transmission-title {
+    color: vars.$color-secondary-dark1;
+    font-family: 'Lobster', cursive;
+    padding: vars.$gutter*1.5 vars.$gutter*1.5 0 vars.$gutter*1.5;
+    font-size: 30px;
+    width: 40%;
+    margin: 0;
+}
+
+#li0 {
+  background-image: url('./icone_transmission1.png');
+  background-size:cover;
+}
+#li1 {
+  background-image: url('.//icone_transmission2.png');
+  background-size:cover;
+}
+
+#li2 {
+  background-image: url('./icone_transmission3.png');
+  background-size:cover;
+}

@@ -1,0 +1,24 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.navbar {
+  width: 100%;
+  flex-shrink: 0;
+
+
+  &-ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  &-li {
+    margin:0 20px;
+  }
+
+  &-img{
+    width: 55px;
+  }
+}

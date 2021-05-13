@@ -1,0 +1,121 @@
+@use 'src/styles/vars';
+@import 'src/styles/mixins';
+
+//@include inline-block();
+
+
+.homepage {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15px;
+  
+  &-header {
+    display: flex;
+    margin: vars.$gutter*10 vars.$gutter vars.$gutter vars.$gutter;
+  }
+
+  &-title {
+    color: vars.$color-primary;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: vars.$gutter;
+  }
+
+  &-content {
+    padding-top:vars.$gutter;
+    padding-bottom:vars.$gutter;
+    text-align: justify;
+
+    &-name {
+      font-weight: bold;
+      padding: vars.$gutter;
+    }
+  }
+
+  &-button {
+    appearance:none;
+    padding: 8px;
+    font-size: 15px;
+    border:none;
+    background-color:vars.$color-secondary-dark1;
+    -webkit-box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.15);
+    border-radius: 15px;
+    border: 0;
+    color:vars.$color-white;
+    font-weight:500;
+    border-radius:5px;
+    font-family: 'Heebo', sans-serif;
+    position: absolute;
+    top: 120px;
+    right: 10px;
+  }
+
+  &-presentation {
+    padding:1rem;
+  }
+
+  &-credits {
+    padding:vars.$gutter;
+  }
+
+  &-legalnotice {
+    padding:1rem;
+    margin-bottom: 70px;
+  }
+}
+
+.visuel {
+  margin-left: 20px;
+}
+
+.member {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  padding: vars.$gutter;
+
+  &-avatar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    margin-right: 20px;
+  }
+
+  &-contact {
+    width: 80%;
+  }
+
+  &-name {
+    font-weight: bold;
+    margin: vars.$gutter 0 vars.$gutter/1.5 vars.$gutter;
+    text-align: center;
+    font-size: 17px;
+    color: vars.$color-secondary-dark1;
+  }
+
+  &-role{
+    margin-bottom: vars.$gutter;
+    margin-left: vars.$gutter;
+    text-align: center;
+    font-style: italic;
+    color: vars.$color-primary;
+    font-size: 15px;
+  }
+}
+
+img {
+  max-width: 100px;
+  height: auto;
+}
+
+.small {
+  width: 20px !important;
+}

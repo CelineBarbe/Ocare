@@ -1,0 +1,68 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.success {
+  background-color:vars.$color-secondary;
+}
+
+.error {
+  background-color:vars.$color-primary-dark1;
+}
+
+.notification-message {
+    color: vars.$color-white;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    
+    height: 64px;
+    animation: progress-bar 1000ms;
+    width: 100%;
+    margin: 0 auto;
+    padding: vars.$gutter;
+    z-index: 3000;
+    right:0;
+    top: 0;
+
+    &-img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    &-close {
+      width: 20px;
+      position: absolute;
+      right: vars.$gutter;
+      top:vars.$gutter;
+    }
+}
+
+/* KEYFRAMES ANIMATION */
+
+/* @keyframes fadein {
+  from {
+      opacity:0;
+      right: -1000px;
+  }
+  to {
+      opacity:1;
+      left: 0px;
+  }
+} */
+
+@keyframes progress-bar {
+  0% {
+      left: 100%;
+  }
+ 
+  100% {
+      left: 0%;
+  }
+}
+
+

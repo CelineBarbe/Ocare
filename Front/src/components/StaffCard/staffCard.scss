@@ -1,0 +1,89 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.staff-card::-webkit-scrollbar {
+  display: none;
+}
+
+.staff-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  padding: vars.$gutter;
+  margin: vars.$gutter 0 0 0;
+  width: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  height: 280px;
+
+  &-title {
+    color: vars.$color-secondary-dark1;
+    align-self: center;
+    padding: vars.$gutter*2 ;
+    font-size: 20px;
+    font-weight: 700;
+    align-self: center;
+  }
+}
+
+.nurse-card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: vars.$gutter 0;
+  margin: vars.$gutter;
+}
+
+.nurse-card {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0.2em;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 3px 1px rgba(155, 109, 116, 0.4);
+  background-color: #fcfcfc;
+  border-radius: 10px;
+  height: 150px;
+  width: 150px;
+
+
+  &-remove {
+    width: 16px;
+    position: absolute;
+    left: 5px;
+    top:5px;
+  }
+ 
+  &-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+  }
+
+  &-name {
+    color: vars.$color-secondary-dark1;
+    font-weight: bold;
+    padding: vars.$gutter/2 0 vars.$gutter/2 0;
+    text-align: center;
+  }
+}
+
+.nurse-card-contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nurse-card-contact-img {
+  width: 35px;
+}
+

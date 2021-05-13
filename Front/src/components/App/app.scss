@@ -1,0 +1,16 @@
+@use '/src/styles/vars';
+
+.app {
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+}
+
+@media screen and (max-width: 414px) {
+  .app {
+    width: 100%;
+  }
+}

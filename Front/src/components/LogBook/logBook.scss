@@ -1,0 +1,168 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+
+// Style of container entry care / transmission
+
+.carnet-sante-container {
+  font-family: 'Roboto', sans-serif;
+  height: 400px;
+  width: 100%;
+  padding: vars.$gutter;
+  overflow-y: scroll;
+  -ms-overflow-style:none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  border-radius: 15px;
+}
+
+// style scrollbar for IE and EDGE
+
+.carnet-sante-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carnet-sante-entry {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: vars.$gutter;
+}
+
+.carnet-sante-entry-top {
+  font-family: 'Roboto', sans-serif;
+  width: 359px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
+  &-icone {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-img {
+      width: 30px;
+    }
+  }
+
+  &-care {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+  &-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: vars.$gutter/3;
+
+    &-title {
+      margin-right: vars.$gutter;
+      color: vars.$color-secondary-dark2;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  
+    &-name {
+      font-family: 'Roboto', sans-serif;
+      color: vars.$color-primary;
+      font-weight: bold;
+      font-size: 14px;
+    }
+  }
+
+  &-bottom {
+    padding: vars.$gutter/3;
+
+    &-date {
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      color: vars.$color-grey4;
+      font-style: italic;
+    }
+  }
+  }
+}
+
+.carnet-sante-entry-bottom {
+  font-family: 'Roboto', sans-serif;
+  width: 359px;
+  max-height: 180px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
+  &-left {
+    min-height: 30px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &-border {
+      width: 1px;
+      height: 100%;
+      background-color: vars.$color-primary;
+    }
+  }
+
+  &-right {
+    width: 100%;
+    padding: vars.$gutter;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+
+    &-observation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 85%;
+      margin: vars.$gutter/1.5 auto;
+      padding: vars.$gutter*2;
+      background-color: #f5f5f5;
+      font-family: 'Roboto', sans-serif;
+      min-height: 60px;
+      max-height: 90px;
+      overflow-y: scroll;
+      -ms-overflow-style:none;
+      border-radius: 10px;
+      -webkit-box-shadow: 0px 1px 6px -4px #000000; 
+      box-shadow: 0px 1px 6px -4px #000000;
+    }
+
+    &-observation::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.default-title {
+  color: vars.$color-primary;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  margin: 50px auto 50px auto;
+}
+
+.container-entry-image {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: vars.$gutter;
+}
+
+.carnet-sante-entry-image{
+  width: auto; 
+  max-height: 100px;
+}

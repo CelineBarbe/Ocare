@@ -1,0 +1,75 @@
+@use '/src/styles/vars';
+@import 'src/styles/mixins';
+
+.primary {
+  background-color: vars.$color-primary;
+}
+
+.secondary-dark1 {
+  background-color: vars.$color-secondary-dark1;
+}
+
+// main container style
+
+.patient-page {
+  display: flex;
+  flex-direction: column;
+}
+
+// under container style
+.patient {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: vars.$gutter;
+  font-family: 'Roboto', sans-serif;
+
+  &-infos {
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    padding: vars.$gutter*2 ;
+    font-size: 20px;
+    width: 100%;
+  }
+
+  &-title {
+    color: vars.$color-secondary-dark1;
+    padding-right: vars.$gutter;
+  }
+
+  &-img {
+    width: 25px;
+  }
+}
+
+// style button add entry
+
+.patient-add-care {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: vars.$gutter*2.5;
+  padding: vars.$gutter/1.2 vars.$gutter*1.5;
+  background-color:vars.$color-secondary-dark1;
+  -webkit-box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.25);
+  border-radius: 15px;
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: vars.$color-white;
+  font-family: 'Roboto', sans-serif;
+
+  &-img {
+    width: 30px;
+    margin-left: 10px;
+  }
+
+}
