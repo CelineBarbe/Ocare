@@ -5,7 +5,7 @@ const tourController = {
     async findAll(request, response, next) {
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
 
             const tours = await tourDataMapper.getAllPatient(idCabinet);
 
@@ -25,7 +25,7 @@ const tourController = {
 
             const { date } = request.params;
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
 
             const tour = await tourDataMapper.findByDate(date, idCabinet);
 
@@ -45,7 +45,6 @@ const tourController = {
         try {
             const tourInfo = request.body;
 
-            console.log(tourInfo, "tour info controller");
             const createTour = await tourDataMapper.create(tourInfo);
 
             if(!createTour) {
@@ -57,7 +56,6 @@ const tourController = {
             response.json({ createTour });
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -104,9 +102,9 @@ const tourController = {
 
     async deletePatient(request, response, next) {
         try {
-            const { idTour, idPatient, idLog } = request.params;
+            const { idTour, idLog } = request.params;
 
-            const deletedPatientInTour = await tourDataMapper.deletePatient(idTour, idPatient, idLog);
+            const deletedPatientInTour = await tourDataMapper.deletePatient(idTour, idLog);
 
             if(!deletedPatientInTour) {
                 response.locals.notFound = "Ce patient ne figure pas sur cette tournée";

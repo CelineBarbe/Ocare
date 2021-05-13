@@ -5,11 +5,7 @@ const patientDataMapper = {
     async getAllPatient(idCabinet) {
 
         const result = await client.query(`SELECT * FROM patient WHERE cabinet_id = $1`, [idCabinet]);
-        if (result.rowCount == 0) {
 
-            const result = { message: 'Aucun patient dans ce cabinet'};
-            return result;
-        }
         return result.rows;
     },
 
@@ -33,10 +29,10 @@ const patientDataMapper = {
         p.daily_checking,
         p.number_daily_checking,
         p.cabinet_id,
-        JSON_AGG(logbook_with_nurse_infos) as logbook
+        JSON_AGG(logbook_with_nurse_infos_documents) as logbook
         FROM patient p
-            LEFT OUTER JOIN logbook_with_nurse_infos
-                ON p.id = logbook_with_nurse_infos.patient_id 
+            LEFT OUTER JOIN logbook_with_nurse_infos_documents
+                ON p.id = logbook_with_nurse_infos_documents.patient_id 
         WHERE p.id = $1 GROUP BY p.id`, [id]);
 
         // const result = await client.query(`SELECT patient.*,
@@ -52,11 +48,6 @@ const patientDataMapper = {
         
         return result.rows;
     },
-
-    // async find(info) {
-    //     console.log('coucou');
-    //     console.log(info, "info");
-    // },
 
     async createPatient(patientInfo) {
 

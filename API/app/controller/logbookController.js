@@ -5,7 +5,7 @@ const logbookController = {
 
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
 
             const logs = await logbookDataMapper.getAllLogs(idCabinet);
             if(!logs) {
@@ -17,7 +17,6 @@ const logbookController = {
             response.json(logs);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -25,10 +24,8 @@ const logbookController = {
     async getByDate(request, response, next) {
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
             const { date } = request.query;
-
-            console.log(date, "date");
 
             const logsByDate = await logbookDataMapper.getAllLogsByDate(idCabinet, date);
 
@@ -41,7 +38,6 @@ const logbookController = {
             response.json(logsByDate);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -49,7 +45,7 @@ const logbookController = {
     async findByDate(request, response, next) {
         try {
 
-            const idCabinet = request.app.locals.userCurrentCabinet;
+            const idCabinet = response.locals.default_cabinet;
             const { date } = request.body;
 
             const logsByDate = await logbookDataMapper.getAllLogsByDate(idCabinet, date);
@@ -63,7 +59,6 @@ const logbookController = {
             response.json(logsByDate);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },

@@ -16,41 +16,30 @@ const tourDataMapper = {
 
         const tourID = createTour.rows[0].id;
 
-        // 2 - Faire un appel pour avoir tous les patients qui ont daily_checking = true et qui n'ont pas de loggbook à la date du jour
+        // 2 - Faire un appel pour avoir tous les patients qui ont daily_checking = true et qui n'ont pas de logbook à la date du jour ou qui n'ont jamais encore eu de logbook
         let patientsWithoutLogbook = await client.query(`SELECT DISTINCT p.firstname,
         lastname,
         p.id AS patient_id,
         p.number_daily_checking
         FROM patient p
-            JOIN logbook l
+            LEFT OUTER JOIN logbook l
                 ON p.id = l.patient_id
         WHERE p.cabinet_id = $1 
             AND p.daily_checking = true
-            AND l.planned_date <> $2
-        GROUP BY p.id`, [cabinet_id, date]);
+            AND (l.planned_date <> $2
+                OR l.id IS NULL)
+        GROUP BY p.id, l.id`, [cabinet_id, date]);
 
-        // 2b - Patients qui n'ont aucun logbook et pour lesquels la requête précédente à échouer
-        if (patientsWithoutLogbook.rowCount == 0) {
-            patientsWithoutLogbook = await client.query(`SELECT DISTINCT p.firstname,
-        lastname,
-        p.id AS patient_id,
-        p.number_daily_checking
-        FROM patient p
-        WHERE p.cabinet_id = $1 
-            AND p.daily_checking = true
-        GROUP BY p.id`, [cabinet_id]);
-        }
-
-        console.log(patientsWithoutLogbook, 'patient sans logbook');
-
-        // 3 - Ouvrir un logbook avec pour les patients qui n'en ont pas avec un acte soins infirmiers
-
-        for (let patient of patientsWithoutLogbook.rows) {
-            const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, daily, observations, nurse_id, patient_id) VALUES ($1, $1, true, 'visite quotidienne - soins infirmiers', $2, $3) RETURNING *`, [date, nurse_id, patient.patient_id]);
-
-            const logbookID = result.rows[0].id;
-
-            await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES ($1, 1)`, [logbookID]);
+        if(patientsWithoutLogbook) {
+            
+            // 3 - Ouvrir un logbook pour les patients qui n'en ont pas avec un acte soins infirmiers
+            for (let patient of patientsWithoutLogbook.rows) {
+                const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, daily, observations, nurse_id, patient_id) VALUES ($1, $1, true, 'visite quotidienne - soins infirmiers', $2, $3) RETURNING *`, [date, nurse_id, patient.patient_id]);
+    
+                const logbookID = result.rows[0].id;
+    
+                await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES ($1, 1)`, [logbookID]);
+            }
         }
 
         // 4 - Faire un appel pour récupérer tous les patients qui ont un logbook à la date de la tournée
@@ -74,10 +63,6 @@ const tourDataMapper = {
         //     return null;
         // }
 
-        console.log(patients, "patient pour la tournée");
-
-        // console.log(patients, "patients"); patient.rows
-        // console.log(patients, "patients"); // 2 patients 19 Labbé book 26 & 24 Garnier book 27
         // 5 - Créer la tournée en liant tourID et patientID pour chaque ligne
         
         let order_tour = 1;
@@ -105,13 +90,34 @@ const tourDataMapper = {
             JOIN medical_act m
                 ON m.id = lhma.medical_act_id
         WHERE thp.tour_id = $1
-            AND l.planned_date = $2`, [tourID, date]);
+            AND l.planned_date = $2 ORDER BY thp.patient_id, thp.order_tour ASC`, [tourID, date]);
 
         // if (result.rowCount == 0) {
         //     return null;
         // }
 
-        return result.rows;
+        // Suppression de l'affichage des logbooks en double
+        let tab = [];
+
+        let idTour = null;
+        let logbookId = null;
+
+        for (let el of result.rows) {
+            if(el.id != idTour && el.logbook_id != logbookId) {
+                tab.push(el);
+
+                // Mets à jour le check
+                idTour = el.id;
+                logbookId = el.logbook_id;
+            }
+        };
+
+        // Tri selon le tour_order
+        const tabSorted = tab.sort(function (a, b) {
+            return a.order_tour - b.order_tour;
+        });
+
+        return tabSorted;
     },
 
     async findByDate(date, idCabinet) {
@@ -136,11 +142,30 @@ const tourDataMapper = {
                 ON t.id = thp.tour_id
         WHERE t.date = $1
             AND p.cabinet_id = $2
-            AND l.planned_date = $1 ORDER BY thp.order_tour ASC`, [date, idCabinet]);
+            AND l.planned_date = $1 ORDER BY thp.patient_id, thp.order_tour ASC`, [date, idCabinet]);
 
-            // console.log(result, "resultat DataMapper");
+        // Suppressions de l'affichage des logbooks en double
+        let tab = [];
 
-        return result.rows;
+        let idTour = null;
+        let logbookId = null;
+
+        for (let el of result.rows) {
+            if(el.id != idTour && el.logbook_id != logbookId) {
+                tab.push(el);
+
+                // Mets à jour le check
+                idTour = el.id;
+                logbookId = el.logbook_id;
+            }
+        };
+
+        // Tri selon le tour_order
+        const tabSorted = tab.sort(function (a, b) {
+            return a.order_tour - b.order_tour;
+        });
+
+        return tabSorted;
 
     },
 
@@ -181,7 +206,7 @@ const tourDataMapper = {
         return logIsDone.rowCount;
     },
 
-    async deletePatient(idTour, idPatient, idLog) {
+    async deletePatient(idTour, idLog) {
 
         // 1 - Supprime le tour_has_patient (tour_id))
         const deletePatient = await client.query(`DELETE FROM tour_has_patient WHERE id = $1`, [idTour]);

@@ -77,7 +77,7 @@ const logbookDataMapper = {
         // Tomorrow = date + 1
         const tomorrow = DateTime.fromISO(`${date}`).plus({days: 1}).toISODate();
 
-        const result = await client.query(`SELECT l.*,
+        const result = await client.query(`SELECT lwnid.*,
         p.firstname,
         p.lastname,
         p.birthdate,
@@ -91,27 +91,27 @@ const logbookDataMapper = {
         p.daily_checking,
         p.number_daily_checking,
         p.cabinet_id
-        FROM logbook l
+        FROM logbook_with_nurse_infos_documents lwnid
             JOIN patient p
-                ON p.id = l.patient_id
+                ON p.id = lwnid.patient_id
             JOIN cabinet c
                 ON c.id = p.cabinet_id
         WHERE c.id = $1
-        AND (l.planned_date = $2
-        OR l.planned_date = $3)
-        ORDER BY l.creation_date DESC LIMIT 200`, [idCabinet, date, tomorrow]);
+        AND (lwnid.planned_date = $2
+        OR lwnid.planned_date = $3)
+        ORDER BY lwnid.creation_date DESC LIMIT 200`, [idCabinet, date, tomorrow]);
 
         return result.rows;
     },
 
     async getLogById(id) {
-        const result = await client.query(`SELECT l.*,
+        const result = await client.query(`SELECT lwnid.*,
         p.firstname,
         p.lastname
-        FROM logbook l
+        FROM logbook_with_nurse_infos_documents lwnid
             JOIN patient p
-                ON l.patient_id = p.id
-        WHERE l.id = $1`, [id]);
+                ON lwnid.patient_id = p.id
+        WHERE lwnid.id = $1`, [id]);
 
 
         if (result.rowCount == 0) {
@@ -122,7 +122,7 @@ const logbookDataMapper = {
 
     async createLog(logInfo) {
 
-        let { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id, medical_act_name } = logInfo;
+        let { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id, medical_act_name, document } = logInfo;
         // + info de l'act à ajouter via table d'association
         // save Log
 
@@ -139,7 +139,7 @@ const logbookDataMapper = {
             planned_date = DateTime.fromISO(`${creation_date}`).toFormat('yyyy-MM-dd');
         }
         
-        const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, time, done_date, observations, daily, done, ending_date, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *`,[
+        const result = await client.query(`INSERT INTO logbook(creation_date, planned_date, time, done_date, observations, daily, done, ending_date, document, nurse_id, patient_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`,[
             creation_date,
             planned_date,
             time,
@@ -148,6 +148,7 @@ const logbookDataMapper = {
             daily,
             done,
             ending_date,
+            document,
             nurse_id,
             patient_id
         ]);
@@ -160,12 +161,15 @@ const logbookDataMapper = {
         // 2 - On lie l'actID au loogbookID
         await client.query(`INSERT INTO logbook_has_medical_act(logbook_id, medical_act_id) VALUES($1, $2) RETURNING *`, [result.rows[0].id, findAct.rows[0].id]);
 
-        return result.rows[0];
+        // 3 - On renvoie les infos du logbook avec le nurse et le medical_act en +
+        const logResult = await client.query(`SELECT * FROM logbook_with_nurse_infos_documents WHERE id = $1`, [result.rows[0].id]);
+
+        return logResult.rows[0];
     },
 
     async updateLogByid(idLog, logInfo) {
         //pas de update de tag dans un premier temps
-        const { planned_date, done_date, time, observations, daily, done, ending_date, nurse_id, patient_id } = logInfo;
+        const { observations, document, nurse_id, patient_id } = logInfo;
 
         const findLog = await client.query(`SELECT * FROM logbook WHERE id = $1 AND logbook.patient_id = $2`, [idLog, patient_id]);
 
@@ -173,19 +177,18 @@ const logbookDataMapper = {
             return null;
         }
 
-        const result = await client.query(`UPDATE logbook SET planned_date = $1, time = $2, done_date = $3, observations = $4, daily = $5, done = $6, ending_date = $7, nurse_id = $8 WHERE id = $9`, [
-            planned_date,
-            time,
-            done_date,
+        // Modifie le logbook
+        await client.query(`UPDATE logbook SET observations = $1, document = $2, nurse_id = $3 WHERE id = $4 RETURNING *`, [
             observations,
-            daily,
-            done,
-            ending_date,
+            document,
             nurse_id,
             idLog
         ]);
 
-        return result.rowCount;
+        // 3 - On renvoie les infos du logbook avec le nurse et le medical_act en +
+        const logUpdated = await client.query(`SELECT * FROM logbook_with_nurse_infos_documents WHERE id = $1`, [idLog]);
+
+        return logUpdated.rows;
     },
 
     async deleteLogByid(idLog) {

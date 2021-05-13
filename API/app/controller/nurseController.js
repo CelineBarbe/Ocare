@@ -1,10 +1,13 @@
 const nurseDataMapper = require('../datamapper/nurseDataMapper');
+// const bcrypt = require('bcrypt');
+// const saltRounds = 10;
 
 const nurseController = {
 
     async findAll(request, response, next) {
         try {
-            const idCabinet = request.app.locals.userCurrentCabinet;
+
+            const idCabinet = response.locals.default_cabinet;
 
             const nurses = await nurseDataMapper.getAllNurse(idCabinet);
 
@@ -36,7 +39,6 @@ const nurseController = {
             response.json(nurse);
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -47,6 +49,12 @@ const nurseController = {
             const id = parseInt(request.params.id, 10);
             const nurseInfoToUpdate = request.body;
 
+            // 1 - On récupère le password et on le hash
+            // const hashedPwd = bcrypt.hashSync(nurseInfoToUpdate.password, saltRounds);
+            
+            // 2 - on le remplace dans le request.body
+            // nurseInfoToUpdate.password = hashedPwd;
+
             const updatedNurseProfil = await nurseDataMapper.updateNurseById(id, nurseInfoToUpdate);
 
             if (!updatedNurseProfil) {
@@ -54,12 +62,10 @@ const nurseController = {
                 next();
                 return;
             }
-            console.log(updatedNurseProfil);
 
             response.json({ updatedNurseProfil });
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },

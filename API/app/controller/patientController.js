@@ -4,15 +4,11 @@ const patientController = {
 
     async findAll(request, response, next) {
         try {
-            const idCabinet = request.app.locals.userCurrentCabinet;
-            // console.log(response.locals.userID, "-< response.locals.USERID");
+
+            const idCabinet = response.locals.default_cabinet;
 
             const patients = await patientDataMapper.getAllPatient(idCabinet);
-            if(!patients) {
-                response.locals.notFound = "Aucun patient dans ce cabinet";
-                next();
-                return;
-            }
+
             response.json(patients);
         } catch (error) {
             next(error);
@@ -51,7 +47,6 @@ const patientController = {
             }
             response.json({ savedPatient });
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },

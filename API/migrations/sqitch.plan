@@ -18,3 +18,4 @@
 110-add-tour 2021-01-27T09:52:34Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add table tour
 042-Update-View-getAllCabinet 2021-01-28T15:44:57Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add left outer JOIN on patient table
 081-Update-View-logbook-with-nurse 2021-01-29T14:25:21Z "Etudiant O'clock",,, <etudiant@teleporteur> # Add medical_act name in View
+120-add-document 2021-02-02T22:14:32Z "Etudiant O'clock",,, <etudiant@teleporteur> # add column document in logbook

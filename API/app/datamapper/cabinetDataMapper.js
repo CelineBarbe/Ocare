@@ -30,17 +30,22 @@ const cabinetDataMapper = {
 
     async getCabinetById(id, userID, defaultCab) {
 
-    const result = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [id])
+        let result = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [id])
 
-        if(result.rowCount == 0) {
-            return null;
-        }
+            if(result.rowCount == 0) {
+                return null;
+            }
 
-    // Remove default_cabinet
-    await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE cabinet_id = $1 AND nurse_id = $2`, [defaultCab, userID]);
+        // Remove default_cabinet
+        await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = false WHERE cabinet_id = $1 AND nurse_id = $2`, [defaultCab, userID]);
 
-    // Save this cabinet like current_cab
-    await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE cabinet_id = $1 AND nurse_id = $2`, [id, userID]);
+        // Save this cabinet like current_cab
+        await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE cabinet_id = $1 AND nurse_id = $2`, [id, userID]);
+
+        // Add owner_id email
+        const ownerEmail = await client.query(`SELECT nurse.email FROM nurse WHERE nurse.id = $1`, [result.rows[0].owner_id]);
+
+        result.rows[0].email = ownerEmail.rows[0].email;
 
         return result.rows;
     },
@@ -76,7 +81,7 @@ const cabinetDataMapper = {
         return result.rows[0];
     },
 
-    async addNurseToCabinet(name, idNurse, pinCodeCab) {
+    async subscribeToCabinet(name, idNurse, pinCodeCab) {
 
         // check pinCode to save the nurse
         const enabledCode = await client.query(`SELECT * FROM cabinet WHERE name ILIKE $1 AND pin_code = $2`, [name, pinCodeCab]);
@@ -96,16 +101,44 @@ const cabinetDataMapper = {
 
         const result = await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [enabledCode.rows[0].id, idNurse]);
 
-        return result.rows[0];
+        let cabinetAdded = await client.query(`SELECT * FROM all_cabinet WHERE all_cabinet.id = $1`, [result.rows[0].cabinet_id]);
+
+        // Add owner_id email
+        const ownerEmail = await client.query(`SELECT nurse.email FROM nurse WHERE nurse.id = $1`, [cabinetAdded.rows[0].owner_id]);
+
+        cabinetAdded.rows[0].email = ownerEmail.rows[0].email;
+
+        return cabinetAdded.rows[0];
+    },
+
+    async addNurseToCabinet(emailNurse, ownerID, cabinetID , pin_code) {
+
+        // 1 On vérifie qu'il s'agit bien du owner du cabinet
+        const cabinet = await client.query(`SELECT * FROM cabinet WHERE cabinet.id = $1 AND cabinet.owner_id = $2 AND cabinet.pin_code = $3`, [cabinetID, ownerID, pin_code]);
+
+        if (cabinet.rowCount == 0) {
+            return null;
+        }
+
+        // Trouvez le nurse à ajouter
+        const nurse = await client.query(`SELECT * FROM nurse_without_password nwp WHERE nwp.email = $1`, [emailNurse]);
+
+        if (nurse.rowCount == 0) {
+            const result = { message: 'Aucun infirmier n\'a été trouvé'};
+            return result;
+        }
+
+        // Association du nurse au cabinet
+        await client.query(`INSERT INTO cabinet_has_nurse(cabinet_id, nurse_id, default_cabinet) VALUES($1, $2, true) RETURNING *`, [cabinet.rows[0].id, nurse.rows[0].id]);
+
+        return nurse.rows[0];
+
     },
 
     async updateNurseToCabinet(info) {
 
-        console.log(info);
         // check which default cabinet is true
         const defaultCab = await client.query(`SELECT * FROM cabinet_has_nurse JOIN nurse ON nurse.id = cabinet_has_nurse.nurse_id WHERE nurse.id = $1 AND default_cabinet = true`, [info.nurse_id]);
-
-        console.log(defaultCab, "defaultCab");
 
         if (defaultCab.rowCount == 1) {
             // this cabinet become false
@@ -131,10 +164,29 @@ const cabinetDataMapper = {
         
         // const result = await client.query(`UPDATE cabinet_has_nurse chn SET allowed = false, default_cabinet = false WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
 
-        const result = await client.query(`DELETE FROM cabinet_has_nurse chn WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2`, [idCab, idNurse]);
+        // Vérifier qui est owner_ID
+        const whoIsOwner = await client.query(`SELECT owner_id FROM cabinet WHERE id = $1`, [idCab]);
+
+        // Si owner_id = idNurse ne peut pas supprimer
+        if (whoIsOwner.rows[0].owner_id == idNurse) {
+            return 2;
+        }
+
+
+        const result = await client.query(`DELETE FROM cabinet_has_nurse chn WHERE chn.cabinet_id = $1 AND chn.nurse_id = $2 RETURNING*`, [idCab, idNurse]);
 
         if (result.rowCount == 0) {
             return null;
+        }
+
+        // Si le cabinet supprimé est le cabinet par défaut, il faut sélectionner un nouveau cabinet par défaut
+        if (result.rows[0].default_cabinet == true) {
+            // Trouver un cabinet auquel le nursee est affilié
+            const idCab = await client.query(`SELECT id FROM cabinet_has_nurse WHERE nurse_id = $1 LIMIT 1`, [idNurse]);
+
+            if(idCab) {
+                await client.query(`UPDATE cabinet_has_nurse SET default_cabinet = true WHERE id = $1`, [idCab.rows[0].id]);
+            }
         }
 
         return result.rowCount;

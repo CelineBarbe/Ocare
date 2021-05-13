@@ -18,7 +18,6 @@ const cabinetController = {
             response.json({ cabinets });
 
         } catch (error) {
-            console.log(error.message);
             next(error);
         }
     },
@@ -27,7 +26,7 @@ const cabinetController = {
         try {
             
             const userID = response.locals.userID;
-            const defaultCab = request.app.locals.userCurrentCabinet
+            const defaultCab = response.locals.default_cabinet;
 
             const { id } = request.params;
 
@@ -38,9 +37,6 @@ const cabinetController = {
                 next();
                 return;
             }
-
-            // Save current_cabinet in locals
-            request.app.locals.userCurrentCabinet = parseInt(request.params.id, 10);
 
             response.json({ cabinet });
 
@@ -61,9 +57,6 @@ const cabinetController = {
                 return;
             }
 
-            // Save current_cabinet in locals
-            request.app.locals.userCurrentCabinet = savedCabinet.id;
-
             response.json({ savedCabinet });
 
         } catch (error) {
@@ -75,18 +68,34 @@ const cabinetController = {
         try {
             const { name, nurse_id, pin_code } = request.body;
 
-            const savedNurseToCabinet = await cabinetDataMapper.addNurseToCabinet(name, nurse_id, pin_code);
+            const savedNurseToCabinet = await cabinetDataMapper.subscribeToCabinet(name, nurse_id, pin_code);
 
             if (!savedNurseToCabinet) {
                 response.locals.notFound = 'Autorisation refusée';
                 next();
                 return;
             }
-            
-            // Save current_cabinet in locals
-            request.app.locals.userCurrentCabinet = savedNurseToCabinet.cabinet_id;
 
             response.json({ savedNurseToCabinet });
+
+        } catch (error) {
+            next(error);
+        }
+    },
+
+    async ownerAddNurse(request, response, next) {
+        try {
+            const { email, nurse_id, cabinet_id, pin_code} = request.body;
+
+            const addNurseToCabinet = await cabinetDataMapper.addNurseToCabinet(email, nurse_id, cabinet_id, pin_code);
+
+            if(!addNurseToCabinet) {
+                response.locals.notFound = 'Autorisation refusée';
+                next();
+                return;
+            }
+
+            response.json({ addNurseToCabinet });
 
         } catch (error) {
             next(error);
@@ -119,8 +128,15 @@ const cabinetController = {
 
             const unsubscription = await cabinetDataMapper.unsubscribe(cabinet_id, nurse_id);
 
+            if (unsubscription == 2) {
+
+                return response.status(409).json({
+                    message: "Vous ếtes propriétaire de ce cabinet et ne pouvez pas vous en désabonner"
+                });
+            }
+
             if (!unsubscription) {
-                response.locals.notFound = 'Une erreur est survenue lors du désabonnement';
+                response.locals.notFound = "Erreur : infirmier est introuvable";
                 next();
                 return;
             }
@@ -156,9 +172,6 @@ const cabinetController = {
         try {
             const idCab = parseInt(request.params.id, 10);
             const userID = response.locals.userID;
-
-            console.log(idCab, "- id controller");
-            console.log("coucou controller");
 
             const deletedCabinet = await cabinetDataMapper.deleteCabinetByid(idCab, userID);
 
