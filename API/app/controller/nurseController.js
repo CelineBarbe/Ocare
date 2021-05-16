@@ -49,12 +49,6 @@ const nurseController = {
             const id = parseInt(request.params.id, 10);
             const nurseInfoToUpdate = request.body;
 
-            // 1 - On récupère le password et on le hash
-            // const hashedPwd = bcrypt.hashSync(nurseInfoToUpdate.password, saltRounds);
-            
-            // 2 - on le remplace dans le request.body
-            // nurseInfoToUpdate.password = hashedPwd;
-
             const updatedNurseProfil = await nurseDataMapper.updateNurseById(id, nurseInfoToUpdate);
 
             if (!updatedNurseProfil) {
